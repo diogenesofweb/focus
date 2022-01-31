@@ -15,7 +15,7 @@
 
 		<div>
 			<a
-				href="https://github.com/diogenesofweb/"
+				href="https://github.com/diogenesofweb/focus"
 				aria-label="link to repo"
 				target="_blank"
 				rel="noopener noreferrer"
