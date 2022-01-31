@@ -1,0 +1,25 @@
+ul.table {
+	border-block: var(--border);
+}
+
+.table li {
+	padding: 3px;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	gap: 1ch;
+}
+
+/*.table  li:before { */
+/* 	content: '~'; */
+/* } */
+
+.table li:hover {
+	background-color: var(--bg-1);
+	/* border-radius: 6px; */
+}
+
+.table li:not(:hover) > :last-child {
+	/* visibility: hidden; */
+	opacity: 0.5;
+}

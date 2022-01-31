@@ -1,0 +1,316 @@
+<script>
+	import Clock from '$lib/Clock.svelte';
+	import PhaseTable from '$lib/PhaseTable.svelte';
+	import Visibility, { VISIBILITY_STATE } from '$lib/Visibility.svelte';
+	import { alarmIsOn, currSequenceName, showNotifications } from '$store/store';
+	import { MESSAGE as m } from '$utils/constants';
+	import { sendNotification } from '$utils/sendNotification';
+	import { Breaks, Sequences } from '$utils/storage';
+	import Workerr from '$utils/worker.js?worker';
+	import { Btn, Modal } from '@kazkadien/svelte';
+	import { onDestroy } from 'svelte';
+
+	/** @typedef {import('$typings/types').Phase} Phase*/
+	const initBreaks = {
+		short: Breaks.short.get(),
+		long: Breaks.long.get()
+	};
+	let breaks = { ...initBreaks };
+
+	/** @type {Worker} */
+	let w;
+	if (typeof w == 'undefined') {
+		w = new Workerr();
+	}
+
+	w.onmessage = function (e) {
+		// console.log(e.data);
+		if (e.data.mes == m.tick) {
+			min = e.data.min;
+			sec = e.data.sec;
+		}
+
+		if (e.data.mes == m.finish) {
+			finish();
+		}
+	};
+
+	let isRunnig = false;
+	function startTimer() {
+		isRunnig = true;
+		const data = { mes: m.start, min, sec };
+		// console.log({ data });
+		w.postMessage(data);
+	}
+	function stopTimer() {
+		isRunnig = false;
+		w.postMessage({ mes: m.stop });
+	}
+
+	let windowIsVisible = true;
+	/** @param {{ detail: string; }} e */
+	function onWindowVisibilityChange(e) {
+		// console.log(e.detail);
+		if (e.detail === VISIBILITY_STATE.hidden) {
+			windowIsVisible = false;
+			w.postMessage({ mes: m.hidden });
+		} else {
+			windowIsVisible = true;
+			w.postMessage({ mes: m.visible });
+		}
+	}
+
+	/** @type {import('$typings/types').Round[]}*/
+	let list = [];
+	let first = false;
+	const unsub = currSequenceName.subscribe((v) => {
+		list = Sequences.find(v);
+
+		if (!first) {
+			first = true;
+		} else {
+			onReset();
+		}
+	});
+
+	onDestroy(() => {
+		// console.log('on destroy');
+		stopTimer();
+
+		w.terminate();
+		w = undefined;
+
+		unsub();
+	});
+
+	// Clock
+	let min = list[0].focus.duration;
+	let sec = 0;
+
+	$: MM = min < 10 ? '0' + min : min;
+	$: SS = sec < 10 ? '0' + sec : sec;
+
+	function clearClock() {
+		min = list[index][phase].duration;
+		sec = 0;
+	}
+	// Clock
+
+	/** @type {Phase} */
+	let phase = 'focus';
+	let index = 0;
+	$: breakType = list[index].break.type;
+	$: fullPhaseName =
+		phase === 'focus' ? 'focus' : list[index].break.type + ' break';
+
+	function nextPhase() {
+		// console.log({ phase });
+		if (phase !== 'focus') {
+			phase = 'focus';
+			breakAction = '';
+
+			const next = index + 1;
+			index = list.length == next ? 0 : next;
+		} else {
+			phase = 'break';
+		}
+	}
+
+	function finish() {
+		// console.log('finish round');
+		if ($showNotifications && !windowIsVisible) {
+			// if ($showNotifications) {
+			sendNotification(phase);
+		}
+
+		if ($alarmIsOn) {
+			// console.log(audio);
+			audio.play();
+		}
+
+		isRunnig = false;
+		nextPhase();
+		clearClock();
+	}
+
+	// Event handlers
+	let isPaused = false;
+	function onPause() {
+		// console.log('pause');
+		isRunnig = false;
+		isPaused = true;
+		w.postMessage({ mes: m.stop });
+	}
+	function onResume() {
+		// console.log('resume');
+		isRunnig = true;
+		isPaused = false;
+		w.postMessage({ mes: m.resume });
+	}
+
+	function onStart() {
+		// console.log('on start');
+		if (phase === 'focus') {
+			startTimer();
+		} else {
+			// console.log('show modal to select activity');
+			modalIsOpen = true;
+		}
+	}
+
+	function onReset() {
+		// console.log('reset');
+
+		stopTimer();
+
+		index = 0;
+		phase = 'focus';
+		breakAction = '';
+		breaks = { ...initBreaks };
+
+		clearClock();
+	}
+
+	function onNext() {
+		// console.log('on next');
+		if (isPaused) isPaused = false;
+		stopTimer();
+		nextPhase();
+		clearClock();
+	}
+
+	let modalIsOpen = false;
+	let breakAction = '';
+
+	/** @param {number} id */
+	function onBreakSelect(id) {
+		// console.log(id);
+		modalIsOpen = false;
+		breakAction = breaks[breakType].find((e) => e.id === id).action;
+
+		if (breaks[breakType].length === 1) {
+			breaks[breakType] = initBreaks[breakType];
+		} else {
+			breaks[breakType] = breaks[breakType].filter((e) => e.id !== id);
+		}
+
+		startTimer();
+	}
+
+	let audio;
+</script>
+
+<audio id="myAudio" bind:this={audio}>
+	<source src="/flute.wav" type="audio/wav" />
+</audio>
+
+<Visibility on:state={onWindowVisibilityChange} />
+
+{#if modalIsOpen}
+	<Modal on:close={() => (modalIsOpen = false)}>
+		<div class="card">
+			<span class="tac">~</span>
+
+			{#each breaks[breakType] as el}
+				<Btn
+					accent="beta"
+					outlined
+					pointy
+					title={el.action}
+					on:click={() => onBreakSelect(el.id)}
+				/>
+			{/each}
+
+			<span class="tac">~</span>
+		</div>
+	</Modal>
+{/if}
+
+<section style="--tone: var(--fg-{phase == 'focus' ? 'alpha' : 'beta'})">
+	<div>
+		<div class="phase">~ {fullPhaseName} ~</div>
+		{#if breakAction}
+			<div class="break-action">( {breakAction} )</div>
+		{/if}
+	</div>
+
+	<div class="fce">
+		<div class="boxx">
+			<PhaseTable {phase} {index} {list} />
+			<Clock {MM} {SS} />
+		</div>
+	</div>
+
+	<div class="btns">
+		{#if isPaused}
+			<Btn accent="alpha" outlined colored title="resume" on:click={onResume} />
+		{:else if isRunnig}
+			<Btn accent="alpha" outlined colored title="pause" on:click={onPause} />
+		{:else}
+			<Btn accent="alpha" outlined colored title="start" on:click={onStart} />
+		{/if}
+
+		<Btn accent="gamma" outlined colored title="next" on:click={onNext} />
+		<Btn accent="danger" outlined colored title="reset" on:click={onReset} />
+	</div>
+</section>
+
+<style>
+	/* MODAL - SELECT BREAK */
+	.card {
+		background-color: var(--bg);
+		padding: 1rem var(--rsx);
+		border: var(--border);
+		border-radius: var(--br-s);
+		display: grid;
+		gap: 1rem;
+		min-width: 300px;
+	}
+	.card > span {
+		color: var(--fg-beta);
+		font-size: 1.5rem;
+	}
+	/* MODAL */
+
+	section {
+		display: grid;
+		--g: 3rem;
+		gap: var(--g);
+		padding: var(--g) var(--rsx);
+	}
+
+	.boxx {
+		background-color: var(--bg-2);
+		border: var(--border);
+		border-radius: var(--br-s);
+		border-color: var(--tone);
+		padding: 0.5rem 0;
+	}
+
+	.phase {
+		font-size: 1.15rem;
+		text-transform: uppercase;
+		text-align: center;
+		letter-spacing: 3px;
+		font-weight: bold;
+		color: var(--tone);
+	}
+	.break-action {
+		text-align: center;
+		margin-top: 1ch;
+	}
+
+	.btns {
+		display: flex;
+		flex-wrap: wrap;
+		align-self: center;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	@media only screen and (max-width: 430px) {
+		.btns {
+			flex-direction: column;
+		}
+	}
+</style>

@@ -1,0 +1,74 @@
+html {
+	font-size: 14px;
+
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+	position: relative;
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+	line-height: 1;
+
+	color: var(--fg);
+	background-color: var(--bg);
+}
+
+p {
+	line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	color: var(--text-dim);
+}
+
+.font2 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+input,
+select {
+	line-height: 1.2 !important;
+}
+
+.container {
+	max-width: 100ch;
+	margin-inline: auto;
+	padding-inline: var(--rsx);
+}
+
+.modal-box {
+	position: relative;
+	align-self: flex-start;
+	margin-top: 3.5rem;
+}
+
+html.dark {
+	--hue-sat-bg: 195, 6%;
+	--bg: hsl(var(--hue-sat-bg), 12%);
+	--bg-darker: hsl(var(--hue-sat-bg), 11%);
+	--bg-darkest: hsl(var(--hue-sat-bg), 10%);
+}
+
+body {
+	--bg-1: var(--bg-darker);
+	--bg-2: var(--bg-darkest);
+
+	--fg: var(--text);
+	--fg-1: var(--text-dim);
+	--fg-t: var(--text-opac); /* translucent */
+	--fg-tl: var(--text-opac); /* translucent */
+
+	--fg-alpha: var(--text-alpha);
+	--fg-beta: var(--text-beta);
+	--fg-gamma: var(--text-gamma);
+	--fg-danger: var(--text-danger);
+
+	--br-s: 0.33rem; /* border-radius-small */
+	--br-m: 1rem;
+	--br-l: 3rem;
+}
