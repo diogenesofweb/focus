@@ -118,6 +118,7 @@
 			<MyIcon name="volume_up" />
 		</Btn>
 
+		<!-- <Field label="Volume"> -->
 		<input
 			type="range"
 			min="0"
@@ -126,7 +127,7 @@
 			bind:value={volume}
 			on:input={onVol}
 		/>
-
+		<!-- </Field> -->
 		<span>{volume}%</span>
 	</div>
 </form>

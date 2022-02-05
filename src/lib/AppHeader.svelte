@@ -20,7 +20,12 @@
 		</a>
 
 		<div class="fce ">
-			<Btn icony accent="alpha" on:click={() => (modalIsOpen = true)}>
+			<Btn
+				ariaLabel="menu"
+				icony
+				accent="alpha"
+				on:click={() => (modalIsOpen = true)}
+			>
 				<MyIcon name="settings" />
 			</Btn>
 		</div>
