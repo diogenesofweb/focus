@@ -39,6 +39,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Focus | Activities</title>
+</svelte:head>
+
 <MyLayout title="">
 	<div slot="top" class="top">
 		<h3>Activities:</h3>

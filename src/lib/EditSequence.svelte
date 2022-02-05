@@ -137,7 +137,7 @@
 				/>
 			</Field>
 
-			<Field label="Long Break *">
+			<Field label="Long Break">
 				<input
 					bind:value={data.break.long}
 					type="number"

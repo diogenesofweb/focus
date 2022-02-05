@@ -31,6 +31,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Focus | Radios</title>
+</svelte:head>
+
 {#if modalIsOpen}
 	<Modal on:close={() => (modalIsOpen = false)}>
 		<EditRadioStation

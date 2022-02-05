@@ -7,7 +7,7 @@
 	<section>
 		<div>
 			<Name />
-			<p>Productivity timer with focus on breaks.</p>
+			<p>Productivity timer with focus on breaks</p>
 			{#if dev}
 				<a href="/test">test</a>
 			{/if}

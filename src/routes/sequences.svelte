@@ -42,6 +42,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Focus | Sequences</title>
+</svelte:head>
+
 {#if modalIsOpen}
 	<Modal on:close={() => (modalIsOpen = false)}>
 		<EditSequence
