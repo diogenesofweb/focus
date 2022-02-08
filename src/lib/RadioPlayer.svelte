@@ -92,6 +92,7 @@
 <form class="form alpha">
 	<div class="top">
 		<Btn
+			ariaLabel="play or pause"
 			icony
 			colored
 			outlined
@@ -114,7 +115,14 @@
 	</div>
 
 	<div class="vol">
-		<Btn on:click={onSwitchMuted} icony colored outlined accent="alpha">
+		<Btn
+			ariaLabel="mute"
+			on:click={onSwitchMuted}
+			icony
+			colored
+			outlined
+			accent="alpha"
+		>
 			<MyIcon name="volume_up" />
 		</Btn>
 
