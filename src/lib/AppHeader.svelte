@@ -8,7 +8,7 @@
 </script>
 
 {#if modalIsOpen}
-	<Modal on:close={() => (modalIsOpen = false)}>
+	<Modal blurBG on:close={() => (modalIsOpen = false)}>
 		<Settings on:close={() => (modalIsOpen = false)} />
 	</Modal>
 {/if}

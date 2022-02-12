@@ -36,7 +36,7 @@
 </svelte:head>
 
 {#if modalIsOpen}
-	<Modal on:close={() => (modalIsOpen = false)}>
+	<Modal blurBG on:close={() => (modalIsOpen = false)}>
 		<EditRadioStation
 			station={station2edit}
 			on:close={() => (modalIsOpen = false)}

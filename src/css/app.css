@@ -47,6 +47,10 @@ select {
 	margin-top: 3.5rem;
 }
 
+#modal {
+	--modal-bg: hsla(0, 0%, 0%, 0.5);
+}
+
 html.dark {
 	--hue-sat-bg: 195, 6%;
 	--bg: hsl(var(--hue-sat-bg), 12%);

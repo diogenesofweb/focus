@@ -207,7 +207,7 @@
 <Visibility on:state={onWindowVisibilityChange} />
 
 {#if modalIsOpen}
-	<Modal on:close={() => (modalIsOpen = false)}>
+	<Modal blurBG on:close={() => (modalIsOpen = false)}>
 		<div class="card">
 			<span class="tac">~</span>
 

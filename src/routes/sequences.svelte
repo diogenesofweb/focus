@@ -47,7 +47,7 @@
 </svelte:head>
 
 {#if modalIsOpen}
-	<Modal on:close={() => (modalIsOpen = false)}>
+	<Modal blurBG on:close={() => (modalIsOpen = false)}>
 		<EditSequence
 			on:close={() => (modalIsOpen = false)}
 			on:created={onCreated}
