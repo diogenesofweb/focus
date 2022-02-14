@@ -150,9 +150,9 @@
 		</div>
 
 		<div class="chch ">
-			<Btn icony on:click={onRemoveRound}><Icon name="remove" /></Btn>
+			<Btn iconOnly on:click={onRemoveRound}><Icon name="remove" /></Btn>
 			<span>Sets: {count}</span>
-			<Btn icony on:click={onAddRound}><Icon name="add" /></Btn>
+			<Btn iconOnly on:click={onAddRound}><Icon name="add" /></Btn>
 		</div>
 
 		<ul>
@@ -188,7 +188,7 @@
 			{/each}
 		</ul>
 
-		<Btn type="submit" title="Submit" classic disabled={count < 2} />
+		<Btn type="submit" text="Submit" filled disabled={count < 2} />
 		<p>* Focus and break time in minutes</p>
 	</div>
 </form>

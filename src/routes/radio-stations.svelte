@@ -52,7 +52,7 @@
 
 				<div class="btns">
 					<Btn
-						icony
+						iconOnly
 						accent="alpha"
 						colored
 						size="small"
@@ -62,7 +62,7 @@
 					</Btn>
 
 					<Btn
-						icony
+						iconOnly
 						accent="danger"
 						colored
 						size="small"
@@ -76,6 +76,6 @@
 	</svelte:fragment>
 
 	<div slot="btns" class="fce">
-		<Btn on:click={onAdd} accent="alpha" classic title="Add New Station" />
+		<Btn on:click={onAdd} accent="alpha" filled text="Add New Station" />
 	</div>
 </MyLayout>

@@ -93,7 +93,7 @@
 	<div class="top">
 		<Btn
 			ariaLabel="play or pause"
-			icony
+			iconOnly
 			colored
 			outlined
 			accent="alpha"
@@ -118,7 +118,7 @@
 		<Btn
 			ariaLabel="mute"
 			on:click={onSwitchMuted}
-			icony
+			iconOnly
 			colored
 			outlined
 			accent="alpha"

@@ -50,8 +50,8 @@
 		<div class="alpha">
 			{#each durations as d}
 				<Btn
-					title={d + ' break'}
-					classic={d === duration}
+					text={d + ' break'}
+					filled={d === duration}
 					on:click={() => (duration = d)}
 					size="small"
 				/>
@@ -64,7 +64,7 @@
 			<li>
 				<span>{el.action}</span>
 				<Btn
-					icony
+					iconOnly
 					accent="danger"
 					colored
 					size="small"

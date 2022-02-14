@@ -215,8 +215,8 @@
 				<Btn
 					accent="beta"
 					outlined
-					pointy
-					title={el.action}
+					rounded
+					text={el.action}
 					on:click={() => onBreakSelect(el.id)}
 				/>
 			{/each}
@@ -243,15 +243,15 @@
 
 	<div class="btns">
 		{#if isPaused}
-			<Btn accent="alpha" outlined colored title="resume" on:click={onResume} />
+			<Btn accent="alpha" outlined colored text="resume" on:click={onResume} />
 		{:else if isRunnig}
-			<Btn accent="alpha" outlined colored title="pause" on:click={onPause} />
+			<Btn accent="alpha" outlined colored text="pause" on:click={onPause} />
 		{:else}
-			<Btn accent="alpha" outlined colored title="start" on:click={onStart} />
+			<Btn accent="alpha" outlined colored text="start" on:click={onStart} />
 		{/if}
 
-		<Btn accent="gamma" outlined colored title="next" on:click={onNext} />
-		<Btn accent="danger" outlined colored title="reset" on:click={onReset} />
+		<Btn accent="gamma" outlined colored text="next" on:click={onNext} />
+		<Btn accent="danger" outlined colored text="reset" on:click={onReset} />
 	</div>
 </section>
 

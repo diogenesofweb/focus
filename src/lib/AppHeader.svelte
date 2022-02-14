@@ -22,7 +22,7 @@
 		<div class="fce ">
 			<Btn
 				ariaLabel="menu"
-				icony
+				iconOnly
 				accent="alpha"
 				on:click={() => (modalIsOpen = true)}
 			>
