@@ -17,8 +17,8 @@
 		grid-template-columns: 1fr auto 1fr;
 		gap: 9px;
 
-		font-family: 'Audiowide', cursive;
-		font-size: clamp(3.5rem, 12vw, 5rem);
+		font-weight: bold;
+		font-size: clamp(4.5rem, 22vw, 7rem);
 
 		color: var(--tone);
 

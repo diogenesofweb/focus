@@ -8,7 +8,7 @@
 		display: flex;
 		align-items: center;
 		gap: 9px;
-		font-family: 'Audiowide', cursive;
+		font-weight: bold;
 		font-size: 1.33rem;
 		line-height: 1;
 		font-weight: bolder;

@@ -17,6 +17,4 @@
 
 {#if comp}
 	<svelte:component this={comp.default} />
-{:else}
-	<p>loading ...</p>
 {/if}
