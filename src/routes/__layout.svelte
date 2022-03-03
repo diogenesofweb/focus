@@ -2,6 +2,7 @@
 	import AppFooter from '$lib/AppFooter.svelte';
 	import AppHeader from '$lib/AppHeader.svelte';
 	import RadioPlayer from '$lib/RadioPlayer.svelte';
+	import StopWar from '$lib/StopWar.svelte';
 	import { radioIsOn } from '$store/radio';
 	import { initLocalStorage } from '$utils/storage';
 
@@ -33,7 +34,13 @@
 
 <AppFooter />
 
+<StopWar />
+
 <style>
+	:global(#svelte) {
+		position: relative;
+	}
+
 	#view {
 		min-height: 100vh;
 		display: grid;

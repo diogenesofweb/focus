@@ -39,7 +39,7 @@
 		color: var(--text-alpha);
 	}
 	footer {
-		padding: 4rem var(--rsx);
+		padding: 4rem var(--rsx) 6rem;
 		background-color: var(--bg-darkest);
 	}
 	section {
