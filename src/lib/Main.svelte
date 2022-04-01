@@ -10,6 +10,8 @@
 	import { Btn, Modal } from '@kazkadien/svelte';
 	import { onDestroy } from 'svelte';
 
+	let audio;
+
 	/** @typedef {import('$typings/types').Phase} Phase*/
 	const initBreaks = {
 		short: Breaks.short.get(),
@@ -180,12 +182,20 @@
 	}
 
 	let modalIsOpen = false;
-	let breakAction = '';
+	function onCloseModal() {
+		// console.log('close');
+		modalIsOpen = false;
+		/** @type {HTMLButtonElement} node */
+		const el = document.querySelector('#action-btns button');
+		// console.log(el);
+		el?.focus();
+	}
 
+	let breakAction = '';
 	/** @param {number} id */
 	function onBreakSelect(id) {
 		// console.log(id);
-		modalIsOpen = false;
+		onCloseModal();
 		breakAction = breaks[breakType].find((e) => e.id === id).action;
 
 		if (breaks[breakType].length === 1) {
@@ -197,7 +207,13 @@
 		startTimer();
 	}
 
-	let audio;
+	/** @param {HTMLDivElement} node */
+	function focusFirstButton(node) {
+		// console.log(node);
+		const el = node.querySelector('button');
+		// console.log(el);
+		setTimeout(() => el?.focus(), 10);
+	}
 </script>
 
 <audio id="myAudio" bind:this={audio}>
@@ -207,8 +223,8 @@
 <Visibility on:state={onWindowVisibilityChange} />
 
 {#if modalIsOpen}
-	<Modal blurBG on:close={() => (modalIsOpen = false)}>
-		<div class="card">
+	<Modal blurBG on:close={onCloseModal}>
+		<div class="card" use:focusFirstButton>
 			<span class="tac">~</span>
 
 			{#each breaks[breakType] as el}
@@ -241,7 +257,7 @@
 		</div>
 	</div>
 
-	<div class="btns">
+	<div class="btns" id="action-btns">
 		{#if isPaused}
 			<Btn accent="alpha" outlined colored text="resume" on:click={onResume} />
 		{:else if isRunnig}

@@ -1,6 +1,6 @@
 <section id="stop-war">
 	<a
-		href="https://ukraine.ua/news/stand-with-ukraine/"
+		href="https://war.ukraine.ua/support-ukraine/"
 		target="_blank"
 		rel="noopener noreferrer"
 	>
@@ -21,7 +21,13 @@
 	}
 
 	#stop-war a {
-		color: red;
+		font-family: 'Courier New', Courier, monospace;
+		/* color: red; */
+		color: salmon;
 		text-decoration: none;
+	}
+
+	#stop-war a:is(:hover, :focus) {
+		text-decoration: underline;
 	}
 </style>
