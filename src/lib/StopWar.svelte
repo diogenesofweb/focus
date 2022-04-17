@@ -4,7 +4,7 @@
 		target="_blank"
 		rel="noopener noreferrer"
 	>
-		<span>STOP WAR. STAND WITH UKRAINE 🇺🇦</span>
+		<span>STAND WITH UKRAINE 🇺🇦</span>
 	</a>
 </section>
 
