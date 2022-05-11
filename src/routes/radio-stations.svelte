@@ -36,7 +36,7 @@
 </svelte:head>
 
 {#if modalIsOpen}
-	<Modal blurBG on:close={() => (modalIsOpen = false)}>
+	<Modal on:close={() => (modalIsOpen = false)}>
 		<EditRadioStation
 			station={station2edit}
 			on:close={() => (modalIsOpen = false)}
@@ -76,6 +76,11 @@
 	</svelte:fragment>
 
 	<div slot="btns" class="fce">
-		<Btn on:click={onAdd} accent="alpha" filled text="Add New Station" />
+		<Btn
+			on:click={onAdd}
+			accent="alpha"
+			variant="filled"
+			text="Add New Station"
+		/>
 	</div>
 </MyLayout>

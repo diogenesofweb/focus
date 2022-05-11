@@ -29,7 +29,7 @@ const myBreaks = {
 		{ id: 2, action: 'Stretching' },
 		{ id: 3, action: 'Bear Walk' },
 		{ id: 4, action: 'Elevated Calf Raises' },
-		{ id: 5, action: 'Deep Squart' },
+		{ id: 5, action: 'Deep Squats' },
 		{ id: 6, action: 'Lunge' },
 		{ id: 7, action: 'Mountain Climber' }
 	],

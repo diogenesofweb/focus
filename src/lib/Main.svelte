@@ -230,8 +230,8 @@
 			{#each breaks[breakType] as el}
 				<Btn
 					accent="beta"
-					outlined
-					rounded
+					variant="outlined"
+					round
 					text={el.action}
 					on:click={() => onBreakSelect(el.id)}
 				/>
@@ -243,7 +243,7 @@
 {/if}
 
 <section style="--tone: var(--fg-{phase == 'focus' ? 'alpha' : 'beta'})">
-	<div>
+	<div class="holder">
 		<div class="phase">~ {fullPhaseName} ~</div>
 		{#if breakAction}
 			<div class="break-action">( {breakAction} )</div>
@@ -259,15 +259,50 @@
 
 	<div class="btns" id="action-btns">
 		{#if isPaused}
-			<Btn accent="alpha" outlined colored text="resume" on:click={onResume} />
+			<Btn
+				accent="alpha"
+				variant="outlined"
+				round
+				colored
+				text="resume"
+				on:click={onResume}
+			/>
 		{:else if isRunnig}
-			<Btn accent="alpha" outlined colored text="pause" on:click={onPause} />
+			<Btn
+				accent="alpha"
+				variant="outlined"
+				round
+				colored
+				text="pause"
+				on:click={onPause}
+			/>
 		{:else}
-			<Btn accent="alpha" outlined colored text="start" on:click={onStart} />
+			<Btn
+				accent="alpha"
+				variant="outlined"
+				round
+				colored
+				text="start"
+				on:click={onStart}
+			/>
 		{/if}
 
-		<Btn accent="gamma" outlined colored text="next" on:click={onNext} />
-		<Btn accent="danger" outlined colored text="reset" on:click={onReset} />
+		<Btn
+			accent="gamma"
+			variant="outlined"
+			round
+			colored
+			text="next"
+			on:click={onNext}
+		/>
+		<Btn
+			accent="danger"
+			variant="outlined"
+			round
+			colored
+			text="reset"
+			on:click={onReset}
+		/>
 	</div>
 </section>
 
@@ -303,6 +338,9 @@
 		padding: 0.5rem 0;
 	}
 
+	.holder {
+		min-height: 3rem;
+	}
 	.phase {
 		font-size: 1.15rem;
 		text-transform: uppercase;
@@ -322,6 +360,7 @@
 		align-self: center;
 		justify-content: center;
 		gap: 1rem;
+		font-size: calc(1rem + 2px);
 	}
 
 	@media only screen and (max-width: 430px) {

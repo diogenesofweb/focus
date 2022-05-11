@@ -58,7 +58,7 @@
 			<input bind:value={station.src} type="url" required />
 		</Field>
 
-		<Btn type="submit" text="Submit" filled />
+		<Btn type="submit" text="Submit" variant="filled" />
 
 		<p>* Via HTTPS with any origin access (CORS)</p>
 	</div>

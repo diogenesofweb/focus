@@ -79,7 +79,7 @@
 	<div class="links alpha">
 		<div class="edit">Edit :</div>
 		{#each links as { href, name }}
-			<a {href} class="btn" on:click={() => dispatch('close')}>
+			<a {href} class="btn round" on:click={() => dispatch('close')}>
 				{name}
 			</a>
 		{/each}

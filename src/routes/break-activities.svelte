@@ -51,7 +51,7 @@
 			{#each durations as d}
 				<Btn
 					text={d + ' break'}
-					filled={d === duration}
+					variant={d === duration ? 'filled' : ''}
 					on:click={() => (duration = d)}
 					size="small"
 				/>

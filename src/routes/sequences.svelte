@@ -47,7 +47,7 @@
 </svelte:head>
 
 {#if modalIsOpen}
-	<Modal blurBG on:close={() => (modalIsOpen = false)}>
+	<Modal on:close={() => (modalIsOpen = false)}>
 		<EditSequence
 			on:close={() => (modalIsOpen = false)}
 			on:created={onCreated}
@@ -88,6 +88,11 @@
 	</svelte:fragment>
 
 	<div slot="btns" class="fce">
-		<Btn on:click={onAdd} accent="alpha" filled text="Add New Sequence" />
+		<Btn
+			on:click={onAdd}
+			accent="alpha"
+			variant="filled"
+			text="Add New Sequence"
+		/>
 	</div>
 </MyLayout>

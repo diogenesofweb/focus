@@ -3,7 +3,7 @@
 </script>
 
 <div class="close-btn">
-	<Btn colored accent="danger" rounded iconOnly on:click>
+	<Btn colored accent="danger" iconOnly on:click>
 		<Icon name="close" />
 	</Btn>
 </div>

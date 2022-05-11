@@ -188,7 +188,7 @@
 			{/each}
 		</ul>
 
-		<Btn type="submit" text="Submit" filled disabled={count < 2} />
+		<Btn type="submit" text="Submit" variant="filled" disabled={count < 2} />
 		<p>* Focus and break time in minutes</p>
 	</div>
 </form>

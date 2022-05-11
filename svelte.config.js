@@ -16,6 +16,8 @@ const config = {
 			precompress: false
 		}),
 
+		prerender: { default: true },
+
 		vite: {
 			resolve: {
 				alias: {

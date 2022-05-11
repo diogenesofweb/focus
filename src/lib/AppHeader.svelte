@@ -1,5 +1,5 @@
 <script>
-	import { Modal, Btn, Tooltip } from '@kazkadien/svelte';
+	import { Modal, Btn } from '@kazkadien/svelte';
 	import Name from './Name.svelte';
 	import Settings from '$lib/Settings.svelte';
 	import MyIcon from './MyIcon.svelte';
@@ -21,12 +21,11 @@
 
 		<div class="fce ">
 			<Btn
-				ariaLabel="settings"
+				title="settings"
 				iconOnly
 				accent="alpha"
 				on:click={() => (modalIsOpen = true)}
 			>
-				<Tooltip text="settings" />
 				<MyIcon name="settings" />
 			</Btn>
 		</div>
