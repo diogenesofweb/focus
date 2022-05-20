@@ -24,7 +24,8 @@
 
 	const themes = [auto, light, dark];
 
-	const lsTheme = '__User_theme';
+	const lsTheme = 'my-theme';
+
 	const _init = window.localStorage.getItem(lsTheme) || auto;
 	let theme = _init;
 
