@@ -242,7 +242,10 @@
 	</Modal>
 {/if}
 
-<section style="--tone: var(--fg-{phase == 'focus' ? 'alpha' : 'beta'})">
+<section
+	class={phase == 'focus' ? 'alpha' : 'beta'}
+	style="--tone: var(--fg-{phase == 'focus' ? 'alpha' : 'beta'})"
+>
 	<div class="holder">
 		<div class="phase">~ {fullPhaseName} ~</div>
 		{#if breakAction}
@@ -331,7 +334,7 @@
 	}
 
 	.boxx {
-		background-color: var(--bg-2);
+		background-color: var(--bg1);
 		border: var(--border);
 		border-radius: var(--br-s);
 		border-color: var(--tone);

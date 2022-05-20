@@ -26,6 +26,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@kazkadien/svelte": "^0.4.0"
+		"@kazkadien/svelte": "^0.6.0"
 	}
 }

@@ -33,14 +33,14 @@
 
 <style>
 	a {
-		color: var(--text);
+		color: var(--fg);
 	}
 	a:hover {
-		color: var(--text-alpha);
+		color: var(--fg-alpha);
 	}
 	footer {
 		padding: 4rem var(--rsx) 6rem;
-		background-color: var(--bg-darkest);
+		background-color: var(--bg2);
 	}
 	section {
 		display: grid;

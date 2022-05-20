@@ -55,26 +55,13 @@ select {
 	--modal-bg: hsla(0, 0%, 0%, 0.5);
 }
 
-html.dark {
-	--hue-sat-bg: 195, 6%;
-	--bg: hsl(var(--hue-sat-bg), 12%);
-	--bg-darker: hsl(var(--hue-sat-bg), 11%);
-	--bg-darkest: hsl(var(--hue-sat-bg), 10%);
-}
+/* html.dark { */
+/* 	--hue-sat-bg: 195, 3%; */
+/* 	--bg: hsl(var(--hue-sat-bg), 12%); */
+/* } */
 
 body {
-	--bg-1: var(--bg-darker);
-	--bg-2: var(--bg-darkest);
-
-	--fg: var(--text);
-	--fg-1: var(--text-dim);
-	--fg-t: var(--text-opac); /* translucent */
-	--fg-tl: var(--text-opac); /* translucent */
-
-	--fg-alpha: var(--text-alpha);
-	--fg-beta: var(--text-beta);
-	--fg-gamma: var(--text-gamma);
-	--fg-danger: var(--text-danger);
+	--bg-1: var(--bg1);
 
 	--br-s: 0.33rem; /* border-radius-small */
 	--br-m: 1rem;

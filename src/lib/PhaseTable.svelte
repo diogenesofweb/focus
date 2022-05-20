@@ -55,7 +55,7 @@
 		text-align: center;
 		/* background-color: darkgreen; */
 		flex: 1 1 3ch;
-		color: var(--fg-1);
+		color: var(--fg1);
 	}
 
 	.tableau span.done {
@@ -64,5 +64,6 @@
 
 	.tableau span.active {
 		color: var(--tone);
+		color: var(--__fg);
 	}
 </style>

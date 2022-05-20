@@ -150,9 +150,13 @@
 		</div>
 
 		<div class="chch ">
-			<Btn iconOnly on:click={onRemoveRound}><Icon name="remove" /></Btn>
+			<Btn iconOnly variant="text" on:click={onRemoveRound}
+				><Icon name="remove" /></Btn
+			>
 			<span>Sets: {count}</span>
-			<Btn iconOnly on:click={onAddRound}><Icon name="add" /></Btn>
+			<Btn iconOnly variant="text" on:click={onAddRound}
+				><Icon name="add" /></Btn
+			>
 		</div>
 
 		<ul>
@@ -213,7 +217,7 @@
 		justify-content: center;
 		border: var(--border);
 		border-radius: 3px;
-		padding: 3px;
+		padding: 6px 3px;
 	}
 	ul {
 		display: grid;
