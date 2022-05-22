@@ -63,7 +63,6 @@
 	}
 
 	.tableau span.active {
-		color: var(--tone);
 		color: var(--__fg);
 	}
 </style>

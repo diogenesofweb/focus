@@ -20,7 +20,7 @@
 		font-weight: bold;
 		font-size: clamp(4.5rem, 22vw, 7rem);
 
-		color: var(--tone);
+		color: var(--__fg);
 
 		padding: 1.5rem var(--rsx);
 		min-width: 6ch;

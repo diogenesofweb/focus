@@ -34,12 +34,12 @@
 
 <style>
 	#header {
-		background-color: var(--bg-darkest);
+		background-color: var(--bg1);
 		padding: 0.66rem var(--rsx);
 	}
 
 	.link {
-		color: var(--fg);
+		color: var(--fg-beta);
 		text-decoration: none;
 	}
 

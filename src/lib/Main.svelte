@@ -242,10 +242,7 @@
 	</Modal>
 {/if}
 
-<section
-	class={phase == 'focus' ? 'alpha' : 'beta'}
-	style="--tone: var(--fg-{phase == 'focus' ? 'alpha' : 'beta'})"
->
+<section class={phase == 'focus' ? 'alpha' : 'beta'}>
 	<div class="holder">
 		<div class="phase">~ {fullPhaseName} ~</div>
 		{#if breakAction}
@@ -337,7 +334,7 @@
 		background-color: var(--bg1);
 		border: var(--border);
 		border-radius: var(--br-s);
-		border-color: var(--tone);
+		border-color: var(--__fg);
 		padding: 0.5rem 0;
 	}
 
@@ -350,7 +347,6 @@
 		text-align: center;
 		letter-spacing: 3px;
 		font-weight: bold;
-		color: var(--tone);
 	}
 	.break-action {
 		text-align: center;
