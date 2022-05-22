@@ -6,7 +6,7 @@
 <div class="fce">
 	<div class="timer">
 		<span>{MM}</span>
-		<span>:</span>
+		<span class="x">:</span>
 		<span>{SS}</span>
 	</div>
 </div>
@@ -28,5 +28,13 @@
 
 	.timer > :first-child {
 		text-align: right;
+	}
+
+	.x {
+		transform: translateY(-8px);
+	}
+
+	span:not(.x) {
+		text-shadow: 4px 4px 0px var(--__bg-1);
 	}
 </style>

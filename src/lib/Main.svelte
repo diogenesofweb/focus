@@ -336,6 +336,8 @@
 		border-radius: var(--br-s);
 		border-color: var(--__fg);
 		padding: 0.5rem 0;
+
+		/* box-shadow: 0px 0px 4px var(--__fg); */
 	}
 
 	.holder {
@@ -347,6 +349,7 @@
 		text-align: center;
 		letter-spacing: 3px;
 		font-weight: bold;
+		color: var(--__fg);
 	}
 	.break-action {
 		text-align: center;
