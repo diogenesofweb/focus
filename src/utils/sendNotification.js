@@ -1,10 +1,10 @@
 /** @param {string} phase */
 export function sendNotification(phase) {
-	const title = 'Pomidor :';
+	const title = 'Focus App';
 
 	/** @type {NotificationOptions} */
 	const opt = {
-		body: `${phase} is over !`
+		body: `${phase.toUpperCase()} time is over!`
 	};
 
 	const n = new Notification(title, opt);
@@ -15,3 +15,6 @@ export function sendNotification(phase) {
 		this.close();
 	};
 }
+
+// sendNotification('focus');
+// sendNotification('break');
