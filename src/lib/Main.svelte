@@ -334,13 +334,19 @@
 
 	.boxx {
 		background-color: var(--bg1);
-		border: var(--border);
+		/* border: var(--border); */
+		/* border-color: var(--__fg); */
 		border-radius: var(--br-s);
-		border-color: var(--__fg);
 		padding: 0.5rem 0;
 
-		/* box-shadow: 0px 0px 4px var(--__fg); */
+		box-shadow: 0px 0px 6px -2px var(--__fg);
 	}
+
+	/* :global(html.dark) .boxx { */
+	/* 	background-color: var(--bg); */
+	/* 	box-shadow: 3px 4px 9px -3px hsl(0 0% 0% / 0.9), */
+	/* 		-2px -2px 4px hsl(0 0% 50% / 0.33); */
+	/* } */
 
 	.holder {
 		min-height: 3rem;
