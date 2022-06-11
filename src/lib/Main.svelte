@@ -157,6 +157,7 @@
 		} else {
 			// console.log('show modal to select activity');
 			modalIsOpen = true;
+			document.getElementById('app-container').setAttribute('inert', '');
 		}
 	}
 
@@ -185,6 +186,7 @@
 	function onCloseModal() {
 		// console.log('close');
 		modalIsOpen = false;
+		document.getElementById('app-container').removeAttribute('inert');
 		/** @type {HTMLButtonElement} node */
 		const el = document.querySelector('#action-btns button');
 		// console.log(el);
@@ -223,7 +225,7 @@
 <Visibility on:state={onWindowVisibilityChange} />
 
 {#if modalIsOpen}
-	<Modal blurBG on:close={onCloseModal}>
+	<Modal on:close={onCloseModal}>
 		<div class="card" use:focusFirstButton>
 			<span class="tac">~</span>
 

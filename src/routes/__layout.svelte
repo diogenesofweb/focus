@@ -50,23 +50,25 @@
 		<!-- </symbol> -->
 	</svg>
 
-	<div id="view">
-		<AppHeader />
+	<div id="app-container">
+		<div id="view">
+			<AppHeader />
 
-		<main>
-			{#if $radioIsOn}
-				<div class="radio-wrapper">
-					<RadioPlayer />
-				</div>
-			{/if}
+			<main>
+				{#if $radioIsOn}
+					<div class="radio-wrapper">
+						<RadioPlayer />
+					</div>
+				{/if}
 
-			<slot />
-		</main>
+				<slot />
+			</main>
+		</div>
+
+		<AppFooter />
+
+		<StopWar />
 	</div>
-
-	<AppFooter />
-
-	<StopWar />
 </AppWrapper>
 
 <style>
