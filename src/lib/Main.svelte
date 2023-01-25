@@ -260,51 +260,44 @@
 	</div>
 
 	<div class="btns" id="action-btns">
-		{#if isPaused}
+		<div class="fce">
 			<Btn
 				accent="alpha"
 				variant="outlined"
 				round
 				colored
-				text="resume"
-				on:click={onResume}
+				text={isPaused ? 'resume' : isRunnig ? 'pause' : 'start'}
+				on:click={() => {
+					if (isPaused) {
+						onResume();
+					} else if (isRunnig) {
+						onPause();
+					} else {
+						onStart();
+					}
+				}}
 			/>
-		{:else if isRunnig}
+		</div>
+		<div class="fce">
 			<Btn
-				accent="alpha"
+				accent="gamma"
 				variant="outlined"
 				round
 				colored
-				text="pause"
-				on:click={onPause}
+				text="next"
+				on:click={onNext}
 			/>
-		{:else}
+		</div>
+		<div class="fce">
 			<Btn
-				accent="alpha"
+				accent="danger"
 				variant="outlined"
 				round
 				colored
-				text="start"
-				on:click={onStart}
+				text="reset"
+				on:click={onReset}
 			/>
-		{/if}
-
-		<Btn
-			accent="gamma"
-			variant="outlined"
-			round
-			colored
-			text="next"
-			on:click={onNext}
-		/>
-		<Btn
-			accent="danger"
-			variant="outlined"
-			round
-			colored
-			text="reset"
-			on:click={onReset}
-		/>
+		</div>
 	</div>
 </section>
 
@@ -365,17 +358,27 @@
 	}
 
 	.btns {
-		display: flex;
-		flex-wrap: wrap;
-		align-self: center;
-		justify-content: center;
-		gap: 1rem;
 		font-size: calc(1rem + 2px);
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: 1fr auto 1fr;
+		/* background: violet; */
+	}
+	.btns > :first-child {
+		justify-self: flex-end;
+	}
+	.btns > :last-child {
+		justify-self: flex-start;
 	}
 
 	@media only screen and (max-width: 430px) {
 		.btns {
+			display: flex;
 			flex-direction: column;
 		}
+
+		/* .btns > * { */
+		/* 	background: violet; */
+		/* } */
 	}
 </style>

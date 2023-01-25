@@ -67,3 +67,7 @@ body {
 	--br-m: 1rem;
 	--br-l: 3rem;
 }
+
+a.btn {
+	text-underline-offset: 3px;
+}

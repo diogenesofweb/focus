@@ -1,4 +1,4 @@
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 
 /** @enum {string} */
 const ls_breaks = {
@@ -25,13 +25,22 @@ const ls_stations = {
 const myBreaks = {
 	/** @type {Activity[]} */
 	[ls_breaks.short]: [
-		{ id: 1, action: 'Deep Breathing' },
-		{ id: 2, action: 'Stretching' },
-		{ id: 3, action: 'Bear Walk' },
-		{ id: 4, action: 'Elevated Calf Raises' },
-		{ id: 5, action: 'Deep Squats' },
-		{ id: 6, action: 'Lunge' },
-		{ id: 7, action: 'Mountain Climber' }
+		{ id: 1, action: 'Stretching' },
+
+		{ id: 2, action: 'Plank' },
+		{ id: 3, action: 'Plank (shoulder tap)' },
+		{ id: 4, action: 'Plank (mountain climber)' },
+
+		{ id: 5, action: 'Squat (regular)' },
+		{ id: 6, action: 'Squat (split)' },
+		{ id: 7, action: 'Squat (sumo)' },
+
+		{ id: 9, action: 'Calf raise' },
+		{ id: 8, action: 'Hamstring curl' },
+		{ id: 10, action: 'Tibialis raise' },
+
+		{ id: 11, action: 'Arm raise' },
+		{ id: 12, action: 'External shoulder rotation' }
 	],
 
 	/** @type {Activity[]} */

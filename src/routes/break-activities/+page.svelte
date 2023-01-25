@@ -76,7 +76,11 @@
 		{/each}
 	</svelte:fragment>
 
-	<form slot="btns" class="form alpha" on:submit|preventDefault={handleSubmit}>
+	<form
+		slot="btns"
+		class="form v2 alpha"
+		on:submit|preventDefault={handleSubmit}
+	>
 		<Field label="Add Activity">
 			<input
 				bind:value={action}

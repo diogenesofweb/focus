@@ -9,7 +9,7 @@
 
 	import '@kazkadien/svelte/css/all.css';
 	import './../css/app.css';
-	import './../css/colors.css';
+	// import './../css/colors.css';
 	import './../css/list.css';
 
 	initLocalStorage();

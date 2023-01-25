@@ -19,7 +19,7 @@ ul.table {
 	/* border-radius: 6px; */
 }
 
-.table li:not(:hover) > :last-child {
+.table li:not(:hover) > :last-child:not(:focus-within) {
 	/* visibility: hidden; */
-	opacity: 0.5;
+	opacity: 0.65;
 }

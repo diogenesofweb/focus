@@ -96,7 +96,7 @@
 	}
 </script>
 
-<form class="form alpha modal-box" on:submit|preventDefault={handleSubmit}>
+<form class="form v2 alpha modal-box" on:submit|preventDefault={handleSubmit}>
 	<CloseBtn on:click={() => dispatch('close')} />
 
 	<div class="field-group">
@@ -208,6 +208,7 @@
 		background-color: var(--bg);
 		border-radius: var(--br-s);
 		border-color: var(--line);
+		/* background: violet; */
 	}
 
 	.chch {
@@ -221,17 +222,27 @@
 	}
 	ul {
 		display: grid;
-		/* gap: 0.5rem; */
+		gap: 3px;
 		border-block: var(--border);
 		padding: 1rem 0;
 	}
 	li {
 		display: grid;
-		grid-template-columns: 4ch 6ch 8ch;
+		grid-template-columns: 4ch 7ch 8ch;
 		align-items: baseline;
-		gap: 2ch;
+		gap: 1ch;
 		/* border-bottom: var(--border); */
 		padding: 4px;
+		background: var(--bg1);
+	}
+	li:nth-child(odd) {
+		color: var(--fg1);
+		background: var(--bg2);
+		/* background: violet; */
+	}
+	li input[type='number'] {
+		/* background: violet; */
+		width: 7ch;
 	}
 	/* li :global(*) { */
 	/* 	border: none !important; */
@@ -249,5 +260,10 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
+	}
+
+	.in-4 input {
+		/* background: violet; */
+		min-width: 11ch;
 	}
 </style>

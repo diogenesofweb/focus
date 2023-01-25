@@ -1,4 +1,4 @@
-import { dev } from '$app/env';
+import { dev } from '$app/environment';
 import { MESSAGE as m } from './constants';
 
 const INTERVAL = dev ? 100 : 1000;

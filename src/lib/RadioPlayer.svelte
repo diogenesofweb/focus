@@ -89,7 +89,7 @@
 	<source src={$currStation.src} />
 </audio>
 
-<form class="form alpha">
+<form class="form v2 alpha">
 	<div class="top">
 		<Btn
 			title="play or pause"

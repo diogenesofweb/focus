@@ -86,7 +86,7 @@
 		{/each}
 	</div>
 
-	<form class="form alpha">
+	<form class="form v2 alpha">
 		<Field label="Current Sequence:">
 			<select bind:value={$currSequenceName}>
 				{#each $sequences as val}
@@ -105,15 +105,15 @@
 
 		<div class="boxes">
 			<BoxField label="Options" rows={true}>
-				<BoxFieldEntry type="checkbox" label="Send Notifications">
+				<BoxFieldEntry label="Send Notifications">
 					<input type="checkbox" bind:checked={$notificationsAreOn} />
 				</BoxFieldEntry>
 
-				<BoxFieldEntry type="checkbox" label="Play Alarm">
+				<BoxFieldEntry label="Play Alarm">
 					<input type="checkbox" bind:checked={$alarmIsOn} />
 				</BoxFieldEntry>
 
-				<BoxFieldEntry type="checkbox" label="Enable Radio">
+				<BoxFieldEntry label="Enable Radio">
 					<input type="checkbox" bind:checked={$radioIsOn} />
 				</BoxFieldEntry>
 			</BoxField>
