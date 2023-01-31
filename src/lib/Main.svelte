@@ -260,44 +260,44 @@
 	</div>
 
 	<div class="btns" id="action-btns">
-		<div class="fce">
-			<Btn
-				accent="alpha"
-				variant="outlined"
-				round
-				colored
-				text={isPaused ? 'resume' : isRunnig ? 'pause' : 'start'}
-				on:click={() => {
-					if (isPaused) {
-						onResume();
-					} else if (isRunnig) {
-						onPause();
-					} else {
-						onStart();
-					}
-				}}
-			/>
-		</div>
-		<div class="fce">
-			<Btn
-				accent="gamma"
-				variant="outlined"
-				round
-				colored
-				text="next"
-				on:click={onNext}
-			/>
-		</div>
-		<div class="fce">
-			<Btn
-				accent="danger"
-				variant="outlined"
-				round
-				colored
-				text="reset"
-				on:click={onReset}
-			/>
-		</div>
+		<!-- <div class="fce"> -->
+		<Btn
+			accent="alpha"
+			variant="outlined"
+			round
+			colored
+			text={isPaused ? 'resume' : isRunnig ? 'pause' : 'start'}
+			on:click={() => {
+				if (isPaused) {
+					onResume();
+				} else if (isRunnig) {
+					onPause();
+				} else {
+					onStart();
+				}
+			}}
+		/>
+		<!-- </div> -->
+		<!-- <div class="fce"> -->
+		<Btn
+			accent="gamma"
+			variant="outlined"
+			round
+			colored
+			text="next"
+			on:click={onNext}
+		/>
+		<!-- </div> -->
+		<!-- <div class="fce"> -->
+		<Btn
+			accent="danger"
+			variant="outlined"
+			round
+			colored
+			text="reset"
+			on:click={onReset}
+		/>
+		<!-- </div> -->
 	</div>
 </section>
 
@@ -342,7 +342,8 @@
 	/* } */
 
 	.holder {
-		min-height: 3rem;
+		min-height: 3.3rem;
+		/* background: darkblue; */
 	}
 	.phase {
 		font-size: 1.15rem;
@@ -355,30 +356,27 @@
 	.break-action {
 		text-align: center;
 		margin-top: 1ch;
+		/* min-height: 2em; */
+		/* background: violet; */
 	}
 
 	.btns {
 		font-size: calc(1rem + 2px);
 		display: grid;
 		gap: 1rem;
-		grid-template-columns: 1fr auto 1fr;
 		/* background: violet; */
 	}
-	.btns > :first-child {
-		justify-self: flex-end;
-	}
-	.btns > :last-child {
-		justify-self: flex-start;
-	}
 
-	@media only screen and (max-width: 430px) {
+	@media only screen and (min-width: 430px) {
 		.btns {
-			display: flex;
-			flex-direction: column;
+			grid-template-columns: 1fr auto 1fr;
+			/* background: violet; */
 		}
-
-		/* .btns > * { */
-		/* 	background: violet; */
-		/* } */
+		.btns > :global(:first-child) {
+			justify-self: flex-end;
+		}
+		.btns > :global(:last-child) {
+			justify-self: flex-start;
+		}
 	}
 </style>
