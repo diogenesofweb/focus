@@ -3,6 +3,8 @@
 	import { radioIsOn } from '$store/radio';
 	import {
 		alarmIsOn,
+		autoShowActivites,
+		autoStartFocusTime,
 		currSequenceName,
 		notificationsAreOn,
 		sequences
@@ -115,6 +117,14 @@
 
 				<BoxFieldEntry label="Enable Radio">
 					<input type="checkbox" bind:checked={$radioIsOn} />
+				</BoxFieldEntry>
+
+				<BoxFieldEntry label="Auto Show Break Activities">
+					<input type="checkbox" bind:checked={$autoShowActivites} />
+				</BoxFieldEntry>
+
+				<BoxFieldEntry label="Auto Start Focus Time">
+					<input type="checkbox" bind:checked={$autoStartFocusTime} />
 				</BoxFieldEntry>
 			</BoxField>
 		</div>

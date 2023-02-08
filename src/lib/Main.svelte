@@ -2,7 +2,13 @@
 	import Clock from '$lib/Clock.svelte';
 	import PhaseTable from '$lib/PhaseTable.svelte';
 	import Visibility, { VISIBILITY_STATE } from '$lib/Visibility.svelte';
-	import { alarmIsOn, currSequenceName, showNotifications } from '$store/store';
+	import {
+		alarmIsOn,
+		currSequenceName,
+		showNotifications,
+		autoShowActivites,
+		autoStartFocusTime
+	} from '$store/store';
 	import { MESSAGE as m } from '$utils/constants';
 	import { sendNotification } from '$utils/sendNotification';
 	import { Breaks, Sequences } from '$utils/storage';
@@ -132,8 +138,17 @@
 		}
 
 		isRunnig = false;
+
 		nextPhase();
 		clearClock();
+
+		if (phase === 'break' && $autoShowActivites) {
+			onStart();
+		}
+
+		if (phase === 'focus' && $autoStartFocusTime) {
+			onStart();
+		}
 	}
 
 	// Event handlers
