@@ -19,7 +19,7 @@ export type Break = 'short' | 'long';
 
 interface Item {
 	duration: number;
-	type?: Break;
+	type: Break;
 }
 
 export interface Round {

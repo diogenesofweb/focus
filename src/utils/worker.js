@@ -3,8 +3,9 @@ import { MESSAGE as m } from './constants';
 
 const INTERVAL = dev ? 100 : 1000;
 
+/** @type {string | number | NodeJS.Timer | undefined} */
 let intervalID;
-let sendTick = true;
+let sendTickEverySecond = true;
 
 let min = 0;
 let sec = 0;
@@ -32,11 +33,11 @@ function handle(e) {
 	}
 
 	if (e.data.mes == m.visible) {
-		sendTick = true;
+		sendTickEverySecond = true;
 	}
 
 	if (e.data.mes == m.hidden) {
-		sendTick = false;
+		sendTickEverySecond = false;
 	}
 }
 
@@ -66,7 +67,9 @@ function tick() {
 		sec = sec - 1;
 	}
 
-	if (sendTick) {
+	if (sendTickEverySecond) {
+		postMessage({ mes: m.tick, min, sec });
+	} else if (sec % 5 == 0) {
 		postMessage({ mes: m.tick, min, sec });
 	}
 }

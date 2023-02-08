@@ -10,6 +10,7 @@
 	import { Btn, Modal } from '@kazkadien/svelte';
 	import { onDestroy } from 'svelte';
 
+	/** @type {HTMLAudioElement} */
 	let audio;
 
 	/** @typedef {import('$typings/types').Phase} Phase*/
@@ -157,7 +158,7 @@
 		} else {
 			// console.log('show modal to select activity');
 			modalIsOpen = true;
-			document.getElementById('app-container').setAttribute('inert', '');
+			document.getElementById('app-container')?.setAttribute('inert', '');
 		}
 	}
 
@@ -186,8 +187,8 @@
 	function onCloseModal() {
 		// console.log('close');
 		modalIsOpen = false;
-		document.getElementById('app-container').removeAttribute('inert');
-		/** @type {HTMLButtonElement} node */
+		document.getElementById('app-container')?.removeAttribute('inert');
+		/** @type {HTMLButtonElement | null} node */
 		const el = document.querySelector('#action-btns button');
 		// console.log(el);
 		el?.focus();
@@ -196,8 +197,13 @@
 	let breakAction = '';
 	/** @param {number} id */
 	function onBreakSelect(id) {
+		if (!breakType) {
+			console.warn('!breakType');
+			return;
+		}
 		// console.log(id);
 		onCloseModal();
+		// @ts-ignore
 		breakAction = breaks[breakType].find((e) => e.id === id).action;
 
 		if (breaks[breakType].length === 1) {
@@ -217,6 +223,13 @@
 		setTimeout(() => el?.focus(), 10);
 	}
 </script>
+
+<svelte:head>
+	<title>
+		{MM}:{SS}
+		{phase == 'focus' ? 'Focus' : 'Break'}
+	</title>
+</svelte:head>
 
 <audio id="myAudio" bind:this={audio}>
 	<source src="/flute.wav" type="audio/wav" />

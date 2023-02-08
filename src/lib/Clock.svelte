@@ -1,5 +1,7 @@
 <script>
+	/** @type {number | string} */
 	export let MM;
+	/** @type {number | string} */
 	export let SS;
 </script>
 
