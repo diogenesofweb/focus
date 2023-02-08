@@ -6,7 +6,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 	</head>
+
 	<body>
 		<div>%sveltekit.body%</div>
 	</body>
+
+	<script>
+		const THEME = 'my-theme';
+		const DARK = 'dark';
+
+		const myTheme = localStorage.getItem(THEME);
+
+		if (myTheme) {
+			if (myTheme === DARK) document.documentElement.classList.add(DARK);
+		} else {
+			if (
+				window.matchMedia &&
+				window.matchMedia('(prefers-color-scheme: dark)').matches
+			) {
+				document.documentElement.classList.add(DARK);
+			}
+		}
+	</script>
 </html>

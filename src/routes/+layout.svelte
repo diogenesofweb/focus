@@ -19,7 +19,7 @@
 	<title>Focus</title>
 </svelte:head>
 
-<AppWrapper>
+<AppWrapper checkTheme={false}>
 	<svg id="icons" style="display: none">
 		<symbol id="sports_gymnastics">
 			<path
