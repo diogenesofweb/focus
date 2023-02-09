@@ -88,11 +88,11 @@
 			return el;
 		});
 
-		// Sequences.post(data.name, _sequence);
+		Sequences.post(data.name, _sequence);
 
-		console.log({ name: data.name, rounds: _sequence });
-		// dispatch('created', data.name);
-		// dispatch('close');
+		// console.log({ name: data.name, rounds: _sequence });
+		dispatch('created', data.name);
+		dispatch('close');
 	}
 </script>
 

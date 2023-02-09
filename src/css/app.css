@@ -18,6 +18,7 @@ body {
 	background-color: var(--bg1);
 
 	--scrollbar-width: 1ch;
+	--border: 1px solid var(--bga1);
 }
 
 p {

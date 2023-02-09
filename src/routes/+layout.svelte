@@ -51,7 +51,7 @@
 	</svg>
 
 	<div id="app-container">
-		<div id="view">
+		<div id="view" class="alpha">
 			<AppHeader />
 
 			<main>
@@ -80,6 +80,7 @@
 		min-height: 100vh;
 		display: grid;
 		grid-template-rows: auto 1fr;
+		--border: 1px solid var(--__fga);
 	}
 
 	main {

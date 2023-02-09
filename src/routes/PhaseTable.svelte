@@ -45,6 +45,7 @@
 		display: grid;
 		gap: 0.33rem;
 		border-bottom: var(--border);
+		border-color: var(--__fga);
 	}
 	.row {
 		display: flex;
@@ -55,7 +56,6 @@
 		text-align: center;
 		/* background-color: darkgreen; */
 		flex: 1 1 3ch;
-		color: var(--fg1);
 		color: var(--__fg);
 	}
 
@@ -64,7 +64,6 @@
 	}
 
 	.tableau span.active {
-		color: var(--__fg);
 		color: var(--__fg);
 		background: var(--__bga);
 

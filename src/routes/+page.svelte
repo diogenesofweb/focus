@@ -285,7 +285,7 @@
 	<div class="holder">
 		<div class="phase">~ {fullPhaseName} ~</div>
 		{#if breakAction}
-			<div class="break-action">( {breakAction} )</div>
+			<div class="break-action">{breakAction}</div>
 		{/if}
 	</div>
 
@@ -374,23 +374,18 @@
 		box-shadow: 0px 0px 6px -2px var(--__fg);
 	}
 
-	/* :global(html.dark) .boxx { */
-	/* 	background-color: var(--bg); */
-	/* 	box-shadow: 3px 4px 9px -3px hsl(0 0% 0% / 0.9), */
-	/* 		-2px -2px 4px hsl(0 0% 50% / 0.33); */
-	/* } */
-
 	.holder {
 		min-height: 3.3rem;
 		/* background: darkblue; */
 	}
 	.phase {
-		font-size: 1.15rem;
+		font-size: 1.25rem;
+		font-weight: bold;
 		text-transform: uppercase;
 		text-align: center;
-		letter-spacing: 3px;
-		font-weight: bold;
+		letter-spacing: 1px;
 		color: var(--__fg);
+		/* background-color: darkblue; */
 	}
 	.break-action {
 		text-align: center;
