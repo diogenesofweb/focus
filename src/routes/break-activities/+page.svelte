@@ -25,8 +25,8 @@
 
 		Breaks[duration].post(activities);
 	}
-
-	const durations = Object.keys(Breaks); // long & short
+	/** @type {Array<keyof Breaks>} */
+	const durations = ['short', 'long']; // long & short
 	let duration = durations[0];
 
 	$: {

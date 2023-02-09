@@ -12,7 +12,10 @@
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
-	let hidden, visibilityChange;
+	/** @type {string | undefined} */
+	let hidden;
+	/** @type {string} */
+	let visibilityChange;
 
 	if (typeof document.hidden !== 'undefined') {
 		// Opera 12.10 and Firefox 18 and later support
@@ -30,6 +33,7 @@
 
 	function handleVisibilityChange() {
 		// console.log('document[hidden]', document[hidden]);
+		// @ts-ignore
 		if (document[hidden]) {
 			dispatch('state', VISIBILITY_STATE.hidden);
 		} else {
@@ -47,6 +51,7 @@
 		);
 	} else {
 		// Handle page visibility change
+		// @ts-ignore
 		document.addEventListener(visibilityChange, handleVisibilityChange, false);
 	}
 

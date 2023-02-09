@@ -25,16 +25,16 @@
 	};
 	let breaks = { ...initBreaks };
 
-	/** @type {Worker} */
-	let w;
+	// /** @type {Worker} */
+	// let w;
 	// onMount(async () => {
-	if (typeof w == 'undefined') {
-		// this cause build to fail, but work in dev mode
-		// w = new Worker(new URL('./worker.js', import.meta.url));
-		// temp fix: just put copy of the worker in static folder
-		// build works but no hot reload in dev
-		w = new Worker('worker.js');
-	}
+	// if (typeof w == 'undefined') {
+	// this cause build to fail, but work in dev mode
+	// w = new Worker(new URL('./worker.js', import.meta.url));
+	// temp fix: just put copy of the worker in static folder
+	// build works but no hot reload in dev
+	let w = new Worker('worker.js');
+	// }
 	w.onmessage = function (e) {
 		// console.log(e.data);
 		if (e.data.mes == m.tick) {
@@ -91,6 +91,7 @@
 		stopTimer();
 
 		w.terminate();
+		// @ts-ignore
 		w = undefined;
 
 		unsub();
@@ -244,14 +245,14 @@
 </script>
 
 <svelte:head>
-	{#if !windowIsVisible && isRunnig}
-		<title>
-			{MM}:{SS}
-			{phase == 'focus' ? 'Focus' : 'Break'}
-		</title>
-	{:else}
-		<title>Focus App</title>
-	{/if}
+	<!-- {#if !windowIsVisible} -->
+	<title>
+		{MM}:{SS}
+		{phase == 'focus' ? 'Focus' : 'Break'}
+	</title>
+	<!-- {:else} -->
+	<!-- 	<title>Focus App</title> -->
+	<!-- {/if} -->
 </svelte:head>
 
 <audio id="myAudio" bind:this={audio}>
