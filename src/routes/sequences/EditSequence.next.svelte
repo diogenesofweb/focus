@@ -2,7 +2,8 @@
 	import { Sequences } from '$utils/storage';
 	import { Btn, Field, Icon } from '@kazkadien/svelte';
 	import { createEventDispatcher } from 'svelte';
-	import CloseBtn from './CloseBtn.svelte';
+	import CloseBtn from '$lib/CloseBtn.svelte';
+	import Hints from './Hints.svelte';
 
 	const MAX_FOCUS_CYCLE = 90;
 
@@ -84,17 +85,19 @@
 	function handleSubmit() {
 		/** @type {import('$typings/types').Round[]}*/
 		const _sequence = rounds.map((el) => {
-			el.break.duration = data.break[el.break.type];
+			// el.break.duration = data.break[el.break.type];
 			return el;
 		});
 
-		Sequences.post(data.name, _sequence);
+		// Sequences.post(data.name, _sequence);
 
-		// console.log({ name: data.name, rounds: _sequence });
-		dispatch('created', data.name);
+		console.log({ name: data.name, rounds: _sequence });
+		// dispatch('created', data.name);
 		// dispatch('close');
 	}
 </script>
+
+<Hints />
 
 <form class="form v2 alpha modal-box" on:submit|preventDefault={handleSubmit}>
 	<CloseBtn on:click={() => dispatch('close')} />
@@ -160,34 +163,69 @@
 		</div>
 
 		<ul>
-			<li class="head">
-				<div class="tac">Set</div>
-				<div class="">Focus</div>
-				<div class="">Break</div>
-			</li>
-
 			{#each rounds as _, i}
 				<li>
-					<div class="tac">{i + 1}</div>
+					<div class="set">
+						~ <b> {i + 1} </b>/ <span>{rounds.length} ~</span>
+					</div>
 
-					<Field label="">
-						<input
-							bind:value={rounds[i].focus.duration}
-							type="number"
-							required
-							max="99"
-							min="1"
-							step="1"
-						/>
-					</Field>
+					<div class="focus">
+						<div>Focus</div>
+						<Field label="time">
+							<input
+								bind:value={rounds[i].focus.duration}
+								type="number"
+								required
+								max="99"
+								min="1"
+								step="1"
+							/>
+						</Field>
 
-					<Field label="">
-						<select bind:value={rounds[i].break.type}>
-							{#each breaks as val}
-								<option value={val}>{val}</option>
-							{/each}
-						</select>
-					</Field>
+						<Field label="color">
+							<select>
+								<!-- <select bind:value={rounds[i].focus.type}> -->
+								{#each breaks as val}
+									<option value={val}>{val}</option>
+								{/each}
+							</select>
+						</Field>
+
+						<Field label="task">
+							<input type="text" />
+						</Field>
+					</div>
+
+					<div class="break beta">
+						<div>Break</div>
+
+						<Field label="time">
+							<input
+								bind:value={rounds[i].break.duration}
+								type="number"
+								required
+								max="30"
+								min="1"
+								step="1"
+							/>
+						</Field>
+
+						<Field label="type">
+							<select bind:value={rounds[i].break.type}>
+								{#each breaks as val}
+									<option value={val}>{val}</option>
+								{/each}
+							</select>
+						</Field>
+
+						<Field label="activity">
+							<input
+								type="text"
+								list="{rounds[i].break.type}-breaks"
+								multiple
+							/>
+						</Field>
+					</div>
 				</li>
 			{/each}
 		</ul>
@@ -222,27 +260,40 @@
 	}
 	ul {
 		display: grid;
-		gap: 3px;
-		border-block: var(--border);
+		/* gap: 2ch; */
+		/* border-block: var(--border); */
 		padding: 1rem 0;
 	}
 	li {
 		display: grid;
-		grid-template-columns: 4ch 7ch 8ch;
-		align-items: baseline;
-		gap: 1ch;
+		/* grid-template-columns: 4ch 6ch 6ch 7ch; */
+		/* align-items: baseline; */
+		gap: 2ch;
 		/* border-bottom: var(--border); */
-		padding: 4px;
-		background: var(--bg1);
+		padding-block: 2ch;
+		/* background: var(--bg1); */
+		border-top: 1px dashed var(--fga);
 	}
-	li:nth-child(odd) {
+	/* li:nth-child(odd) { */
+	/* 	color: var(--fg1); */
+	/* 	background: var(--bg2); */
+	/* } */
+	li > div:not(:first-child) {
+		display: flex;
+		gap: 1ch;
+	}
+	li > div.set {
+		text-align: center;
 		color: var(--fg1);
-		background: var(--bg2);
-		/* background: violet; */
+	}
+	li > div > div {
+		color: var(--__fg);
+		/* line-height: 1; */
+		align-self: center;
 	}
 	li input[type='number'] {
 		/* background: violet; */
-		width: 7ch;
+		width: 6ch;
 	}
 	/* li :global(*) { */
 	/* 	border: none !important; */

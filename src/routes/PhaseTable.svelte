@@ -1,5 +1,5 @@
 <script>
-	import MyIcon from './MyIcon.svelte';
+	import MyIcon from '$lib/MyIcon.svelte';
 
 	/** @typedef {import('$typings/types').Phase} Phase*/
 	/** @type {Phase} */
@@ -11,7 +11,7 @@
 
 <div class="fce">
 	<div class="tableau ">
-		<div class="row">
+		<div class="row alpha">
 			{#each list as _, i}
 				<span
 					class:active={i === index && phase === 'focus'}
@@ -22,7 +22,7 @@
 			{/each}
 		</div>
 
-		<div class="row">
+		<div class="row beta">
 			{#each list as e, i}
 				<span
 					class:active={i === index && phase !== 'focus'}
@@ -49,13 +49,14 @@
 	.row {
 		display: flex;
 		gap: 1ch;
-		font-size: 0.75rem;
+		/* font-size: 0.75rem; */
 	}
 	.tableau span {
 		text-align: center;
 		/* background-color: darkgreen; */
 		flex: 1 1 3ch;
 		color: var(--fg1);
+		color: var(--__fg);
 	}
 
 	.tableau span.done {
@@ -64,5 +65,11 @@
 
 	.tableau span.active {
 		color: var(--__fg);
+		color: var(--__fg);
+		background: var(--__bga);
+
+		outline: 1px solid var(--__fg);
+		outline-offset: 3px;
+		border-radius: 3px;
 	}
 </style>

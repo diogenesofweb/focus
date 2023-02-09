@@ -1,5 +1,5 @@
 <script>
-	import EditRadioStation from '$lib/EditRadioStation.svelte';
+	import EditRadioStation from './EditRadioStation.svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
 	import MyLayout from '$lib/MyLayout.svelte';
 	import { stations } from '$store/radio';
@@ -9,6 +9,7 @@
 	/** @typedef {import('$typings/types').Station} Station*/
 
 	let modalIsOpen = false;
+	/** @type {import("$typings/types").Station | undefined} */
 	let station2edit;
 
 	/** @param {number} id */

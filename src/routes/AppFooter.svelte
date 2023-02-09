@@ -1,6 +1,6 @@
 <script>
 	import { dev } from '$app/environment';
-	import Name from './Name.svelte';
+	import Name from '$lib/Name.svelte';
 </script>
 
 <footer>

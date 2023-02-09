@@ -1,15 +1,13 @@
 <script>
-	import AppFooter from '$lib/AppFooter.svelte';
-	import AppHeader from '$lib/AppHeader.svelte';
-	import RadioPlayer from '$lib/RadioPlayer.svelte';
-	import StopWar from '$lib/StopWar.svelte';
+	import AppFooter from './AppFooter.svelte';
+	import AppHeader from './AppHeader.svelte';
+	import RadioPlayer from './RadioPlayer.svelte';
+	import StopWar from './AppStopWar.svelte';
 	import { radioIsOn } from '$store/radio';
 	import { initLocalStorage } from '$utils/storage';
 	import { AppWrapper } from '@kazkadien/svelte';
-
 	import '@kazkadien/svelte/css/all.css';
 	import './../css/app.css';
-	// import './../css/colors.css';
 	import './../css/list.css';
 
 	initLocalStorage();
@@ -17,6 +15,8 @@
 
 <svelte:head>
 	<title>Focus</title>
+	<meta name="description" content="Productivity timer with focus on breaks" />
+	<link rel="canonical" href="https://focus.delphic.top/" />
 </svelte:head>
 
 <AppWrapper checkTheme={false}>
@@ -89,5 +89,6 @@
 	.radio-wrapper {
 		padding: 0.5rem var(--rsx);
 		border-bottom: var(--border);
+		background-color: var(--bg);
 	}
 </style>

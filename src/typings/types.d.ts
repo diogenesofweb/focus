@@ -17,14 +17,17 @@ export interface Activity {
 
 export type Break = 'short' | 'long';
 
-interface Item {
+interface BreakItem {
 	duration: number;
 	type: Break;
 }
+interface FocusItem {
+	duration: number;
+}
 
 export interface Round {
-	focus: Item;
-	break: Item;
+	focus: FocusItem;
+	break: BreakItem;
 }
 
 export type Sequence = Round[];

@@ -1,8 +1,8 @@
 <script>
 	import { Modal, Btn } from '@kazkadien/svelte';
-	import Name from './Name.svelte';
-	import Settings from '$lib/Settings.svelte';
-	import MyIcon from './MyIcon.svelte';
+	import Name from '$lib/Name.svelte';
+	import Settings from './Settings.svelte';
+	import MyIcon from '$lib/MyIcon.svelte';
 
 	let modalIsOpen = false;
 </script>
@@ -34,7 +34,7 @@
 
 <style>
 	#header {
-		background-color: var(--bg1);
+		background-color: var(--bg2);
 		padding: 0.66rem var(--rsx);
 	}
 

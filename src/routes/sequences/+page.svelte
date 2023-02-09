@@ -1,5 +1,6 @@
 <script>
-	import EditSequence from '$lib/EditSequence.svelte';
+	import EditSequence from './EditSequence.svelte';
+	// import EditSequence from './EditSequence.next.svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
 	import MyLayout from '$lib/MyLayout.svelte';
 	import { sequences } from '$store/store';

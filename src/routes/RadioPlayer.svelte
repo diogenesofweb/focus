@@ -1,8 +1,7 @@
 <script>
 	import MyIcon from '$lib/MyIcon.svelte';
 	import { currStation, stations } from '$store/radio';
-	import { Btn } from '@kazkadien/svelte';
-	import Field from '@kazkadien/svelte/Field.svelte';
+	import { Btn, Field } from '@kazkadien/svelte';
 	import { onDestroy, onMount } from 'svelte';
 
 	onMount(() => {
@@ -144,6 +143,7 @@
 
 <style>
 	form {
+		/* --bg: var(--bg1); */
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;

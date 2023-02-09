@@ -3,7 +3,7 @@
 	import { Stations } from '$utils/storage';
 	import { Btn, Field } from '@kazkadien/svelte';
 	import { createEventDispatcher } from 'svelte';
-	import CloseBtn from './CloseBtn.svelte';
+	import CloseBtn from '$lib/CloseBtn.svelte';
 
 	const dispatch = createEventDispatcher();
 

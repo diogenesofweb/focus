@@ -1,7 +1,20 @@
-import { dev } from '$app/environment';
-import { MESSAGE as m } from './constants';
+// import { dev } from '$app/environment';
+// import { MESSAGE as m } from '$utils/constants';
+// const INTERVAL = dev ? 100 : 1000;
 
-const INTERVAL = dev ? 100 : 1000;
+/** @enum {string} */
+const m = {
+	finish: 'FINISH',
+	tick: 'TICK',
+	resume: 'RESUME',
+	start: 'START',
+	stop: 'STOP',
+
+	hidden: 'HIDDEN',
+	visible: 'VISIBLE'
+};
+
+const INTERVAL = 1000;
 
 /** @type {string | number | NodeJS.Timer | undefined} */
 let intervalID;
@@ -9,13 +22,10 @@ let sendTickEverySecond = true;
 
 let min = 0;
 let sec = 0;
-// let startAt;
 
 self.onmessage = handle;
-/** @param {{ data: { mes: string; min: number; sec: number; }; }} e */
-function handle(e) {
-	// console.log({ w: e.data });
 
+function handle(e) {
 	if (e.data.mes == m.resume) {
 		startTimer();
 	}
@@ -28,7 +38,6 @@ function handle(e) {
 		min = e.data.min;
 		sec = e.data.sec;
 
-		// startAt = performance.now();
 		startTimer();
 	}
 
@@ -53,9 +62,6 @@ function tick() {
 	if (min === 0 && sec === 0) {
 		postMessage({ mes: m.finish });
 		stopTimer();
-
-		// const endAt = performance.now();
-		// console.log({ startAt, endAt, diff: endAt - startAt });
 
 		return;
 	}

@@ -7,7 +7,7 @@ const ls_breaks = {
 };
 
 /** @enum {string} */
-const ls_sequences = {
+export const ls_sequences = {
 	initialized: '__Sequences_initialized',
 	names: '__Sequences_names',
 	current: '__Current_sequence'
@@ -87,8 +87,8 @@ export const Breaks = {
 
 /** @typedef {import('$typings/types').Sequence} Sequance*/
 
+/** @type {Record<string, Sequance>}*/
 const mySequences = {
-	/** @type {Sequance}*/
 	'6x30': [
 		{ focus: { duration: 30 }, break: { duration: 3, type: 'short' } },
 		{ focus: { duration: 30 }, break: { duration: 3, type: 'short' } },
@@ -98,7 +98,6 @@ const mySequences = {
 		{ focus: { duration: 30 }, break: { duration: 15, type: 'long' } }
 	],
 
-	/** @type {Sequance}*/
 	'4x25': [
 		{ focus: { duration: 25 }, break: { duration: 5, type: 'short' } },
 		{ focus: { duration: 25 }, break: { duration: 5, type: 'short' } },
