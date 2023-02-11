@@ -165,11 +165,4 @@
 		display: grid;
 		gap: 2rem;
 	}
-
-	/* .boxes { */
-	/* } */
-
-	/* a.btn { */
-	/* 	text-transform: none; */
-	/* } */
 </style>

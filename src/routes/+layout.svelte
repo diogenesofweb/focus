@@ -54,6 +54,18 @@
 		display: grid;
 		grid-template-rows: auto 1fr;
 		--border: 1px solid var(--__fga);
+
+		--clr: hsl(var(--__bg-hsl) / 0.11);
+		background: radial-gradient(
+				farthest-corner at 30vw 20vh,
+				var(--clr) 20%,
+				transparent 60%
+			),
+			radial-gradient(
+				farthest-corner at 80vw 90vh,
+				var(--clr) 0%,
+				transparent 40%
+			);
 	}
 
 	main {

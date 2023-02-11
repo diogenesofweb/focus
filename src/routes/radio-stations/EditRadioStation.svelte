@@ -66,7 +66,9 @@
 
 <style>
 	form {
-		line-height: 1.2;
+		/* line-height: 1.2; */
+		width: 100%;
+		max-width: 80ch;
 	}
 
 	form .field-group {

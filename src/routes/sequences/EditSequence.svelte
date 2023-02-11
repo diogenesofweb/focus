@@ -112,7 +112,7 @@
 	<CloseBtn on:click={() => dispatch('close')} />
 
 	<div class="field-group">
-		<div class="g1a">
+		<div class="">
 			<Field label="Name">
 				<input
 					bind:value={data.name}
@@ -126,7 +126,7 @@
 			</Field>
 		</div>
 
-		<div class="in-4">
+		<div class="defaults">
 			<Field label="Focus">
 				<input
 					bind:value={data.focus}
@@ -162,11 +162,11 @@
 		</div>
 
 		<div class="chch ">
-			<Btn iconOnly variant="text" on:click={onRemoveRound}
+			<Btn iconOnly variant="outlined" on:click={onRemoveRound}
 				><Icon name="remove" /></Btn
 			>
 			<span>Sets: {count}</span>
-			<Btn iconOnly variant="text" on:click={onAddRound}
+			<Btn iconOnly variant="outlined" on:click={onAddRound}
 				><Icon name="add" /></Btn
 			>
 		</div>
@@ -195,15 +195,14 @@
 
 		<div>
 			<p>* Focus and break time in minutes</p>
-			<!-- <p><MyIcon name="local_cafe" /> Long break</p> -->
-			<!-- <p><MyIcon name="sports_gymnastics" /> Short break</p> -->
 		</div>
 	</div>
 </form>
 
 <style>
 	form {
-		line-height: 1.2;
+		width: 100%;
+		max-width: 80ch;
 	}
 
 	form .field-group {
@@ -218,37 +217,30 @@
 	.chch {
 		display: flex;
 		align-items: center;
-		gap: 1ch;
+		gap: 2ch;
 		justify-content: center;
 		border: var(--border);
 		border-radius: 3px;
 		padding: 6px 3px;
 	}
 	ul {
+		--x1: 1em;
+		--x2: 2em;
 		display: grid;
-		/* gap: 2ch; */
-		/* border-block: var(--border); */
-		padding: 1rem 0;
+		gap: var(--x1);
 	}
 	li {
 		display: grid;
-		/* grid-template-columns: 4ch 6ch 6ch 7ch; */
-		/* align-items: baseline; */
-		gap: 2ch;
-		/* border-bottom: var(--border); */
-		padding-block: 2ch;
-		/* background: var(--bg1); */
+		gap: var(--x1);
+		padding-block: var(--x2);
 		border-top: 1px dashed var(--fga);
 	}
-	/* li:nth-child(odd) { */
-	/* 	color: var(--fg1); */
-	/* 	background: var(--bg2); */
-	/* } */
+	/* li:nth-child(odd) { background: var(--bg2); } */
 	li > div:not(:first-child) {
 		display: flex;
-    /* align-items: stretch; */
-		gap: 1ch;
-    flex-wrap: wrap;
+		gap: var(--x1);
+		flex-wrap: wrap;
+		/* background: violet; */
 	}
 	li > div.set {
 		text-align: center;
@@ -260,30 +252,22 @@
 		align-self: center;
 	}
 	li :global([type='number']) {
-		/* background: violet; */
 		width: 6ch;
 	}
+	li > div :global(label:first-of-type) {
+		/* background: violet; */
+		max-width: 6ch;
+	}
+
 	li > div :global(label) {
 		/* background: violet; */
-    flex-grow: 1;
+		flex-grow: 1;
+		min-width: 0;
 	}
 
-	.g1a {
+	.defaults {
+		gap: 1rem;
 		display: grid;
-		grid-template-columns: 1fr auto;
-		gap: 1rem;
+		grid-template-columns: repeat(3, 1fr);
 	}
-
-	.in-4 {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-	}
-
-	.in-4 input {
-		/* background: violet; */
-		min-width: 11ch;
-	}
-
-/*
 </style>

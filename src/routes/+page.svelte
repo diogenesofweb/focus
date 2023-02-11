@@ -421,15 +421,8 @@
 
 	@media only screen and (min-width: 430px) {
 		.btns {
-			grid-template-columns: 1fr auto 1fr;
 			grid-template-columns: 1fr 1fr 1fr;
 			/* background: violet; */
 		}
-		/* .btns > :global(:first-child) { */
-		/* 	justify-self: flex-end; */
-		/* } */
-		/* .btns > :global(:last-child) { */
-		/* 	justify-self: flex-start; */
-		/* } */
 	}
 </style>

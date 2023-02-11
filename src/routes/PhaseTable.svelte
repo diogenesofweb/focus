@@ -54,7 +54,6 @@
 	.row {
 		display: flex;
 		gap: 1ch;
-		/* font-size: 0.75rem; */
 	}
 	.tableau span {
 		text-align: center;
