@@ -91,14 +91,14 @@ const f30 = { duration: 30, task: '', icon: { name: 'flag', accent: 'alpha' } };
 const f25 = { duration: 25, task: '', icon: { name: 'flag', accent: 'alpha' } };
 /** @type {import('$typings/types').BreakItem} */
 const b5 = {
-	duration: 25,
+	duration: 5,
 	type: 'short',
 	activity: '',
 	icon: { name: 'sports_gymnastics', accent: 'beta' }
 };
 /** @type {import('$typings/types').BreakItem} */
 const b15 = {
-	duration: 25,
+	duration: 15,
 	type: 'long',
 	activity: '',
 	icon: { name: 'local_cafe', accent: 'beta' }

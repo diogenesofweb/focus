@@ -62,7 +62,7 @@
 				transparent 60%
 			),
 			radial-gradient(
-				farthest-corner at 80vw 90vh,
+				farthest-corner at 70vw 80vh,
 				var(--clr) 0%,
 				transparent 40%
 			);
