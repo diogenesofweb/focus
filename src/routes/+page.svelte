@@ -283,8 +283,8 @@
 {/if}
 
 <section class={phase == 'focus' ? 'alpha' : 'beta'}>
-	<div class="holder">
-		<div class="phase">~ {fullPhaseName} ~</div>
+	<div class="phase">
+		<div class="phase-name">~ {fullPhaseName} ~</div>
 		<div class="phase-label">
 			<span>[ </span>
 			{phaseLabel}
@@ -292,11 +292,9 @@
 		</div>
 	</div>
 
-	<div class="fce">
-		<div class="boxx">
-			<PhaseTable {phase} {index} {list} />
-			<Clock {MM} {SS} />
-		</div>
+	<div class="boxx">
+		<PhaseTable {phase} {index} {list} />
+		<Clock {MM} {SS} />
 	</div>
 
 	<div class="btns" id="action-btns">
@@ -317,7 +315,7 @@
 			}}
 		/>
 		<Btn
-			accent="gamma"
+			accent="beta"
 			variant="outlined"
 			round
 			colored
@@ -353,67 +351,85 @@
 	/* MODAL */
 
 	section {
-		display: grid;
-		--g: 3rem;
-		gap: var(--g);
-		padding: var(--g) var(--rsx);
-
-		background-color: var(--bg1);
-	}
-
-	.boxx {
-		background-color: var(--bg);
-		/* border: var(--border); */
-		/* border-color: var(--__fg); */
-		border-radius: var(--br-s);
-		padding: 0.5rem 0;
-
-		box-shadow: 0px 0px 6px -2px var(--__fg);
-	}
-
-	.holder {
 		max-width: 60ch;
 		margin-inline: auto;
-		/* background: darkblue; */
+
+		display: grid;
+		--g: clamp(2em, 5vh, 4em);
+		gap: var(--g);
+		padding: var(--g) 1em;
+		/* background-color: gray; */
+
+		--clr: var(--__bg);
+		--x1: 1em;
+		--x2: calc(var(--x1) / 2);
 	}
+
 	.phase {
-		font-size: 1.25rem;
+		border-radius: var(--x1);
+		padding: 0 var(--x1) var(--x1);
+
+		/* background: darkblue; */
+		background: var(--bg);
+		border: 1px solid var(--clr);
+	}
+	.phase-name {
+		font-size: 1.15rem;
 		font-weight: bold;
 		text-transform: uppercase;
 		text-align: center;
 		letter-spacing: 1px;
-		color: var(--__fg);
-		/* background-color: darkblue; */
+
+		color: var(--bg);
+		background-color: var(--clr);
+
+		border-radius: 0 0 var(--x1) var(--x1);
+		padding: var(--x2) var(--x1);
+		margin-inline: auto;
+		max-width: 29ch;
 	}
+
+	:global(html.dark) .phase-name {
+		color: var(--fg1);
+	}
+
 	.phase-label {
 		line-height: 1.6;
 		text-align: center;
-		margin-top: 1ch;
-		/* min-height: 2em; */
-
+		margin-top: var(--x1);
 		/* background: violet; */
 	}
 	.phase-label span {
 		color: var(--__fg);
 	}
 
+	.boxx {
+		padding: 0.5em 0;
+		background-color: var(--bg);
+		border-radius: var(--x1);
+		border: 1px solid var(--clr);
+		border-left: var(--x2) solid var(--clr);
+		border-right: var(--x2) solid var(--clr);
+	}
+
 	.btns {
 		font-size: calc(1rem + 2px);
 		display: grid;
-		gap: 1rem;
+		gap: var(--x1);
 		/* background: violet; */
 	}
 
 	@media only screen and (min-width: 430px) {
 		.btns {
 			grid-template-columns: 1fr auto 1fr;
+			grid-template-columns: 1fr 1fr 1fr;
 			/* background: violet; */
 		}
-		.btns > :global(:first-child) {
-			justify-self: flex-end;
-		}
-		.btns > :global(:last-child) {
-			justify-self: flex-start;
-		}
+		/* .btns > :global(:first-child) { */
+		/* 	justify-self: flex-end; */
+		/* } */
+		/* .btns > :global(:last-child) { */
+		/* 	justify-self: flex-start; */
+		/* } */
 	}
 </style>

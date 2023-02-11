@@ -71,7 +71,7 @@
 		color: var(--__fg, var(--fg1));
 		background: var(--__bga, var(--bga));
 
-		outline: 1px solid var(--__fg, var(--fg1));
+		outline: 1px dashed var(--__fg-1, var(--fg1));
 		outline-offset: 3px;
 		border-radius: 3px;
 	}

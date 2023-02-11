@@ -15,13 +15,14 @@
 
 <style>
 	#stop-war {
+		z-index: 999;
 		position: fixed;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		padding: 1rem;
+		padding: 1ch;
 		background-color: black;
-		font-size: 16px;
+		font-size: 14px;
 		text-align: center;
 	}
 
@@ -31,8 +32,8 @@
 		color: salmon;
 		text-decoration: none;
 		display: inline-flex;
+		align-items: flex-end;
 		gap: 1ch;
-		align-items: center;
 	}
 
 	#stop-war a:is(:hover, :focus) {

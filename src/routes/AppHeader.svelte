@@ -8,7 +8,7 @@
 </script>
 
 {#if modalIsOpen}
-	<Modal blurBG on:close={() => (modalIsOpen = false)}>
+	<Modal on:close={() => (modalIsOpen = false)}>
 		<Settings on:close={() => (modalIsOpen = false)} />
 	</Modal>
 {/if}
@@ -24,6 +24,7 @@
 				title="settings"
 				iconOnly
 				accent="alpha"
+				variant="outlined"
 				on:click={() => (modalIsOpen = true)}
 			>
 				<MyIcon name="settings" />
@@ -39,12 +40,12 @@
 	}
 
 	.link {
-		color: var(--fg-beta);
+		color: var(--fg-alpha);
 		text-decoration: none;
 	}
 
 	.link:hover {
-		color: var(--fg-alpha);
+		text-decoration: underline;
 	}
 
 	section {
