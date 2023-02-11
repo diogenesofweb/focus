@@ -227,11 +227,11 @@
 		--x1: 1em;
 		--x2: 2em;
 		display: grid;
-		gap: var(--x1);
+		/* gap: var(--x1); */
 	}
 	li {
 		display: grid;
-		gap: var(--x1);
+		gap: var(--x2);
 		padding-block: var(--x2);
 		border-top: 1px dashed var(--fga);
 	}
@@ -269,5 +269,8 @@
 		gap: 1rem;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
+	}
+	.defaults :global(:is(input, label)) {
+		min-width: 0;
 	}
 </style>
