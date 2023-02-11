@@ -85,42 +85,85 @@ export const Breaks = {
 	}
 };
 
-/** @typedef {import('$typings/types').Sequence} Sequance*/
+/** @type {import('$typings/types').FocusItem} */
+const f30 = { duration: 30, task: '', icon: { name: 'flag', accent: 'alpha' } };
+/** @type {import('$typings/types').FocusItem} */
+const f25 = { duration: 25, task: '', icon: { name: 'flag', accent: 'alpha' } };
+/** @type {import('$typings/types').BreakItem} */
+const b5 = {
+	duration: 25,
+	type: 'short',
+	activity: '',
+	icon: { name: 'sports_gymnastics', accent: 'beta' }
+};
+/** @type {import('$typings/types').BreakItem} */
+const b15 = {
+	duration: 25,
+	type: 'long',
+	activity: '',
+	icon: { name: 'local_cafe', accent: 'beta' }
+};
 
+/** @typedef {import('$typings/types').Sequence} Sequance*/
 /** @type {Record<string, Sequance>}*/
 const mySequences = {
 	'6x30': [
-		{ focus: { duration: 30 }, break: { duration: 3, type: 'short' } },
-		{ focus: { duration: 30 }, break: { duration: 3, type: 'short' } },
-		{ focus: { duration: 30 }, break: { duration: 15, type: 'long' } },
-		{ focus: { duration: 30 }, break: { duration: 3, type: 'short' } },
-		{ focus: { duration: 30 }, break: { duration: 3, type: 'short' } },
-		{ focus: { duration: 30 }, break: { duration: 15, type: 'long' } }
+		{ focus: f30, break: b5 },
+		{ focus: f30, break: b5 },
+		{ focus: f30, break: b15 },
+		{ focus: f30, break: b5 },
+		{ focus: f30, break: b5 },
+		{ focus: f30, break: b15 }
 	],
 
 	'4x25': [
-		{ focus: { duration: 25 }, break: { duration: 5, type: 'short' } },
-		{ focus: { duration: 25 }, break: { duration: 5, type: 'short' } },
-		{ focus: { duration: 25 }, break: { duration: 5, type: 'short' } },
-		{ focus: { duration: 25 }, break: { duration: 20, type: 'long' } }
+		{ focus: f25, break: b5 },
+		{ focus: f25, break: b5 },
+		{ focus: f25, break: b5 },
+		{ focus: f25, break: b15 }
 	]
 };
 
 const mySequencesNames = Object.keys(mySequences);
 
 export function initLocalStorage() {
-	if (browser) {
-		if (!localStorage.getItem(ls_sequences.initialized)) {
-			localStorage.setItem(ls_sequences.initialized, 'true');
-			localStorage.setItem(ls_sequences.current, mySequencesNames[0]);
-			localStorage.setItem(
-				ls_sequences.names,
-				JSON.stringify(mySequencesNames)
-			);
-			mySequencesNames.forEach((e) =>
-				localStorage.setItem(e, JSON.stringify(mySequences[e]))
-			);
-		}
+	if (!browser) return;
+
+	const myVersion = '__Version';
+
+	if (!localStorage.getItem(ls_sequences.initialized)) {
+		console.log('init');
+		localStorage.setItem(ls_sequences.initialized, 'true');
+		localStorage.setItem(myVersion, 'v2');
+		localStorage.setItem(ls_sequences.current, mySequencesNames[0]);
+		localStorage.setItem(ls_sequences.names, JSON.stringify(mySequencesNames));
+		mySequencesNames.forEach((e) =>
+			localStorage.setItem(e, JSON.stringify(mySequences[e]))
+		);
+	} else {
+		const currentVersion = localStorage.getItem(myVersion);
+		// console.log({ currentVersion });
+		if (currentVersion === 'v2') return;
+
+		const list = Sequences.list();
+		// console.log(list);
+		list.forEach((name) => {
+			const one = Sequences.find(name);
+			one.forEach((el) => {
+				el.focus.task = '';
+				el.focus.icon = { name: 'flag', accent: 'alpha' };
+
+				el.break.activity = '';
+				el.break.icon = {
+					name: el.break.type === 'long' ? 'local_cafe' : 'sports_gymnastics',
+					accent: 'beta'
+				};
+			});
+			// console.log({ name, one });
+			Sequences.post(name, one);
+		});
+
+		localStorage.setItem(myVersion, 'v2');
 	}
 }
 
@@ -170,7 +213,10 @@ export const Sequences = {
 		}
 
 		if (st) {
-			return JSON.parse(st);
+			/** @type {Sequance} */
+			const one = JSON.parse(st);
+			// console.log({ one });
+			return one;
 		}
 
 		return mySequences['6x30'];

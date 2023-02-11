@@ -35,5 +35,8 @@
 	.btns {
 		margin-top: 3rem;
 	}
-</style>
 
+	ul > :global(li:not(:last-child)) {
+		border-bottom: 1px dashed var(--bga2);
+	}
+</style>

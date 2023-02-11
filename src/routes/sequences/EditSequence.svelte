@@ -3,14 +3,14 @@
 	import { Btn, Field, Icon } from '@kazkadien/svelte';
 	import { createEventDispatcher } from 'svelte';
 	import CloseBtn from '$lib/CloseBtn.svelte';
+	import DataLists from './DataLists.svelte';
+	import SetBreak from './SetBreak.svelte';
+	import SetFoucs from './SetFocus.svelte';
 
 	const MAX_FOCUS_CYCLE = 90;
 
 	/** @typedef {import('$typings/types').Break} Break*/
 	/** @typedef {import('$typings/types').Round} Round*/
-
-	/** @type {Break[]} */
-	const breaks = ['long', 'short'];
 
 	let data = {
 		name: '',
@@ -60,11 +60,27 @@
 		const next = total + data.focus;
 		// console.log(total, next);
 		/** @type {Break} */
-		let breakType = next < MAX_FOCUS_CYCLE ? 'short' : 'long';
+		let breakType = 'short';
+		/** @type {import('$typings/types').BreakItemIcon} */
+		let icon4break = { name: 'sports_gymnastics', accent: 'beta' };
+
+		if (next >= MAX_FOCUS_CYCLE) {
+			breakType = 'long';
+			icon4break = { name: 'local_cafe', accent: 'base' };
+		}
 
 		rounds.push({
-			focus: { duration: data.focus },
-			break: { type: breakType, duration: data.break[breakType] }
+			focus: {
+				duration: data.focus,
+				task: '',
+				icon: { name: 'flag', accent: 'alpha' }
+			},
+			break: {
+				activity: '',
+				type: breakType,
+				duration: data.break[breakType],
+				icon: icon4break
+			}
 		});
 
 		rounds = rounds;
@@ -82,19 +98,15 @@
 	const dispatch = createEventDispatcher();
 
 	function handleSubmit() {
-		/** @type {import('$typings/types').Round[]}*/
-		const _sequence = rounds.map((el) => {
-			el.break.duration = data.break[el.break.type];
-			return el;
-		});
+		// console.log({ name: data.name, rounds });
+		Sequences.post(data.name, rounds);
 
-		Sequences.post(data.name, _sequence);
-
-		// console.log({ name: data.name, rounds: _sequence });
 		dispatch('created', data.name);
-		dispatch('close');
+		// dispatch('close');
 	}
 </script>
+
+<DataLists />
 
 <form class="form v2 alpha modal-box" on:submit|preventDefault={handleSubmit}>
 	<CloseBtn on:click={() => dispatch('close')} />
@@ -160,51 +172,32 @@
 		</div>
 
 		<ul>
-			<li class="head">
-				<div class="tac">Set</div>
-				<div class="">Focus</div>
-				<div class="">Break</div>
-			</li>
-
 			{#each rounds as _, i}
 				<li>
-					<div class="tac">{i + 1}</div>
+					<div class="set">
+						~ <b> {i + 1} </b>/ <span>{rounds.length} ~</span>
+					</div>
 
-					<Field label="">
-						<input
-							bind:value={rounds[i].focus.duration}
-							type="number"
-							required
-							max="99"
-							min="1"
-							step="1"
-						/>
-					</Field>
+					<div class="focus">
+						<div>Focus</div>
+						<SetFoucs focus={rounds[i].focus} />
+					</div>
 
-					<Field label="">
-						<input
-							bind:value={rounds[i].break.duration}
-							type="number"
-							required
-							max="30"
-							min="1"
-							step="1"
-						/>
-					</Field>
-
-					<Field label="">
-						<select bind:value={rounds[i].break.type}>
-							{#each breaks as val}
-								<option value={val}>{val}</option>
-							{/each}
-						</select>
-					</Field>
+					<div class="break beta">
+						<div>Break</div>
+						<SetBreak _break={rounds[i].break} />
+					</div>
 				</li>
 			{/each}
 		</ul>
 
 		<Btn type="submit" text="Submit" variant="filled" disabled={count < 2} />
-		<p>* Focus and break time in minutes</p>
+
+		<div>
+			<p>* Focus and break time in minutes</p>
+			<!-- <p><MyIcon name="local_cafe" /> Long break</p> -->
+			<!-- <p><MyIcon name="sports_gymnastics" /> Short break</p> -->
+		</div>
 	</div>
 </form>
 
@@ -233,34 +226,48 @@
 	}
 	ul {
 		display: grid;
-		gap: 3px;
-		border-block: var(--border);
+		/* gap: 2ch; */
+		/* border-block: var(--border); */
 		padding: 1rem 0;
 	}
 	li {
 		display: grid;
-		grid-template-columns: 4ch 6ch 6ch 7ch;
+		/* grid-template-columns: 4ch 6ch 6ch 7ch; */
 		/* align-items: baseline; */
-		gap: 1ch;
+		gap: 2ch;
 		/* border-bottom: var(--border); */
-		padding: 4px;
-		background: var(--bg1);
+		padding-block: 2ch;
+		/* background: var(--bg1); */
+		border-top: 1px dashed var(--fga);
 	}
-	li:nth-child(odd) {
+	/* li:nth-child(odd) { */
+	/* 	color: var(--fg1); */
+	/* 	background: var(--bg2); */
+	/* } */
+	li > div:not(:first-child) {
+		display: flex;
+    /* align-items: stretch; */
+		gap: 1ch;
+    flex-wrap: wrap;
+	}
+	li > div.set {
+		text-align: center;
 		color: var(--fg1);
-		background: var(--bg2);
-		/* background: violet; */
 	}
-	li input[type='number'] {
+	li > div > div {
+		color: var(--__fg);
+		/* line-height: 1; */
+		align-self: center;
+	}
+	li :global([type='number']) {
 		/* background: violet; */
 		width: 6ch;
 	}
-	/* li :global(*) { */
-	/* 	border: none !important; */
-	/* } */
-	/* .row:not(.head):hover { */
-	/* 	background-color: var(--bg-1); */
-	/* } */
+	li > div :global(label) {
+		/* background: violet; */
+    flex-grow: 1;
+	}
+
 	.g1a {
 		display: grid;
 		grid-template-columns: 1fr auto;
@@ -277,4 +284,6 @@
 		/* background: violet; */
 		min-width: 11ch;
 	}
+
+/*
 </style>

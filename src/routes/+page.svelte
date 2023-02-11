@@ -27,14 +27,14 @@
 
 	// /** @type {Worker} */
 	// let w;
-	// onMount(async () => {
 	// if (typeof w == 'undefined') {
-	// this cause build to fail, but work in dev mode
-	// w = new Worker(new URL('./worker.js', import.meta.url));
+	// 	// this cause build to fail, but work in dev mode
+	// 	w = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' });
+	// }
+
 	// temp fix: just put copy of the worker in static folder
 	// build works but no hot reload in dev
 	let w = new Worker('worker.js');
-	// }
 	w.onmessage = function (e) {
 		// console.log(e.data);
 		if (e.data.mes == m.tick) {
@@ -46,7 +46,6 @@
 			finish();
 		}
 	};
-	// });
 
 	let isRunnig = false;
 	function startTimer() {
@@ -78,6 +77,7 @@
 	let first = false;
 	const unsub = currSequenceName.subscribe((v) => {
 		list = Sequences.find(v);
+		// console.log(list);
 
 		if (!first) {
 			first = true;
@@ -110,6 +110,7 @@
 	}
 	// Clock
 
+	let phaseLabel = list[0].focus.task;
 	/** @type {Phase} */
 	let phase = 'focus';
 	let index = 0;
@@ -121,12 +122,13 @@
 		// console.log({ phase });
 		if (phase !== 'focus') {
 			phase = 'focus';
-			breakAction = '';
 
 			const next = index + 1;
 			index = list.length == next ? 0 : next;
+			phaseLabel = list[index].focus.task;
 		} else {
 			phase = 'break';
+			phaseLabel = list[index].break.activity;
 		}
 	}
 
@@ -177,8 +179,12 @@
 			startTimer();
 		} else {
 			// console.log('show modal to select activity');
-			modalIsOpen = true;
-			document.getElementById('app-container')?.setAttribute('inert', '');
+			if (list[index].break.activity) {
+				startTimer();
+			} else {
+				modalIsOpen = true;
+				document.getElementById('app-container')?.setAttribute('inert', '');
+			}
 		}
 	}
 
@@ -189,7 +195,7 @@
 
 		index = 0;
 		phase = 'focus';
-		breakAction = '';
+		phaseLabel = list[0].focus.task;
 		breaks = { ...initBreaks };
 
 		clearClock();
@@ -214,7 +220,6 @@
 		el?.focus();
 	}
 
-	let breakAction = '';
 	/** @param {number} id */
 	function onBreakSelect(id) {
 		if (!breakType) {
@@ -224,7 +229,7 @@
 		// console.log(id);
 		onCloseModal();
 		// @ts-ignore
-		breakAction = breaks[breakType].find((e) => e.id === id).action;
+		phaseLabel = breaks[breakType].find((e) => e.id === id).action;
 
 		if (breaks[breakType].length === 1) {
 			breaks[breakType] = initBreaks[breakType];
@@ -245,14 +250,10 @@
 </script>
 
 <svelte:head>
-	<!-- {#if !windowIsVisible} -->
 	<title>
 		{MM}:{SS}
 		{phase == 'focus' ? 'Focus' : 'Break'}
 	</title>
-	<!-- {:else} -->
-	<!-- 	<title>Focus App</title> -->
-	<!-- {/if} -->
 </svelte:head>
 
 <audio id="myAudio" bind:this={audio}>
@@ -284,9 +285,11 @@
 <section class={phase == 'focus' ? 'alpha' : 'beta'}>
 	<div class="holder">
 		<div class="phase">~ {fullPhaseName} ~</div>
-		{#if breakAction}
-			<div class="break-action">{breakAction}</div>
-		{/if}
+		<div class="phase-label">
+			<span>[ </span>
+			{phaseLabel}
+			<span> ]</span>
+		</div>
 	</div>
 
 	<div class="fce">
@@ -297,7 +300,6 @@
 	</div>
 
 	<div class="btns" id="action-btns">
-		<!-- <div class="fce"> -->
 		<Btn
 			accent="alpha"
 			variant="outlined"
@@ -314,8 +316,6 @@
 				}
 			}}
 		/>
-		<!-- </div> -->
-		<!-- <div class="fce"> -->
 		<Btn
 			accent="gamma"
 			variant="outlined"
@@ -324,8 +324,6 @@
 			text="next"
 			on:click={onNext}
 		/>
-		<!-- </div> -->
-		<!-- <div class="fce"> -->
 		<Btn
 			accent="danger"
 			variant="outlined"
@@ -334,7 +332,6 @@
 			text="reset"
 			on:click={onReset}
 		/>
-		<!-- </div> -->
 	</div>
 </section>
 
@@ -375,7 +372,8 @@
 	}
 
 	.holder {
-		min-height: 3.3rem;
+		max-width: 60ch;
+		margin-inline: auto;
 		/* background: darkblue; */
 	}
 	.phase {
@@ -387,11 +385,16 @@
 		color: var(--__fg);
 		/* background-color: darkblue; */
 	}
-	.break-action {
+	.phase-label {
+		line-height: 1.6;
 		text-align: center;
 		margin-top: 1ch;
 		/* min-height: 2em; */
+
 		/* background: violet; */
+	}
+	.phase-label span {
+		color: var(--__fg);
 	}
 
 	.btns {

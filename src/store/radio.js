@@ -1,6 +1,6 @@
-import { browser } from '$app/environment';
 import { Stations } from '$utils/storage';
 import { writable } from 'svelte/store';
+import { setupStore } from './setup.js';
 
 const ls = {
 	isOn: '__Radio_is_on'
@@ -9,12 +9,6 @@ const ls = {
 let _stations = Stations.list();
 let _currStationID = Stations.currentID();
 let _currStation = _stations.find((e) => e.id == _currStationID);
-let _radioIsOn = false;
-
-if (browser) {
-	const myIsOn = localStorage.getItem(ls.isOn);
-	if (myIsOn === 'true') _radioIsOn = true;
-}
 
 export const stations = writable(_stations);
 
@@ -30,14 +24,4 @@ currStation.subscribe((station) => {
 	}
 });
 
-export const radioIsOn = writable(_radioIsOn);
-
-let firstFired = false;
-radioIsOn.subscribe((val) => {
-	if (firstFired) {
-		// console.log({ val });
-		localStorage.setItem(ls.isOn, JSON.stringify(val));
-	} else {
-		firstFired = true;
-	}
-});
+export const radioIsOn = setupStore(ls.isOn, false);

@@ -12,8 +12,10 @@
 <div class="fce">
 	<div class="tableau ">
 		<div class="row alpha">
-			{#each list as _, i}
+			{#each list as e, i}
 				<span
+					title={e.focus.task}
+					class={e.focus.icon.accent}
 					class:active={i === index && phase === 'focus'}
 					class:done={i < index || (i === index && phase !== 'focus')}
 				>
@@ -25,6 +27,8 @@
 		<div class="row beta">
 			{#each list as e, i}
 				<span
+					title={e.break.activity}
+					class={e.break.icon.accent}
 					class:active={i === index && phase !== 'focus'}
 					class:done={i < index}
 				>
@@ -64,10 +68,10 @@
 	}
 
 	.tableau span.active {
-		color: var(--__fg);
-		background: var(--__bga);
+		color: var(--__fg, var(--fg1));
+		background: var(--__bga, var(--bga));
 
-		outline: 1px solid var(--__fg);
+		outline: 1px solid var(--__fg, var(--fg1));
 		outline-offset: 3px;
 		border-radius: 3px;
 	}

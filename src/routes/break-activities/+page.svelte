@@ -95,6 +95,9 @@
 </MyLayout>
 
 <style>
+	form {
+		--bg: var(--bg1);
+	}
 	.top {
 		display: flex;
 		align-items: center;
@@ -102,5 +105,4 @@
 		flex-wrap: wrap;
 		gap: 1ch;
 	}
-	/* your styles go here */
 </style>

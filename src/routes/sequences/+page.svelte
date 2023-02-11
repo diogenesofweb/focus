@@ -1,6 +1,5 @@
 <script>
 	import EditSequence from './EditSequence.svelte';
-	// import EditSequence from './EditSequence.next.svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
 	import MyLayout from '$lib/MyLayout.svelte';
 	import { sequences } from '$store/store';
@@ -64,23 +63,11 @@
 				<span> {el} </span>
 
 				<div class="btns">
-					<Btn
-						iconOnly
-						accent="alpha"
-						colored
-						size="small"
-						on:click={() => onEdit(el)}
-					>
+					<Btn iconOnly accent="alpha" on:click={() => onEdit(el)}>
 						<MyIcon name="edit" />
 					</Btn>
 
-					<Btn
-						iconOnly
-						accent="danger"
-						colored
-						size="small"
-						on:click={() => onDelete(el)}
-					>
+					<Btn iconOnly accent="danger" on:click={() => onDelete(el)}>
 						<Icon name="delete" />
 					</Btn>
 				</div>
@@ -97,3 +84,9 @@
 		/>
 	</div>
 </MyLayout>
+
+<style>
+	.btns {
+		font-size: 0.75em;
+	}
+</style>
