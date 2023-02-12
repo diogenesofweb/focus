@@ -9,7 +9,7 @@
 		autoShowActivites,
 		autoStartFocusTime
 	} from '$store/store';
-	import { MESSAGE as m } from '$utils/constants';
+	import { msg } from './const.js';
 	import { sendNotification } from '$utils/sendNotification';
 	import { Breaks, Sequences } from '$utils/storage';
 	import { Btn, Modal } from '@kazkadien/svelte';
@@ -25,24 +25,21 @@
 	};
 	let breaks = { ...initBreaks };
 
-	// /** @type {Worker} */
-	// let w;
-	// if (typeof w == 'undefined') {
-	// 	// this cause build to fail, but work in dev mode
-	// 	w = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' });
-	// }
+	/** @type {Worker} */
+	let w;
+	if (typeof w == 'undefined') {
+		// this cause build to fail if $aliases are used, but work in dev mode
+		w = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' });
+	}
 
-	// temp fix: just put copy of the worker in static folder
-	// build works but no hot reload in dev
-	let w = new Worker('worker.js');
 	w.onmessage = function (e) {
 		// console.log(e.data);
-		if (e.data.mes == m.tick) {
+		if (e.data.mes == msg.tick) {
 			min = e.data.min;
 			sec = e.data.sec;
 		}
 
-		if (e.data.mes == m.finish) {
+		if (e.data.mes == msg.finish) {
 			finish();
 		}
 	};
@@ -50,13 +47,13 @@
 	let isRunnig = false;
 	function startTimer() {
 		isRunnig = true;
-		const data = { mes: m.start, min, sec };
+		const data = { mes: msg.start, min, sec };
 		// console.log({ data });
 		w.postMessage(data);
 	}
 	function stopTimer() {
 		isRunnig = false;
-		w.postMessage({ mes: m.stop });
+		w.postMessage({ mes: msg.stop });
 	}
 
 	let windowIsVisible = true;
@@ -65,10 +62,10 @@
 		// console.log(e.detail);
 		if (e.detail === VISIBILITY_STATE.hidden) {
 			windowIsVisible = false;
-			w.postMessage({ mes: m.hidden });
+			w.postMessage({ mes: msg.hidden });
 		} else {
 			windowIsVisible = true;
-			w.postMessage({ mes: m.visible });
+			w.postMessage({ mes: msg.visible });
 		}
 	}
 
@@ -164,13 +161,13 @@
 		// console.log('pause');
 		isRunnig = false;
 		isPaused = true;
-		w.postMessage({ mes: m.stop });
+		w.postMessage({ mes: msg.stop });
 	}
 	function onResume() {
 		// console.log('resume');
 		isRunnig = true;
 		isPaused = false;
-		w.postMessage({ mes: m.resume });
+		w.postMessage({ mes: msg.resume });
 	}
 
 	function onStart() {

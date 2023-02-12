@@ -1,5 +1,4 @@
-/** @enum {string} */
-export const MESSAGE = {
+export const msg = {
 	finish: 'FINISH',
 	tick: 'TICK',
 	resume: 'RESUME',

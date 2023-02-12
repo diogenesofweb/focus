@@ -1,7 +1,7 @@
-import { dev } from '$app/environment';
-import { MESSAGE as m } from '$utils/constants';
+// no import $aliases
+import { msg } from './const.js';
 
-const INTERVAL = dev ? 100 : 1000;
+const INTERVAL = 1000;
 
 /** @type {string | number | NodeJS.Timer | undefined} */
 let intervalID;
@@ -16,15 +16,15 @@ self.onmessage = handle;
 function handle(e) {
 	// console.log({ w: e.data });
 
-	if (e.data.mes == m.resume) {
+	if (e.data.mes == msg.resume) {
 		startTimer();
 	}
 
-	if (e.data.mes == m.stop) {
+	if (e.data.mes == msg.stop) {
 		stopTimer();
 	}
 
-	if (e.data.mes == m.start) {
+	if (e.data.mes == msg.start) {
 		min = e.data.min;
 		sec = e.data.sec;
 
@@ -32,11 +32,11 @@ function handle(e) {
 		startTimer();
 	}
 
-	if (e.data.mes == m.visible) {
+	if (e.data.mes == msg.visible) {
 		sendTickEverySecond = true;
 	}
 
-	if (e.data.mes == m.hidden) {
+	if (e.data.mes == msg.hidden) {
 		sendTickEverySecond = false;
 	}
 }
@@ -51,7 +51,7 @@ function stopTimer() {
 
 function tick() {
 	if (min === 0 && sec === 0) {
-		postMessage({ mes: m.finish });
+		postMessage({ mes: msg.finish });
 		stopTimer();
 
 		// const endAt = performance.now();
@@ -68,9 +68,9 @@ function tick() {
 	}
 
 	if (sendTickEverySecond) {
-		postMessage({ mes: m.tick, min, sec });
+		postMessage({ mes: msg.tick, min, sec });
 	} else if (sec % 5 == 0) {
-		postMessage({ mes: m.tick, min, sec });
+		postMessage({ mes: msg.tick, min, sec });
 	}
 }
 
