@@ -5,6 +5,8 @@ export const msg = {
 	start: 'START',
 	stop: 'STOP',
 
+	remindTimerEnded: 'REMIND_TIMER_ENDED',
+
 	hidden: 'HIDDEN',
 	visible: 'VISIBLE'
 };

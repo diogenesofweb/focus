@@ -7,6 +7,7 @@
 		autoStartFocusTime,
 		currSequenceName,
 		notificationsAreOn,
+		remindFocusEnded,
 		sequences
 	} from '$store/store';
 	import { BoxField, BoxFieldEntry, Field } from '@kazkadien/svelte';
@@ -79,56 +80,71 @@
 <div class="card modal-box">
 	<CloseBtn on:click={() => dispatch('close')} />
 
-	<div class="links alpha">
-		<div class="edit">Edit :</div>
-		{#each links as { href, name }}
-			<a {href} class="btn round" on:click={() => dispatch('close')}>
-				{name}
-			</a>
-		{/each}
-	</div>
-
-	<form class="form v2 alpha">
-		<Field label="Current Sequence:">
-			<select bind:value={$currSequenceName}>
-				{#each $sequences as val}
-					<option value={val}>{val}</option>
-				{/each}
-			</select>
-		</Field>
-
-		<Field label="Color Theme">
-			<select bind:value={theme}>
-				{#each themes as val}
-					<option value={val}>{val}</option>
-				{/each}
-			</select>
-		</Field>
-
-		<div class="boxes">
-			<BoxField label="Options" rows={true}>
-				<BoxFieldEntry label="Send Notifications">
-					<input type="checkbox" bind:checked={$notificationsAreOn} />
-				</BoxFieldEntry>
-
-				<BoxFieldEntry label="Play Alarm">
-					<input type="checkbox" bind:checked={$alarmIsOn} />
-				</BoxFieldEntry>
-
-				<BoxFieldEntry label="Enable Radio">
-					<input type="checkbox" bind:checked={$radioIsOn} />
-				</BoxFieldEntry>
-
-				<BoxFieldEntry label="Auto Show Break Activities">
-					<input type="checkbox" bind:checked={$autoShowActivites} />
-				</BoxFieldEntry>
-
-				<BoxFieldEntry label="Auto Start Focus Time">
-					<input type="checkbox" bind:checked={$autoStartFocusTime} />
-				</BoxFieldEntry>
-			</BoxField>
+	<section>
+		<div class="links alpha">
+			<div class="edit">Edit :</div>
+			{#each links as { href, name }}
+				<a {href} class="btn round" on:click={() => dispatch('close')}>
+					{name}
+				</a>
+			{/each}
 		</div>
-	</form>
+
+		<form class="form v2 alpha">
+			<Field label="Current Sequence:">
+				<select bind:value={$currSequenceName}>
+					{#each $sequences as val}
+						<option value={val}>{val}</option>
+					{/each}
+				</select>
+			</Field>
+
+			<Field label="Color Theme">
+				<select bind:value={theme}>
+					{#each themes as val}
+						<option value={val}>{val}</option>
+					{/each}
+				</select>
+			</Field>
+
+			<div class="boxes">
+				<BoxField label="Options" rows={true}>
+					<BoxFieldEntry label="Send Notifications">
+						<input type="checkbox" bind:checked={$notificationsAreOn} />
+					</BoxFieldEntry>
+
+					<BoxFieldEntry label="Play Alarm">
+						<input type="checkbox" bind:checked={$alarmIsOn} />
+					</BoxFieldEntry>
+
+					<BoxFieldEntry label="Enable Radio">
+						<input type="checkbox" bind:checked={$radioIsOn} />
+					</BoxFieldEntry>
+
+					<BoxFieldEntry label="Auto Show Break Activities">
+						<input type="checkbox" bind:checked={$autoShowActivites} />
+					</BoxFieldEntry>
+
+					<BoxFieldEntry label="Auto Start Focus Time">
+						<input type="checkbox" bind:checked={$autoStartFocusTime} />
+					</BoxFieldEntry>
+
+					{#if $notificationsAreOn || $alarmIsOn}
+						<BoxFieldEntry label="Remind Focus Ended *">
+							<input type="checkbox" bind:checked={$remindFocusEnded} />
+						</BoxFieldEntry>
+					{/if}
+				</BoxField>
+			</div>
+		</form>
+	</section>
+
+	<footer>
+		<p>
+			* Remind every 5 minutes focus time has ended if the next break has not
+			yet started.
+		</p>
+	</footer>
 </div>
 
 <style>
@@ -139,14 +155,15 @@
 		border-radius: var(--br-s);
 		min-width: 300px;
 		line-height: 1.4;
+	}
 
+	section {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: var(--rsx);
 	}
-
 	@media only screen and (min-width: 600px) {
-		.card {
+		section {
 			grid-template-columns: 1fr 1fr;
 		}
 	}
@@ -164,5 +181,8 @@
 	form {
 		display: grid;
 		gap: 2rem;
+	}
+	footer {
+		margin-top: 4em;
 	}
 </style>

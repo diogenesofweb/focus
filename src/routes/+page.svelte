@@ -4,6 +4,7 @@
 	import Visibility, { VISIBILITY_STATE } from './Visibility.svelte';
 	import {
 		alarmIsOn,
+		remindFocusEnded,
 		currSequenceName,
 		showNotifications,
 		autoShowActivites,
@@ -41,6 +42,10 @@
 
 		if (e.data.mes == msg.finish) {
 			finish();
+		}
+
+		if (e.data.mes == msg.remindTimerEnded) {
+			remindMeFocusEnded();
 		}
 	};
 
@@ -132,7 +137,6 @@
 	function finish() {
 		// console.log('finish round');
 		if ($showNotifications && !windowIsVisible) {
-			// if ($showNotifications) {
 			sendNotification(phase);
 		}
 
@@ -146,12 +150,31 @@
 		nextPhase();
 		clearClock();
 
-		if (phase === 'break' && $autoShowActivites) {
+		if (
+			phase === 'break' &&
+			$autoShowActivites &&
+			!list[index].break.activity
+		) {
 			onStart();
 		}
 
 		if (phase === 'focus' && $autoStartFocusTime) {
 			onStart();
+		}
+	}
+
+	function remindMeFocusEnded() {
+		// console.log('reminder');
+		if (!$remindFocusEnded) {
+			return;
+		}
+
+		if ($showNotifications && !windowIsVisible) {
+			sendNotification('focus');
+		}
+
+		if ($alarmIsOn) {
+			audio.play();
 		}
 	}
 

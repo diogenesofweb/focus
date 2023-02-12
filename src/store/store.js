@@ -15,12 +15,14 @@ const ls = {
 	notifications: '__Notifications',
 	showActivites: '__Show_Activites',
 	autoStartFocus: '__Auto_Start_Focus_Time',
+	remindFocusEnded: '__Remind_Focus_Ended',
 	alarm: '__Alarm_is_on'
 };
 
 export const alarmIsOn = setupStore(ls.alarm, false);
 export const autoShowActivites = setupStore(ls.showActivites, false);
 export const autoStartFocusTime = setupStore(ls.autoStartFocus, false);
+export const remindFocusEnded = setupStore(ls.remindFocusEnded, false);
 
 // NOTIFICATION
 export const showNotifications = writable(false);
