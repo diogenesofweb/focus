@@ -108,7 +108,7 @@
 
 <DataLists />
 
-<form class="form v2 alpha modal-box" on:submit|preventDefault={handleSubmit}>
+<form class="form  alpha modal-box" on:submit|preventDefault={handleSubmit}>
 	<CloseBtn on:click={() => dispatch('close')} />
 
 	<div class="field-group">

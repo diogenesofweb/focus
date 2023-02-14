@@ -1,10 +1,10 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@kazkadien/svelte': ^0.20.0
+  '@kazkadien/svelte': ^0.20.2
   '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/adapter-static': ^2.0.1
-  '@sveltejs/kit': ^1.5.5
+  '@sveltejs/kit': ^1.5.6
   autoprefixer: ^10.4.13
   prettier: ^2.8.4
   prettier-plugin-svelte: ^2.9.0
@@ -14,13 +14,13 @@ specifiers:
   vite: ^4.1.1
 
 dependencies:
-  '@kazkadien/svelte': 0.20.0
-  '@sveltejs/adapter-static': 2.0.1_@sveltejs+kit@1.5.5
+  '@kazkadien/svelte': 0.20.2
+  '@sveltejs/adapter-static': 2.0.1_@sveltejs+kit@1.5.6
   autoprefixer: 10.4.13
 
 devDependencies:
-  '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.5.5
-  '@sveltejs/kit': 1.5.5_svelte@3.55.1+vite@4.1.1
+  '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.5.6
+  '@sveltejs/kit': 1.5.6_svelte@3.55.1+vite@4.1.1
   prettier: 2.8.4
   prettier-plugin-svelte: 2.9.0_jrsxveqmsx2uadbqiuq74wlc4u
   svelte: 3.55.1
@@ -221,8 +221,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kazkadien/svelte/0.20.0:
-    resolution: {integrity: sha512-xq0iIPjpcG7zVbV4c0NTXT2VQ9BiTWvLlZ3aCLRBbevZfTZ2/fgcaD8kfXhQfJo7RlwLbCUXBwnt7byJDBk5lw==}
+  /@kazkadien/svelte/0.20.2:
+    resolution: {integrity: sha512-TFioQNhMis76emcTwqQ7t1GRmLkpLgbB6MV8jUZg91UNPkLDObT3hIjP8z3rqwgChf0suVDRLoDVQvY7ci1BYw==}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -249,25 +249,25 @@ packages:
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
 
-  /@sveltejs/adapter-auto/2.0.0_@sveltejs+kit@1.5.5:
+  /@sveltejs/adapter-auto/2.0.0_@sveltejs+kit@1.5.6:
     resolution: {integrity: sha512-b+gkHFZgD771kgV3aO4avHFd7y1zhmMYy9i6xOK7m/rwmwaRO8gnF5zBc0Rgca80B2PMU1bKNxyBTHA14OzUAQ==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.5.5_svelte@3.55.1+vite@4.1.1
+      '@sveltejs/kit': 1.5.6_svelte@3.55.1+vite@4.1.1
       import-meta-resolve: 2.2.1
     dev: true
 
-  /@sveltejs/adapter-static/2.0.1_@sveltejs+kit@1.5.5:
+  /@sveltejs/adapter-static/2.0.1_@sveltejs+kit@1.5.6:
     resolution: {integrity: sha512-o5/q3YwD/ErxYCFlK1v3ydvldyNKk1lh3oeyxn4mhz+Pkbx/uuxhzmbOpytTlp5aVqNHDVsb04xadUzOFCDDzw==}
     peerDependencies:
       '@sveltejs/kit': ^1.5.0
     dependencies:
-      '@sveltejs/kit': 1.5.5_svelte@3.55.1+vite@4.1.1
+      '@sveltejs/kit': 1.5.6_svelte@3.55.1+vite@4.1.1
     dev: false
 
-  /@sveltejs/kit/1.5.5_svelte@3.55.1+vite@4.1.1:
-    resolution: {integrity: sha512-NJry1mvcIBITVe9WyAGu39Cf33z8wRKzut/Oug4zqMVUpX+i7fG17+GyvLCh9GXdmIkqwSeSMROHDKRODvd6BA==}
+  /@sveltejs/kit/1.5.6_svelte@3.55.1+vite@4.1.1:
+    resolution: {integrity: sha512-CHVeQpbcwSIUekF6WwevmExKXyfHnzM5nlCEUv13lGgfJ0zKA0ny5YwIe40vccrm5w5Caec7jMTt9Ih3McJr5g==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
@@ -344,7 +344,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001451
+      caniuse-lite: 1.0.30001452
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -379,7 +379,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001451
+      caniuse-lite: 1.0.30001452
       electron-to-chromium: 1.4.295
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
@@ -400,8 +400,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001451:
-    resolution: {integrity: sha512-XY7UbUpGRatZzoRft//5xOa69/1iGJRBlrieH6QYrkKLIFn3m7OVEJ81dSrKoy2BnKsdbX5cLrOispZNYo9v2w==}
+  /caniuse-lite/1.0.30001452:
+    resolution: {integrity: sha512-Lkp0vFjMkBB3GTpLR8zk4NwW5EdRdnitwYJHDOOKIU85x4ckYCPQ+9WlVvSVClHxVReefkUMtWZH2l9KGlD51w==}
     dev: false
 
   /chokidar/3.5.3:

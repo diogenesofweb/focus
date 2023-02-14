@@ -165,7 +165,7 @@
 
 	function remindMeFocusEnded() {
 		// console.log('reminder');
-		if (!$remindFocusEnded) {
+		if (!$remindFocusEnded || phase === 'focus') {
 			return;
 		}
 
