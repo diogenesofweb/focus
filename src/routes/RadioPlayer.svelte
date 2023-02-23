@@ -65,7 +65,7 @@
 
 	ldb.stations.list().then((v) => {
 		myStations = v;
-		console.log(myStations);
+		// console.log(myStations);
 		activeStation = myStations[0];
 
 		const activeId = localStorage.getItem('STATION_ID');
@@ -78,7 +78,7 @@
 
 	/** @param {string} id */
 	function onSelect(id) {
-		console.log({ id });
+		// console.log({ id });
 		localStorage.setItem('STATION_ID', id);
 		// @ts-ignore
 		activeStation = myStations.find((e) => e.id == Number(id));
