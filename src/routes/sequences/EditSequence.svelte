@@ -203,7 +203,7 @@
 <style>
 	form {
 		width: 100%;
-		max-width: 80ch;
+		max-width: 100ch;
 	}
 
 	form .card {
@@ -252,6 +252,7 @@
 		/* width: 6ch; */
 		width: 100%;
 	}
+
 	li > div :global(label:first-of-type) {
 		flex-grow: 0;
 		/* background: violet; */

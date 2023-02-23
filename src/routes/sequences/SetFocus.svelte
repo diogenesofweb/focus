@@ -22,7 +22,8 @@
 	}
 </script>
 
-<div title="Focus" class="ct">F</div>
+<!-- <div title="Focus" class="ct">F</div> -->
+<div title="Focus" class="ct">Focus</div>
 
 <Dropdown
 	bind:this={dropdownComp}
