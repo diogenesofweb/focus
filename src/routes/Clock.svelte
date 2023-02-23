@@ -5,27 +5,26 @@
 	export let SS;
 </script>
 
-<div class="fce">
-	<div class="timer">
-		<span>{MM}</span>
-		<span class="x">:</span>
-		<span>{SS}</span>
-	</div>
+<div class="timer font-x">
+	<span>{MM}</span>
+	<span class="x">:</span>
+	<span>{SS}</span>
 </div>
 
 <style>
 	.timer {
 		display: grid;
 		grid-template-columns: 1fr auto 1fr;
-		gap: 9px;
+		gap: 3px;
 
-		font-weight: bold;
-		font-size: clamp(4.5rem, 22vw, 7rem);
+		font-variant-numeric: tabular-nums;
+		/* font-size: clamp(4.5rem, 22vw, 7rem); */
+		font-size: clamp(6rem, 33vw, 10rem);
 
-		color: var(--__fg);
+		color: var(--__fg-1);
 
-		padding: 1.5rem var(--rsx);
-		min-width: 6ch;
+		margin-block: 1.5rem 0.5rem;
+		/* background-color: black; */
 	}
 
 	.timer > :first-child {
@@ -36,7 +35,7 @@
 		transform: translateY(-8px);
 	}
 
-	span:not(.x) {
-		text-shadow: 4px 4px 0px var(--__bg-1);
+	span {
+		text-shadow: 3px 6px 3px var(--__bg-1);
 	}
 </style>

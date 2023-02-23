@@ -1,46 +1,33 @@
 <script>
-	import { Sequences } from '$utils/storage';
 	import { Btn, Field, Icon } from '@kazkadien/svelte';
 	import { createEventDispatcher } from 'svelte';
 	import CloseBtn from '$lib/CloseBtn.svelte';
 	import DataLists from './DataLists.svelte';
 	import SetBreak from './SetBreak.svelte';
 	import SetFoucs from './SetFocus.svelte';
+	import { ldb } from '$lib/db';
+	import { sequences } from '$store/store';
 
 	const MAX_FOCUS_CYCLE = 90;
-
-	/** @typedef {import('$typings/types').Break} Break*/
-	/** @typedef {import('$typings/types').Round} Round*/
 
 	let data = {
 		name: '',
 		focus: 30,
-
-		break: {
-			short: 5,
-			long: 20
-		}
+		break: { short: 5, long: 20 }
 	};
 
-	export let sequence2edit = '';
-	const seq = sequence2edit ? Sequences.find(sequence2edit) : null;
+	/** @type {import('$lib/types').ISequence | undefined} */
+	export let seq;
 
-	if (seq?.length) {
-		// console.log(seq);
-		data.focus = seq[0].focus.duration;
-		data.name = sequence2edit;
+	let count = 0;
+	/** @type {import('$lib/types').IRound[]} */
+	let rounds = [];
 
-		const l = seq.find((e) => e.break.type == 'long');
-		if (l) data.break.long = l.break.duration;
-
-		const s = seq.find((e) => e.break.type == 'short');
-		if (s) data.break.short = s.break.duration;
+	if (seq) {
+		data.name = seq.name;
+		count = seq.rounds.length;
+		rounds = seq.rounds;
 	}
-
-	let count = seq ? seq.length : 0;
-
-	/** @type {Round[]} */
-	let rounds = seq ? seq : [];
 
 	function onAddRound() {
 		if (count >= 10) return;
@@ -59,14 +46,15 @@
 
 		const next = total + data.focus;
 		// console.log(total, next);
-		/** @type {Break} */
+		/** @type {import('$lib/types').TBreak} */
 		let breakType = 'short';
-		/** @type {import('$typings/types').BreakItemIcon} */
+		/** @type {import('$lib/types').ISetIcon} */
 		let icon4break = { name: 'sports_gymnastics', accent: 'beta' };
-
+		let listName = 'short break';
 		if (next >= MAX_FOCUS_CYCLE) {
 			breakType = 'long';
-			icon4break = { name: 'local_cafe', accent: 'base' };
+			icon4break = { name: 'local_cafe', accent: 'beta' };
+			listName = 'long break';
 		}
 
 		rounds.push({
@@ -79,7 +67,8 @@
 				activity: '',
 				type: breakType,
 				duration: data.break[breakType],
-				icon: icon4break
+				icon: icon4break,
+				listName
 			}
 		});
 
@@ -99,19 +88,31 @@
 
 	function handleSubmit() {
 		// console.log({ name: data.name, rounds });
-		Sequences.post(data.name, rounds);
 
-		dispatch('created', data.name);
-		// dispatch('close');
+		if (!seq) {
+			sequences.update((v) => {
+				v.push(data.name);
+				return v;
+			});
+		}
+
+		ldb.sequences
+			.upsertOne({
+				name: data.name,
+				rounds
+			})
+			.then(() => {
+				dispatch('close');
+			});
 	}
 </script>
 
 <DataLists />
 
-<form class="form  alpha modal-box" on:submit|preventDefault={handleSubmit}>
+<form class="form v2 alpha modal-box" on:submit|preventDefault={handleSubmit}>
 	<CloseBtn on:click={() => dispatch('close')} />
 
-	<div class="field-group">
+	<div class="card">
 		<div class="">
 			<Field label="Name">
 				<input
@@ -121,7 +122,7 @@
 					minlength="2"
 					placeholder="6x30"
 					required
-					disabled={!!sequence2edit}
+					disabled={!!seq}
 				/>
 			</Field>
 		</div>
@@ -179,12 +180,12 @@
 					</div>
 
 					<div class="focus">
-						<div>Focus</div>
+						<!-- <div>Focus</div> -->
 						<SetFoucs focus={rounds[i].focus} />
 					</div>
 
 					<div class="break beta">
-						<div>Break</div>
+						<!-- <div>Break</div> -->
 						<SetBreak _break={rounds[i].break} />
 					</div>
 				</li>
@@ -205,13 +206,9 @@
 		max-width: 80ch;
 	}
 
-	form .field-group {
+	form .card {
 		display: grid;
 		gap: 2.5rem;
-		background-color: var(--bg);
-		border-radius: var(--br-s);
-		border-color: var(--line);
-		/* background: violet; */
 	}
 
 	.chch {
@@ -219,9 +216,10 @@
 		align-items: center;
 		gap: 2ch;
 		justify-content: center;
-		border: var(--border);
+		/* border: var(--border); */
+		background: var(--bg2);
 		border-radius: 3px;
-		padding: 6px 3px;
+		padding: 9px 3px;
 	}
 	ul {
 		--x1: 1em;
@@ -233,36 +231,37 @@
 		display: grid;
 		gap: var(--x2);
 		padding-block: var(--x2);
-		border-top: 1px dashed var(--fga);
+		/* border-top: 1px dashed var(--fga); */
 	}
 	/* li:nth-child(odd) { background: var(--bg2); } */
 	li > div:not(:first-child) {
 		display: flex;
 		gap: var(--x1);
+		/* gap: 1ch; */
 		flex-wrap: wrap;
+		/* align-items: center; */
+		align-items: flex-start;
 		/* background: violet; */
 	}
 	li > div.set {
 		text-align: center;
 		color: var(--fg1);
 	}
-	li > div > div {
-		color: var(--__fg);
-		/* line-height: 1; */
-		align-self: center;
-	}
+
 	li :global([type='number']) {
-		width: 6ch;
+		/* width: 6ch; */
+		width: 100%;
 	}
 	li > div :global(label:first-of-type) {
+		flex-grow: 0;
 		/* background: violet; */
-		max-width: 6ch;
+		flex-basis: 6ch;
 	}
 
 	li > div :global(label) {
 		/* background: violet; */
 		flex-grow: 1;
-		min-width: 0;
+		/* min-width: 0; */
 	}
 
 	.defaults {

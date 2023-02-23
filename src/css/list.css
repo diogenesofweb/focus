@@ -1,9 +1,10 @@
-ul.table {
-	border-block: var(--border);
-}
+/* ul.table { */
+/* 	border-block: var(--border); */
+/* } */
 
 .table li {
-	padding: 3px;
+	padding-block: 3px;
+	padding-inline: 1ch;
 	display: grid;
 	grid-template-columns: 1fr auto;
 	align-items: center;

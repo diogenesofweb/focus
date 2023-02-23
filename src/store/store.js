@@ -1,31 +1,22 @@
 import { browser } from '$app/environment';
-import { Sequences, ls_sequences } from '$utils/storage';
+import { ldb } from '$lib/db';
 import { writable } from 'svelte/store';
+import { opts } from './settings.js';
 import { setupStore } from './setup.js';
 
-const current = Sequences.getCurrent();
-export const currSequenceName = setupStore(ls_sequences.current, current);
-
-const _sequences = Sequences.list();
+const _sequences = await ldb.sequences.listNames();
 export const sequences = writable(_sequences);
+
+export const mySequenceName = _sequences[0] || '6x30';
+export const currSequenceName = setupStore('__Active_sequence', mySequenceName);
 
 // LOCALSTORAGE
 /** @enum {string} */
 const ls = {
-	notifications: '__Notifications',
-	showActivites: '__Show_Activites',
-	autoStartFocus: '__Auto_Start_Focus_Time',
-	remindFocusEnded: '__Remind_Focus_Ended',
-	alarm: '__Alarm_is_on'
+	notifications: '__Notifications'
 };
 
-export const alarmIsOn = setupStore(ls.alarm, false);
-export const autoShowActivites = setupStore(ls.showActivites, false);
-export const autoStartFocusTime = setupStore(ls.autoStartFocus, false);
-export const remindFocusEnded = setupStore(ls.remindFocusEnded, false);
-
 // NOTIFICATION
-export const showNotifications = writable(false);
 
 let _notificationsAreOn = false;
 if (browser) {
@@ -50,10 +41,18 @@ notificationsAreOn.subscribe(async (isOn) => {
 	}
 
 	if (isOn && window.Notification && Notification.permission == 'granted') {
-		// console.log('to notif');
-		showNotifications.set(true);
+		// console.log(o notif');
+		// enableNotifications.set(true);
+		opts.update((v) => {
+			v.notifications = true;
+			return v;
+		});
 	} else {
-		showNotifications.set(false);
+		// enableNotifications.set(false);
+		opts.update((v) => {
+			v.notifications = false;
+			return v;
+		});
 	}
 });
 // NOTIFICATIONS

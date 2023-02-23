@@ -1,11 +1,15 @@
 <script>
 	import MyIcon from '$lib/MyIcon.svelte';
+	import { ldb } from '$lib/db';
 	import { Btn, Dropdown, Field } from '@kazkadien/svelte';
 
 	/** @type {Dropdown} */
 	let dropdownComp;
+	/** @type {string[]} */
+	let lists = [];
+	ldb.activities.getNames().then((v) => (lists = [...v]));
 
-	/** @type {import("$typings/types").BreakItem} */
+	/** @type {import("$lib/types").IBreakItem} */
 	export let _break;
 
 	/** @type {import('@kazkadien/svelte/types').Accent[]} */
@@ -26,6 +30,8 @@
 	}
 </script>
 
+<div title="Break" class="ct">B</div>
+
 <Dropdown
 	bind:this={dropdownComp}
 	align="left"
@@ -38,7 +44,7 @@
 	<div class="menu">
 		{#each accents as accent}
 			<div class="row {accent}">
-				<div class="b-type">{accent === 'beta' ? 'Short' : 'Long'}</div>
+				<!-- <div class="b-type">{accent === 'beta' ? 'Short' : 'Long'}</div> -->
 				{#each icons as name}
 					<Btn
 						iconOnly
@@ -69,13 +75,19 @@
 </Field>
 
 <Field label="activity">
-	<input
-		bind:value={_break.activity}
-		type="text"
-		list="{_break.type}-breaks"
-		multiple
-	/>
+	<input bind:value={_break.activity} type="text" list="my-breaks" multiple />
 </Field>
+
+{#if !_break.activity}
+	<Field label="activities list">
+		<select bind:value={_break.listName}>
+			<option value="" />
+			{#each lists as val}
+				<option value={val}>{val}</option>
+			{/each}
+		</select>
+	</Field>
+{/if}
 
 <style>
 	:is(div.menu) {
@@ -91,5 +103,9 @@
 	.b-type {
 		width: 6ch;
 		color: var(--__fg);
+	}
+
+	div {
+		align-self: center;
 	}
 </style>

@@ -1,4 +1,4 @@
-<div class="logo">
+<div class="logo font-x">
 	<!-- <img src="favicon.svg" alt="app logo" /> -->
 	<span>Focus</span>
 </div>

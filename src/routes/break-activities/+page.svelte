@@ -1,41 +1,72 @@
 <script>
 	import MyLayout from '$lib/MyLayout.svelte';
-	import { Breaks } from '$utils/storage';
+	import { ldb } from '$lib/db';
 	import { Btn, Field, Icon } from '@kazkadien/svelte';
 
-	/** @typedef {import('$typings/types').Activity} Activity*/
-	/** @type {Activity[]} */
-	let activities = [];
-	// let arr = Breaks.short.get();
-	/** @param {number} id */
-	function onDelete(id) {
-		console.log(id);
-		activities = activities.filter((e) => e.id !== id);
+	let newListName = '';
+	function handleSubmitNewList() {
+		console.log({ newListName });
+		listNames = [newListName, ...listNames];
+		name = newListName;
+		values = new Set();
+		upsert();
+		newListName = '';
+	}
+	function deleteList() {
+		if (listNames.length < 2) {
+			return;
+		}
+		ldb.activities.deleteOne(name);
+		listNames = listNames.filter((e) => e !== name);
+		name = listNames[0];
+		fetchOne(name);
+	}
 
-		Breaks[duration].post(activities);
+	function upsert() {
+		ldb.activities.upsertOne({ name, values });
+	}
+
+	/** @type {string[]} */
+	let listNames = [];
+	ldb.activities.getNames().then((res) => {
+		listNames = res;
+		if (res.length) {
+			name = res[0];
+			fetchOne(name);
+		}
+	});
+	/** @param {string} name */
+	function fetchOne(name) {
+		// @ts-ignore
+		ldb.activities.getOneByName(name).then((v) => (values = v?.values));
+	}
+	let name = '';
+	/** @type {Set<string>} */
+	let values = new Set();
+
+	/** @param {Event & { currentTarget: EventTarget & HTMLSelectElement; }} ev */
+	function onChangeList(ev) {
+		const val = ev.currentTarget.value;
+		console.log({ val });
+		name = val;
+		fetchOne(name);
+		// currList = val;
+	}
+	/** @param {string} val */
+	function onDelete(val) {
+		console.log(val);
+		values.delete(val);
+		values = values;
+		upsert();
 	}
 
 	let action = '';
-
-	function handleSubmit() {
+	function handleSubmitNewActivity() {
 		console.log(action);
-		activities.push({ id: Math.random(), action: action });
-		activities = activities;
+		values.add(action);
+		values = values;
+		upsert();
 		action = '';
-
-		Breaks[duration].post(activities);
-	}
-	/** @type {Array<keyof Breaks>} */
-	const durations = ['short', 'long']; // long & short
-	let duration = durations[0];
-
-	$: {
-		console.log(duration);
-		if (duration === 'long') {
-			activities = Breaks.long.get();
-		} else {
-			activities = Breaks.short.get();
-		}
 	}
 </script>
 
@@ -44,44 +75,68 @@
 </svelte:head>
 
 <MyLayout title="">
-	<div slot="top" class="top">
-		<h3>Activities:</h3>
-
-		<div class="alpha">
-			{#each durations as d}
-				<Btn
-					text={d + ' break'}
-					variant={d === duration ? 'filled' : ''}
-					on:click={() => (duration = d)}
-					size="small"
+	<div slot="top">
+		<form class="form v2 alpha" on:submit|preventDefault={handleSubmitNewList}>
+			<Field label="New List">
+				<input
+					bind:value={newListName}
+					type="text"
+					required
+					maxlength="240"
+					minlength="2"
+					placeholder="My list name"
 				/>
-			{/each}
+			</Field>
+		</form>
+		<div class="g1a">
+			<div class="form v2 ll">
+				<Field label="Activities List">
+					<select on:change={onChangeList}>
+						{#each listNames as val}
+							<option selected={val === name}>{val}</option>
+						{/each}
+					</select>
+				</Field>
+			</div>
+			<Btn
+				iconOnly
+				colored
+				accent="danger"
+				variant="text"
+				title="delete list"
+				on:click={deleteList}
+			>
+				<Icon name="delete" />
+			</Btn>
 		</div>
 	</div>
 
 	<svelte:fragment slot="list">
-		{#each activities as el (el.id)}
+		{#each [...values] as el}
 			<li>
-				<span>{el.action}</span>
+				<span>{el}</span>
 				<Btn
 					iconOnly
 					accent="danger"
 					colored
+					variant="text"
 					size="small"
-					on:click={() => onDelete(el.id)}
+					on:click={() => onDelete(el)}
 				>
 					<Icon name="delete" />
 				</Btn>
 			</li>
+		{:else}
+			<li>Empty</li>
 		{/each}
 	</svelte:fragment>
 
 	<form
 		slot="btns"
 		class="form v2 alpha"
-		on:submit|preventDefault={handleSubmit}
+		on:submit|preventDefault={handleSubmitNewActivity}
 	>
-		<Field label="Add Activity">
+		<Field label="New Activity">
 			<input
 				bind:value={action}
 				type="text"
@@ -96,13 +151,24 @@
 
 <style>
 	form {
-		--bg: var(--bg1);
+		background: var(--bg);
+		padding: 1em;
+		border-radius: 1em;
 	}
-	.top {
+	.ll {
+		--bg: var(--bg1);
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		gap: 1ch;
+	}
+	.ll :global(label) {
+		flex-grow: 1;
+		/* background: black; */
+	}
+	.g1a {
+		margin-block: 3em 1em;
+		/* background: black; */
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2ch;
+		align-items: flex-start;
 	}
 </style>

@@ -1,7 +1,7 @@
 <script>
 	import { Modal, Btn } from '@kazkadien/svelte';
 	import Name from '$lib/Name.svelte';
-	import Settings from './Settings.svelte';
+	import Settings from './AppSettings.svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
 
 	let modalIsOpen = false;
@@ -14,7 +14,7 @@
 {/if}
 
 <div id="header">
-	<section class="fsb g1">
+	<section class="fsb g1 container-1">
 		<a href="/" class="fce link">
 			<Name />
 		</a>
@@ -46,10 +46,5 @@
 
 	.link:hover {
 		text-decoration: underline;
-	}
-
-	section {
-		max-width: 1200px;
-		margin: 0 auto;
 	}
 </style>

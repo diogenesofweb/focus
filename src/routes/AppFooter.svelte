@@ -4,7 +4,7 @@
 </script>
 
 <footer>
-	<section>
+	<section class="container-1">
 		<div>
 			<Name />
 			<p>Productivity timer with focus on breaks</p>
@@ -46,10 +46,5 @@
 		display: grid;
 		gap: 1rem;
 		grid-template-columns: 1fr auto;
-		max-width: 1200px;
-		margin: 0 auto;
 	}
-	/* .fse {
-		background-color: darkblue;
-	} */
 </style>

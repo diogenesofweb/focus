@@ -1,15 +1,10 @@
 <script>
 	import CloseBtn from '$lib/CloseBtn.svelte';
-	import { radioIsOn } from '$store/radio';
-	import {
-		alarmIsOn,
-		autoShowActivites,
-		autoStartFocusTime,
-		currSequenceName,
-		notificationsAreOn,
-		remindFocusEnded,
-		sequences
-	} from '$store/store';
+	// import { radioIsOn } from '$store/radio';
+	import { opts } from '$store/settings';
+
+	import { notificationsAreOn } from '$store/store';
+
 	import { BoxField, BoxFieldEntry, Field } from '@kazkadien/svelte';
 	import { createEventDispatcher } from 'svelte';
 
@@ -77,28 +72,20 @@
 	}
 </script>
 
-<div class="card modal-box">
+<div class="card alpha modal-box">
 	<CloseBtn on:click={() => dispatch('close')} />
 
 	<section>
 		<div class="links alpha">
 			<div class="edit">Edit :</div>
 			{#each links as { href, name }}
-				<a {href} class="btn round" on:click={() => dispatch('close')}>
+				<a {href} class="btn text round" on:click={() => dispatch('close')}>
 					{name}
 				</a>
 			{/each}
 		</div>
 
 		<form class="form v2 alpha">
-			<Field label="Current Sequence:">
-				<select bind:value={$currSequenceName}>
-					{#each $sequences as val}
-						<option value={val}>{val}</option>
-					{/each}
-				</select>
-			</Field>
-
 			<Field label="Color Theme">
 				<select bind:value={theme}>
 					{#each themes as val}
@@ -114,49 +101,49 @@
 					</BoxFieldEntry>
 
 					<BoxFieldEntry label="Play Alarm">
-						<input type="checkbox" bind:checked={$alarmIsOn} />
+						<input type="checkbox" bind:checked={$opts.alarm} />
 					</BoxFieldEntry>
 
-					<BoxFieldEntry label="Enable Radio">
-						<input type="checkbox" bind:checked={$radioIsOn} />
-					</BoxFieldEntry>
+					{#if $notificationsAreOn || $opts.alarm}
+						<BoxFieldEntry label="Enable Overtime Reminder *">
+							<input type="checkbox" bind:checked={$opts.reminder} />
+						</BoxFieldEntry>
+					{/if}
 
 					<BoxFieldEntry label="Auto Show Break Activities">
-						<input type="checkbox" bind:checked={$autoShowActivites} />
+						<input type="checkbox" bind:checked={$opts.autoShowActivites} />
 					</BoxFieldEntry>
 
 					<BoxFieldEntry label="Auto Start Focus Time">
-						<input type="checkbox" bind:checked={$autoStartFocusTime} />
+						<input type="checkbox" bind:checked={$opts.autoStartFocus} />
+					</BoxFieldEntry>
+				</BoxField>
+
+				<BoxField label="Show" rows={true}>
+					<BoxFieldEntry label="Radio">
+						<input type="checkbox" bind:checked={$opts.radio} />
 					</BoxFieldEntry>
 
-					{#if $notificationsAreOn || $alarmIsOn}
-						<BoxFieldEntry label="Remind Focus Ended *">
-							<input type="checkbox" bind:checked={$remindFocusEnded} />
-						</BoxFieldEntry>
-					{/if}
+					<BoxFieldEntry label="Today's Total Time">
+						<input type="checkbox" bind:checked={$opts.totalTime} />
+					</BoxFieldEntry>
+
+					<BoxFieldEntry label="Overtime">
+						<input type="checkbox" bind:checked={$opts.overtime} />
+					</BoxFieldEntry>
 				</BoxField>
 			</div>
 		</form>
 	</section>
 
 	<footer>
-		<p>
-			* Remind every 5 minutes focus time has ended if the next break has not
-			yet started.
-		</p>
+		{#if $notificationsAreOn || $opts.alarm}
+			<p>* Remind me of overtime every 5 minutes.</p>
+		{/if}
 	</footer>
 </div>
 
 <style>
-	.card {
-		background-color: var(--bg);
-		padding: 3rem var(--rsx) 6rem;
-		border: var(--border);
-		border-radius: var(--br-s);
-		min-width: 300px;
-		line-height: 1.4;
-	}
-
 	section {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -172,13 +159,17 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
+		/* align-items: stretch; */
 	}
-
+	a {
+		transform: translateX(-1em);
+	}
 	.edit {
-		font-style: italic;
 		opacity: 0.6;
+		font-weight: bold;
+		font-size: calc(1rem - 2px);
 	}
-	form {
+	:where(form, .boxes) {
 		display: grid;
 		gap: 2rem;
 	}

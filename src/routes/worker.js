@@ -1,6 +1,7 @@
 // no import $aliases
 import { msg } from './const.js';
 
+// todo:
 const INTERVAL = 1000;
 
 let sendTickEverySecond = true;

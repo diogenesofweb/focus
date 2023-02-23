@@ -2,21 +2,30 @@
 	import EditRadioStation from './EditRadioStation.svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
 	import MyLayout from '$lib/MyLayout.svelte';
-	import { stations } from '$store/radio';
-	import { Stations } from '$utils/storage';
 	import { Btn, Icon, Modal } from '@kazkadien/svelte';
+	import { ldb } from '$lib/db';
 
-	/** @typedef {import('$typings/types').Station} Station*/
+	/** @type {import('$lib/types').IRadioStation[]} */
+	let myStations = [];
+	reset();
+
+	function reset() {
+		ldb.stations.list().then((v) => {
+			myStations = v;
+			console.log(myStations);
+		});
+	}
 
 	let modalIsOpen = false;
-	/** @type {import("$typings/types").Station | undefined} */
+	/** @type {import('$lib/types').IRadioStation | undefined} */
 	let station2edit;
 
 	/** @param {number} id */
 	function onDelete(id) {
-		// console.log(id);
-		Stations.del(id);
-		stations.update((v) => v.filter((e) => e.id !== id));
+		console.log(id);
+		ldb.stations.deleteOneById(id).then(() => {
+			reset();
+		});
 	}
 
 	function onAdd() {
@@ -24,11 +33,16 @@
 		modalIsOpen = true;
 	}
 
-	/** @param {Station} station */
+	/** @param {import("$lib/types").IRadioStation } station */
 	function onEdit(station) {
 		// console.log('edit ', station);
 		station2edit = station;
 		modalIsOpen = true;
+	}
+
+	function onCloseModal() {
+		modalIsOpen = false;
+		station2edit = undefined;
 	}
 </script>
 
@@ -37,17 +51,20 @@
 </svelte:head>
 
 {#if modalIsOpen}
-	<Modal on:close={() => (modalIsOpen = false)}>
+	<Modal on:close={onCloseModal}>
 		<EditRadioStation
 			station={station2edit}
-			on:close={() => (modalIsOpen = false)}
+			on:close={() => {
+				onCloseModal();
+				reset();
+			}}
 		/>
 	</Modal>
 {/if}
 
 <MyLayout title="Radio Stations:">
 	<svelte:fragment slot="list">
-		{#each $stations as el}
+		{#each myStations as el}
 			<li>
 				<span> {el.name} </span>
 
@@ -57,6 +74,7 @@
 						accent="alpha"
 						colored
 						size="small"
+						variant="text"
 						on:click={() => onEdit(el)}
 					>
 						<MyIcon name="edit" />
@@ -67,6 +85,7 @@
 						accent="danger"
 						colored
 						size="small"
+						variant="text"
 						on:click={() => onDelete(el.id)}
 					>
 						<Icon name="delete" />

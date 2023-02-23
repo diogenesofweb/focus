@@ -1,55 +1,29 @@
 <script>
-	import { stations } from '$store/radio';
-	import { Stations } from '$utils/storage';
 	import { Btn, Field } from '@kazkadien/svelte';
 	import { createEventDispatcher } from 'svelte';
 	import CloseBtn from '$lib/CloseBtn.svelte';
+	import { ldb } from '$lib/db';
 
 	const dispatch = createEventDispatcher();
 
-	/** @type {import('$typings/types').Station} Station*/
+	/** @type {import('$lib/types').IRadioStation } */
 	export let station = {
-		id: Math.random(),
 		name: '',
 		src: ''
 	};
 
-	const isUpdate = !!station.src;
-	// console.log({ isUpdate });
-
 	function handleSubmit() {
 		// console.log(station);
-
-		stations.update((myStations) => {
-			let _stations;
-
-			if (isUpdate) {
-				const _station = myStations.find((e) => e.id === station.id);
-
-				if (_station) {
-					_station.src = station.src;
-					_station.name = station.name;
-				}
-
-				_stations = myStations;
-			} else {
-				myStations.push(station);
-				_stations = myStations;
-			}
-
-			Stations.post(_stations);
-
-			return _stations;
+		ldb.stations.upsertOne(station).then(() => {
+			dispatch('close');
 		});
-
-		dispatch('close');
 	}
 </script>
 
 <form class="form v2 alpha modal-box" on:submit|preventDefault={handleSubmit}>
 	<CloseBtn on:click={() => dispatch('close')} />
 
-	<div class="field-group">
+	<div class="card">
 		<Field label="Station Name">
 			<input bind:value={station.name} type="text" required minlength="1" />
 		</Field>
@@ -71,11 +45,8 @@
 		max-width: 80ch;
 	}
 
-	form .field-group {
+	form .card {
 		display: grid;
 		gap: 2.5rem;
-		background-color: var(--bg);
-		border-radius: var(--br-s);
-		border-color: var(--line);
 	}
 </style>

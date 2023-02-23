@@ -1,24 +1,18 @@
 <script>
-	import { Breaks } from '$utils/storage';
+	import { ldb } from '$lib/db';
+	/** @type {Set<string>} */
+	let res = new Set();
 
-	const long = Breaks.long.get();
-	const short = Breaks.short.get();
+	ldb.activities.list().then((v) => {
+		// console.log(v);
+		v.forEach((e) => e.values.forEach((x) => res.add(x)));
+		res = res;
+		// console.log(res);
+	});
 </script>
 
-<!-- <datalist id="my-breaks"> -->
-<!-- 	{#each [...long, ...short] as el} -->
-<!-- 		<option value={el.action} /> -->
-<!-- 	{/each} -->
-<!-- </datalist> -->
-
-<datalist id="long-breaks">
-	{#each long as el}
-		<option value={el.action} />
-	{/each}
-</datalist>
-
-<datalist id="short-breaks">
-	{#each short as el}
-		<option value={el.action} />
+<datalist id="my-breaks">
+	{#each [...res] as el}
+		<option value={el} />
 	{/each}
 </datalist>

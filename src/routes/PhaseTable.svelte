@@ -5,7 +5,7 @@
 	/** @type {Phase} */
 	export let phase;
 	export let index = 0;
-	/** @type {import('$typings/types').Round[]}*/
+	/** @type {import('$lib/types').IRound[]}*/
 	export let list = [];
 </script>
 
@@ -59,7 +59,7 @@
 		text-align: center;
 		/* background-color: darkgreen; */
 		flex: 1 1 3ch;
-		color: var(--__fg);
+		color: var(--__fg, var(--fg1));
 	}
 
 	.tableau span.done {

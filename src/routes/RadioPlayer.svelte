@@ -1,8 +1,8 @@
 <script>
 	import MyIcon from '$lib/MyIcon.svelte';
-	import { currStation, stations } from '$store/radio';
 	import { Btn, Field } from '@kazkadien/svelte';
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
+	import { ldb } from '$lib/db';
 
 	onMount(() => {
 		// console.log('the component has mounted');
@@ -11,9 +11,7 @@
 		const _vol = localStorage.getItem(LS_VOLUME);
 		if (_vol) volume = JSON.parse(_vol);
 	});
-	onDestroy(() => {
-		unsub();
-	});
+
 	function loadAudio() {
 		try {
 			audio && audio.load();
@@ -59,18 +57,33 @@
 		localStorage.setItem(LS_VOLUME, JSON.stringify(volume));
 	}
 
-	/** @param {EventTarget} e */
-	function onSelect(e) {
-		// @ts-ignore
-		const id = e.value;
-		// console.log({ id });
-		currStation.set($stations.find((el) => el.id == id));
-	}
+	/** @type {import('$lib/types').IRadioStation} */
+	let activeStation;
 
-	const unsub = currStation.subscribe(() => {
-		// console.log(e);
+	/** @type {import('$lib/types').IRadioStation[]} */
+	let myStations = [];
+
+	ldb.stations.list().then((v) => {
+		myStations = v;
+		console.log(myStations);
+		activeStation = myStations[0];
+
+		const activeId = localStorage.getItem('STATION_ID');
+		if (activeId) {
+			const one = myStations.find((e) => e.id == Number(activeId));
+			if (one) activeStation = one;
+		}
 		resetRadio();
 	});
+
+	/** @param {string} id */
+	function onSelect(id) {
+		console.log({ id });
+		localStorage.setItem('STATION_ID', id);
+		// @ts-ignore
+		activeStation = myStations.find((e) => e.id == Number(id));
+		resetRadio();
+	}
 
 	function onSwitchMuted() {
 		volume = 0;
@@ -78,16 +91,17 @@
 	}
 </script>
 
-<audio
-	aria-label="audio"
-	crossorigin="anonymous"
-	bind:this={audio}
-	bind:paused
-	on:canplay={oncanplay}
->
-	<source src={$currStation.src} />
-</audio>
-
+{#if activeStation}
+	<audio
+		aria-label="audio"
+		crossorigin="anonymous"
+		bind:this={audio}
+		bind:paused
+		on:canplay={oncanplay}
+	>
+		<source src={activeStation.src} />
+	</audio>
+{/if}
 <form class="form v2 alpha">
 	<div class="top">
 		<Btn
@@ -104,9 +118,9 @@
 		</Btn>
 
 		<Field label="Radio Station">
-			<select on:input={(e) => onSelect(e.target)}>
-				{#each $stations as val}
-					<option value={val.id} selected={val.id === $currStation.id}>
+			<select on:input={(e) => onSelect(e.currentTarget.value)}>
+				{#each myStations as val}
+					<option value={val.id} selected={val.id === activeStation.id}>
 						{val.name}
 					</option>
 				{/each}
@@ -127,7 +141,6 @@
 			<MyIcon name="volume_up" />
 		</Btn>
 
-		<!-- <Field label="Volume"> -->
 		<input
 			type="range"
 			min="0"
@@ -136,7 +149,6 @@
 			bind:value={volume}
 			on:input={onVol}
 		/>
-		<!-- </Field> -->
 		<span>{volume}%</span>
 	</div>
 </form>

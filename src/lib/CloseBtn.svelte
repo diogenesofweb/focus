@@ -13,10 +13,10 @@
 		position: absolute;
 		right: 0ch;
 		top: -3.5rem;
-		background-color: hsla(0, 0%, 50%, 20%);
+		/* background-color: hsla(0, 0%, 50%, 20%); */
 		background-color: var(--bg);
-		border: var(--border);
-		border-radius: var(--br-s);
+		/* border: var(--border); */
+		border-radius: var(--btn-br);
 	}
 
 	/* @media only screen and (min-width: 600px) { */

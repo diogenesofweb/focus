@@ -3,14 +3,14 @@
 	import { Btn, Dropdown, Field } from '@kazkadien/svelte';
 	/** @type {Dropdown} */
 	let dropdownComp;
-	/** @type {import('$typings/types').FocusItem} */
+	/** @type {import('$lib/types').IFocusItem} */
 	export let focus;
 	// console.log(focus);
 
 	/** @type {import('@kazkadien/svelte/types').Accent[]} */
 	const accents = ['alpha', 'gamma', 'danger'];
 	/** @type {import('$typings/types').IMyIcon[]}  */
-	const icons = ['flag', 'edit', 'code', 'workspaces'];
+	const icons = ['flag', 'edit', 'code', 'workspaces', 'info'];
 	/**
 	 * @param {import('$typings/types').IMyIcon} name_
 	 * @param {import('@kazkadien/svelte/types').Accent} accent_
@@ -21,6 +21,8 @@
 		focus.icon.name = name_;
 	}
 </script>
+
+<div title="Focus" class="ct">F</div>
 
 <Dropdown
 	bind:this={dropdownComp}
@@ -76,5 +78,8 @@
 	.row {
 		display: flex;
 		/* gap: 1ch; */
+	}
+	.ct {
+		align-self: center;
 	}
 </style>

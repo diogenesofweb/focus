@@ -7,6 +7,18 @@ html {
 	--scrollbar-width: 1ch;
 	--border: 1px solid var(--bga1);
 }
+/* teko-700 - latin */
+@font-face {
+	font-display: swap;
+	font-family: 'Teko';
+	font-style: normal;
+	font-weight: 700;
+	src: url('/fonts/teko-v15-latin-700.woff2') format('woff2'),
+		url('/fonts/teko-v15-latin-700.woff') format('woff');
+}
+.font-x {
+	font-family: 'Teko', sans-serif;
+}
 
 /* :where(h1, h2, h3, h4) { */
 /* 	color: var(--text-dim); */
@@ -17,6 +29,10 @@ html {
 	/* border-width: 3px; */
 }
 
+.container-1 {
+	max-width: 1200px;
+	margin-inline: auto;
+}
 .container {
 	max-width: 100ch;
 	margin-inline: auto;
@@ -29,16 +45,21 @@ html {
 	margin-top: 3.5rem;
 }
 
-@media (hover: hover) {
-	#modal {
-		backdrop-filter: blur(0.25rem);
-	}
+.card {
+	background-color: var(--bg);
+	padding: 3rem var(--rsx) 6rem;
+	border-radius: var(--btn-br);
+	border: 1px solid var(--__bga);
+	min-width: 300px;
+	line-height: 1.4;
 }
 
-/* html.dark { */
-/* 	--hue-sat-bg: 195, 3%; */
-/* 	--bg: hsl(var(--hue-sat-bg), 12%); */
-/* } */
+@media (hover: hover) {
+	#modal {
+		background: hsl(0, 0%, 0%, 0.3);
+		backdrop-filter: blur(0.2rem);
+	}
+}
 
 body {
 	--bg-1: var(--bg1);
@@ -50,4 +71,7 @@ body {
 
 a.btn {
 	text-underline-offset: 3px;
+}
+label {
+	min-width: 0;
 }
