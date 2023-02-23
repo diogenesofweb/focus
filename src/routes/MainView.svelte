@@ -36,24 +36,24 @@
 			if (phase == 'focus') {
 				const d = rounds[index].focus.duration;
 				updateFocusStats(d, phaseLabel);
-			}
-			if (phase == 'break') {
+			} else {
 				const d = rounds[index].break.duration;
 				updateBreakStats(d, phaseLabel);
 			}
 			finish();
+			// console.log('finish');
 		}
 
 		if (e.data.mes == msg.remindTimerEnded) {
 			manageRemindMe();
 			manageOvetime();
-			// console.log({ phase });
+			// console.log('remind');
 		}
+		// console.log({ title, overtime });
 	};
 
 	function manageRemindMe() {
 		// console.log('reminder');
-		// if (!$remindFocusEnded || phase === 'focus') {
 		if (!$opts.reminder) {
 			return;
 		}
@@ -67,22 +67,21 @@
 		}
 	}
 
-	let overtime = 0;
+	/** @type {number | null} */
+	let overtime = null;
 	function manageOvetime() {
 		if (!$opts.overtime) {
 			return;
 		}
+		overtime += _5min;
+		// console.log({ overtime });
 
 		if (phase == 'break') {
 			updateFocusStats(_5min, '');
-			overtime += _5min;
-			// console.log({ overtime });
 		}
 
 		if (phase == 'focus') {
 			updateBreakStats(_5min, '');
-			overtime += _5min;
-			// console.log({ overtime });
 		}
 	}
 
@@ -207,6 +206,7 @@
 		await nextPhase();
 		clearClock();
 
+		overtime = 0;
 		if (
 			phase === 'break' &&
 			$opts.autoShowActivites &&
@@ -217,6 +217,7 @@
 
 		if (phase === 'focus' && $opts.autoStartFocus) {
 			handleStart();
+			overtime = null;
 		}
 	}
 
@@ -236,7 +237,6 @@
 	}
 
 	function handleStart(isClick = false) {
-		overtime = 0;
 		// console.log('on start');
 		if (phase === 'focus') {
 			startTimer();
@@ -262,14 +262,14 @@
 		index = 0;
 		phase = 'focus';
 		phaseLabel = rounds[0].focus.task;
-		overtime = 0;
+		overtime = null;
 		activitiesMap.clear();
 
 		clearClock();
 	}
 
 	async function handleNext() {
-		overtime = 0;
+		overtime = null;
 		upStats();
 		// console.log('on next');
 		if (isPaused) isPaused = false;
@@ -328,13 +328,17 @@
 		// console.log(el);
 		setTimeout(() => el?.focus(), 10);
 	}
+
+	$: title =
+		isRunnig || isPaused
+			? `${MM}:${SS} | ${phase}`
+			: overtime !== null
+			? `+${overtime}:00 | overtime`
+			: `${phase}`;
 </script>
 
 <svelte:head>
-	<title>
-		{MM}:{SS}
-		{phase == 'focus' ? 'Focus' : 'Break'}
-	</title>
+	<title>{title}</title>
 </svelte:head>
 
 <audio id="myAudio" bind:this={audio}>
@@ -381,7 +385,7 @@
 		<Clock {MM} {SS} />
 	</div>
 
-	{#if $opts.overtime}
+	{#if $opts.overtime && overtime !== null}
 		<Overtime {overtime} {phase} />
 	{/if}
 
