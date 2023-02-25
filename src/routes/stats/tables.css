@@ -1,0 +1,24 @@
+table {
+	background: var(--bg2);
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+:where(table, th, td) {
+	border: var(--g) solid var(--bg2);
+}
+:where(th, td) {
+	background: var(--bg);
+	padding-inline: 1ch;
+	padding-block: var(--g);
+	color: var(--__fg);
+}
+:where(th, td):not(:first-child) {
+	white-space: nowrap;
+}
+:where(th, td):first-child {
+	width: 99%;
+}
+
+thead {
+	color: var(--fga1);
+}

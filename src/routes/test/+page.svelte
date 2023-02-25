@@ -3,7 +3,7 @@
 
 	// your script goes here
 
-	const d = new Date('2023-01-01');
+	const d = new Date('2023-01-25');
 	const dd = d.getDay();
 	const str = d.toLocaleDateString('fr-CA');
 	// const str = d.toLocaleDateString('fr-CA', { month: 'numeric' });
@@ -20,7 +20,7 @@
 <p>{new Intl.RelativeTimeFormat().format(160, 'minutes')}</p>
 <button
 	on:click={() => {
-		const dd = '2023-01-02';
+		const dd = '2023-01-12';
 		const locales = 'fr-CA';
 		const today = new Date(dd);
 

@@ -77,12 +77,21 @@
 
 	<section>
 		<div class="links alpha">
-			<div class="edit">Edit :</div>
+			<div class="edit">Edit</div>
 			{#each links as { href, name }}
 				<a {href} class="btn text round" on:click={() => dispatch('close')}>
 					{name}
 				</a>
 			{/each}
+
+			<div class="edit" style="margin-top: 2rem ;">Info</div>
+			<a
+				href="/stats"
+				class="btn text round"
+				on:click={() => dispatch('close')}
+			>
+				Stats
+			</a>
 		</div>
 
 		<form class="form v2 alpha">
@@ -168,6 +177,7 @@
 		opacity: 0.6;
 		font-weight: bold;
 		font-size: calc(1rem - 2px);
+		margin-bottom: 1ch;
 	}
 	:where(form, .boxes) {
 		display: grid;

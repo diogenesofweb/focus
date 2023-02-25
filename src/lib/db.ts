@@ -119,7 +119,6 @@ const DB_NAME = 'R3';
 const DB_VERSION = 1;
 
 let db: IDBPDatabase<MyDB>;
-// const db = await initDB();
 
 const records = {
 	getOne: (name: string) => db.get('records', name),
@@ -182,4 +181,3 @@ async function initDB() {
 }
 
 export const ldb = await initDB();
-
