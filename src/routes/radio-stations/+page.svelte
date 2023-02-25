@@ -12,7 +12,7 @@
 	function reset() {
 		ldb.stations.list().then((v) => {
 			myStations = v;
-			console.log(myStations);
+			// console.log(myStations);
 		});
 	}
 
@@ -22,7 +22,7 @@
 
 	/** @param {number} id */
 	function onDelete(id) {
-		console.log(id);
+		// console.log(id);
 		ldb.stations.deleteOneById(id).then(() => {
 			reset();
 		});

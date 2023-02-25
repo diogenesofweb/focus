@@ -72,6 +72,9 @@ body {
 a.btn {
 	text-underline-offset: 3px;
 }
+a.btn.text:hover {
+	outline: none;
+}
 label {
 	min-width: 0;
 }

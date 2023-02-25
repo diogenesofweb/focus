@@ -3,10 +3,14 @@
 	import AppHeader from './AppHeader.svelte';
 	import AppAdditionalIcons from './AppAdditionalIcons.svelte';
 	import StopWar from './AppStopWar.svelte';
+	import { opts } from '$store/settings';
+	import RadioPlayer from './RadioPlayer.svelte';
+	import SwitchSequence from './SwitchSequence.svelte';
 	import { AppWrapper } from '@kazkadien/svelte';
 	import '@kazkadien/svelte/css/all.css';
 	import './../css/app.css';
 	import './../css/list.css';
+	import { page } from '$app/stores';
 </script>
 
 <svelte:head>
@@ -23,6 +27,22 @@
 			<AppHeader />
 
 			<main class="">
+				{#if $page.route.id === '/' || $opts.radio}
+					<div class="wrap">
+						<div class="container-1 fsb">
+							{#if $opts.radio}
+								<RadioPlayer />
+							{:else}
+								<span />
+							{/if}
+
+							{#if $page.route.id === '/'}
+								<SwitchSequence />
+							{/if}
+						</div>
+					</div>
+				{/if}
+
 				<slot />
 			</main>
 		</div>
@@ -57,6 +77,14 @@
 		/* 	); */
 	}
 
+	.wrap {
+		padding: 0.75rem var(--rsx);
+		border-bottom: var(--border);
+		background-color: var(--bg);
+	}
+	.fsb {
+		gap: 2em;
+	}
 	main {
 		border-block: var(--border);
 		/* background-color: var(--bg2); */
