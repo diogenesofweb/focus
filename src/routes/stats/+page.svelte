@@ -35,13 +35,13 @@
 
 				stats.push(one);
 
-				records.forEach((v) => {
-					Object.entries(v.break.activities).forEach(([name, num]) => {
-						activities.set(name, (activities.get(name) || 0) + num);
+				records.forEach((r) => {
+					Object.entries(r.break.activities).forEach(([name, count]) => {
+						activities.set(name, (activities.get(name) || 0) + count);
 					});
 				});
 
-				activities.forEach((v, k) => one.activities.push([k, v]));
+				one.activities = [...activities.entries()];
 				// console.log(one);
 			}
 

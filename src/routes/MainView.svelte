@@ -305,20 +305,25 @@
 	function onBreakSelect(activity) {
 		// console.log(activity);
 		onCloseModal();
+		startTimer();
 
 		phaseLabel = activity;
+		if (activity === '_') {
+			// skip this one
+			return;
+		}
+
 		const ln = rounds[index].break.listName;
 		const myList = activitiesMap.get(ln);
+
 		if (!myList || myList.length === 1) {
 			ldb.activities.getOneByName(ln).then((v) => {
 				if (v) activitiesMap.set(ln, [...v.values]);
 			});
 		} else {
-			const rm = myList.filter((e) => e !== activity);
-			activitiesMap.set(ln, rm);
+			const filtered = myList.filter((e) => e !== activity);
+			activitiesMap.set(ln, filtered);
 		}
-
-		startTimer();
 	}
 
 	/** @param {HTMLDivElement} node */
@@ -351,6 +356,15 @@
 	<Modal on:close={onCloseModal}>
 		<div class="card" use:focusFirstButton>
 			<span class="tac">~</span>
+
+			<Btn
+				accent="danger"
+				variant="outlined"
+				round
+				text="skip it"
+				on:click={() => onBreakSelect('_')}
+			/>
+
 			{#each myActivites as el}
 				<Btn
 					accent="beta"

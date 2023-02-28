@@ -1,2 +1,6 @@
 /flute.wav
   Cache-Control: max-age=31536000
+
+
+/_fonts/*
+  Cache-Control: max-age=31536000

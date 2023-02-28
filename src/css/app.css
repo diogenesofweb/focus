@@ -13,8 +13,8 @@ html {
 	font-family: 'Teko';
 	font-style: normal;
 	font-weight: 700;
-	src: url('/fonts/teko-v15-latin-700.woff2') format('woff2'),
-		url('/fonts/teko-v15-latin-700.woff') format('woff');
+	src: url('/_fonts/teko-v15-latin-700.woff2') format('woff2'),
+		url('/_fonts/teko-v15-latin-700.woff') format('woff');
 }
 .font-x {
 	font-family: 'Teko', sans-serif;

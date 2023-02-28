@@ -10,7 +10,6 @@
 			<p>Productivity timer with focus on breaks</p>
 			{#if dev}
 				<a href="/test">test</a>
-				<a href="/stats">stats</a>
 			{/if}
 		</div>
 
