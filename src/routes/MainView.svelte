@@ -372,7 +372,9 @@
 					round
 					text={el}
 					on:click={() => onBreakSelect(el)}
-				/>
+				>
+					<span>{el}</span>
+				</Btn>
 			{/each}
 
 			<span class="tac">~</span>

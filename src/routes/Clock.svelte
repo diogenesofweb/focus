@@ -15,8 +15,10 @@
 	.timer {
 		display: grid;
 		grid-template-columns: 1fr auto 1fr;
-		gap: 3px;
+		--g: 3px;
+		gap: var(--g);
 
+		letter-spacing: var(--g);
 		font-variant-numeric: tabular-nums;
 		/* font-size: clamp(4.5rem, 22vw, 7rem); */
 		font-size: clamp(6rem, 33vw, 10rem);
@@ -32,7 +34,7 @@
 	}
 
 	.x {
-		transform: translateY(-8px);
+		transform: translateY(-9px);
 	}
 
 	span {
