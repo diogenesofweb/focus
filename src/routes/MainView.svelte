@@ -73,7 +73,7 @@
 		if (!$opts.overtime) {
 			return;
 		}
-		overtime += _5min;
+		overtime = (overtime || 0) + _5min;
 		// console.log({ overtime });
 
 		if (phase == 'break') {
@@ -237,6 +237,7 @@
 	}
 
 	function handleStart(isClick = false) {
+		overtime = 0;
 		// console.log('on start');
 		if (phase === 'focus') {
 			startTimer();
