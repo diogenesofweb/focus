@@ -237,7 +237,7 @@
 	}
 
 	function handleStart(isClick = false) {
-		overtime = 0;
+		overtime = null;
 		// console.log('on start');
 		if (phase === 'focus') {
 			startTimer();
@@ -307,6 +307,8 @@
 		// console.log(activity);
 		onCloseModal();
 		startTimer();
+
+		overtime = null;
 
 		phaseLabel = activity;
 		if (activity === '_') {
