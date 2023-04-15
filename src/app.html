@@ -12,20 +12,22 @@
 	</body>
 
 	<script>
-		const THEME = 'my-theme';
-		const DARK = 'dark';
+		(function () {
+			const THEME = 'my-theme';
+			const DARK = 'dark';
 
-		const myTheme = localStorage.getItem(THEME);
+			const myTheme = localStorage.getItem(THEME);
 
-		if (myTheme) {
-			if (myTheme === DARK) document.documentElement.classList.add(DARK);
-		} else {
-			if (
-				window.matchMedia &&
-				window.matchMedia('(prefers-color-scheme: dark)').matches
-			) {
-				document.documentElement.classList.add(DARK);
+			if (myTheme) {
+				if (myTheme === DARK) document.documentElement.classList.add(DARK);
+			} else {
+				if (
+					window.matchMedia &&
+					window.matchMedia('(prefers-color-scheme: dark)').matches
+				) {
+					document.documentElement.classList.add(DARK);
+				}
 			}
-		}
+		})();
 	</script>
 </html>

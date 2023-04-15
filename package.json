@@ -12,20 +12,19 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.8.4",
-		"prettier": "^2.8.4",
-		"prettier-plugin-svelte": "^2.9.0",
-		"svelte": "^3.55.1",
-		"svelte-check": "^3.0.4",
-		"typescript": "^4.9.5",
-		"vite": "^4.1.4"
+		"@sveltejs/kit": "^1.15.5",
+		"prettier": "^2.8.7",
+		"prettier-plugin-svelte": "^2.10.0",
+		"svelte": "^3.58.0",
+		"svelte-check": "^3.2.0",
+		"tslib": "^2.5.0",
+		"typescript": "^5.0.4",
+		"vite": "^4.2.1"
 	},
 	"type": "module",
 	"dependencies": {
-		"@kazkadien/svelte": "^0.22.0",
-		"@sveltejs/adapter-static": "^2.0.1",
-		"autoprefixer": "^10.4.13",
-		"idb": "^7.1.1",
-		"postcss": "^8.4.21"
+		"@kazkadien/svelte": "^0.23.1",
+		"@sveltejs/adapter-static": "^2.0.2",
+		"idb": "^7.1.1"
 	}
 }

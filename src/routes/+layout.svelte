@@ -7,7 +7,7 @@
 	import RadioPlayer from './RadioPlayer.svelte';
 	import SwitchSequence from './SwitchSequence.svelte';
 	import { AppWrapper } from '@kazkadien/svelte';
-	import '@kazkadien/svelte/css/all.css';
+	import '@kazkadien/svelte/styles.css';
 	import './../css/app.css';
 	import './../css/list.css';
 	import { page } from '$app/stores';
