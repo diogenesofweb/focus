@@ -118,37 +118,6 @@ async function seed(db: IDBPDatabase<MyDB>) {
 const DB_NAME = 'R3';
 const DB_VERSION = 1;
 
-let db: IDBPDatabase<MyDB>;
-
-const records = {
-	getOne: (name: string) => db.get('records', name),
-	list: () => db.getAll('records'),
-	listByMonth: (mm: string) =>
-		db.getAll('records', IDBKeyRange.bound(`2023-${mm}-01`, `2023-${mm}-31`)),
-	upsertOne: (one: IStat) => db.put('records', one)
-};
-
-const activities = {
-	list: () => db.getAll('activity-list'),
-	getNames: () => db.getAllKeys('activity-list'),
-	getOneByName: (name: string) => db.get('activity-list', name),
-	upsertOne: (one: IActivityList) => db.put('activity-list', one),
-	deleteOne: (name: string | IDBKeyRange) => db.delete('activity-list', name)
-};
-const sequences = {
-	listNames: () => db.getAllKeys('sequences'),
-	getOneByName: (name: string) => db.get('sequences', name),
-	deleteOneByName: (name: string) => db.delete('sequences', name),
-	upsertOne: (one: ISequence) => db.put('sequences', one)
-};
-
-const stations = {
-	list: () => db.getAll('stations'),
-	getOneById: (id: number) => db.get('stations', id),
-	deleteOneById: (id: number) => db.delete('stations', id),
-	upsertOne: (one: IRadioStation) => db.put('stations', one)
-};
-
 async function initDB() {
 	let runSeed = false;
 
@@ -169,15 +138,49 @@ async function initDB() {
 
 	if (runSeed) await seed(db1);
 
-	db = db1;
-	// return db;
-
-	return {
-		records,
-		sequences,
-		activities,
-		stations
-	};
+	return db1;
 }
 
-export const ldb = await initDB();
+let dbx = initDB();
+
+const records = {
+	getOne: async (name: string) => (await dbx).get('records', name),
+	list: async () => (await dbx).getAll('records'),
+	listByMonth: async (mm: string) =>
+		(await dbx).getAll(
+			'records',
+			IDBKeyRange.bound(`2023-${mm}-01`, `2023-${mm}-31`)
+		),
+	upsertOne: async (one: IStat) => (await dbx).put('records', one)
+};
+
+const activities = {
+	list: async () => (await dbx).getAll('activity-list'),
+	getNames: async () => (await dbx).getAllKeys('activity-list'),
+	getOneByName: async (name: string) => (await dbx).get('activity-list', name),
+	upsertOne: async (one: IActivityList) =>
+		(await dbx).put('activity-list', one),
+	deleteOne: async (name: string | IDBKeyRange) =>
+		(await dbx).delete('activity-list', name)
+};
+const sequences = {
+	listNames: async () => (await dbx).getAllKeys('sequences'),
+	getOneByName: async (name: string) => (await dbx).get('sequences', name),
+	deleteOneByName: async (name: string) =>
+		(await dbx).delete('sequences', name),
+	upsertOne: async (one: ISequence) => (await dbx).put('sequences', one)
+};
+
+const stations = {
+	list: async () => (await dbx).getAll('stations'),
+	getOneById: async (id: number) => (await dbx).get('stations', id),
+	deleteOneById: async (id: number) => (await dbx).delete('stations', id),
+	upsertOne: async (one: IRadioStation) => (await dbx).put('stations', one)
+};
+
+export const ldb = {
+	records,
+	sequences,
+	activities,
+	stations
+};

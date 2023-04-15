@@ -4,10 +4,12 @@ import { writable } from 'svelte/store';
 import { opts } from './settings.js';
 import { setupStore } from './setup.js';
 
-const _sequences = await ldb.sequences.listNames();
+/** @type {string[] } */
+const _sequences = [];
 export const sequences = writable(_sequences);
+ldb.sequences.listNames().then((v) => sequences.set(v));
 
-export const mySequenceName = _sequences[0] || '6x30';
+export const mySequenceName = '6x30';
 export const currSequenceName = setupStore('__Active_sequence', mySequenceName);
 
 // LOCALSTORAGE

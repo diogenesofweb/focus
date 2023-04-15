@@ -3,9 +3,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [sveltekit()],
-	build: {
-		target: 'esnext'
-	},
+	// build: {
+	// 	target: 'esnext'
+	// },
 
 	// TODO: Remove once vite 4.3 is out
 	worker: {
