@@ -4,6 +4,12 @@
 
 Due to the use of service workers, the time counter should be pretty accurate, regardless of whether the browser tab is focused or not.
 
-Desktop notifications, alarms on finished rounds and listening to radio, all is deasabled by default but can be easily switched on.
+### Features:
+
+- Customisable focus and break sets
+- Desktop notifications
+- Sound alarms
+- Radio player
+- Statistics
 
 ![screenshot](./screenshot.png)
