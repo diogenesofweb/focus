@@ -20,11 +20,29 @@ if (one) {
 
 export const opts = writable(_opts);
 
-let f = false;
-opts.subscribe((v) => {
+/**
+ * @type {{ release: () => void; }}
+ */
+let wakeLock;
+
+let first = false;
+
+opts.subscribe(async (v) => {
+	if (v.wakeLock) {
+		try {
+			// @ts-ignore
+			wakeLock = await navigator.wakeLock?.request('screen');
+			console.warn('wakeLock set');
+		} catch (err) {
+			console.warn('Wake Lock error: ', err);
+		}
+	} else if (wakeLock) {
+		wakeLock.release();
+	}
+
 	// console.log(v);
-	if (!f) {
-		f = true;
+	if (!first) {
+		first = true;
 		return;
 	}
 
