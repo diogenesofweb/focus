@@ -126,6 +126,10 @@
 					<BoxFieldEntry label="Auto Start Focus Time">
 						<input type="checkbox" bind:checked={$opts.autoStartFocus} />
 					</BoxFieldEntry>
+
+					<BoxFieldEntry label="Screen Wake Lock">
+						<input type="checkbox" bind:checked={$opts.wakeLock} />
+					</BoxFieldEntry>
 				</BoxField>
 
 				<BoxField label="Show" rows={true}>

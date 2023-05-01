@@ -1,8 +1,9 @@
 <script>
 	import { currSequenceName } from '$store/store';
 	import { ldb, s6x30 } from '$lib/db';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import MainView from './MainView.svelte';
+	import { opts } from '$store/settings';
 
 	/** @type {import('$lib/types').IRound[]} */
 	let rounds;
@@ -12,6 +13,28 @@
 			console.warn('no sequence');
 		}
 		rounds = one?.rounds || s6x30.rounds;
+
+		if ($opts.wakeLock) {
+			// console.log('Wake Lock');
+			lock();
+		}
+	});
+
+	/** @type {{ release: () => any; }} */
+	let wakeLock;
+
+	function lock() {
+		try {
+			// @ts-ignore
+			wakeLock = navigator.wakeLock?.request('screen');
+			// console.warn('wakeLock')
+		} catch (err) {
+			console.warn('Wake Lock error: ', err);
+		}
+	}
+
+	onDestroy(() => {
+		wakeLock?.release();
 	});
 </script>
 

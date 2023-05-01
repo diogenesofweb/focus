@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 
 let _opts = {
+	wakeLock: false,
 	notifications: false,
 	autoShowActivites: false,
 	autoStartFocus: false,
