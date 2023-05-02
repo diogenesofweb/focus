@@ -21,13 +21,18 @@ if (one) {
 export const opts = writable(_opts);
 
 /**
- * @type {{ release: () => void; }}
+ * @type {{ release: () => any; }}
  */
 let wakeLock;
 
 let first = false;
 
 opts.subscribe(async (v) => {
+	if (wakeLock) {
+		// console.log('release');
+		await wakeLock.release();
+	}
+
 	if (v.wakeLock) {
 		try {
 			// @ts-ignore
@@ -36,8 +41,6 @@ opts.subscribe(async (v) => {
 		} catch (err) {
 			console.warn('Wake Lock error: ', err);
 		}
-	} else if (wakeLock) {
-		wakeLock.release();
 	}
 
 	// console.log(v);
