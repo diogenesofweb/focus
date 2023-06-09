@@ -368,16 +368,10 @@
 				on:click={() => onBreakSelect('_')}
 			/>
 
-			{#each myActivites as el}
-				<Btn
-					accent="beta"
-					variant="outlined"
-					round
-					text={el}
-					on:click={() => onBreakSelect(el)}
-				>
+			{#each myActivites.sort((a, b) => a.localeCompare(b)) as el}
+				<button class="btn round text beta" on:click={() => onBreakSelect(el)}>
 					<span>{el}</span>
-				</Btn>
+				</button>
 			{/each}
 
 			<span class="tac">~</span>
@@ -447,13 +441,19 @@
 <style>
 	/* MODAL - SELECT BREAK */
 	.card {
+		min-width: min(100%, 60ch);
 		padding: 1rem var(--rsx);
 		display: grid;
-		gap: 1rem;
+		gap: 6px;
 	}
 	.card > span {
 		color: var(--fg-beta);
 		font-size: 1.5rem;
+	}
+	.btn {
+		justify-content: start;
+		/* background: var(--__bga); */
+		background: var(--bga);
 	}
 	/* MODAL */
 
