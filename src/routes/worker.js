@@ -1,8 +1,10 @@
 // no import $aliases
 import { msg } from './const.js';
 
-// todo:
-const INTERVAL = 1000;
+let INTERVAL = 1000;
+if (import.meta.env.DEV) {
+	INTERVAL = 100;
+}
 
 let sendTickEverySecond = true;
 

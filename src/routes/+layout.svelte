@@ -11,6 +11,7 @@
 	import './../css/app.css';
 	import './../css/list.css';
 	import { page } from '$app/stores';
+	import TimerPanel from './TimerPanel.svelte';
 </script>
 
 <svelte:head>
@@ -28,7 +29,7 @@
 
 			<main class="">
 				{#if $page.route.id === '/' || $opts.radio}
-					<div class="wrap">
+					<div class="panel">
 						<div class="container-1 fsb">
 							{#if $opts.radio}
 								<RadioPlayer />
@@ -42,6 +43,8 @@
 						</div>
 					</div>
 				{/if}
+
+				<TimerPanel />
 
 				<slot />
 			</main>
@@ -77,11 +80,6 @@
 		/* 	); */
 	}
 
-	.wrap {
-		padding: 0.75rem var(--rsx);
-		border-bottom: var(--border);
-		background-color: var(--bg);
-	}
 	.fsb {
 		gap: 2em;
 	}

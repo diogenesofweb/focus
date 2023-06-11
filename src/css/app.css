@@ -40,6 +40,12 @@ html {
 	padding-inline: var(--rsx);
 }
 
+.panel {
+	padding: 0.75rem var(--rsx);
+	border-bottom: var(--border);
+	background-color: var(--bg);
+}
+
 .modal-box {
 	position: relative;
 	align-self: flex-start;

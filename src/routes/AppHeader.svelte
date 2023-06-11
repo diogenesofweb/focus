@@ -3,13 +3,21 @@
 	import Name from '$lib/Name.svelte';
 	import Settings from './AppSettings.svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
+	import SimpleTimer from './SimpleTimer.svelte';
 
-	let modalIsOpen = false;
+	let setting_open = false;
+	let timer_open = false;
 </script>
 
-{#if modalIsOpen}
-	<Modal on:close={() => (modalIsOpen = false)}>
-		<Settings on:close={() => (modalIsOpen = false)} />
+{#if setting_open}
+	<Modal on:close={() => (setting_open = false)}>
+		<Settings on:close={() => (setting_open = false)} />
+	</Modal>
+{/if}
+
+{#if timer_open}
+	<Modal on:close={() => (timer_open = false)}>
+		<SimpleTimer on:close={() => (timer_open = false)} />
 	</Modal>
 {/if}
 
@@ -19,13 +27,23 @@
 			<Name />
 		</a>
 
-		<div class="fce ">
+		<div class="fce g1">
+			<Btn
+				title="timer"
+				iconOnly
+				accent="base"
+				variant="filled"
+				on:click={() => (timer_open = true)}
+			>
+				<MyIcon name="timer" />
+			</Btn>
+
 			<Btn
 				title="settings"
 				iconOnly
-				accent="alpha"
-				variant="outlined"
-				on:click={() => (modalIsOpen = true)}
+				accent="base"
+				variant="filled"
+				on:click={() => (setting_open = true)}
 			>
 				<MyIcon name="settings" />
 			</Btn>
