@@ -3,6 +3,7 @@
 		href="https://war.ukraine.ua/support-ukraine/"
 		target="_blank"
 		rel="noopener noreferrer"
+		class="f-mono"
 	>
 		<span>STAND WITH UKRAINE</span>
 
@@ -27,7 +28,6 @@
 	}
 
 	#stop-war a {
-		font-family: 'Courier New', Courier, monospace;
 		/* color: red; */
 		color: salmon;
 		text-decoration: none;
