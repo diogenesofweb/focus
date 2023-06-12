@@ -11,7 +11,7 @@
 	import './../css/app.css';
 	import './../css/list.css';
 	import { page } from '$app/stores';
-	import TimerPanel from './TimerPanel.svelte';
+	import TimersPanel from './TimersPanel.svelte';
 </script>
 
 <svelte:head>
@@ -44,7 +44,7 @@
 					</div>
 				{/if}
 
-				<TimerPanel />
+				<TimersPanel />
 
 				<slot />
 			</main>

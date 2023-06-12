@@ -1,5 +1,7 @@
 <script context="module">
-	export const timerz = writable({ running: false, min: 0, sec: 0 });
+	/** @type {Array<{min: number, sec: number, id: number}> } */
+	const arr = [];
+	export const timers = writable(arr);
 </script>
 
 <script>
@@ -32,7 +34,11 @@
 		}
 
 		// const data = { min, sec: ss };
-		timerz.set({ running: true, min, sec: ss });
+		timers.update((v) => {
+			v.push({ min, sec: ss, id: performance.now() });
+			return v;
+		});
+
 		dispatch('close');
 	}
 </script>
@@ -43,22 +49,29 @@
 	<form class="form v2 alpha" on:submit|preventDefault={on_submit}>
 		<section>
 			<Field label="Hours">
-				<input type="number" bind:value={hh} min="0" max="10" />
+				<input type="number" bind:value={hh} min="0" max="10" required />
 			</Field>
 
 			<Field label="Minutes">
-				<input type="number" bind:value={mm} min="0" max="60" />
+				<input type="number" bind:value={mm} min="0" max="60" required />
 			</Field>
 
 			<Field label="Seconds">
-				<input type="number" bind:value={ss} min="0" max="60" step="5" />
+				<input
+					type="number"
+					bind:value={ss}
+					min="0"
+					max="60"
+					step="5"
+					required
+				/>
 			</Field>
 		</section>
 
 		<div class="btns base">
-			<Btn text="+5min" on:click={() => on_add(5)}>+5 min</Btn>
-			<Btn text="+5min" on:click={() => on_add(10)}>+10 min</Btn>
-			<Btn text="+5min" on:click={() => on_add(30)}>+30 min</Btn>
+			<Btn on:click={() => on_add(5)}>+5 min</Btn>
+			<Btn on:click={() => on_add(10)}>+10 min</Btn>
+			<Btn on:click={() => on_add(30)}>+30 min</Btn>
 		</div>
 
 		<div class="bbb">
