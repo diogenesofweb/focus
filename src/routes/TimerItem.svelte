@@ -50,19 +50,17 @@
 	});
 </script>
 
-<div class="panel">
-	<section class="container-1 danger">
-		<!-- <div class="fce g1"> -->
-		<!-- <MyIcon name="timer" /> -->
-		<span class="base">[ {m0}:{s0} ]</span>
-		<b>{MM}:{SS}</b>
-		<!-- </div> -->
+<section class="danger">
+	<!-- <div class="fce g1"> -->
+	<!-- <MyIcon name="timer" /> -->
+	<span class="base">[ {m0}:{s0} ]</span>
+	<b>{MM}:{SS}</b>
+	<!-- </div> -->
 
-		<Btn accent="danger" variant="text" iconOnly on:click>
-			<Icon name="close" />
-		</Btn>
-	</section>
-</div>
+	<Btn accent="danger" colored variant="text" iconOnly on:click>
+		<Icon name="close" />
+	</Btn>
+</section>
 
 <style>
 	section {
@@ -72,15 +70,28 @@
 		/* justify-content: center; */
 		gap: 1.5em;
 		line-height: 1;
+
+		background: var(--bg);
+		padding: 0.5em;
+		border-radius: 0.5em;
+		border: 1px solid var(--bga2);
+		/* border: 1px solid var(--fga); */
+		border-color: var(--__bg-1);
+
+		&:hover {
+			background: var(--__bga);
+			border-color: var(--__bg);
+		}
 	}
 
 	section > :global(.btn) {
-		background: var(--__bga1);
+		background: var(--__bga);
 	}
 
 	span {
 		color: var(--fga1);
 		font-size: 1.5rem;
+		margin-right: auto;
 		/* background: gray; */
 	}
 	b {
