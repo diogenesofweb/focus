@@ -93,13 +93,14 @@
 		background: var(--bg);
 		height: 100%;
 
-		border: 1px solid var(--__bg);
+		border: 1px solid var(--clr);
 	}
 	div {
 		display: flex;
 		align-items: center;
 		gap: 1ch;
-		color: var(--__fg-1);
+		/* color: var(--__fg0); */
+		color: var(--__fg0);
 	}
 	b {
 		letter-spacing: 1px;

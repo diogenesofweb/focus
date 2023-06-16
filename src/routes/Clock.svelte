@@ -23,7 +23,7 @@
 		/* font-size: clamp(4.5rem, 22vw, 7rem); */
 		font-size: clamp(6rem, 33vw, 10rem);
 
-		color: var(--__fg-1);
+		color: var(--__fg0);
 
 		margin-block: 1.5rem 0.5rem;
 		/* background-color: black; */
@@ -38,6 +38,6 @@
 	}
 
 	span {
-		text-shadow: 3px 6px 3px var(--__bg-1);
+		text-shadow: 3px 6px 3px var(--__bg1);
 	}
 </style>

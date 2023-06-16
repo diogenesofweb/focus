@@ -108,7 +108,6 @@
 			title="play or pause"
 			iconOnly
 			round
-			colored
 			variant="outlined"
 			accent="alpha"
 			on:click={switchState}
@@ -134,7 +133,6 @@
 			on:click={onSwitchMuted}
 			iconOnly
 			round
-			colored
 			variant="outlined"
 			accent="alpha"
 		>

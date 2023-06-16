@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@kazkadien/svelte':
-    specifier: ^0.23.1
-    version: 0.23.1(svelte@3.59.1)
+    specifier: ^0.25.0
+    version: 0.25.0(svelte@3.59.1)
   '@sveltejs/adapter-static':
     specifier: ^2.0.2
     version: 2.0.2(@sveltejs/kit@1.20.2)
@@ -237,8 +237,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kazkadien/svelte@0.23.1(svelte@3.59.1):
-    resolution: {integrity: sha512-IgKhM2uJVDgXAdOx6OleMWGbiTeBJyEtdMCZF8I0l1D0FxBRi7S8jO7BCqgbntF28BvnrB4g51vw2++VPVgWwQ==}
+  /@kazkadien/svelte@0.25.0(svelte@3.59.1):
+    resolution: {integrity: sha512-saLaTEXH2BrUh5i9DgNEdnOkOKzpGlq4wGWfjJNtpBC/pOwRBzXCdu6CiH7/mn60b0kcRGxopd+e+knPJhSkVg==}
     peerDependencies:
       svelte: ^3.54.0
     dependencies:
@@ -752,8 +752,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup@3.25.0:
-    resolution: {integrity: sha512-FnJkNRst2jEZGw7f+v4hFo6UTzpDKrAKcHZWcEfm5/GJQ5CK7wgb4moNLNAe7npKUev7yQn1AY/YbZRIxOv6Qg==}
+  /rollup@3.25.1:
+    resolution: {integrity: sha512-tywOR+rwIt5m2ZAWSe5AIJcTat8vGlnPFAv15ycCrw33t6iFsXZ6mzHVFh2psSjxQPmI+xgzMZZizUAukBI4aQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -962,7 +962,7 @@ packages:
     dependencies:
       esbuild: 0.17.19
       postcss: 8.4.24
-      rollup: 3.25.0
+      rollup: 3.25.1
     optionalDependencies:
       fsevents: 2.3.2
 

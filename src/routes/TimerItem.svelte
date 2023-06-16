@@ -74,13 +74,12 @@
 		background: var(--bg);
 		padding: 0.5em;
 		border-radius: 0.5em;
-		border: 1px solid var(--bga2);
-		/* border: 1px solid var(--fga); */
-		border-color: var(--__bg-1);
+		border: 1px solid;
+		border-color: var(--fl0);
 
 		&:hover {
-			background: var(--__bga);
-			border-color: var(--__bg);
+			/* background: var(--__mg); */
+			border-color: var(--__fl2);
 		}
 	}
 

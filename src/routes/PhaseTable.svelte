@@ -10,7 +10,7 @@
 </script>
 
 <div class="fce">
-	<div class="tableau ">
+	<div class="tableau">
 		<div class="row alpha">
 			{#each list as e, i}
 				<span
@@ -49,7 +49,7 @@
 		display: grid;
 		gap: 0.33rem;
 		border-bottom: var(--border);
-		border-color: var(--__fga);
+		border-color: var(--clr);
 	}
 	.row {
 		display: flex;
@@ -70,7 +70,8 @@
 		color: var(--__fg, var(--fg1));
 		background: var(--__bga, var(--bga));
 
-		outline: 1px dashed var(--__fg-1, var(--fg1));
+		/* outline: 1px dashed var(--__fg-1, var(--fg1)); */
+		outline: 1px dashed var(--__fg0);
 		outline-offset: 3px;
 		border-radius: 3px;
 	}

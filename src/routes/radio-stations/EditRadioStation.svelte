@@ -43,6 +43,7 @@
 		/* line-height: 1.2; */
 		width: 100%;
 		max-width: 80ch;
+		background: transparent;
 	}
 
 	form .card {

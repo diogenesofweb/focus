@@ -467,7 +467,8 @@
 		--g: clamp(2em, 5vh, 4em);
 		gap: var(--g);
 
-		--clr: var(--__bg);
+		/* --clr: var(--__bg); */
+		--clr: var(--__fl0);
 		--x1: 1em;
 		--x2: calc(var(--x1) / 2);
 	}

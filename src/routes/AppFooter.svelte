@@ -40,7 +40,7 @@
 	}
 	footer {
 		padding: 4rem var(--rsx) 6rem;
-		background-color: var(--bg2);
+		background-color: var(--bg0);
 	}
 	section {
 		display: grid;

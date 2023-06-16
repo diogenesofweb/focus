@@ -162,13 +162,21 @@
 			</Field>
 		</div>
 
-		<div class="chch ">
-			<Btn iconOnly variant="outlined" on:click={onRemoveRound}
-				><Icon name="remove" /></Btn
+		<div class="chch">
+			<Btn
+				iconOnly
+				variant="outlined"
+				colored
+				accent="danger"
+				on:click={onRemoveRound}><Icon name="remove" /></Btn
 			>
 			<span>Sets: {count}</span>
-			<Btn iconOnly variant="outlined" on:click={onAddRound}
-				><Icon name="add" /></Btn
+			<Btn
+				iconOnly
+				variant="outlined"
+				colored
+				accent="gamma"
+				on:click={onAddRound}><Icon name="add" /></Btn
 			>
 		</div>
 
@@ -204,6 +212,7 @@
 	form {
 		width: 100%;
 		max-width: 100ch;
+		background: transparent;
 	}
 
 	form .card {
@@ -217,7 +226,7 @@
 		gap: 2ch;
 		justify-content: center;
 		/* border: var(--border); */
-		background: var(--bg2);
+		background: var(--bg1);
 		border-radius: 3px;
 		padding: 9px 3px;
 	}

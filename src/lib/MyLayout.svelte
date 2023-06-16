@@ -36,7 +36,7 @@
 		margin-top: 3rem;
 	}
 
-	ul > :global(li:not(:last-child)) {
-		border-bottom: 1px dashed var(--bga2);
+	ul > :global(li) {
+		border-bottom: 1px dashed var(--fl);
 	}
 </style>

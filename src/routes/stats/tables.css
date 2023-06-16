@@ -1,13 +1,13 @@
 table {
-	background: var(--bg2);
+	background: var(--bg);
 	border-collapse: collapse;
 	table-layout: fixed;
 }
 :where(table, th, td) {
-	border: var(--g) solid var(--bg2);
+	border: var(--g) solid var(--bg1);
 }
 :where(th, td) {
-	background: var(--bg);
+	background: var(--bg3);
 	padding-inline: 1ch;
 	padding-block: var(--g);
 	color: var(--__fg);
@@ -20,5 +20,5 @@ table {
 }
 
 thead {
-	color: var(--fga1);
+	color: var(--fl);
 }

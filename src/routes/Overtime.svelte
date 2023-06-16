@@ -22,7 +22,7 @@
 		background: var(--bg);
 		color: var(--__fg);
 
-		border: 1px solid var(--__bg);
+		border: 1px solid var(--__fl);
 	}
 
 	.overdue {

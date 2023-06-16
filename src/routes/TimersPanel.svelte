@@ -10,25 +10,27 @@
 	<source src="/flute.wav" type="audio/wav" />
 </audio>
 
-<div class="xx">
-	<div class="container-1">
-		<section class="">
-			{#each $timers as t (t.id)}
-				<TimerItem
-					{audio}
-					min={t.min}
-					sec={t.sec}
-					on:click={() => {
-						// console.log(t.id);
-						timers.update((v) => {
-							return v.filter((el) => el.id !== t.id);
-						});
-					}}
-				/>
-			{/each}
-		</section>
+{#if $timers.length}
+	<div class="wrap">
+		<div class="container-1">
+			<section>
+				{#each $timers as t (t.id)}
+					<TimerItem
+						{audio}
+						min={t.min}
+						sec={t.sec}
+						on:click={() => {
+							// console.log(t.id);
+							timers.update((v) => {
+								return v.filter((el) => el.id !== t.id);
+							});
+						}}
+					/>
+				{/each}
+			</section>
+		</div>
 	</div>
-</div>
+{/if}
 
 <style>
 	section {
@@ -44,7 +46,9 @@
 		/* justify-content: end; */
 	}
 
-	.xx {
+	.wrap {
 		padding-inline: 0.5em;
+		/* background: var(--bg2); */
+		border-bottom: var(--border);
 	}
 </style>

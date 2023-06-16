@@ -7,7 +7,6 @@
 	import RadioPlayer from './RadioPlayer.svelte';
 	import SwitchSequence from './SwitchSequence.svelte';
 	import { AppWrapper } from '@kazkadien/svelte';
-	import '@kazkadien/svelte/styles.css';
 	import './../css/app.css';
 	import './../css/list.css';
 	import { page } from '$app/stores';
@@ -65,7 +64,6 @@
 		min-height: 100vh;
 		display: grid;
 		grid-template-rows: auto 1fr;
-		--border: 1px solid var(--__fga);
 
 		/* --clr: hsl(var(--__bg-hsl) / 0.11); */
 		/* background: radial-gradient( */

@@ -12,7 +12,7 @@
 	/** @type {import("$lib/types").IBreakItem} */
 	export let _break;
 
-	/** @type {import('@kazkadien/svelte/types').Accent[]} */
+	/** @type {import('@kazkadien/svelte/dist/types').Accent[]} */
 	// const accents = ['alpha', 'gamma', 'danger', 'base'];
 	const accents = ['beta', 'base'];
 	/** @type {import('$typings/types').BreakItemIconName[]}  */
@@ -20,7 +20,7 @@
 
 	/**
 	 * @param {import('$typings/types').BreakItemIconName} name_
-	 * @param {import('@kazkadien/svelte/types').Accent} accent_
+	 * @param {import('@kazkadien/svelte/dist/types').Accent} accent_
 	 */
 	function onClick(name_, accent_) {
 		// console.log({ name: name_, accent_ });
@@ -39,6 +39,7 @@
 	place="top"
 	iconOnly
 	variant="outlined"
+	colored
 	accent={_break.icon.accent}
 >
 	<MyIcon name={_break.icon.name} slot="dropbtn" />

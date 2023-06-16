@@ -7,13 +7,13 @@
 	export let focus;
 	// console.log(focus);
 
-	/** @type {import('@kazkadien/svelte/types').Accent[]} */
+	/** @type {import('@kazkadien/svelte/dist/types').Accent[]} */
 	const accents = ['alpha', 'gamma', 'danger'];
 	/** @type {import('$typings/types').IMyIcon[]}  */
 	const icons = ['flag', 'edit', 'code', 'workspaces', 'info'];
 	/**
 	 * @param {import('$typings/types').IMyIcon} name_
-	 * @param {import('@kazkadien/svelte/types').Accent} accent_
+	 * @param {import('@kazkadien/svelte/dist/types').Accent} accent_
 	 */
 	function onClick(name_, accent_) {
 		// console.log({ name: name_, accent_ });
@@ -31,6 +31,7 @@
 	place="top"
 	iconOnly
 	variant="outlined"
+	colored
 	accent={focus.icon.accent}
 >
 	<MyIcon name={focus.icon.name} slot="dropbtn" />

@@ -1,3 +1,5 @@
+@import '@kazkadien/svelte/styles.css' layer(kazka);
+
 html {
 	color: var(--fg);
 	background-color: var(--bg1);
@@ -5,12 +7,9 @@ html {
 	line-height: 1;
 
 	--scrollbar-width: 1ch;
-	--border: 1px solid var(--bga1);
+	--border: 1px solid var(--fl0);
 }
-.f-mono {
-	font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas,
-		'DejaVu Sans Mono', monospace;
-}
+
 /* teko-700 - latin */
 @font-face {
 	font-display: swap;
@@ -76,8 +75,6 @@ html {
 }
 
 body {
-	--bg-1: var(--bg1);
-
 	--br-s: 0.33rem; /* border-radius-small */
 	--br-m: 1rem;
 	--br-l: 3rem;
@@ -91,4 +88,9 @@ a.btn.text:hover {
 }
 label {
 	min-width: 0;
+}
+
+.btn.outlined.colored:not(:hover, :focus-visible) {
+	background: var(--__mg);
+	/* background: red; */
 }
