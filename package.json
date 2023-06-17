@@ -12,7 +12,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.1.0",
-		"@sveltejs/kit": "^1.20.2",
+		"@sveltejs/kit": "^1.20.4",
 		"prettier": "^2.8.8",
 		"prettier-plugin-svelte": "^2.10.1",
 		"svelte": "^3.59.1",
@@ -23,7 +23,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@kazkadien/svelte": "^0.25.0",
+		"@kazkadien/svelte": "^0.27.0",
 		"@sveltejs/adapter-static": "^2.0.2",
 		"idb": "^7.1.1"
 	}

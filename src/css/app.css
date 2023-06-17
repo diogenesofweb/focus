@@ -89,8 +89,3 @@ a.btn.text:hover {
 label {
 	min-width: 0;
 }
-
-.btn.outlined.colored:not(:hover, :focus-visible) {
-	background: var(--__mg);
-	/* background: red; */
-}
