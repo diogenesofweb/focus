@@ -27,12 +27,11 @@
 			<Name />
 		</a>
 
-		<div class="fce g1">
+		<div class="fce g1" style="--_bg: var(--__mg0)">
 			<Btn
 				title="timer"
 				iconOnly
-				accent="base"
-				variant="filled"
+				variant="text"
 				on:click={() => (timer_open = true)}
 			>
 				<MyIcon name="timer" />
@@ -41,8 +40,7 @@
 			<Btn
 				title="settings"
 				iconOnly
-				accent="base"
-				variant="filled"
+				variant="text"
 				on:click={() => (setting_open = true)}
 			>
 				<MyIcon name="settings" />

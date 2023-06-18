@@ -29,7 +29,7 @@
 		if (hh) min += hh * 60;
 
 		if (!min && !ss) {
-			console.log('zero');
+			// console.log('zero');
 			return;
 		}
 
