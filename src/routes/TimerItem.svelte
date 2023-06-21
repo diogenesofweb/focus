@@ -37,13 +37,13 @@
 			if ($opts.notifications) sendNotification('Timer');
 			if ($opts.alarm) audio.play();
 
-			if (!$timers.length) {
-				$my_title = 'Focus';
-			}
-
 			if (st.auto_close) {
 				setTimeout(() => {
 					$timers = $timers.filter((el) => st.id !== el.id);
+
+					if (!$timers.length) {
+						$my_title = 'Focus';
+					}
 				}, 1000);
 			}
 		}
