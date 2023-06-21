@@ -19,7 +19,7 @@
 	<link rel="canonical" href="https://focus.delphic.top/" />
 </svelte:head>
 
-<AppWrapper checkTheme={false}>
+<AppWrapper>
 	<AppAdditionalIcons />
 
 	<div id="app-container">

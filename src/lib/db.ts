@@ -17,26 +17,32 @@ const myStations: IRadioStation[] = [
 	// 	name: 'Calm Radio'
 	// },
 	{
+		id: 1,
 		src: 'https://coderadio-relay-nyc.freecodecamp.org/radio/8010/radio.mp3',
 		name: 'FreeCodeCamp Radio'
 	},
 	{
+		id: 2,
 		src: 'https://peacefulpiano.stream.publicradio.org/peacefulpiano.mp3',
 		name: 'Peaceful Piano'
 	},
 	{
+		id: 3,
 		src: 'https://uk2.streamingpulse.com/ssl/vcr1',
 		name: 'Venice Classic'
 	},
 	{
+		id: 4,
 		src: 'https://radio4.cdm-radio.com:18020/stream-mp3-Chill',
 		name: 'Costa Del Mar - Chillout'
 	},
 	{
+		id: 5,
 		src: 'https://stream.srg-ssr.ch/m/rsj/mp3_128',
 		name: 'Radio Swiss Jazz'
 	},
 	{
+		id: 6,
 		src: 'https://strmreg.1.fm/chilloutlounge_mobile_mp3',
 		name: '1.FM - Chillout Lounge'
 	}

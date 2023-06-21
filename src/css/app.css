@@ -27,10 +27,9 @@ html {
 /* 	color: var(--text-dim); */
 /* } */
 
-.form .field :is(input, select, textarea) {
-	line-height: 1.2;
-	/* border-width: 3px; */
-}
+/* .form .field :is(input, select, textarea) { */
+/* 	line-height: 1.2; */
+/* } */
 
 .container-1 {
 	max-width: 1200px;

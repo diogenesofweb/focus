@@ -14,11 +14,11 @@
 	<div class="wrap">
 		<div class="container-1">
 			<section>
-				{#each $timers as t (t.id)}
+				{#each $timers as t, i (t.id)}
 					<TimerItem
 						{audio}
-						min={t.min}
-						sec={t.sec}
+						idx={i}
+						st={t}
 						on:click={() => {
 							// console.log(t.id);
 							timers.update((v) => {

@@ -120,7 +120,6 @@
 					accent="danger"
 					colored
 					variant="text"
-					size="small"
 					on:click={() => onDelete(el)}
 				>
 					<Icon name="delete" />

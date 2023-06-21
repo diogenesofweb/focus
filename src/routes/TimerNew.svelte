@@ -1,12 +1,13 @@
 <script context="module">
-	/** @type {Array<{min: number, sec: number, id: number}> } */
+	/** @typedef {{min: number, sec: number, id: number, auto_close: boolean}} SimpleTimerItem */
+	/** @type {SimpleTimerItem[] } */
 	const arr = [];
 	export const timers = writable(arr);
 </script>
 
 <script>
 	import CloseBtn from '$lib/CloseBtn.svelte';
-	import { Btn, Field } from '@kazkadien/svelte';
+	import { BoxField, BoxFieldEntry, Btn, Field } from '@kazkadien/svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -35,11 +36,24 @@
 
 		// const data = { min, sec: ss };
 		timers.update((v) => {
-			v.push({ min, sec: ss, id: performance.now() });
+			v.push({ min, sec: ss, id: performance.now(), auto_close });
 			return v;
 		});
 
 		dispatch('close');
+	}
+
+	const store_name = 'auto_close_timers';
+	let auto_close = !!localStorage.getItem(store_name);
+	/** @param {any} ev */
+	function on_change_autoclose(ev) {
+		// console.log(ev);
+		auto_close = ev.target.checked;
+		if (auto_close) {
+			localStorage.setItem(store_name, '1');
+		} else {
+			localStorage.removeItem(store_name);
+		}
 	}
 </script>
 
@@ -87,6 +101,16 @@
 				}}
 			/>
 		</div>
+
+		<BoxField>
+			<BoxFieldEntry label="Auto close on completion">
+				<input
+					type="checkbox"
+					checked={auto_close}
+					on:change={on_change_autoclose}
+				/>
+			</BoxFieldEntry>
+		</BoxField>
 	</form>
 </div>
 
@@ -106,7 +130,7 @@
 	.bbb {
 		grid-template-columns: repeat(2, 1fr);
 	}
-	input {
+	input[type='number'] {
 		width: 14ch;
 	}
 	/* @media only screen and (min-width: 600px) { */

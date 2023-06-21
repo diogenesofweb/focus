@@ -3,7 +3,7 @@
 	import Name from '$lib/Name.svelte';
 	import Settings from './AppSettings.svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
-	import SimpleNew from './TimerNew.svelte';
+	import TimerNew from './TimerNew.svelte';
 
 	let setting_open = false;
 	let timer_open = false;
@@ -17,7 +17,7 @@
 
 {#if timer_open}
 	<Modal on:close={() => (timer_open = false)}>
-		<SimpleNew on:close={() => (timer_open = false)} />
+		<TimerNew on:close={() => (timer_open = false)} />
 	</Modal>
 {/if}
 

@@ -3,7 +3,7 @@ import { msg } from './const.js';
 
 let INTERVAL = 1000;
 if (import.meta.env.DEV) {
-	INTERVAL = 100;
+	INTERVAL = 10;
 }
 
 let sendTickEverySecond = true;
@@ -12,7 +12,7 @@ let min = 0;
 let sec = 0;
 // let startAt;
 
-/** @type {string | number | NodeJS.Timer | undefined} */
+/** @type {ReturnType<setInterval>} */
 let reminderID;
 function startReminder() {
 	reminderID = setInterval(() => {
@@ -49,7 +49,7 @@ function tick() {
 	}
 }
 
-/** @type {string | number | NodeJS.Timer | undefined} */
+/** @type {ReturnType<setInterval>} */
 let intervalID;
 function startTimer() {
 	intervalID = setInterval(tick, INTERVAL);

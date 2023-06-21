@@ -1,3 +1,8 @@
+<script context="module">
+	// let simple timers know if they can update the title
+	export const sh = { is_active: false };
+</script>
+
 <script>
 	import Clock from './Clock.svelte';
 	import TodayStats, {
@@ -14,6 +19,7 @@
 	import Overtime from './Overtime.svelte';
 	import { ldb } from '$lib/db';
 	import { opts } from '$store/settings';
+	import MyTitle, { my_title } from './MyTitle.svelte';
 
 	const _5min = 5;
 
@@ -30,9 +36,11 @@
 		if (e.data.mes == msg.tick) {
 			min = e.data.min;
 			sec = e.data.sec;
+			$my_title = `${MM}:${SS} / ${phase}`;
 		}
 
 		if (e.data.mes == msg.finish) {
+			$my_title = phase + ' / done';
 			if (phase == 'focus') {
 				const d = rounds[index].focus.duration;
 				updateFocusStats(d, phaseLabel);
@@ -76,6 +84,8 @@
 		overtime = (overtime || 0) + _5min;
 		// console.log({ overtime });
 
+		$my_title = `overtime +${overtime}:00`;
+
 		if (phase == 'break') {
 			updateFocusStats(_5min, '');
 		}
@@ -91,6 +101,8 @@
 		const data = { mes: msg.start, min, sec };
 		// console.log({ data });
 		w.postMessage(data);
+
+		sh.is_active = true;
 	}
 	function stopTimer() {
 		isRunnig = false;
@@ -234,6 +246,7 @@
 		isRunnig = true;
 		isPaused = false;
 		w.postMessage({ mes: msg.resume });
+		sh.is_active = true;
 	}
 
 	function handleStart(isClick = false) {
@@ -267,6 +280,10 @@
 		activitiesMap.clear();
 
 		clearClock();
+
+		$my_title = phase;
+
+		sh.is_active = false;
 	}
 
 	async function handleNext() {
@@ -277,6 +294,9 @@
 		stopTimer();
 		await nextPhase();
 		clearClock();
+
+		$my_title = phase;
+		sh.is_active = false;
 	}
 
 	function upStats() {
@@ -336,18 +356,9 @@
 		// console.log(el);
 		setTimeout(() => el?.focus(), 10);
 	}
-
-	$: title =
-		isRunnig || isPaused
-			? `${MM}:${SS} | ${phase}`
-			: overtime !== null
-			? `+${overtime}:00 | overtime`
-			: `${phase}`;
 </script>
 
-<svelte:head>
-	<title>{title}</title>
-</svelte:head>
+<MyTitle />
 
 <audio id="myAudio" bind:this={audio}>
 	<source src="/flute.wav" type="audio/wav" />

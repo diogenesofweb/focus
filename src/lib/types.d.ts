@@ -84,7 +84,7 @@ export interface IOptions {
 }
 
 export interface IRadioStation {
-	id?: number;
+	id: number;
 	src: string;
 	name: string;
 }

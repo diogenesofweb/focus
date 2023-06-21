@@ -8,6 +8,7 @@
 
 	/** @type {import('$lib/types').IRadioStation } */
 	export let station = {
+		id: performance.now(),
 		name: '',
 		src: ''
 	};

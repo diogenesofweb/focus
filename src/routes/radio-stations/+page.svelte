@@ -73,7 +73,6 @@
 						iconOnly
 						accent="alpha"
 						colored
-						size="small"
 						variant="text"
 						on:click={() => onEdit(el)}
 					>
@@ -84,7 +83,6 @@
 						iconOnly
 						accent="danger"
 						colored
-						size="small"
 						variant="text"
 						on:click={() => onDelete(el.id)}
 					>

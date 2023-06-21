@@ -1,5 +1,5 @@
 <script>
-	/** @typedef {import("@kazkadien/svelte/types").Accent} Accent*/
+	/** @typedef {import("@kazkadien/svelte/dist/types").Accent} Accent*/
 	/** @type Accent | '' */
 	export let accent = '';
 	/** @type {import("$typings/types").IMyIcon} */
