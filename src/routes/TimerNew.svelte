@@ -17,6 +17,8 @@
 	let mm = 0;
 	let ss = 0;
 
+	const ls_timer_vals = 'timer_values';
+
 	/** @param {number} mins */
 	function on_add(mins) {
 		const n = mm + mins;
@@ -34,25 +36,57 @@
 			return;
 		}
 
+		if (is_remember) {
+			localStorage.setItem(ls_timer_vals, JSON.stringify({ hh, mm, ss }));
+		}
+
 		// const data = { min, sec: ss };
 		timers.update((v) => {
-			v.push({ min, sec: ss, id: performance.now(), auto_close });
+			v.push({ min, sec: ss, id: performance.now(), auto_close: is_autoclose });
 			return v;
 		});
 
 		dispatch('close');
 	}
 
-	const store_name = 'auto_close_timers';
-	let auto_close = !!localStorage.getItem(store_name);
+	const ls_autoclose = 'auto_close_timers';
+	let is_autoclose = !!localStorage.getItem(ls_autoclose);
 	/** @param {any} ev */
 	function on_change_autoclose(ev) {
 		// console.log(ev);
-		auto_close = ev.target.checked;
-		if (auto_close) {
-			localStorage.setItem(store_name, '1');
+		is_autoclose = ev.target.checked;
+		if (is_autoclose) {
+			localStorage.setItem(ls_autoclose, '1');
 		} else {
-			localStorage.removeItem(store_name);
+			localStorage.removeItem(ls_autoclose);
+		}
+	}
+
+	const ls_remember = 'remember_timer';
+	let is_remember = !!localStorage.getItem(ls_remember);
+
+	if (is_remember) {
+		const v = localStorage.getItem(ls_timer_vals);
+		if (v) {
+			try {
+				const j = JSON.parse(v);
+				hh = j.hh;
+				mm = j.mm;
+				ss = j.ss;
+			} catch (error) {
+				console.log(error);
+			}
+		}
+	}
+
+	/** @param {any} ev */
+	function on_change_remember(ev) {
+		// console.log(ev);
+		is_remember = ev.target.checked;
+		if (is_remember) {
+			localStorage.setItem(ls_remember, '1');
+		} else {
+			localStorage.removeItem(ls_remember);
 		}
 	}
 </script>
@@ -102,12 +136,22 @@
 			/>
 		</div>
 
-		<BoxField>
+		<BoxField rows>
 			<BoxFieldEntry label="Auto close on completion">
 				<input
+					name="auto_close"
 					type="checkbox"
-					checked={auto_close}
+					checked={is_autoclose}
 					on:change={on_change_autoclose}
+				/>
+			</BoxFieldEntry>
+
+			<BoxFieldEntry label="Preserve values HH:MM:SS">
+				<input
+					name="remember_timer"
+					type="checkbox"
+					checked={is_remember}
+					on:change={on_change_remember}
 				/>
 			</BoxFieldEntry>
 		</BoxField>
@@ -131,7 +175,7 @@
 		grid-template-columns: repeat(2, 1fr);
 	}
 	input[type='number'] {
-		width: 14ch;
+		min-width: min(14ch, 25vw);
 	}
 	/* @media only screen and (min-width: 600px) { */
 	/* 	section { */
