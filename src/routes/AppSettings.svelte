@@ -15,6 +15,10 @@
 		{ href: '/break-activities', name: 'Break Activities ' },
 		{ href: '/radio-stations', name: 'Radio Stations' }
 	];
+	const links2 = [
+		{ href: '/stats', name: 'Stats' },
+		{ href: '/snaps', name: 'Snapshots' }
+	];
 
 	const dark = 'dark';
 	const light = 'light';
@@ -85,13 +89,12 @@
 			{/each}
 
 			<div class="edit" style="margin-top: 2rem ;">Info</div>
-			<a
-				href="/stats"
-				class="btn text round"
-				on:click={() => dispatch('close')}
-			>
-				Stats
-			</a>
+
+			{#each links2 as { href, name }}
+				<a {href} class="btn text round" on:click={() => dispatch('close')}>
+					{name}
+				</a>
+			{/each}
 		</div>
 
 		<form class="form v2 alpha">

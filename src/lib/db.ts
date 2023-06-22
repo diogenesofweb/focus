@@ -170,6 +170,7 @@ const activities = {
 		(await dbx).delete('activity-list', name)
 };
 const sequences = {
+	list: async () => (await dbx).getAll('sequences'),
 	listNames: async () => (await dbx).getAllKeys('sequences'),
 	getOneByName: async (name: string) => (await dbx).get('sequences', name),
 	deleteOneByName: async (name: string) =>
@@ -185,8 +186,38 @@ const stations = {
 };
 
 export const ldb = {
+	activities,
 	records,
 	sequences,
-	activities,
 	stations
 };
+
+export type RestoreData = {
+	VERSION: number;
+	activities: IActivityList[];
+	records: IStat[];
+	sequences: ISequence[];
+	stations: IRadioStation[];
+};
+
+export async function restore_data(data: RestoreData) {
+	const db = await dbx;
+	const tx = db.transaction(
+		['activity-list', 'records', 'sequences', 'stations'],
+		'readwrite'
+	);
+
+	const activs = tx.objectStore('activity-list');
+	const recods = tx.objectStore('records');
+	const seqs = tx.objectStore('sequences');
+	const stations = tx.objectStore('stations');
+
+	await Promise.all([
+		...data.activities.map((el) => activs.put(el)),
+		...data.records.map((el) => recods.put(el)),
+		...data.sequences.map((el) => seqs.put(el)),
+		...data.stations.map((el) => stations.put(el)),
+
+		tx.done
+	]);
+}

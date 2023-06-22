@@ -4,8 +4,6 @@ html {
 	color: var(--fg);
 	background-color: var(--bg1);
 
-	line-height: 1;
-
 	--scrollbar-width: 1ch;
 	--border: 1px solid var(--fl0);
 }

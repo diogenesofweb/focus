@@ -1,0 +1,126 @@
+<script>
+	import { ldb, restore_data } from '$lib/db';
+	import { Alert, Btn } from '@kazkadien/svelte';
+	const VERSION = 1;
+
+	// https://stackoverflow.com/questions/19721439/download-json-object-as-a-file-from-browser
+	/**
+	 * @param {string} filename
+	 * @param {any} dataObjToWrite
+	 */
+	function saveTemplateAsFile(filename, dataObjToWrite) {
+		const blob = new Blob([JSON.stringify(dataObjToWrite)], {
+			type: 'text/json'
+		});
+		const link = document.createElement('a');
+
+		link.download = filename;
+		link.href = window.URL.createObjectURL(blob);
+		link.dataset.downloadurl = ['text/json', link.download, link.href].join(
+			':'
+		);
+
+		const evt = new MouseEvent('click', {
+			view: window,
+			bubbles: true,
+			cancelable: true
+		});
+
+		link.dispatchEvent(evt);
+		link.remove();
+	}
+
+	async function make_snaphot() {
+		// console.log('up');
+		const records = await ldb.records.list();
+		// console.log(records);
+
+		const stations = await ldb.stations.list();
+		// console.log(stations);
+
+		const sequences = await ldb.sequences.list();
+		// console.log(sequences);
+
+		const activities = (await ldb.activities.list()).map((v) => {
+			v.values = [...v.values];
+			return v;
+		});
+		// console.log(activities);
+
+		/** @type {import('$lib/db').RestoreData } */
+		const snap = {
+			VERSION,
+			activities,
+			sequences,
+			records,
+			stations
+		};
+
+		console.log(snap);
+
+		saveTemplateAsFile('focus.snap.json', snap);
+	}
+	let msg = '';
+
+	/** @param {Event & { currentTarget: EventTarget & HTMLInputElement; }} ev */
+	function restore(ev) {
+		// console.log('up');
+		// @ts-ignore
+		const file = ev.currentTarget.files[0];
+		// console.log(file)
+		const reader = new FileReader();
+		reader.onload = async (e) => {
+			try {
+				const content = e.target?.result;
+				// console.log(content);
+				if (typeof content === 'string') {
+					console.log('content ok');
+
+					/** @type {import('$lib/db').RestoreData } */
+					const json = JSON.parse(content);
+					console.log(json);
+
+					if (json.VERSION !== VERSION) throw new Error('Invalid version');
+
+					await restore_data(json);
+					msg = 'Restored !';
+				} else {
+					throw new Error('Invalid type of file content');
+				}
+			} catch (error) {
+				console.log(error);
+				// @ts-ignore
+				msg = error.message || 'Ups :(';
+			}
+		};
+		reader.readAsText(file);
+	}
+</script>
+
+<section class="">
+	<Btn on:click={make_snaphot} variant="outlined" text="download snaphot" />
+
+	{#if msg}
+		<Alert body={msg} closable={false} />
+	{:else}
+		<div class="form v2">
+			<label class="field">
+				<b>Restore from snapshot</b>
+				<input type="file" accept="application/json" on:change={restore} />
+			</label>
+		</div>
+	{/if}
+</section>
+
+<style>
+	section {
+		max-width: 60ch;
+		margin-inline: auto;
+		padding: 6em 2em;
+		display: grid;
+		gap: 4em;
+	}
+	.form {
+		--bg: var(--bg1);
+	}
+</style>
