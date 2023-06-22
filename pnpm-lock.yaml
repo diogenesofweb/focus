@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@kazkadien/svelte':
-    specifier: ^0.28.0
-    version: 0.28.0(svelte@3.59.1)
+    specifier: ^0.30.0
+    version: 0.30.0(svelte@3.59.1)
   '@sveltejs/adapter-static':
     specifier: ^2.0.2
     version: 2.0.2(@sveltejs/kit@1.20.4)
@@ -237,8 +237,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kazkadien/svelte@0.28.0(svelte@3.59.1):
-    resolution: {integrity: sha512-cdgxkF+1Na1vdLsKwBXbBFEnpPGn2KqL+SEYNCk/dmzMzBHOt9J1OXjYCo8884gnU97tW2NGo4ACieuwHsV65w==}
+  /@kazkadien/svelte@0.30.0(svelte@3.59.1):
+    resolution: {integrity: sha512-io1ao7tFgb8uSnZOmYYhmx17b+fAZgyN9eFBUEpqHth9ExNu9BFXQcyErjlsEWP01rbuPFfFD9LNH8UXu5h8ug==}
     peerDependencies:
       svelte: ^3.54.0
     dependencies:

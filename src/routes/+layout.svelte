@@ -7,6 +7,7 @@
 	import RadioPlayer from './RadioPlayer.svelte';
 	import SwitchSequence from './SwitchSequence.svelte';
 	import { AppWrapper } from '@kazkadien/svelte';
+	// import { AppSnacks } from '@kazkadien/svelte';
 	import './../css/app.css';
 	import './../css/list.css';
 	import { page } from '$app/stores';
@@ -20,6 +21,7 @@
 </svelte:head>
 
 <AppWrapper>
+	<!-- <AppSnacks /> -->
 	<AppAdditionalIcons />
 
 	<div id="app-container">
