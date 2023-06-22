@@ -29,7 +29,7 @@
 		link.dispatchEvent(evt);
 		link.remove();
 	}
-
+	const ls_options = 'options';
 	async function make_snaphot() {
 		// console.log('up');
 		const records = await ldb.records.list();
@@ -42,21 +42,25 @@
 		// console.log(sequences);
 
 		const activities = (await ldb.activities.list()).map((v) => {
+			// @ts-ignore
 			v.values = [...v.values];
 			return v;
 		});
 		// console.log(activities);
+		const options = localStorage.getItem(ls_options);
 
 		/** @type {import('$lib/db').RestoreData } */
 		const snap = {
 			VERSION,
+			options,
+
 			activities,
 			sequences,
 			records,
 			stations
 		};
 
-		console.log(snap);
+		// console.log(snap);
 
 		saveTemplateAsFile('focus.snap.json', snap);
 	}
@@ -83,7 +87,11 @@
 					if (json.VERSION !== VERSION) throw new Error('Invalid version');
 
 					await restore_data(json);
-					msg = 'Restored !';
+					if (json.options) {
+						localStorage.setItem(ls_options, json.options);
+					}
+
+					msg = 'Restored! Please refresh page.';
 				} else {
 					throw new Error('Invalid type of file content');
 				}

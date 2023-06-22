@@ -194,6 +194,8 @@ export const ldb = {
 
 export type RestoreData = {
 	VERSION: number;
+	options: string | null;
+
 	activities: IActivityList[];
 	records: IStat[];
 	sequences: ISequence[];
