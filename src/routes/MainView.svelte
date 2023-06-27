@@ -471,11 +471,13 @@
 	section {
 		max-width: 550px;
 		margin-inline: auto;
-		padding: var(--g) 1em;
+		/* padding-inline: var(--g) 1em; */
+
 		/* background-color: gray; */
 		display: flex;
 		flex-direction: column;
-		--g: clamp(2em, 5vh, 4em);
+		/* --g: clamp(2em, 5vh, 4em); */
+		--g: 2em;
 		gap: var(--g);
 
 		/* --clr: var(--__bg); */

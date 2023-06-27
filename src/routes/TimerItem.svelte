@@ -88,9 +88,9 @@
 		gap: 1.5em;
 		line-height: 1;
 
-		background: var(--bg);
+		background: var(--bg2);
 		padding: 0.5em;
-		border-radius: 0.5em;
+		border-radius: var(--btn-br);
 		border: 1px solid;
 		border-color: var(--fl0);
 

@@ -16,7 +16,7 @@
 <style>
 	div {
 		min-width: 20ch;
-		margin-left: auto;
-		/* outline: 1px solid violet; */
+		/* margin-left: auto; */
+		align-self: stretch;
 	}
 </style>

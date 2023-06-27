@@ -51,8 +51,9 @@
 
 <style>
 	#header {
-		/* background-color: var(--bg2); */
+		background-color: var(--bg2);
 		padding: 0.66rem var(--rsx);
+		border-bottom: 3px double var(--fl0);
 	}
 
 	.link {

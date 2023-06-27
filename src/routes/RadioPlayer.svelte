@@ -103,7 +103,7 @@
 	</audio>
 {/if}
 <form class="form v2 alpha">
-	<div class="top">
+	<div class="top pane">
 		<Btn
 			title="play or pause"
 			iconOnly
@@ -127,7 +127,7 @@
 		</Field>
 	</div>
 
-	<div class="vol">
+	<div class="vol pane">
 		<Btn
 			title="mute"
 			on:click={onSwitchMuted}
@@ -160,22 +160,26 @@
 		line-height: 1.4;
 		/* background-color: rebeccapurple; */
 	}
-	.top {
-		display: inline-flex;
+
+	.pane {
+		flex-grow: 1;
+		display: flex;
 		gap: 1rem;
 		align-items: center;
+		/* background: darksalmon; */
 	}
-	form.form :global(:is(label)) {
-		border: none;
-	}
-	.vol {
-		display: inline-flex;
-		gap: 0.5rem;
-		align-items: center;
 
+	form.form :global(:is(label)) {
+		flex-grow: 1;
+		border: none;
+		/* background: darkolivegreen; */
+	}
+
+	form:not(:hover) .vol {
 		opacity: 0.5;
 	}
-	form:hover .vol {
-		opacity: 1;
+
+	input {
+		flex-grow: 1;
 	}
 </style>

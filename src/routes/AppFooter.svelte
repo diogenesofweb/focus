@@ -41,6 +41,7 @@
 	footer {
 		padding: 4rem var(--rsx) 6rem;
 		background-color: var(--bg0);
+		border-top: 3px double var(--fl0);
 	}
 	section {
 		display: grid;

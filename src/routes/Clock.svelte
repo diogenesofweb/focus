@@ -38,6 +38,6 @@
 	}
 
 	span {
-		text-shadow: 3px 6px 3px var(--__bg1);
+		text-shadow: 3px 6px 2px var(--__bg0);
 	}
 </style>
