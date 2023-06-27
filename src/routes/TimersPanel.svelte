@@ -28,7 +28,7 @@
 
 <style>
 	section {
-		gap: 0.5em;
+		gap: 1em;
 		display: grid;
 		/* grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); */
 		grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));

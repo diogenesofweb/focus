@@ -474,25 +474,26 @@
 		/* padding-inline: var(--g) 1em; */
 
 		/* background-color: gray; */
-		display: flex;
-		flex-direction: column;
+		/* display: flex; */
+		/* flex-direction: column; */
 		/* --g: clamp(2em, 5vh, 4em); */
-		--g: 2em;
-		gap: var(--g);
+		/* --g: 2em; */
+		/* gap: var(--g); */
 
 		/* --clr: var(--__bg); */
 		--clr: var(--__fl0);
 		--x1: 1em;
-		--x2: calc(var(--x1) / 2);
+		--x2: 0.5em;
 	}
 
 	.phase {
-		border-radius: var(--x1);
+		margin-top: 2em;
 		padding: 0 var(--x1) var(--x1);
 
 		/* background: darkblue; */
 		background: var(--bg);
 		border: 1px solid var(--clr);
+		border-radius: var(--x1);
 	}
 
 	.phase-name {
@@ -526,12 +527,15 @@
 	}
 
 	.boxx {
+		margin-block: var(--x1);
+
 		padding: 0.5em 0;
-		background-color: var(--bg);
 		border-radius: var(--x1);
 		border: 1px solid var(--clr);
 		border-left: var(--x2) solid var(--clr);
 		border-right: var(--x2) solid var(--clr);
+
+		background: var(--bg);
 	}
 
 	.btns {
@@ -540,6 +544,7 @@
 		display: grid;
 		gap: var(--x1);
 		/* background: violet; */
+		margin-top: 3rem;
 	}
 
 	@media only screen and (min-width: 430px) {

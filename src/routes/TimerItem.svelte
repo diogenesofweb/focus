@@ -89,8 +89,10 @@
 		line-height: 1;
 
 		background: var(--bg2);
-		padding: 0.5em;
-		border-radius: var(--btn-br);
+		padding-inline: 0.75em;
+		padding-block: 0.5em;
+		/* border-radius: var(--btn-br); */
+		border-radius: 1em;
 		border: 1px solid;
 		border-color: var(--fl0);
 
@@ -107,14 +109,14 @@
 
 	span {
 		color: var(--fga1);
-		font-size: 1.5rem;
+		font-size: 1.5em;
 		/* margin-right: auto; */
 		/* background: gray; */
 	}
 	b {
 		color: var(--__fg);
 		letter-spacing: 2px;
-		font-size: 2.5rem;
+		font-size: 2.5em;
 		/* margin-right: auto; */
 		/* background: gray; */
 	}

@@ -59,7 +59,7 @@
 		text-align: center;
 		/* background-color: darkgreen; */
 		flex: 1 1 3ch;
-		color: var(--__fg, var(--fg1));
+		color: var(--__fg0);
 	}
 
 	.tableau span.done {
@@ -67,8 +67,8 @@
 	}
 
 	.tableau span.active {
-		color: var(--__fg, var(--fg1));
-		background: var(--__bga, var(--bga));
+		color: var(--__fg);
+		background: var(--__bga);
 
 		/* outline: 1px dashed var(--__fg-1, var(--fg1)); */
 		outline: 1px dashed var(--__fg0);

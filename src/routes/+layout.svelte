@@ -126,7 +126,8 @@
 			padding-inline: 1em;
 			padding-block: 1em;
 			border: var(--border);
-			border-radius: var(--btn-br);
+			border-radius: 1em;
+			border-color: var(--fl0);
 		}
 
 		#tp {
@@ -144,7 +145,7 @@
 
 		.root :is(#mp, .pane) {
 			padding-top: 0;
-			padding-inline: 0.5em;
+			padding-inline: 0;
 		}
 
 		main {
@@ -158,7 +159,7 @@
 
 		main.root {
 			display: grid;
-			/* gap: 1ch; */
+			gap: 0.5em;
 			grid-template-columns: 1fr 600px 1fr;
 			grid-template-areas: 'rp mp tp';
 		}
