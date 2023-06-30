@@ -3,9 +3,11 @@
 	export let MM;
 	/** @type {number | string} */
 	export let SS;
+
+	export let is_running = false;
 </script>
 
-<div class="timer font-x">
+<div class="timer font-x" class:is_running>
 	<span>{MM}</span>
 	<span class="x">:</span>
 	<span>{SS}</span>
@@ -27,6 +29,10 @@
 
 		margin-block: 1.5rem 0.5rem;
 		/* background-color: black; */
+
+		&.is_running > span {
+			text-shadow: 0.03em 0.04em 0.02em var(--__bg);
+		}
 	}
 
 	.timer > :first-child {
@@ -35,9 +41,5 @@
 
 	.x {
 		transform: translateY(-9px);
-	}
-
-	span {
-		text-shadow: 3px 6px 2px var(--__bg0);
 	}
 </style>

@@ -95,9 +95,9 @@
 		}
 	}
 
-	let isRunnig = false;
+	let is_running = false;
 	function startTimer() {
-		isRunnig = true;
+		is_running = true;
 		const data = { mes: msg.start, min, sec };
 		// console.log({ data });
 		w.postMessage(data);
@@ -105,7 +105,7 @@
 		sh.is_active = true;
 	}
 	function stopTimer() {
-		isRunnig = false;
+		is_running = false;
 		w.postMessage({ mes: msg.stop });
 	}
 
@@ -213,7 +213,7 @@
 			audio.play();
 		}
 
-		isRunnig = false;
+		is_running = false;
 
 		await nextPhase();
 		clearClock();
@@ -237,13 +237,13 @@
 	let isPaused = false;
 	function handlePause() {
 		// console.log('pause');
-		isRunnig = false;
+		is_running = false;
 		isPaused = true;
 		w.postMessage({ mes: msg.stop });
 	}
 	function handleResume() {
 		// console.log('resume');
-		isRunnig = true;
+		is_running = true;
 		isPaused = false;
 		w.postMessage({ mes: msg.resume });
 		sh.is_active = true;
@@ -406,7 +406,7 @@
 
 	<div class="boxx">
 		<PhaseTable {phase} {index} list={rounds} />
-		<Clock {MM} {SS} />
+		<Clock {is_running} {MM} {SS} />
 	</div>
 
 	{#if $opts.overtime && overtime !== null}
@@ -419,11 +419,11 @@
 			variant="outlined"
 			round
 			colored
-			text={isPaused ? 'resume' : isRunnig ? 'pause' : 'start'}
+			text={isPaused ? 'resume' : is_running ? 'pause' : 'start'}
 			on:click={() => {
 				if (isPaused) {
 					handleResume();
-				} else if (isRunnig) {
+				} else if (is_running) {
 					handlePause();
 				} else {
 					handleStart(true);
