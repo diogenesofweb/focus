@@ -392,7 +392,9 @@
 
 <section class={phase == 'focus' ? 'alpha' : 'beta'}>
 	{#if $opts.totalTime}
-		<TodayStats />
+		<div class="stats">
+			<TodayStats />
+		</div>
 	{/if}
 
 	<div class="phase">
@@ -486,8 +488,12 @@
 		--x2: 0.5em;
 	}
 
+	.stats {
+		margin-bottom: 1em;
+	}
+
 	.phase {
-		margin-top: 1em;
+		/* margin-top: 1em; */
 		padding: 0 var(--x1) var(--x1);
 
 		/* background: darkblue; */
