@@ -92,15 +92,28 @@
 	/* main { background-color: var(--bg2); } */
 
 	.pane {
-		border-bottom: var(--border);
-		padding-block: 1em;
-		background-color: var(--bg);
-		--bg: var(--bg1);
+		margin-block: 1em;
+		/* --bg: var(--bg1); */
 		/* background: darkolivegreen; */
 	}
 
 	:where(#mp, .pane) {
-		padding-inline: 0.75em;
+		margin-inline: 1em;
+	}
+
+	/* #rp { */
+	/* 	background: darkolivegreen; */
+	/* } */
+	#rp .fsb {
+		background-color: var(--bg);
+		/* margin-inline: 1em; */
+
+		padding-inline: 1em;
+		padding-block: 1.25em;
+		border: var(--border);
+		border-radius: 1em;
+
+		/* background: darkolivegreen; */
 	}
 
 	#mp {
@@ -111,23 +124,18 @@
 		display: none;
 	}
 
+	:where(#rp, #tp) {
+		background: transparent;
+	}
+
 	@media only screen and (min-width: 1400px) {
 		#rp {
 			grid-area: rp;
 			/* background: darkviolet; */
 		}
 		.root .fsb {
-			/* flex-direction: column-reverse; */
 			flex-direction: column;
 			--bg: var(--bg2);
-			/* gap: 4em; */
-			/* background: darkmagenta; */
-			background: var(--bg);
-			padding-inline: 1em;
-			padding-block: 1em;
-			border: var(--border);
-			border-radius: 1em;
-			border-color: var(--fl0);
 		}
 
 		#tp {
@@ -137,10 +145,13 @@
 		#mp {
 			grid-area: mp;
 			/* background: darkcyan; */
+			margin-inline: 0;
 		}
 
 		.root .pane {
 			border: none;
+			margin: 0;
+			/* background: darkmagenta; */
 		}
 
 		.root :is(#mp, .pane) {
@@ -153,15 +164,17 @@
 			max-width: 1400px;
 			margin-inline: auto;
 
-			padding-top: min(2em, 5vh);
+			/* margin-top: min(1em, 5vh); */
+			margin-top: 1em;
 			/* outline: 1px solid red; */
 		}
 
 		main.root {
 			display: grid;
-			gap: 0.5em;
+			/* gap: 0.5em; */
 			grid-template-columns: 1fr 600px 1fr;
 			grid-template-areas: 'rp mp tp';
+			padding-inline: 1em;
 		}
 	}
 </style>

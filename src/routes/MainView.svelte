@@ -487,7 +487,7 @@
 	}
 
 	.phase {
-		margin-top: 2em;
+		margin-top: 1em;
 		padding: 0 var(--x1) var(--x1);
 
 		/* background: darkblue; */
@@ -527,7 +527,8 @@
 	}
 
 	.boxx {
-		margin-block: var(--x1);
+		margin-top: 1em;
+		/* margin-block: var(--x1); */
 
 		padding: 0.5em 0;
 		border-radius: var(--x1);
@@ -535,16 +536,20 @@
 		border-left: var(--x2) solid var(--clr);
 		border-right: var(--x2) solid var(--clr);
 
-		background: var(--bg);
+		/* background: var(--bg); */
+
+		background: var(--__bga);
+		/* background: linear-gradient(var(--__bga1) 25%, var(--bga)); */
+		backdrop-filter: blur(3px);
 	}
 
 	.btns {
 		/* font-size: calc(1rem + 2px); */
 		font-size: 1.15rem;
 		display: grid;
-		gap: var(--x1);
+		gap: 1rem;
 		/* background: violet; */
-		margin-top: 3rem;
+		margin-top: 2rem;
 	}
 
 	@media only screen and (min-width: 430px) {
@@ -552,5 +557,9 @@
 			grid-template-columns: 1fr 1fr 1fr;
 			/* background: black; */
 		}
+	}
+	#action-btns :global(.btn.outlined:not(:hover):not(:focus-visible)) {
+		background: var(--__bga1);
+		backdrop-filter: blur(3px);
 	}
 </style>

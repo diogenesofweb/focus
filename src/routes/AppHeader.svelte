@@ -21,17 +21,19 @@
 	</Modal>
 {/if}
 
-<div id="header">
-	<section class="fsb g1 container-1">
+<section class="container-1">
+	<div id="header" class="fsb base">
 		<a href="/" class="fce link">
 			<Name />
 		</a>
 
-		<div class="fce g1" style="--_bg: var(--__mg0)">
+		<!-- <div class="fce g1 alpha" style="--_bg: var(--__mg0)"> -->
+		<div class="fce alpha">
 			<Btn
 				title="timer"
 				iconOnly
-				variant="text"
+				round
+				variant="outlined"
 				on:click={() => (timer_open = true)}
 			>
 				<MyIcon name="timer" />
@@ -40,20 +42,32 @@
 			<Btn
 				title="settings"
 				iconOnly
-				variant="text"
+				round
+				variant="outlined"
 				on:click={() => (setting_open = true)}
 			>
 				<MyIcon name="settings" />
 			</Btn>
 		</div>
-	</section>
-</div>
+	</div>
+</section>
 
 <style>
+	section {
+		/* background: black; */
+		width: 100%;
+	}
 	#header {
+		/* background-color: var(--__bga0); */
+		/* backdrop-filter: blur(4px); */
 		background-color: var(--bg2);
-		padding: 0.66rem var(--rsx);
-		border-bottom: 3px double var(--fl0);
+
+		margin-block: 1em;
+		margin-inline: 1em;
+
+		padding: 0.75em 1em;
+		border-radius: 1em;
+		border: var(--border);
 	}
 
 	.link {
@@ -63,5 +77,9 @@
 
 	.link:hover {
 		text-decoration: underline;
+	}
+
+	.fce {
+		gap: 1em;
 	}
 </style>

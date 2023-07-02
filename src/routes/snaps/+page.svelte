@@ -127,8 +127,10 @@
 		padding: 6em 2em;
 		display: grid;
 		gap: 4em;
-	}
-	.form {
-		--bg: var(--bg1);
+
+		background: var(--bg);
+		border: var(--border);
+		border-radius: 1em;
+		/* --bg: var(--bg1); */
 	}
 </style>

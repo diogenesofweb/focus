@@ -27,7 +27,10 @@
 		margin: 0;
 	}
 	.container {
-		padding-block: 2rem 4rem;
+		padding-block: 4em 8em;
+		background: var(--bg);
+		border-radius: 1em;
+		border: var(--border);
 	}
 	ul {
 		margin-top: 1.15rem;

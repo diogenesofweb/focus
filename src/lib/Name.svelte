@@ -1,16 +1,9 @@
-<div class="logo font-x">
-	<!-- <img src="favicon.svg" alt="app logo" /> -->
-	<span>Focus</span>
+<div class="f-mono">
+	<b>Focus</b>
 </div>
 
 <style>
-	.logo {
-		display: flex;
-		align-items: center;
-		gap: 9px;
-		font-weight: bold;
-		font-size: 1.33rem;
-		line-height: 1;
-		font-weight: bolder;
+	div {
+		font-size: 1.5rem;
 	}
 </style>

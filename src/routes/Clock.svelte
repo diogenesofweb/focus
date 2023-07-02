@@ -31,7 +31,7 @@
 		/* background-color: black; */
 
 		&.is_running > span {
-			text-shadow: 0.03em 0.04em 0.02em var(--__bg);
+			text-shadow: 0.02em 0.04em 0.02em var(--__bg);
 		}
 	}
 

@@ -93,8 +93,7 @@
 		padding-block: 0.5em;
 		/* border-radius: var(--btn-br); */
 		border-radius: 1em;
-		border: 1px solid;
-		border-color: var(--fl0);
+		border: var(--border);
 
 		&:hover {
 			/* background: var(--__mg); */

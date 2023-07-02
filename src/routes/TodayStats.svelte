@@ -87,14 +87,14 @@
 <style>
 	section {
 		gap: 1em;
-		padding-block: 0.75em;
+		padding-block: 1em;
 		padding-inline: var(--x1);
 		border-radius: var(--x1);
 		background: var(--bg);
 		height: 100%;
 
 		/* border: 1px solid var(--clr); */
-		border: 1px solid var(--fl0);
+		border: var(--border);
 	}
 	div {
 		display: flex;

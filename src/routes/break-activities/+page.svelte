@@ -88,6 +88,7 @@
 				/>
 			</Field>
 		</form>
+
 		<div class="g1a">
 			<div class="form v2 ll">
 				<Field label="Activities List">
@@ -132,7 +133,7 @@
 
 	<form
 		slot="btns"
-		class="form v2 alpha"
+		class="form v2 alpha end"
 		on:submit|preventDefault={handleSubmitNewActivity}
 	>
 		<Field label="New Activity">
@@ -151,17 +152,21 @@
 <style>
 	form {
 		background: var(--bg);
-		padding: 1em;
+		/* padding: 1em; */
 		border-radius: 1em;
 	}
 	.ll {
-		--bg: var(--bg1);
+		/* margin-top: 2em; */
 		display: flex;
 	}
 	.ll :global(label) {
 		flex-grow: 1;
 		/* background: black; */
 	}
+	li {
+		padding-inline-start: 1ch;
+	}
+
 	.g1a {
 		margin-block: 3em 1em;
 		/* background: black; */
@@ -169,5 +174,10 @@
 		grid-template-columns: 1fr auto;
 		gap: 2ch;
 		align-items: flex-start;
+
+		/* outline: 1px solid orange; */
+	}
+	.end {
+		margin-top: 2em;
 	}
 </style>
