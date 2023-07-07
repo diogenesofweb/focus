@@ -87,7 +87,8 @@
 <style>
 	section {
 		gap: 1em;
-		padding-block: 1em;
+		/* padding-block: 1.525em; */
+		padding-block: 1.275em;
 		padding-inline: var(--x1);
 		border-radius: var(--x1);
 		background: var(--bg);
@@ -102,10 +103,11 @@
 		gap: 1ch;
 		/* color: var(--__fg0); */
 		color: var(--__fg0);
+		font-size: 1.25em;
 	}
 	b {
 		letter-spacing: 1px;
-		font-size: 1.2rem;
+		font-size: 2rem;
 		/* background: gray; */
 	}
 

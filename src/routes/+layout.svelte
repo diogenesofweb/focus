@@ -16,8 +16,6 @@
 </script>
 
 <svelte:head>
-	<title>Focus</title>
-	<meta name="description" content="Productivity timer with focus on breaks" />
 	<link rel="canonical" href="https://focus.delphic.top/" />
 </svelte:head>
 
@@ -41,13 +39,15 @@
 						<div class="pane">
 							<div class="fsb container-1">
 								{#if $page.route.id === '/'}
-									<SwitchSequence />
+									<div class="box">
+										<SwitchSequence />
+									</div>
 								{/if}
 
 								{#if $opts.radio}
-									<RadioPlayer />
-									<!-- {:else} -->
-									<!-- 	<span /> -->
+									<div class="box">
+										<RadioPlayer />
+									</div>
 								{/if}
 							</div>
 						</div>
@@ -104,20 +104,24 @@
 	/* #rp { */
 	/* 	background: darkolivegreen; */
 	/* } */
-	#rp .fsb {
-		background-color: var(--bg);
+	/* #rp .fsb { */
+	#rp .box {
+		/* width: 100%; */
+		/* outline: 1px solid red; */
+		flex-grow: 1;
 		/* margin-inline: 1em; */
 
 		padding-inline: 1em;
 		padding-block: 1.25em;
+
 		border: var(--border);
 		border-radius: 1em;
-
+		background-color: var(--bg);
 		/* background: darkolivegreen; */
 	}
 
 	#mp {
-		padding-block: 2em 8vh;
+		padding-block: 1em 8vh;
 	}
 
 	main:not(.root) #tp {
@@ -146,6 +150,9 @@
 			grid-area: mp;
 			/* background: darkcyan; */
 			margin-inline: 0;
+		}
+		.box {
+			width: 100%;
 		}
 
 		.root .pane {

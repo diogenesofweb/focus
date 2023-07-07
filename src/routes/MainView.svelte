@@ -489,7 +489,8 @@
 	}
 
 	.stats {
-		margin-bottom: 1em;
+		margin-bottom: 2em;
+		/* outline: 1px solid red; */
 	}
 
 	.phase {

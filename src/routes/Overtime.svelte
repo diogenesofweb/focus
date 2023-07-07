@@ -23,6 +23,7 @@
 		color: var(--__fg);
 
 		border: 1px solid var(--__fl);
+		margin-block: 2em;
 	}
 
 	.overdue {

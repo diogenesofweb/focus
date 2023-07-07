@@ -1,5 +1,7 @@
 @import '@kazkadien/svelte/styles.css' layer(kazka);
-
+.btn {
+	transition: none;
+}
 html {
 	--scrollbar-width: 1ch;
 	--border: 1px solid var(--fl2);

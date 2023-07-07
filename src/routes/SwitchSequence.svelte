@@ -13,10 +13,8 @@
 	</Field>
 </div>
 
-<style>
-	div {
-		min-width: 20ch;
-		/* margin-left: auto; */
-		align-self: stretch;
-	}
-</style>
+<!-- <style> -->
+<!-- 	div { -->
+<!-- 		min-width: 20ch; -->
+<!-- 	} -->
+<!-- </style> -->

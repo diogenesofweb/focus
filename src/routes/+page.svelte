@@ -15,6 +15,14 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Focus</title>
+	<meta
+		name="description"
+		content="Open source productivity / pomodoro timer with focus on breaks"
+	/>
+</svelte:head>
+
 {#if rounds}
 	<MainView {rounds} />
 {/if}
