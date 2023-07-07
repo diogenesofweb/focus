@@ -510,7 +510,7 @@
 		text-align: center;
 		letter-spacing: 1px;
 
-		color: var(--bg);
+		color: white;
 		background-color: var(--clr);
 
 		border-radius: 0 0 var(--x1) var(--x1);
@@ -519,9 +519,9 @@
 		max-width: 29ch;
 	}
 
-	:global(html.dark) .phase-name {
-		color: var(--fg1);
-	}
+	/* :global(html.dark) .phase-name { */
+	/* 	color: var(--fg1); */
+	/* } */
 
 	.phase-label {
 		line-height: 1.6;
