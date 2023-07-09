@@ -47,7 +47,8 @@
 </script>
 
 <svelte:head>
-	<title>Focus | Radios</title>
+	<title>Radios</title>
+	<meta name="description" content="List of radio stations" />
 </svelte:head>
 
 {#if modalIsOpen}
@@ -75,6 +76,7 @@
 						colored
 						variant="text"
 						on:click={() => onEdit(el)}
+						title="edit"
 					>
 						<MyIcon name="edit" />
 					</Btn>
@@ -85,6 +87,7 @@
 						colored
 						variant="text"
 						on:click={() => onDelete(el.id)}
+						title="delete"
 					>
 						<Icon name="delete" />
 					</Btn>

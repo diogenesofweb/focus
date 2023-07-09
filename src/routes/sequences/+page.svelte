@@ -37,7 +37,8 @@
 </script>
 
 <svelte:head>
-	<title>Focus | Sequences</title>
+	<title>Sequences</title>
+	<meta name="description" content="List of sequences" />
 </svelte:head>
 
 {#if modalIsOpen}
@@ -52,18 +53,20 @@
 			<li>
 				<span> {el} </span>
 
-				<div class="btns">
+				<div class="btns" style="font-size: .75em;">
 					<Btn
 						iconOnly
 						colored
 						accent="alpha"
 						variant="text"
 						on:click={() => onEdit(el)}
+						title="edit"
 					>
 						<MyIcon name="edit" />
 					</Btn>
 
 					<Btn
+						title="delete"
 						colored
 						iconOnly
 						variant="text"
@@ -88,8 +91,8 @@
 	</div>
 </MyLayout>
 
-<style>
-	.btns {
-		font-size: 0.75em;
-	}
-</style>
+<!-- <style> -->
+<!-- 	.btns { -->
+<!-- 		font-size: 0.75em; -->
+<!-- 	} -->
+<!-- </style> -->

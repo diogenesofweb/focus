@@ -62,6 +62,10 @@
 
 <svelte:head>
 	<title>Stats</title>
+	<meta
+		name="description"
+		content="Statistics for focus and  break activities"
+	/>
 </svelte:head>
 
 <article class="base container-1">

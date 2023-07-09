@@ -120,6 +120,11 @@
 	{/if}
 </section>
 
+<svelte:head>
+	<title>Snapshots</title>
+	<meta name="description" content="Save and restore your data" />
+</svelte:head>
+
 <style>
 	section {
 		max-width: 60ch;

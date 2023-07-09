@@ -13,10 +13,14 @@
 	import { page } from '$app/stores';
 	import TimersPanel from './TimersPanel.svelte';
 	import { timers } from './TimerNew.svelte';
+
+	// page.subscribe((v) => {
+	// 	console.log(v);
+	// });
 </script>
 
 <svelte:head>
-	<link rel="canonical" href="https://focus.delphic.top/" />
+	<link rel="canonical" href="https://focus.delphic.top{$page.route.id}" />
 </svelte:head>
 
 <AppWrapper>

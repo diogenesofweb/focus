@@ -71,7 +71,8 @@
 </script>
 
 <svelte:head>
-	<title>Focus | Activities</title>
+	<title>Activities</title>
+	<meta name="description" content="List of break activities" />
 </svelte:head>
 
 <MyLayout title="">
