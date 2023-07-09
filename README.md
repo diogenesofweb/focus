@@ -6,10 +6,14 @@ Due to the use of service workers, the time counter should be pretty accurate, r
 
 ### Features:
 
-- Customisable focus and break sets
+- Customisable sets and activities for each focus and break
 - Desktop notifications
 - Sound alarms
-- Radio player
+- Overtime
+- Additional timers
 - Statistics
+- Snapshots
+- Radio player
 
-![screenshot](./screenshot.png)
+![light theme](./screenshots/light.png)
+![dark theme](./screenshots/dark.png)
