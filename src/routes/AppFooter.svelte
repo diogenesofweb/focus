@@ -8,6 +8,7 @@
 		<div>
 			<Name />
 			<p>Productivity timer with focus on breaks</p>
+			<p>Open source web app</p>
 			{#if dev}
 				<a href="/test">test</a>
 			{/if}

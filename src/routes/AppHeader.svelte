@@ -5,15 +5,25 @@
 	import MyIcon from '$lib/MyIcon.svelte';
 	import TimerNew from './TimerNew.svelte';
 
-	let setting_open = false;
 	let timer_open = false;
+
+	/** @type {HTMLDialogElement} */
+	let dialog;
 </script>
 
-{#if setting_open}
-	<Modal on:close={() => (setting_open = false)}>
-		<Settings on:close={() => (setting_open = false)} />
-	</Modal>
-{/if}
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+<dialog
+	bind:this={dialog}
+	on:click={(ev) => {
+		// console.log(ev);
+		if (ev.target === dialog) {
+			dialog.close();
+		}
+	}}
+>
+	<Settings on:close={() => dialog.close()} />
+</dialog>
 
 {#if timer_open}
 	<Modal on:close={() => (timer_open = false)}>
@@ -44,7 +54,7 @@
 				iconOnly
 				round
 				variant="outlined"
-				on:click={() => (setting_open = true)}
+				on:click={() => dialog.showModal()}
 			>
 				<MyIcon name="settings" />
 			</Btn>

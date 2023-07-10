@@ -1,4 +1,5 @@
 <script>
+	import { browser } from '$app/environment';
 	import CloseBtn from '$lib/CloseBtn.svelte';
 	// import { radioIsOn } from '$store/radio';
 	import { opts } from '$store/settings';
@@ -28,7 +29,7 @@
 
 	const lsTheme = 'my-theme';
 
-	const _init = window.localStorage.getItem(lsTheme) || auto;
+	const _init = (browser && window.localStorage.getItem(lsTheme)) || auto;
 	let theme = _init;
 
 	$: {

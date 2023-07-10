@@ -10,6 +10,7 @@
 	// import { AppSnacks } from '@kazkadien/svelte';
 	import './../css/app.css';
 	import './../css/list.css';
+	import './../css/dialog.css';
 	import { page } from '$app/stores';
 	import TimersPanel from './TimersPanel.svelte';
 	import { timers } from './TimerNew.svelte';

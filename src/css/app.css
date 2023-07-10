@@ -64,17 +64,6 @@ html.dark {
 	line-height: 1.4;
 }
 
-#modal {
-	padding-block: 3rem;
-	padding-inline: clamp(1ch, 3vw, 2.5rem);
-}
-@media (hover: hover) {
-	#modal {
-		background: hsl(0, 0%, 0%, 0.3);
-		backdrop-filter: blur(0.2rem);
-	}
-}
-
 body {
 	--br-s: 0.33rem; /* border-radius-small */
 	--br-m: 1rem;

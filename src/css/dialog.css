@@ -1,0 +1,30 @@
+dialog {
+	background: transparent;
+
+	color: var(--fg);
+	border: none;
+	padding: 0;
+	padding-inline: clamp(1ch, 3vw, 2.5em);
+	/* margin-top: 2rem; */
+	margin-block: 3em;
+
+	/* max-height: calc(100% - 2rem); */
+	/* overflow: hidden; */
+}
+
+dialog::backdrop {
+	background-color: hsl(0 0% 0% / 0.75);
+}
+
+#modal {
+	background-color: hsl(0 0% 0% / 0.75);
+	padding-block: 3em;
+	padding-inline: clamp(1ch, 3vw, 2.5em);
+}
+
+/* @media (hover: hover) { */
+/* 	#modal { */
+/* 		background: hsl(0, 0%, 0%, 0.3); */
+/* 		backdrop-filter: blur(0.2rem); */
+/* 	} */
+/* } */
