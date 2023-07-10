@@ -1,42 +1,35 @@
-<section id="stop-war">
-	<a
-		href="https://war.ukraine.ua/support-ukraine/"
-		target="_blank"
-		rel="noopener noreferrer"
-		class="f-mono"
-	>
-		<span>STAND WITH UKRAINE</span>
-
-		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="20">
-			<rect width="30" height="20" fill="#005BBB" />
-			<rect width="30" height="10" y="10" fill="#FFD500" />
-		</svg>
-	</a>
-</section>
+<a
+	href="https://war.ukraine.ua/support-ukraine/"
+	target="_blank"
+	rel="noopener noreferrer"
+	title="STAND WITH UKRAINE"
+>
+	ua
+</a>
 
 <style>
-	#stop-war {
-		z-index: 999;
+	a {
+		--blue: #0158b5;
+		--yellow: #f6ce00;
+
+		display: grid;
+		place-items: center;
+		color: var(--yellow);
+		background: linear-gradient(
+			to bottom,
+			var(--blue) 33%,
+			var(--yellow) 33%,
+			var(--yellow) 66%,
+			transparent 66%
+		);
+
 		position: fixed;
+		z-index: 2;
 		bottom: 0;
 		left: 0;
-		right: 0;
-		padding: 1ch;
-		background-color: black;
-		font-size: 14px;
-		text-align: center;
-	}
+		width: 6em;
+		height: 3em;
 
-	#stop-war a {
-		/* color: red; */
-		color: salmon;
-		text-decoration: none;
-		display: inline-flex;
-		align-items: flex-end;
-		gap: 1ch;
-	}
-
-	#stop-war a:is(:hover, :focus) {
-		text-decoration: underline;
+		transform: rotate(45deg) translate(-1em, 2em);
 	}
 </style>
