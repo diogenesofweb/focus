@@ -7,8 +7,26 @@
 	<section class="container-1">
 		<div>
 			<Name />
-			<p>Productivity timer with focus on breaks</p>
-			<p>Open source web app</p>
+			<p>Productivity timer with focus on breaks.</p>
+			<p>Free and Open source web app.</p>
+
+			<p>
+				Inspired by
+				<a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
+					pomodoro technique
+				</a>.
+			</p>
+
+			<p>
+				Built with
+				<a href="https://kit.svelte.dev/">SvelteKit</a>.
+			</p>
+
+			<p>
+				Check out
+				<a href="https://www.delphic.top/projects">my projects</a>.
+			</p>
+
 			{#if dev}
 				<a href="/test">test</a>
 			{/if}
@@ -18,8 +36,6 @@
 			<a
 				href="https://github.com/diogenesofweb/focus"
 				aria-label="link to repo"
-				target="_blank"
-				rel="noopener noreferrer"
 			>
 				<svg width="24" height="24" viewBox="0 0 24 24">
 					<path

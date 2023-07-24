@@ -16,6 +16,24 @@ dialog::backdrop {
 	background-color: hsl(0 0% 0% / 0.75);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+	#modal,
+	dialog[open] {
+		animation: anim 350ms ease;
+	}
+
+	@keyframes anim {
+		from {
+			/* transform: translateY(calc(0px - 90vh)); */
+			opacity: 0;
+		}
+		to {
+			/* transform: translateY(0); */
+			opacity: 1;
+		}
+	}
+}
+
 #modal {
 	background-color: hsl(0 0% 0% / 0.75);
 	padding-block: 3em;
