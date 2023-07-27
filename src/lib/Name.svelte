@@ -1,5 +1,6 @@
 <div class="f-mono">
-	<b>Focus</b>
+	<!-- <b>Focus</b> -->
+	<b>Delphic</b>
 </div>
 
 <style>

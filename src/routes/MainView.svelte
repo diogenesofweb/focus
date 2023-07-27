@@ -1,6 +1,6 @@
 <script context="module">
 	// let simple timers know if they can update the title
-	export const sh = { is_active: false };
+	export const sh = { pomo_is_active: false, timers_is_active: false };
 </script>
 
 <script>
@@ -102,7 +102,7 @@
 		// console.log({ data });
 		w.postMessage(data);
 
-		sh.is_active = true;
+		sh.pomo_is_active = true;
 	}
 	function stopTimer() {
 		is_running = false;
@@ -239,6 +239,7 @@
 		// console.log('pause');
 		is_running = false;
 		isPaused = true;
+		sh.pomo_is_active = false;
 		w.postMessage({ mes: msg.stop });
 	}
 	function handleResume() {
@@ -246,7 +247,7 @@
 		is_running = true;
 		isPaused = false;
 		w.postMessage({ mes: msg.resume });
-		sh.is_active = true;
+		sh.pomo_is_active = true;
 	}
 
 	function handleStart(isClick = false) {
@@ -283,7 +284,7 @@
 
 		$my_title = phase;
 
-		sh.is_active = false;
+		sh.pomo_is_active = false;
 	}
 
 	async function handleNext() {
@@ -296,7 +297,7 @@
 		clearClock();
 
 		$my_title = phase;
-		sh.is_active = false;
+		sh.pomo_is_active = false;
 	}
 
 	function upStats() {
@@ -415,7 +416,7 @@
 		<Overtime {overtime} {phase} />
 	{/if}
 
-	<div class="btns" id="action-btns">
+	<div class="btns g-action-btns" id="action-btns">
 		<Btn
 			accent="alpha"
 			variant="outlined"
@@ -559,14 +560,14 @@
 		margin-top: 2rem;
 	}
 
-	@media only screen and (min-width: 430px) {
+	@media only screen and (min-width: 500px) {
 		.btns {
 			grid-template-columns: 1fr 1fr 1fr;
 			/* background: black; */
 		}
 	}
-	#action-btns :global(.btn.outlined:not(:hover):not(:focus-visible)) {
-		background: var(--__bga1);
-		backdrop-filter: blur(3px);
-	}
+	/* #action-btns :global(.btn.outlined:not(:hover):not(:focus-visible)) { */
+	/* 	background: var(--__bga1); */
+	/* 	backdrop-filter: blur(3px); */
+	/* } */
 </style>

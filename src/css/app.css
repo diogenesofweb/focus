@@ -79,3 +79,16 @@ a.btn.text:hover {
 label {
 	min-width: 0;
 }
+
+.g-action-btns {
+	& button {
+		border-radius: 1rem;
+		font-size: 1.5rem;
+		font-weight: 900;
+	}
+
+	& button.outlined:not(:hover):not(:focus-visible) {
+		background: var(--__bga1);
+		backdrop-filter: blur(3px);
+	}
+}

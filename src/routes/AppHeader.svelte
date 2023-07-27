@@ -4,11 +4,13 @@
 	import Settings from './AppSettings.svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
 	import TimerNew from './TimerNew.svelte';
+	import { page } from '$app/stores';
 
 	let timer_open = false;
 
 	/** @type {HTMLDialogElement} */
 	let dialog;
+	// page.subscribe((p) => console.log(p));
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -39,7 +41,9 @@
 
 		<!-- <div class="fce g1 alpha" style="--_bg: var(--__mg0)"> -->
 		<div class="fce alpha">
+			<!-- {#if $page.route.id === '/'} -->
 			<Btn
+				disabled={$page.route.id !== '/'}
 				title="timer"
 				iconOnly
 				round
@@ -48,6 +52,7 @@
 			>
 				<MyIcon name="timer" />
 			</Btn>
+			<!-- {/if} -->
 
 			<Btn
 				title="settings"

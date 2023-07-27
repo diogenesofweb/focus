@@ -17,6 +17,7 @@
 		{ href: '/radio-stations', name: 'Radio Stations' }
 	];
 	const links2 = [
+		{ href: '/stopwatch', name: 'Stopwatch' },
 		{ href: '/stats', name: 'Stats' },
 		{ href: '/snaps', name: 'Snapshots' }
 	];
@@ -89,7 +90,7 @@
 				</a>
 			{/each}
 
-			<div class="edit" style="margin-top: 2rem ;">Info</div>
+			<div class="edit" style="margin-top: 2rem ;">More</div>
 
 			{#each links2 as { href, name }}
 				<a {href} class="btn text round" on:click={() => dispatch('close')}>
@@ -136,9 +137,13 @@
 					</BoxFieldEntry>
 				</BoxField>
 
-				<BoxField label="Show" rows={true}>
+				<BoxField label="Add-ons" rows={true}>
 					<BoxFieldEntry label="Radio">
 						<input type="checkbox" bind:checked={$opts.radio} />
+					</BoxFieldEntry>
+
+					<BoxFieldEntry label="Stopwatch">
+						<input type="checkbox" bind:checked={$opts.stopwatch} />
 					</BoxFieldEntry>
 
 					<BoxFieldEntry label="Today's Total Time">

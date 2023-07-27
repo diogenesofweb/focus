@@ -28,7 +28,7 @@
 			</p>
 
 			{#if dev}
-				<a href="/test">test</a>
+				<a href="/_draft">_draft</a>
 			{/if}
 		</div>
 

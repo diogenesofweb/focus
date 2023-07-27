@@ -3,7 +3,7 @@ import { msg } from './const.js';
 
 let INTERVAL = 1000;
 if (import.meta.env.DEV) {
-	INTERVAL = 10;
+	INTERVAL = 100;
 }
 
 let sendTickEverySecond = true;

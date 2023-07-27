@@ -2,7 +2,7 @@
 	// your script goes here
 </script>
 
-<p>darft</p>
+<p>draft</p>
 
 <style>
 	/* your styles go here */

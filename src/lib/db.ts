@@ -109,7 +109,7 @@ const b1 = new Set([
 const b2 = new Set(['Tea/Coffee', 'Meditation']);
 /** SEED START */
 async function seed(db: IDBPDatabase<MyDB>) {
-	console.log('seeding start');
+	// console.log('seeding start');
 	await db.put('activity-list', { name: 'short break', values: b1 });
 	await db.put('activity-list', { name: 'long break', values: b2 });
 
@@ -117,7 +117,7 @@ async function seed(db: IDBPDatabase<MyDB>) {
 	await db.put('sequences', s4x25);
 
 	await Promise.all(myStations.map((el) => db.put('stations', el)));
-	console.log('seeding end');
+	// console.log('seeding end');
 }
 /** SEED END */
 
@@ -129,7 +129,7 @@ async function initDB() {
 
 	const db1 = await openDB<MyDB>(DB_NAME, DB_VERSION, {
 		upgrade(db) {
-			console.log('upgrade db');
+			// console.log('upgrade db');
 			runSeed = true;
 
 			const store = db.createObjectStore('records', { keyPath: 'date' });

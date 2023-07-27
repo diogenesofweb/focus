@@ -25,7 +25,8 @@
 			st.min = e.data.min;
 			st.sec = e.data.sec;
 
-			if (idx === 0 && !sh.is_active) {
+			if (idx === 0 && !sh.pomo_is_active) {
+				sh.timers_is_active = true;
 				const title = `${MM}:${SS} / ${m0}:${s0}`;
 				// console.log({ ...sh, idx, title });
 				$my_title = title;
@@ -33,6 +34,7 @@
 		}
 
 		if (e.data.mes == msg.finish) {
+			sh.timers_is_active = false;
 			// console.log('finish');
 			if ($opts.notifications) sendNotification('Timer');
 			if ($opts.alarm) audio.play();
@@ -60,6 +62,7 @@
 
 	// console.log('created');
 	onDestroy(() => {
+		sh.timers_is_active = false;
 		// console.log('on destroy');
 		w.postMessage({ mes: msg.stop });
 		w.terminate();
@@ -115,7 +118,7 @@
 	b {
 		color: var(--__fg);
 		letter-spacing: 2px;
-		font-size: 2.5em;
+		font-size: 2em;
 		/* margin-right: auto; */
 		/* background: gray; */
 	}

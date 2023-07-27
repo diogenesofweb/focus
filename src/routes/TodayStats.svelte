@@ -103,7 +103,7 @@
 		gap: 1ch;
 		/* color: var(--__fg0); */
 		color: var(--__fg0);
-		font-size: 1.25em;
+		font-size: 1.25rem;
 	}
 	b {
 		letter-spacing: 1px;

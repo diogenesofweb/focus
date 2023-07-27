@@ -9,6 +9,7 @@ let _opts = {
 	totalTime: false,
 	overtime: false,
 	radio: false,
+	stopwatch: false,
 	alarm: false
 };
 

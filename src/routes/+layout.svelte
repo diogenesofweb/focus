@@ -14,6 +14,7 @@
 	import { page } from '$app/stores';
 	import TimersPanel from './TimersPanel.svelte';
 	import { timers } from './TimerNew.svelte';
+	import StopWatch from './StopWatch.svelte';
 
 	// page.subscribe((v) => {
 	// 	console.log(v);
@@ -32,12 +33,18 @@
 		<div id="view" class="alpha">
 			<AppHeader />
 
-			<main class="" class:root={$page.route.id === '/'}>
-				{#if $timers.length}
-					<div id="tp" class="pane">
+			<main class:root={$page.route.id === '/'}>
+				<div id="tp" class="pane">
+					{#if $opts.stopwatch}
+						<div id="sw" class="box">
+							<StopWatch />
+						</div>
+					{/if}
+
+					{#if $timers.length}
 						<TimersPanel />
-					</div>
-				{/if}
+					{/if}
+				</div>
 
 				<div id="rp" class="">
 					{#if $page.route.id === '/' || $opts.radio}
@@ -110,6 +117,17 @@
 	/* 	background: darkolivegreen; */
 	/* } */
 	/* #rp .fsb { */
+
+	.box {
+		overflow: hidden;
+		border: var(--border);
+		border-radius: 1rem;
+		background-color: var(--bg);
+
+		padding-inline: 1rem;
+		padding-block: 1rem;
+	}
+
 	#rp .box {
 		/* width: 100%; */
 		/* outline: 1px solid red; */
@@ -137,7 +155,14 @@
 		background: transparent;
 	}
 
+	#sw {
+		margin-bottom: 1rem;
+	}
 	@media only screen and (min-width: 1400px) {
+		#sw {
+			margin-bottom: 2rem;
+			padding-block: 1.32em;
+		}
 		#rp {
 			grid-area: rp;
 			/* background: darkviolet; */
