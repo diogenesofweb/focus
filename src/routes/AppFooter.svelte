@@ -8,7 +8,7 @@
 		<div>
 			<Name />
 			<p>Productivity timer with focus on breaks.</p>
-			<p>Free and Open source web app.</p>
+			<p>Free and open source web app.</p>
 
 			<p>
 				Inspired by

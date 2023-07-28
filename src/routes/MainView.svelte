@@ -535,10 +535,11 @@
 	}
 
 	.boxx {
-		margin-top: 1em;
-		/* margin-block: var(--x1); */
+		user-select: none;
 
+		margin-top: 1em;
 		padding: 0.5em 0;
+
 		border-radius: var(--x1);
 		border: 1px solid var(--clr);
 		border-left: var(--x2) solid var(--clr);

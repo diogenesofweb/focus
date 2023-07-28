@@ -3,72 +3,54 @@
 	import { sh } from './MainView.svelte';
 	// import { timers } from './TimerNew.svelte';
 	import { my_title } from './MyTitle.svelte';
+	import { MSG_WF } from '$lib/const';
+	import { onDestroy } from 'svelte';
 
-	let hh = 0;
-	let mm = 0;
-	let ss = 0;
+	let w = new Worker(new URL('$lib/worker_forward.js', import.meta.url), {
+		type: 'module'
+	});
+	onDestroy(() => {
+		// console.log('on destroy');
+		w.postMessage({ msg: MSG_WF.stop });
+		w.terminate();
+		// @ts-ignore
+		w = undefined;
+	});
 
-	$: HH = hh < 10 ? '0' + hh : hh;
-	$: MM = mm < 10 ? '0' + mm : mm;
-	$: SS = ss < 10 ? '0' + ss : ss;
+	w.onmessage = function (e) {
+		/** @type {import('$lib/worker').WTime } */
+		const t = e.data;
+		value = `${t.HH}:${t.MM}:${t.SS}`;
+
+		if (!sh.pomo_is_active && !sh.timers_is_active) {
+			$my_title = value;
+		}
+	};
+
+	let value = '00:00:00';
+	let is_running = false;
 
 	function handle_reset() {
-		hh = 0;
-		mm = 0;
-		ss = 0;
-
-		interval_id && clearInterval(interval_id);
+		is_running = false;
+		w.postMessage({ msg: MSG_WF.reset });
 	}
-
-	let is_running = false;
 
 	function handle_start_stop() {
 		if (is_running) {
 			is_running = false;
-			interval_id && clearInterval(interval_id);
+			w.postMessage({ msg: MSG_WF.stop });
 			return;
 		}
 
-		start_ticking();
+		w.postMessage({ msg: MSG_WF.start });
 		is_running = true;
-	}
-
-	const INTERVAL = import.meta.env.DEV ? 100 : 1000;
-	/** @type {ReturnType<setInterval>} */
-	let interval_id;
-	function start_ticking() {
-		interval_id = setInterval(on_tick, INTERVAL);
-	}
-
-	function on_tick() {
-		if (ss === 59) {
-			ss = 0;
-
-			if (mm == 59) {
-				mm = 0;
-				hh++;
-			} else {
-				mm++;
-			}
-		} else {
-			ss++;
-		}
-
-		// console.log($timers);
-		// console.log(sh);
-		// if (!sh.pomo_is_active && $timers.length === 0) {
-		if (!sh.pomo_is_active && !sh.timers_is_active) {
-			$my_title = `${HH}:${MM}:${SS}`;
-		}
 	}
 </script>
 
 <article class="gamma">
 	<section title="Stopwatch">
 		<Icon name="timelapse" />
-		<div>
-			<span>{HH}</span>:<span>{MM}</span>:<span>{SS}</span>
-		</div>
+		<div><span>{value}</span></div>
 	</section>
 
 	<BtnIcon

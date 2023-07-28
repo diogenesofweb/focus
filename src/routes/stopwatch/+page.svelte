@@ -1,61 +1,51 @@
 <script>
 	import { Btn } from '@kazkadien/svelte';
+	import { onDestroy } from 'svelte';
+	import { MSG_WF } from '$lib/const';
 
-	let hh = 0;
-	let mm = 0;
-	let ss = 0;
+	let w = new Worker(new URL('$lib/worker_forward.js', import.meta.url), {
+		type: 'module'
+	});
+	onDestroy(() => {
+		// console.log('on destroy');
+		w.postMessage({ msg: MSG_WF.stop });
+		w.terminate();
+		// @ts-ignore
+		w = undefined;
+	});
 
-	$: HH = hh < 10 ? '0' + hh : hh;
-	$: MM = mm < 10 ? '0' + mm : mm;
-	$: SS = ss < 10 ? '0' + ss : ss;
+	w.onmessage = function (e) {
+		time = e.data;
+		title = `${time.HH}:${time.MM}:${time.SS}`;
+	};
 
-	function handle_reset() {
-		hh = 0;
-		mm = 0;
-		ss = 0;
+	let title = 'Stopwatch';
 
-		interval_id && clearInterval(interval_id);
-		title = 'Stopwatch';
-	}
+	/** @type {import('$lib/worker').WTime } */
+	let time = {
+		HH: '00',
+		MM: '00',
+		SS: '00'
+	};
 
 	let is_running = false;
+
+	function handle_reset() {
+		title = 'Stopwatch';
+		is_running = false;
+		w.postMessage({ msg: MSG_WF.reset });
+	}
 
 	function handle_start_stop() {
 		if (is_running) {
 			is_running = false;
-			interval_id && clearInterval(interval_id);
+			w.postMessage({ msg: MSG_WF.stop });
 			return;
 		}
 
-		start_ticking();
+		w.postMessage({ msg: MSG_WF.start });
 		is_running = true;
 	}
-
-	const INTERVAL = import.meta.env.DEV ? 10 : 1000;
-	/** @type {ReturnType<setInterval>} */
-	let interval_id;
-	function start_ticking() {
-		interval_id = setInterval(on_tick, INTERVAL);
-	}
-
-	function on_tick() {
-		if (ss === 59) {
-			ss = 0;
-
-			if (mm == 59) {
-				mm = 0;
-				hh++;
-			} else {
-				mm++;
-			}
-		} else {
-			ss++;
-		}
-
-		title = `${HH}:${MM}:${SS}`;
-	}
-
-	let title = 'Stopwatch';
 </script>
 
 <svelte:head>
@@ -65,7 +55,9 @@
 
 <article class="alpha">
 	<section class:gamma={is_running} class="font-x">
-		<span>{HH}</span><i>:</i><span>{MM}</span><i>:</i><span>{SS}</span>
+		<span>{time.HH}</span><i>:</i><span>{time.MM}</span><i>:</i><span
+			>{time.SS}</span
+		>
 	</section>
 
 	<div class="btns g-action-btns">
@@ -97,9 +89,14 @@
 	}
 
 	section {
+		user-select: none;
+
 		border-radius: 1rem;
-		border: var(--border);
 		border-color: var(--__fl);
+		border: 1px solid var(--__fl0);
+		border-left: 0.5rem solid var(--__fl0);
+		border-right: 0.5rem solid var(--__fl0);
+
 		background: var(--__bga);
 		backdrop-filter: blur(3px);
 
