@@ -150,6 +150,14 @@
 	</form>
 </MyLayout>
 
+<div class="notes container">
+	<p>
+		<a href="https://www.bbc.com/news/health-66303982">
+			Wall squats and planks best at lowering blood pressure
+		</a>
+	</p>
+</div>
+
 <style>
 	form {
 		background: var(--bg);
@@ -180,5 +188,12 @@
 	}
 	.end {
 		margin-top: 2em;
+	}
+
+	.notes {
+		padding: 1rem;
+		border-radius: 1rem;
+		background: var(--bg);
+		margin-top: 3rem;
 	}
 </style>

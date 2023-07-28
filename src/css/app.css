@@ -73,11 +73,18 @@ body {
 	--br-l: 3rem;
 }
 
-a.btn {
+a {
 	text-underline-offset: 3px;
 }
 a.btn.text:hover {
 	outline: none;
+}
+a:not(.btn) {
+	color: var(--fg);
+
+	&:where(:hover, :focus-visible) {
+		color: var(--fg-alpha);
+	}
 }
 label {
 	min-width: 0;

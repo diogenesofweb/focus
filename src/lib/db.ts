@@ -99,6 +99,7 @@ const b1 = new Set([
 	'Squat (regular)',
 	'Squat (split)',
 	'Squat (sumo)',
+	'Wall Squat',
 	'Calf raise',
 	'Hamstring curl',
 	'Tibialis raise',

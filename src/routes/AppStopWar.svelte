@@ -4,6 +4,7 @@
 
 <style>
 	a {
+		text-decoration: none;
 		--blue: #0158b5;
 		--yellow: #f6ce00;
 
