@@ -56,11 +56,14 @@ html.dark {
 }
 
 .card {
+	/* min-width: 300px; */
+	min-width: min(80vw, 500px);
+
 	background-color: var(--bg);
 	padding: 3rem var(--rsx) 6rem;
 	border-radius: var(--btn-br);
 	border: 1px solid var(--__bga);
-	min-width: 300px;
+
 	line-height: 1.4;
 }
 

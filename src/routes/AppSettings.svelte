@@ -6,21 +6,7 @@
 
 	import { notificationsAreOn } from '$store/store';
 
-	import { BoxField, BoxFieldEntry, Field } from '@kazkadien/svelte';
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
-
-	const links = [
-		{ href: '/sequences', name: 'Session Sequences' },
-		{ href: '/break-activities', name: 'Break Activities ' },
-		{ href: '/radio-stations', name: 'Radio Stations' }
-	];
-	const links2 = [
-		{ href: '/stopwatch', name: 'Stopwatch' },
-		{ href: '/stats', name: 'Stats' },
-		{ href: '/snaps', name: 'Snapshots' }
-	];
+	import { BoxField, BoxFieldEntry, BtnIcon, Field } from '@kazkadien/svelte';
 
 	const dark = 'dark';
 	const light = 'light';
@@ -76,122 +62,107 @@
 
 		document.documentElement.classList.remove(dark);
 	}
+
+	/** @type {HTMLDialogElement} */
+	let dialog;
 </script>
 
-<div class="card alpha modal-box">
-	<CloseBtn on:click={() => dispatch('close')} />
+<BtnIcon
+	iconName="settings"
+	title="settings"
+	round
+	variant="outlined"
+	on:click={() => dialog.showModal()}
+/>
 
-	<section>
-		<div class="links alpha">
-			<div class="edit">Edit</div>
-			{#each links as { href, name }}
-				<a {href} class="btn text round" on:click={() => dispatch('close')}>
-					{name}
-				</a>
-			{/each}
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+<dialog
+	bind:this={dialog}
+	on:click={(ev) => ev.target === dialog && dialog.close()}
+>
+	<div class="card alpha modal-box">
+		<CloseBtn on:click={() => dialog.close()} />
 
-			<div class="edit" style="margin-top: 2rem ;">More</div>
+		<section>
+			<form class="form v2 alpha">
+				<Field label="Color Theme">
+					<select bind:value={theme}>
+						{#each themes as val}
+							<option value={val}>{val}</option>
+						{/each}
+					</select>
+				</Field>
 
-			{#each links2 as { href, name }}
-				<a {href} class="btn text round" on:click={() => dispatch('close')}>
-					{name}
-				</a>
-			{/each}
-		</div>
-
-		<form class="form v2 alpha">
-			<Field label="Color Theme">
-				<select bind:value={theme}>
-					{#each themes as val}
-						<option value={val}>{val}</option>
-					{/each}
-				</select>
-			</Field>
-
-			<div class="boxes">
-				<BoxField label="Options" rows={true}>
-					<BoxFieldEntry label="Send Notifications">
-						<input type="checkbox" bind:checked={$notificationsAreOn} />
-					</BoxFieldEntry>
-
-					<BoxFieldEntry label="Play Alarm">
-						<input type="checkbox" bind:checked={$opts.alarm} />
-					</BoxFieldEntry>
-
-					{#if $notificationsAreOn || $opts.alarm}
-						<BoxFieldEntry label="Enable Overtime Reminder *">
-							<input type="checkbox" bind:checked={$opts.reminder} />
+				<div class="boxes">
+					<BoxField label="Options" rows={true}>
+						<BoxFieldEntry label="Send Notifications">
+							<input type="checkbox" bind:checked={$notificationsAreOn} />
 						</BoxFieldEntry>
-					{/if}
 
-					<BoxFieldEntry label="Auto Show Break Activities">
-						<input type="checkbox" bind:checked={$opts.autoShowActivites} />
-					</BoxFieldEntry>
+						<BoxFieldEntry label="Play Alarm">
+							<input type="checkbox" bind:checked={$opts.alarm} />
+						</BoxFieldEntry>
 
-					<BoxFieldEntry label="Auto Start Focus Time">
-						<input type="checkbox" bind:checked={$opts.autoStartFocus} />
-					</BoxFieldEntry>
+						{#if $notificationsAreOn || $opts.alarm}
+							<BoxFieldEntry label="Enable Overtime Reminder *">
+								<input type="checkbox" bind:checked={$opts.reminder} />
+							</BoxFieldEntry>
+						{/if}
 
-					<BoxFieldEntry label="Screen Wake Lock">
-						<input type="checkbox" bind:checked={$opts.wakeLock} />
-					</BoxFieldEntry>
-				</BoxField>
+						<BoxFieldEntry label="Auto Show Break Activities">
+							<input type="checkbox" bind:checked={$opts.autoShowActivites} />
+						</BoxFieldEntry>
 
-				<BoxField label="Add-ons" rows={true}>
-					<BoxFieldEntry label="Radio">
-						<input type="checkbox" bind:checked={$opts.radio} />
-					</BoxFieldEntry>
+						<BoxFieldEntry label="Auto Start Focus Time">
+							<input type="checkbox" bind:checked={$opts.autoStartFocus} />
+						</BoxFieldEntry>
 
-					<BoxFieldEntry label="Stopwatch">
-						<input type="checkbox" bind:checked={$opts.stopwatch} />
-					</BoxFieldEntry>
+						<BoxFieldEntry label="Prevent Dimming or Locking the Screen">
+							<input type="checkbox" bind:checked={$opts.wakeLock} />
+						</BoxFieldEntry>
+					</BoxField>
 
-					<BoxFieldEntry label="Today's Total Time">
-						<input type="checkbox" bind:checked={$opts.totalTime} />
-					</BoxFieldEntry>
+					<BoxField label="Add-ons" rows={true}>
+						<BoxFieldEntry label="Radio">
+							<input type="checkbox" bind:checked={$opts.radio} />
+						</BoxFieldEntry>
 
-					<BoxFieldEntry label="Overtime">
-						<input type="checkbox" bind:checked={$opts.overtime} />
-					</BoxFieldEntry>
-				</BoxField>
-			</div>
-		</form>
-	</section>
+						<BoxFieldEntry label="Stopwatch">
+							<input type="checkbox" bind:checked={$opts.stopwatch} />
+						</BoxFieldEntry>
 
-	<footer>
-		{#if $notificationsAreOn || $opts.alarm}
-			<p>* Remind me of overtime every 5 minutes.</p>
-		{/if}
-	</footer>
-</div>
+						<BoxFieldEntry label="Today's Total Time">
+							<input type="checkbox" bind:checked={$opts.totalTime} />
+						</BoxFieldEntry>
+
+						<BoxFieldEntry label="Overtime">
+							<input type="checkbox" bind:checked={$opts.overtime} />
+						</BoxFieldEntry>
+					</BoxField>
+				</div>
+			</form>
+		</section>
+
+		<footer>
+			{#if $notificationsAreOn || $opts.alarm}
+				<p>* Remind me of overtime every 5 minutes.</p>
+			{/if}
+
+			{#if $opts.wakeLock}
+				<p>
+					<a
+						href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API"
+						>Screen Wake Lock</a
+					>
+					is not supported in Firefox
+				</p>
+			{/if}
+		</footer>
+	</div>
+</dialog>
 
 <style>
-	section {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--rsx);
-	}
-	@media only screen and (min-width: 600px) {
-		section {
-			grid-template-columns: 1fr 1fr;
-		}
-	}
-
-	.links {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		/* align-items: stretch; */
-	}
-	a {
-		transform: translateX(-1em);
-	}
-	.edit {
-		opacity: 0.6;
-		font-weight: bold;
-		font-size: calc(1rem - 2px);
-		margin-bottom: 1ch;
-	}
 	:where(form, .boxes) {
 		display: grid;
 		gap: 2rem;
