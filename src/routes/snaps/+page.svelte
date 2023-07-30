@@ -29,6 +29,7 @@
 		link.dispatchEvent(evt);
 		link.remove();
 	}
+
 	const ls_options = 'options';
 	async function make_snaphot() {
 		// console.log('up');

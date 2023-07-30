@@ -1,7 +1,7 @@
 <script context="module">
 	import { writable } from 'svelte/store';
 
-	export const my_title = writable('Focus');
+	export const my_title = writable('Delphic');
 </script>
 
 <svelte:head>

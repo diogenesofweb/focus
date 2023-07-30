@@ -12,39 +12,55 @@ import type {
 } from './types';
 
 const myStations: IRadioStation[] = [
-	// {
-	// 	src: 'http://23.82.11.87:8928/stream/1/',
-	// 	name: 'Calm Radio'
-	// },
 	{
-		id: 1,
 		src: 'https://coderadio-relay-nyc.freecodecamp.org/radio/8010/radio.mp3',
-		name: 'FreeCodeCamp Radio'
+		name: 'FreeCodeCamp Radio',
+		id: 1
 	},
 	{
-		id: 2,
 		src: 'https://peacefulpiano.stream.publicradio.org/peacefulpiano.mp3',
-		name: 'Peaceful Piano'
+		name: 'Peaceful Piano',
+		id: 2
 	},
 	{
-		id: 3,
-		src: 'https://uk2.streamingpulse.com/ssl/vcr1',
-		name: 'Venice Classic'
-	},
-	{
-		id: 4,
 		src: 'https://radio4.cdm-radio.com:18020/stream-mp3-Chill',
-		name: 'Costa Del Mar - Chillout'
+		name: 'Costa Del Mar - Chillout',
+		id: 4
 	},
 	{
-		id: 5,
 		src: 'https://stream.srg-ssr.ch/m/rsj/mp3_128',
-		name: 'Radio Swiss Jazz'
+		name: 'Radio Swiss Jazz',
+		id: 5
 	},
 	{
-		id: 6,
 		src: 'https://strmreg.1.fm/chilloutlounge_mobile_mp3',
-		name: '1.FM - Chillout Lounge'
+		name: '1.FM - Chillout Lounge',
+		id: 6
+	},
+	{
+		id: 7,
+		name: '1.FM - Classical',
+		src: 'https://strm112.1.fm/classical_mobile_mp3?aw_0_req.gdpr=true'
+	},
+	{
+		id: 8,
+		name: '1.FM - Spa',
+		src: 'https://strm112.1.fm/spa_mobile_mp3?aw_0_req.gdpr=true'
+	},
+	{
+		id: 9,
+		name: '1.FM - Costa Del Mar Chillout',
+		src: 'https://strm112.1.fm/costadelmarchillout_mobile_mp3?aw_0_req.gdpr=true'
+	},
+	{
+		id: 10,
+		name: 'Relax',
+		src: 'https://relax.stream.publicradio.org/relax.aac'
+	},
+	{
+		id: 11,
+		name: '1.FM - Baroque',
+		src: 'https://strmreg.1.fm/baroque_mobile_mp3'
 	}
 ];
 
@@ -183,7 +199,12 @@ const stations = {
 	list: async () => (await dbx).getAll('stations'),
 	getOneById: async (id: number) => (await dbx).get('stations', id),
 	deleteOneById: async (id: number) => (await dbx).delete('stations', id),
-	upsertOne: async (one: IRadioStation) => (await dbx).put('stations', one)
+	upsertOne: async (one: IRadioStation) => (await dbx).put('stations', one),
+	reset_to_default: async () => {
+		const mdb = await dbx;
+		mdb.clear('stations');
+		await Promise.all(myStations.map((el) => mdb.put('stations', el)));
+	}
 };
 
 export const ldb = {

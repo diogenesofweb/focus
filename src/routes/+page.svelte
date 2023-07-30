@@ -18,10 +18,10 @@
 </script>
 
 <svelte:head>
-	<title>Focus</title>
+	<title>Delphic</title>
 	<meta
 		name="description"
-		content="Online productivity / pomodoro timer with focus on breaks. Free and open source web app."
+		content="Minimalistic configurable online productivity (pomodoro) timer."
 	/>
 </svelte:head>
 

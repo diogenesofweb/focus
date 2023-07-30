@@ -7,19 +7,18 @@
 	<section class="container-1">
 		<div>
 			<Name />
-			<p>Productivity timer with focus on breaks.</p>
-			<p>Free and open source web app.</p>
-
 			<p>
-				Inspired by
+				Minimalistic configurable productivity timer with focus on breaks, based
+				on
 				<a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
 					pomodoro technique
 				</a>.
 			</p>
+			<p>Free and open source web app.</p>
 
 			<p>
 				Built with
-				<a href="https://kit.svelte.dev/">SvelteKit</a>.
+				<a href="https://kit.svelte.dev">SvelteKit</a>.
 			</p>
 
 			<p>

@@ -64,7 +64,8 @@
 	let myStations = [];
 
 	ldb.stations.list().then((v) => {
-		myStations = v;
+		// myStations = v;
+		myStations = v.sort((a, b) => a.name.localeCompare(b.name));
 		// console.log(myStations);
 		activeStation = myStations[0];
 

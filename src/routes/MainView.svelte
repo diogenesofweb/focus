@@ -282,7 +282,8 @@
 
 		clearClock();
 
-		$my_title = phase;
+		// $my_title = phase;
+		$my_title = 'Delphic';
 
 		sh.pomo_is_active = false;
 	}

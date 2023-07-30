@@ -7,13 +7,23 @@
 
 	/** @type {import('$lib/types').IRadioStation[]} */
 	let myStations = [];
-	reset();
+	reload();
 
-	function reset() {
+	function reload() {
 		ldb.stations.list().then((v) => {
-			myStations = v;
+			myStations = v.sort((a, b) => a.name.localeCompare(b.name));
 			// console.log(myStations);
 		});
+	}
+	let is_confirm = false;
+	function on_reset() {
+		if (!is_confirm) {
+			is_confirm = true;
+			setTimeout(() => (is_confirm = false), 1000);
+			return;
+		}
+
+		ldb.stations.reset_to_default().then(() => reload());
 	}
 
 	let modalIsOpen = false;
@@ -24,7 +34,7 @@
 	function onDelete(id) {
 		// console.log(id);
 		ldb.stations.deleteOneById(id).then(() => {
-			reset();
+			reload();
 		});
 	}
 
@@ -57,7 +67,7 @@
 			station={station2edit}
 			on:close={() => {
 				onCloseModal();
-				reset();
+				reload();
 			}}
 		/>
 	</Modal>
@@ -96,12 +106,19 @@
 		{/each}
 	</svelte:fragment>
 
-	<div slot="btns" class="fce">
+	<div slot="btns" class="fsb g1">
 		<Btn
 			on:click={onAdd}
 			accent="alpha"
 			variant="filled"
 			text="Add New Station"
+		/>
+
+		<Btn
+			on:click={on_reset}
+			accent="danger"
+			variant="filled"
+			text="{is_confirm ? 'confirm' : ''} reset to default"
 		/>
 	</div>
 </MyLayout>
