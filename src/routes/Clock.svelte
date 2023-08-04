@@ -24,6 +24,7 @@
 		font-variant-numeric: tabular-nums;
 		/* font-size: clamp(4.5rem, 22vw, 7rem); */
 		font-size: clamp(6rem, 33vw, 10rem);
+		font-size: clamp(6em, 33vw, 12em);
 
 		color: var(--__fg0);
 

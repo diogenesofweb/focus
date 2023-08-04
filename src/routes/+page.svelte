@@ -21,7 +21,7 @@
 	<title>Delphic</title>
 	<meta
 		name="description"
-		content="Minimalistic configurable online productivity (pomodoro) timer."
+		content="Minimalistic configurable and elegant online productivity (pomodoro) timer."
 	/>
 </svelte:head>
 

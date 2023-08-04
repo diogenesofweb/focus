@@ -6,6 +6,8 @@ html {
 	--scrollbar-width: 1ch;
 	--border: 1px solid var(--fl2);
 
+	font-size: 14px;
+
 	color: var(--fg);
 
 	background-color: var(--bg1);
@@ -60,7 +62,7 @@ html.dark {
 	min-width: min(80vw, 500px);
 
 	background-color: var(--bg);
-	padding: 3rem var(--rsx) 6rem;
+	padding: 3rem var(--rsx) 3rem;
 	border-radius: var(--btn-br);
 	border: 1px solid var(--__bga);
 
