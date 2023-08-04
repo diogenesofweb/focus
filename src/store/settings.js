@@ -1,15 +1,17 @@
 import { writable } from 'svelte/store';
 
 let _opts = {
+	autoShowActivites: true,
+	totalTime: true,
+	overtime: true,
+	stopwatch: true,
+	reminder: true,
+
+	autoStartFocus: false,
+	radio: false,
+
 	wakeLock: false,
 	notifications: false,
-	autoShowActivites: false,
-	autoStartFocus: false,
-	reminder: false,
-	totalTime: false,
-	overtime: false,
-	radio: false,
-	stopwatch: false,
 	alarm: false
 };
 

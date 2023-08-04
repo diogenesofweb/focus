@@ -1,2 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: /snaps
+Disallow: /stats
+Disallow: /sequences

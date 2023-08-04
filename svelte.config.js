@@ -7,11 +7,7 @@ const config = {
 	// preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter({
-			// pages: 'build',
-			// assets: 'build',
-			// fallback: null,
-			// precompress: false,
-			// strict: true
+			fallback: '404.html' // may differ from host to host
 		}),
 		alias: {
 			'$utils/*': './src/utils/*',
