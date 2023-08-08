@@ -2,3 +2,6 @@ User-agent: *
 Disallow: /snaps
 Disallow: /stats
 Disallow: /sequences
+Disallow: /break-activities
+Disallow: /radio-stations
+Disallow: /*?*

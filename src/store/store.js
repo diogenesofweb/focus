@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { ldb } from '$lib/db';
+// import { ldb } from '$lib/db';
 import { writable } from 'svelte/store';
 import { opts } from './settings.js';
 import { setupStore } from './setup.js';
@@ -7,8 +7,13 @@ import { setupStore } from './setup.js';
 /** @type {string[] } */
 const _sequences = [];
 export const sequences = writable(_sequences);
-ldb.sequences.listNames().then((v) => sequences.set(v));
+// ldb.sequences.listNames().then((v) => sequences.set(v));
 
+if (browser) {
+	import('$lib/db').then((r) => {
+		r.ldb.sequences.listNames().then((v) => sequences.set(v));
+	});
+}
 export const mySequenceName = '6x30';
 export const currSequenceName = setupStore('__Active_sequence', mySequenceName);
 

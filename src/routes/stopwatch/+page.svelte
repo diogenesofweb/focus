@@ -1,12 +1,22 @@
 <script>
+	import { onDestroy, onMount } from 'svelte';
 	import { Btn } from '@kazkadien/svelte';
-	import { onDestroy } from 'svelte';
 	import { MSG_WF } from '$lib/const';
 
-	let w = new Worker(new URL('$lib/worker_forward.js', import.meta.url), {
-		type: 'module'
+	/** @type {Worker } */
+	let w;
+	onMount(() => {
+		w = new Worker(new URL('$lib/worker_forward.js', import.meta.url), {
+			type: 'module'
+		});
+		w.onmessage = function (e) {
+			time = e.data;
+			title = `${time.HH}:${time.MM}:${time.SS}`;
+		};
 	});
+
 	onDestroy(() => {
+		if (!w) return;
 		// console.log('on destroy');
 		w.postMessage({ msg: MSG_WF.stop });
 		w.terminate();
@@ -14,12 +24,7 @@
 		w = undefined;
 	});
 
-	w.onmessage = function (e) {
-		time = e.data;
-		title = `${time.HH}:${time.MM}:${time.SS}`;
-	};
-
-	let title = 'Stopwatch';
+	let title = 'Online Stopwatch';
 
 	/** @type {import('$lib/worker').WTime } */
 	let time = {
@@ -53,16 +58,21 @@
 	<meta name="description" content="Beautiful Online Stopwatch" />
 </svelte:head>
 
-<article class="alpha">
-	<section class:gamma={is_running} class="font-x">
-		<span>{time.HH}</span><i>:</i><span>{time.MM}</span><i>:</i><span
-			>{time.SS}</span
-		>
+<article class={is_running ? 'gamma' : 'alpha'}>
+	<h1 class="">Stopwatch</h1>
+
+	<section class="font-x">
+		<div class="nums">
+			<span>{time.HH}</span>
+			<i>:</i>
+			<span>{time.MM}</span>
+			<i>:</i>
+			<span>{time.SS}</span>
+		</div>
 	</section>
 
 	<div class="btns g-action-btns">
 		<Btn
-			accent={is_running ? 'gamma' : 'alpha'}
 			variant="outlined"
 			round
 			colored
@@ -88,23 +98,41 @@
 		margin-inline: auto;
 	}
 
+	h1 {
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 1.75rem;
+		letter-spacing: 1px;
+
+		border: 3px dotted var(--__fl0);
+		color: var(--__fg);
+		padding: 1rem;
+		border-radius: 1rem;
+	}
+
+	h1,
+	section {
+		background: var(--__bga);
+		backdrop-filter: blur(3px);
+	}
+
 	section {
 		user-select: none;
 
 		border-radius: 1rem;
-		border-color: var(--__fl);
+		/* border-color: var(--__fl); */
 		border: 1px solid var(--__fl0);
 		border-left: 0.5rem solid var(--__fl0);
 		border-right: 0.5rem solid var(--__fl0);
 
-		background: var(--__bga);
-		backdrop-filter: blur(3px);
-
 		/* line-height: 1; */
 		/* padding-block: 3rem 1rem; */
-		padding-block: 0.2em 0em;
-		padding-inline: 0.5rem;
 		margin-inline: auto;
+	}
+
+	.nums {
+		padding-block: 0.2em 0em;
+		padding-inline: 0.2em;
 
 		text-align: center;
 		font-variant-numeric: tabular-nums;
@@ -115,6 +143,7 @@
 		grid-template-columns: 2ch 0.75ch 2ch 0.75ch 2ch;
 		justify-content: center;
 	}
+
 	i {
 		font-style: normal;
 		transform: translateY(-4%);
@@ -135,6 +164,10 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 2rem;
+	}
+
+	section,
+	.btns {
 		margin-top: 2rem;
 	}
 </style>

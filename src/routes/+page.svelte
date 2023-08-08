@@ -1,33 +1,48 @@
 <script>
-	import { currSequenceName } from '$store/store';
-	import { ldb, s6x30 } from '$lib/db';
-	import MainView from './MainView.svelte';
-	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 
-	/** @type {import('$lib/types').IRound[]} */
-	let rounds;
-	if (browser) {
-		ldb.sequences.getOneByName($currSequenceName).then((one) => {
-			// console.log(one);
-			if (!one) {
-				console.warn('no sequence');
-			}
-			rounds = one?.rounds || s6x30.rounds;
-		});
-	}
+	// for ssr=true
+	/** @type {typeof import("./MyPage.svelte").default | null} */
+	let comp = null;
+	onMount(async () => {
+		comp = (await import('./MyPage.svelte')).default;
+	});
 </script>
 
 <svelte:head>
 	<title>Delphic</title>
 	<meta
 		name="description"
-		content="Minimalistic configurable and elegant online productivity (pomodoro) timer."
+		content="Configurable, Minimalistic and Elegant Online Productivity Pomodoro Timer."
 	/>
 </svelte:head>
 
-{#if rounds}
-	<MainView {rounds} />
-{/if}
+<article>
+	{#if comp}
+		<svelte:component this={comp} />
+	{/if}
 
-<!-- <style> -->
-<!-- </style> -->
+	<h1>Productivity Timer</h1>
+</article>
+
+<style>
+	article {
+		width: 100%;
+		max-width: 1400px;
+		margin-inline: auto;
+
+		/* background: black; */
+		min-height: calc(100vh - 3rem);
+		position: relative;
+		padding-bottom: 10vh;
+	}
+
+	h1 {
+		position: absolute;
+		bottom: 2rem;
+		right: 2rem;
+		font-size: 1rem;
+		font-weight: normal;
+		font-style: italic;
+	}
+</style>

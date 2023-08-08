@@ -3,26 +3,22 @@
 	import AppHeader from './AppHeader.svelte';
 	import AppAdditionalIcons from './AppAdditionalIcons.svelte';
 	import StopWar from './AppStopWar.svelte';
-	import { opts } from '$store/settings';
-	import RadioPlayer from './RadioPlayer.svelte';
-	import SwitchSequence from './SwitchSequence.svelte';
 	import { AppWrapper } from '@kazkadien/svelte';
 	// import { AppSnacks } from '@kazkadien/svelte';
 	import './../css/app.css';
 	import './../css/list.css';
 	import './../css/dialog.css';
 	import { page } from '$app/stores';
-	import TimersPanel from './TimersPanel.svelte';
-	import { timers } from './TimerNew.svelte';
-	import StopWatch from './StopWatch.svelte';
-
-	// page.subscribe((v) => {
-	// 	console.log(v);
-	// });
+	// page.subscribe((v) => console.log(v));
 </script>
 
 <svelte:head>
-	<link rel="canonical" href="https://focus.delphic.top{$page.route.id}" />
+	<link
+		rel="canonical"
+		href="https://focus.delphic.top{$page.url.pathname === '/'
+			? ''
+			: $page.url.pathname}"
+	/>
 </svelte:head>
 
 <AppWrapper>
@@ -33,43 +29,9 @@
 		<div id="view" class="alpha">
 			<AppHeader />
 
-			<main class:root={$page.route.id === '/'}>
-				<div id="tp" class="pane">
-					{#if $opts.stopwatch}
-						<div id="sw" class="box">
-							<StopWatch />
-						</div>
-					{/if}
-
-					{#if $timers.length}
-						<TimersPanel />
-					{/if}
-				</div>
-
-				<div id="rp" class="">
-					{#if $page.route.id === '/' || $opts.radio}
-						<div class="pane">
-							<div class="fsb container-1">
-								{#if $page.route.id === '/'}
-									<div class="box">
-										<SwitchSequence />
-									</div>
-								{/if}
-
-								{#if $opts.radio}
-									<div class="box">
-										<RadioPlayer />
-									</div>
-								{/if}
-							</div>
-						</div>
-					{/if}
-				</div>
-
-				<div id="mp">
-					<slot />
-				</div>
-			</main>
+			<div>
+				<slot />
+			</div>
 		</div>
 
 		<AppFooter />
@@ -95,123 +57,5 @@
 		/* 		var(--clr) 0%, */
 		/* 		transparent 40% */
 		/* 	); */
-	}
-
-	.fsb {
-		gap: 2em;
-	}
-
-	/* main { background-color: var(--bg2); } */
-
-	.pane {
-		margin-block: 1em;
-		/* --bg: var(--bg1); */
-		/* background: darkolivegreen; */
-	}
-
-	:where(#mp, .pane) {
-		margin-inline: 1em;
-	}
-
-	/* #rp { */
-	/* 	background: darkolivegreen; */
-	/* } */
-	/* #rp .fsb { */
-
-	.box {
-		overflow: hidden;
-		border: var(--border);
-		border-radius: 1rem;
-		background-color: var(--bg);
-
-		padding-inline: 1rem;
-		padding-block: 1rem;
-	}
-
-	#rp .box {
-		/* width: 100%; */
-		/* outline: 1px solid red; */
-		flex-grow: 1;
-		/* margin-inline: 1em; */
-
-		padding-inline: 1em;
-		padding-block: 1.25em;
-
-		border: var(--border);
-		border-radius: 1em;
-		background-color: var(--bg);
-		/* background: darkolivegreen; */
-	}
-
-	#mp {
-		padding-block: 1em 8vh;
-	}
-
-	main:not(.root) #tp {
-		display: none;
-	}
-
-	:where(#rp, #tp) {
-		background: transparent;
-	}
-
-	#sw {
-		margin-bottom: 1rem;
-	}
-	@media only screen and (min-width: 1400px) {
-		#sw {
-			margin-bottom: 2rem;
-			padding-block: 1.32em;
-		}
-		#rp {
-			grid-area: rp;
-			/* background: darkviolet; */
-		}
-		.root .fsb {
-			flex-direction: column;
-			--bg: var(--bg2);
-		}
-
-		#tp {
-			grid-area: tp;
-			/* background: darkkhaki; */
-		}
-		#mp {
-			grid-area: mp;
-			/* background: darkcyan; */
-			margin-inline: 0;
-		}
-		.box {
-			width: 100%;
-		}
-
-		.root .pane {
-			border: none;
-			margin: 0;
-			/* background: darkmagenta; */
-		}
-
-		.root :is(#mp, .pane) {
-			padding-top: 0;
-			padding-inline: 0;
-		}
-
-		main {
-			width: 100%;
-			max-width: 1400px;
-			margin-inline: auto;
-
-			/* margin-top: min(1em, 5vh); */
-			margin-top: 1em;
-			/* outline: 1px solid red; */
-		}
-
-		main.root {
-			display: grid;
-			/* gap: 0.5em; */
-			grid-template-columns: 1fr 600px 1fr;
-			grid-template-areas: 'rp mp tp';
-			padding-inline: 1em;
-		}
 	}
 </style>

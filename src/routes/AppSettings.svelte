@@ -1,67 +1,13 @@
 <script>
-	import { browser } from '$app/environment';
 	import CloseBtn from '$lib/CloseBtn.svelte';
-	// import { radioIsOn } from '$store/radio';
 	import { opts } from '$store/settings';
-
 	import { notificationsAreOn } from '$store/store';
-
-	import { BoxField, BoxFieldEntry, BtnIcon, Field } from '@kazkadien/svelte';
-
-	const dark = 'dark';
-	const light = 'light';
-	const auto = 'auto';
-
-	const themes = [auto, light, dark];
-
-	const lsTheme = 'my-theme';
-
-	const _init = (browser && window.localStorage.getItem(lsTheme)) || auto;
-	let theme = _init;
-
-	$: {
-		// console.log(theme);
-		switch (theme) {
-			case dark:
-				makeDarkTheme();
-				break;
-
-			case light:
-				makeLightTheme();
-				break;
-
-			case auto:
-				removeTheme();
-				break;
-		}
-	}
-
-	function makeLightTheme() {
-		document.documentElement.classList.remove(dark);
-		localStorage.setItem(lsTheme, light);
-		theme = light;
-	}
-
-	function makeDarkTheme() {
-		document.documentElement.classList.add(dark);
-		localStorage.setItem(lsTheme, dark);
-		theme = dark;
-	}
-
-	function removeTheme() {
-		localStorage.removeItem(lsTheme);
-		theme = auto;
-
-		if (
-			window.matchMedia &&
-			window.matchMedia('(prefers-color-scheme: dark)').matches
-		) {
-			document.documentElement.classList.add(dark);
-			return;
-		}
-
-		document.documentElement.classList.remove(dark);
-	}
+	import {
+		BoxField,
+		BoxFieldEntry,
+		BtnIcon,
+		ThemeFormSelect
+	} from '@kazkadien/svelte';
 
 	/** @type {HTMLDialogElement} */
 	let dialog;
@@ -86,13 +32,7 @@
 
 		<section>
 			<form class="form v2 alpha">
-				<Field label="Color Theme">
-					<select bind:value={theme}>
-						{#each themes as val}
-							<option value={val}>{val}</option>
-						{/each}
-					</select>
-				</Field>
+				<ThemeFormSelect />
 
 				<div class="boxes">
 					<BoxField label="Options" rows={true}>
@@ -124,7 +64,7 @@
 					</BoxField>
 
 					<BoxField label="Add-ons" rows={true}>
-						<BoxFieldEntry label="Radio">
+						<BoxFieldEntry label="Radio Player">
 							<input type="checkbox" bind:checked={$opts.radio} />
 						</BoxFieldEntry>
 

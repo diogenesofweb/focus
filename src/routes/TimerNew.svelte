@@ -6,6 +6,8 @@
 </script>
 
 <script>
+	import { browser } from '$app/environment';
+
 	import CloseBtn from '$lib/CloseBtn.svelte';
 	import { BoxField, BoxFieldEntry, Btn, Field } from '@kazkadien/svelte';
 	import { createEventDispatcher } from 'svelte';
@@ -50,7 +52,7 @@
 	}
 
 	const ls_autoclose = 'auto_close_timers';
-	let is_autoclose = !!localStorage.getItem(ls_autoclose);
+	let is_autoclose = browser && !!localStorage.getItem(ls_autoclose);
 	/** @param {any} ev */
 	function on_change_autoclose(ev) {
 		// console.log(ev);
@@ -63,7 +65,7 @@
 	}
 
 	const ls_remember = 'remember_timer';
-	let is_remember = !!localStorage.getItem(ls_remember);
+	let is_remember = browser && !!localStorage.getItem(ls_remember);
 
 	if (is_remember) {
 		const v = localStorage.getItem(ls_timer_vals);
