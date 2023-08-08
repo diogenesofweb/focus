@@ -8,8 +8,8 @@
 		<div>
 			<Name />
 			<p>
-				Configurable, minimalistic and elegant productivity timer with focus on
-				breaks, based on
+				Mobile friendly, configurable, minimalistic and elegant productivity
+				timer with focus on breaks, based on
 				<a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
 					pomodoro technique
 				</a>.

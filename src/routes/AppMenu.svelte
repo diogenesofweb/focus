@@ -1,9 +1,6 @@
 <script>
 	import CloseBtn from '$lib/CloseBtn.svelte';
 	import { BtnIcon } from '@kazkadien/svelte';
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
 
 	const links = [
 		{ href: '/sequences', name: 'Session Sequences' },

@@ -1,3 +1,4 @@
+import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 
 let _opts = {
@@ -15,7 +16,7 @@ let _opts = {
 	alarm: false
 };
 
-const one = localStorage.getItem('options');
+const one = browser && localStorage.getItem('options');
 
 if (one) {
 	_opts = { ..._opts, ...JSON.parse(one) };
@@ -52,7 +53,7 @@ opts.subscribe(async (v) => {
 		return;
 	}
 
-	localStorage.setItem('options', JSON.stringify(v));
+	browser && localStorage.setItem('options', JSON.stringify(v));
 });
 
 export { _opts };
