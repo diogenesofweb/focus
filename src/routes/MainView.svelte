@@ -12,7 +12,7 @@
 	import PhaseTable from './PhaseTable.svelte';
 	import Visibility, { VISIBILITY_STATE } from './Visibility.svelte';
 	import { currSequenceName } from '$store/store';
-	import { msg } from './const.js';
+	import { INIT_TITLE, msg } from './const.js';
 	import { sendNotification } from '$lib/sendNotification';
 	import { Btn, Modal } from '@kazkadien/svelte';
 	import { onDestroy } from 'svelte';
@@ -283,7 +283,7 @@
 		clearClock();
 
 		// $my_title = phase;
-		$my_title = 'Delphic';
+		$my_title = INIT_TITLE;
 
 		sh.pomo_is_active = false;
 	}

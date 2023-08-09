@@ -24,7 +24,10 @@
 		w = undefined;
 	});
 
-	let title = 'Online Stopwatch';
+	const desc =
+		'Easy to use and quite accurate, pleasing to the eye, online stopwatch.';
+	const init_title = 'Delphic / Online Stopwatch';
+	let title = init_title;
 
 	/** @type {import('$lib/worker').WTime } */
 	let time = {
@@ -36,9 +39,9 @@
 	let is_running = false;
 
 	function handle_reset() {
-		title = 'Stopwatch';
-		is_running = false;
 		w.postMessage({ msg: MSG_WF.reset });
+		is_running = false;
+		setTimeout(() => (title = init_title), 10);
 	}
 
 	function handle_start_stop() {
@@ -55,47 +58,63 @@
 
 <svelte:head>
 	<title>{title}</title>
-	<meta name="description" content="Beautiful Online Stopwatch" />
+	<meta name="description" content={desc} />
 </svelte:head>
 
-<article class={is_running ? 'gamma' : 'alpha'}>
-	<h1 class="">Stopwatch</h1>
+<article>
+	<div class={is_running ? 'gamma' : 'alpha'}>
+		<h1>Stopwatch</h1>
 
-	<section class="font-x">
-		<div class="nums">
-			<span>{time.HH}</span>
-			<i>:</i>
-			<span>{time.MM}</span>
-			<i>:</i>
-			<span>{time.SS}</span>
+		<section class="font-x box">
+			<div class="nums">
+				<span>{time.HH}</span>
+				<i>:</i>
+				<span>{time.MM}</span>
+				<i>:</i>
+				<span>{time.SS}</span>
+			</div>
+		</section>
+
+		<div class="btns g-action-btns">
+			<Btn
+				variant="outlined"
+				round
+				colored
+				text={is_running ? 'pause' : 'start'}
+				on:click={handle_start_stop}
+			/>
+
+			<Btn
+				accent="danger"
+				variant="outlined"
+				round
+				colored
+				text="reset"
+				on:click={handle_reset}
+			/>
 		</div>
-	</section>
-
-	<div class="btns g-action-btns">
-		<Btn
-			variant="outlined"
-			round
-			colored
-			text={is_running ? 'pause' : 'start'}
-			on:click={handle_start_stop}
-		/>
-
-		<Btn
-			accent="danger"
-			variant="outlined"
-			round
-			colored
-			text="reset"
-			on:click={handle_reset}
-		/>
 	</div>
+
+	<section class="bottom">
+		<p>{desc}</p>
+	</section>
 </article>
 
 <style>
 	article {
-		padding-top: max(4rem, 10vh);
 		max-width: 80ch;
 		margin-inline: auto;
+	}
+
+	article > :first-child {
+		min-height: calc(100vh - 3rem);
+		/* background: black; */
+		padding-top: max(4rem, 10vh);
+	}
+
+	.bottom {
+		/* background: black; */
+		text-align: center;
 	}
 
 	h1 {
@@ -111,12 +130,12 @@
 	}
 
 	h1,
-	section {
+	.box {
 		background: var(--__bga);
 		backdrop-filter: blur(3px);
 	}
 
-	section {
+	.box {
 		user-select: none;
 
 		border-radius: 1rem;
@@ -166,7 +185,7 @@
 		gap: 2rem;
 	}
 
-	section,
+	.box,
 	.btns {
 		margin-top: 2rem;
 	}

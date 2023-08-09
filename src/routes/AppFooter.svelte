@@ -7,13 +7,6 @@
 	<section class="container-1">
 		<div>
 			<Name />
-			<p>
-				Mobile friendly, configurable, minimalistic and elegant productivity
-				timer with focus on breaks, based on
-				<a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
-					pomodoro technique
-				</a>.
-			</p>
 			<p>Free and open source web app.</p>
 
 			<p>
@@ -55,11 +48,13 @@
 		color: var(--fg-alpha);
 	}
 	footer {
-		padding: 4rem var(--rsx) 6rem;
+		padding-block: 4rem 6rem;
 		background-color: var(--bg0);
 		border-top: 3px double var(--fl0);
 	}
 	section {
+		/* background: black; */
+		padding-inline: var(--rsx);
 		display: grid;
 		gap: 1rem;
 		grid-template-columns: 1fr auto;

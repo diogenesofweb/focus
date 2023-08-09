@@ -10,3 +10,5 @@ export const msg = {
 	hidden: 'HIDDEN',
 	visible: 'VISIBLE'
 };
+
+export const INIT_TITLE = 'Delphic / Productivity Timer';
