@@ -37,21 +37,19 @@
 	</div>
 
 	<div id="rp">
-		{#if $opts.radio}
-			<div class="pane">
-				<div class="fsb container-1">
-					<div class="box">
-						<SwitchSequence />
-					</div>
-
-					{#if $opts.radio}
-						<div class="box">
-							<RadioPlayer />
-						</div>
-					{/if}
+		<div class="pane">
+			<div class="fsb container-1">
+				<div class="box">
+					<SwitchSequence />
 				</div>
+
+				{#if $opts.radio}
+					<div class="box">
+						<RadioPlayer />
+					</div>
+				{/if}
 			</div>
-		{/if}
+		</div>
 	</div>
 
 	<div id="mp">
