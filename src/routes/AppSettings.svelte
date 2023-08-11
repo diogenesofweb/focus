@@ -36,16 +36,16 @@
 
 				<div class="boxes">
 					<BoxField label="Options" rows={true}>
-						<BoxFieldEntry label="Send Notifications">
+						<BoxFieldEntry label="Notifications">
 							<input type="checkbox" bind:checked={$notificationsAreOn} />
 						</BoxFieldEntry>
 
-						<BoxFieldEntry label="Play Alarm">
+						<BoxFieldEntry label="Sound Alarm">
 							<input type="checkbox" bind:checked={$opts.alarm} />
 						</BoxFieldEntry>
 
 						{#if $notificationsAreOn || $opts.alarm}
-							<BoxFieldEntry label="Enable Overtime Reminder *">
+							<BoxFieldEntry label="Overtime Reminder *">
 								<input type="checkbox" bind:checked={$opts.reminder} />
 							</BoxFieldEntry>
 						{/if}
@@ -83,7 +83,7 @@
 							<input type="checkbox" bind:checked={$opts.totalTime} />
 						</BoxFieldEntry>
 
-						<BoxFieldEntry label="Overtime">
+						<BoxFieldEntry label="Current Overtime">
 							<input type="checkbox" bind:checked={$opts.overtime} />
 						</BoxFieldEntry>
 					</BoxField>
