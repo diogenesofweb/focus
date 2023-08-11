@@ -22,6 +22,7 @@
 	import MyTitle, { my_title } from './MyTitle.svelte';
 
 	const _5min = 5;
+	const unnamed_break_acrivity = '_';
 
 	/** @type {HTMLAudioElement} */
 	let audio;
@@ -254,19 +255,26 @@
 		overtime = null;
 		// console.log('on start');
 		if (phase === 'focus') {
+			return startTimer();
+		}
+
+		// is break phase
+		if (isClick && $opts.skip_break_activity_select) {
+			phaseLabel = unnamed_break_acrivity;
+			return startTimer();
+		}
+		// console.log('show modal to select activity');
+		if (rounds[index].break.activity) {
+			return startTimer();
+		}
+		// console.log(myActivites);
+		if (myActivites.length) {
+			modalIsOpen = true;
+			return;
+		}
+
+		if (isClick) {
 			startTimer();
-		} else {
-			// console.log('show modal to select activity');
-			if (rounds[index].break.activity) {
-				startTimer();
-			} else {
-				// console.log(myActivites);
-				if (myActivites.length) {
-					modalIsOpen = true;
-				} else {
-					if (isClick) startTimer();
-				}
-			}
 		}
 	}
 
@@ -333,7 +341,7 @@
 		overtime = null;
 
 		phaseLabel = activity;
-		if (activity === '_') {
+		if (activity === unnamed_break_acrivity) {
 			// skip this one
 			return;
 		}
@@ -378,7 +386,7 @@
 				variant="outlined"
 				round
 				text="skip it"
-				on:click={() => onBreakSelect('_')}
+				on:click={() => onBreakSelect(unnamed_break_acrivity)}
 			/>
 
 			{#each myActivites.sort((a, b) => a.localeCompare(b)) as el}

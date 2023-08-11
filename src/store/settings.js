@@ -8,6 +8,7 @@ let _opts = {
 	stopwatch: true,
 	reminder: true,
 
+	skip_break_activity_select: false,
 	autoStartFocus: false,
 	radio: false,
 

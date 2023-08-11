@@ -50,6 +50,13 @@
 							</BoxFieldEntry>
 						{/if}
 
+						<BoxFieldEntry label="Skip Break Activity Select">
+							<input
+								type="checkbox"
+								bind:checked={$opts.skip_break_activity_select}
+							/>
+						</BoxFieldEntry>
+
 						<BoxFieldEntry label="Auto Show Break Activities">
 							<input type="checkbox" bind:checked={$opts.autoShowActivites} />
 						</BoxFieldEntry>
