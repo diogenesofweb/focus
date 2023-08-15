@@ -14,7 +14,7 @@
 	<title>{INIT_TITLE}</title>
 	<meta
 		name="description"
-		content="Configurable, Minimalistic and Elegant Online Productivity Pomodoro Timer."
+		content="Configurable, minimalistic and aesthetic pomodoro timer online. Easy to use, helps with productivity and focus."
 	/>
 </svelte:head>
 
@@ -28,11 +28,11 @@
 	<section>
 		<h1>Delphic Productivity Timer</h1>
 		<p>
-			Mobile friendly, configurable, minimalistic and elegant productivity timer
-			with focus on breaks, based on
+			Mobile friendly, easy to use, configurable, minimalistic and aesthetic
+			productivity timer with focus on breaks, based on
 			<a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
 				pomodoro technique
-			</a>.
+			</a>. On a mission to boost productivity and focus time.
 		</p>
 	</section>
 </article>
@@ -56,6 +56,7 @@
 		padding-inline: var(--rsx);
 		padding-block: 1rem;
 		text-align: center;
+		text-wrap: balance;
 	}
 
 	h1 {
