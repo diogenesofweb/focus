@@ -2,6 +2,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { Btn } from '@kazkadien/svelte';
 	import { MSG_WF } from '$lib/const';
+	import { hms } from './utils';
 
 	/** @type {Worker } */
 	let w;
@@ -26,7 +27,7 @@
 
 	const desc =
 		'Easy to use and quite accurate, pleasing to the eye, online stopwatch.';
-	const init_title = 'Delphic / Online Stopwatch';
+	const init_title = 'Online Stopwatch | Delphic';
 	let title = init_title;
 
 	/** @typedef {import('$lib/worker').WTime } WTime*/
@@ -49,40 +50,6 @@
 	let i = 1;
 	/** @type {WTime} */
 	let prev = { ...time };
-	// const t = { start: 0, prev: 0 };
-	/**
-	 * @param {WTime} curr
-	 * @param {WTime} prev
-	 */
-	function hms(curr, prev) {
-		const ph = +prev.HH;
-		const pm = +prev.MM;
-		const ps = +prev.SS;
-
-		let ch = +curr.HH;
-		let cm = +curr.MM;
-		let cs = +curr.SS;
-
-		let s = cs - ps;
-		if (s < 0) {
-			s += 60;
-			cm--;
-		}
-
-		let m = cm - pm;
-		if (m < 0) {
-			m += 60;
-			ch--;
-		}
-
-		let h = ch - ph;
-
-		const hh = h < 10 ? '0' + h : h;
-		const mm = m < 10 ? '0' + m : m;
-		const ss = s < 10 ? '0' + s : s;
-
-		return `+${hh}:${mm}:${ss}`;
-	}
 
 	function handle_cycle() {
 		if (!is_running) {
@@ -90,7 +57,7 @@
 		}
 
 		const curr = { ...time };
-		const cycle = cycles.length ? hms(curr, prev) : `+${title}`;
+		const cycle = cycles.length ? `+${hms(curr, prev)}` : `+${title}`;
 		prev = curr;
 
 		/** @type {CycleItem } */

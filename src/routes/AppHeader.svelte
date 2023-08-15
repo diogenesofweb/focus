@@ -24,16 +24,17 @@
 
 		<!-- <div class="fce g1 alpha" style="--_bg: var(--__mg0)"> -->
 		<div class="fce alpha">
-			<Btn
-				disabled={$page.route.id !== '/'}
-				title="timer"
-				iconOnly
-				round
-				variant="outlined"
-				on:click={() => (timer_open = true)}
-			>
-				<MyIcon name="timer" />
-			</Btn>
+			{#if $page.route.id === '/'}
+				<Btn
+					title="timer"
+					iconOnly
+					round
+					variant="outlined"
+					on:click={() => (timer_open = true)}
+				>
+					<MyIcon name="timer" />
+				</Btn>
+			{/if}
 
 			<AppSettings />
 			<AppMenu />

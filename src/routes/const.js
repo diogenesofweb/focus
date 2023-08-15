@@ -11,4 +11,4 @@ export const msg = {
 	visible: 'VISIBLE'
 };
 
-export const INIT_TITLE = 'Delphic / Productivity Timer';
+export const INIT_TITLE = 'Online Productivity Timer | Delphic';

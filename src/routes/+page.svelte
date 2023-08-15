@@ -26,7 +26,7 @@
 	</div>
 
 	<section>
-		<h1>Delphic Productivity Timer</h1>
+		<h1>Online Productivity Timer</h1>
 		<p>
 			Mobile friendly, easy to use, configurable, minimalistic and aesthetic
 			productivity timer with focus on breaks, based on
