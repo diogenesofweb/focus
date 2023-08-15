@@ -126,11 +126,11 @@
 		</div>
 
 		{#if cycles.length}
-			<ul class="alpha">
+			<ul class="base">
 				{#each cycles as el (el[0])}
 					<li>
-						<b class="gamma">{el[0]}</b>
-						<b>{el[1]}</b>
+						<b class="beta">{el[0]}</b>
+						<b class="gamma">{el[1]}</b>
 						<b class="beta">{el[2]}</b>
 					</li>
 				{/each}
