@@ -29,9 +29,9 @@
 		<div id="view" class="alpha">
 			<AppHeader />
 
-			<div>
-				<slot />
-			</div>
+			<!-- <div> -->
+			<slot />
+			<!-- </div> -->
 		</div>
 
 		<AppFooter />
@@ -42,9 +42,15 @@
 
 <style>
 	#view {
+		/* background: darkgray; */
+		max-width: 100rem;
+		margin-inline: auto;
+		padding-inline: 1rem;
+
 		min-height: 100vh;
 		display: grid;
 		grid-template-rows: auto 1fr;
+
 		/* --clr: hsl(var(--__bg-hsl) / 0.11); */
 		/* background: radial-gradient( */
 		/* 		farthest-corner at 30vw 20vh, */

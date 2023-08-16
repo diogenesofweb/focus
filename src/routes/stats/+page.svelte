@@ -68,7 +68,7 @@
 	/>
 </svelte:head>
 
-<article class="base container-1">
+<article class="base">
 	{#each myStats as x}
 		<section>
 			<h2>{d.getFullYear()} - {x.month}</h2>
@@ -84,15 +84,19 @@
 
 <style>
 	article {
-		padding-block: 4em 33vh;
-		padding-inline: var(--rsx);
+		padding-block: 4em;
+		padding-inline: 1rem;
 
 		display: grid;
 		gap: 4em;
 		line-height: 1.6;
 
 		--g: 4px;
-		/* background: var(--bg2); */
+		background: var(--bg2);
+
+		border: var(--border);
+		border-radius: 1rem;
+		margin-block: 1rem 4rem;
 	}
 	h2 {
 		text-align: center;

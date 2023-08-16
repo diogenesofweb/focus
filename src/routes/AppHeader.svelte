@@ -16,7 +16,7 @@
 	</Modal>
 {/if}
 
-<section class="container-1">
+<div class="container1">
 	<div id="header" class="fsb base">
 		<a href="/" class="fce link">
 			<Name />
@@ -40,20 +40,18 @@
 			<AppMenu />
 		</div>
 	</div>
-</section>
+</div>
 
 <style>
-	section {
+	.container1 {
+		padding-block: 1em;
 		/* background: black; */
-		width: 100%;
+		/* width: 100%; */
 	}
 	#header {
 		/* background-color: var(--__bga0); */
 		/* backdrop-filter: blur(4px); */
 		background-color: var(--bg2);
-
-		margin-block: 1em;
-		margin-inline: 1em;
 
 		padding: 0.75em 1em;
 		border-radius: 1em;

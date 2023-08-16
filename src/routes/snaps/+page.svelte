@@ -106,28 +106,31 @@
 	}
 </script>
 
-<section class="">
-	<Btn on:click={make_snaphot} variant="outlined" text="download snaphot" />
-
-	{#if msg}
-		<Alert body={msg} closable={false} />
-	{:else}
-		<div class="form v2">
-			<label class="field">
-				<b>Restore from snapshot</b>
-				<input type="file" accept="application/json" on:change={restore} />
-			</label>
-		</div>
-	{/if}
-</section>
-
 <svelte:head>
 	<title>Snapshots</title>
 	<meta name="description" content="Save and restore your data" />
 </svelte:head>
 
+<div>
+	<section class="">
+		<Btn on:click={make_snaphot} variant="outlined" text="download snaphot" />
+
+		{#if msg}
+			<Alert body={msg} closable={false} />
+		{:else}
+			<div class="form v2">
+				<label class="field">
+					<b>Restore from snapshot</b>
+					<input type="file" accept="application/json" on:change={restore} />
+				</label>
+			</div>
+		{/if}
+	</section>
+</div>
+
 <style>
 	section {
+		margin-top: 1rem;
 		max-width: 60ch;
 		margin-inline: auto;
 		padding: 6em 2em;

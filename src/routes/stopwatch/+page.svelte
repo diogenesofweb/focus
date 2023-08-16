@@ -27,7 +27,7 @@
 	});
 
 	const desc =
-		'Easy to use, quite accurate, pleasing to the eye, online stopwatch timer.';
+		'Easy to use, accurate, pleasing to the eye, online stopwatch timer.';
 	const init_title = 'Stopwatch Timer Online | Delphic';
 	let title = init_title;
 
@@ -85,7 +85,7 @@
 </svelte:head>
 
 <article class="container">
-	<div>
+	<div class="one">
 		<MyBoxLay
 			heading="Stopwatch"
 			accent={is_running ? 'gamma' : 'alpha'}
@@ -124,16 +124,15 @@
 
 <style>
 	article {
-		padding-inline: 1rem;
+		/* padding-inline: 1rem; */
+		padding: 1px;
 		/* background: black; */
-		/* display: grid; */
-		/* grid-template-rows: 1fr auto; */
 	}
 
-	/* article > :first-child { */
-	/* 	background: black; */
-	/* 	min-height: calc(100vh - 10rem); */
-	/* } */
+	.one {
+		min-height: calc(100vh - 12rem);
+		/* background: darkolivegreen; */
+	}
 
 	ul {
 		font-size: 1.15rem;
@@ -166,7 +165,8 @@
 	}
 
 	.bottom {
-		/* margin-top: auto; */
+		padding-block: 2rem;
+		/* margin-top: 4rem; */
 		text-align: center;
 		/* background: darkred; */
 	}

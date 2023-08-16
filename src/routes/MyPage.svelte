@@ -69,9 +69,9 @@
 		/* background: darkolivegreen; */
 	}
 
-	:where(#mp, .pane) {
-		margin-inline: 1em;
-	}
+	/* :where(#mp, .pane) { */
+	/* 	margin-inline: 1em; */
+	/* } */
 
 	.box {
 		overflow: hidden;
@@ -84,10 +84,7 @@
 	}
 
 	#rp .box {
-		/* width: 100%; */
-		/* outline: 1px solid red; */
 		flex-grow: 1;
-		/* margin-inline: 1em; */
 
 		padding-inline: 1em;
 		padding-block: 1.25em;
@@ -148,15 +145,13 @@
 		}
 
 		main {
-			/* margin-top: min(1em, 5vh); */
 			margin-top: 1em;
 			/* outline: 1px solid red; */
 
 			display: grid;
-			/* gap: 0.5em; */
 			grid-template-columns: 1fr 600px 1fr;
 			grid-template-areas: 'rp mp tp';
-			padding-inline: 1em;
+			/* padding-inline: 1em; */
 		}
 	}
 </style>
