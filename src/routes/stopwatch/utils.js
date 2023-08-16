@@ -1,3 +1,4 @@
+import { ch } from '$lib/utils';
 /** @typedef {import('$lib/worker').WTime } WTime*/
 /**
  * @param {WTime} curr
@@ -8,27 +9,27 @@ export function hms(curr, prev) {
 	const pm = +prev.MM;
 	const ps = +prev.SS;
 
-	let ch = +curr.HH;
-	let cm = +curr.MM;
-	let cs = +curr.SS;
+	let nh = +curr.HH;
+	let nm = +curr.MM;
+	let ns = +curr.SS;
 
-	let s = cs - ps;
+	let s = ns - ps;
 	if (s < 0) {
 		s += 60;
-		cm--;
+		nm--;
 	}
 
-	let m = cm - pm;
+	let m = nm - pm;
 	if (m < 0) {
 		m += 60;
-		ch--;
+		nh--;
 	}
 
-	let h = ch - ph;
+	let h = nh - ph;
 
-	const hh = h < 10 ? '0' + h : h;
-	const mm = m < 10 ? '0' + m : m;
-	const ss = s < 10 ? '0' + s : s;
+	const hh = ch(h);
+	const mm = ch(m);
+	const ss = ch(s);
 
 	return `${hh}:${mm}:${ss}`;
 }

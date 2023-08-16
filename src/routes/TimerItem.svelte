@@ -7,6 +7,7 @@
 	import { sh } from './MainView.svelte';
 	import { my_title } from './MyTitle.svelte';
 	import { timers } from './TimerNew.svelte';
+	import { ch } from '$lib/utils';
 	// import MyIcon from '$lib/MyIcon.svelte';
 	/** @type {HTMLAudioElement} */
 	export let audio;
@@ -51,11 +52,11 @@
 		}
 	};
 
-	const m0 = st.min < 10 ? '0' + st.min : st.min;
-	const s0 = st.sec < 10 ? '0' + st.sec : st.sec;
+	const m0 = ch(st.min);
+	const s0 = ch(st.sec);
 
-	$: MM = st.min < 10 ? '0' + st.min : st.min;
-	$: SS = st.sec < 10 ? '0' + st.sec : st.sec;
+	$: MM = ch(st.min);
+	$: SS = ch(st.sec);
 
 	const data = { mes: msg.start, min: st.min, sec: st.sec };
 	w.postMessage(data);

@@ -1,6 +1,7 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
-	import { Btn } from '@kazkadien/svelte';
+	import MyBtn from '$lib/MyBtn.svelte';
+	import MyBoxLay from '$lib/MyBoxLay.svelte';
 	import { MSG_WF } from '$lib/const';
 	import { hms } from './utils';
 
@@ -26,8 +27,8 @@
 	});
 
 	const desc =
-		'Easy to use and quite accurate, pleasing to the eye, online stopwatch.';
-	const init_title = 'Online Stopwatch | Delphic';
+		'Easy to use, quite accurate, pleasing to the eye, online stopwatch timer.';
+	const init_title = 'Stopwatch Timer Online | Delphic';
 	let title = init_title;
 
 	/** @typedef {import('$lib/worker').WTime } WTime*/
@@ -83,47 +84,24 @@
 	<meta name="description" content={desc} />
 </svelte:head>
 
-<article>
-	<div class={is_running ? 'gamma' : 'alpha'}>
-		<h1>Stopwatch</h1>
-
-		<section class="font-x box">
-			<div class="nums">
-				<span>{time.HH}</span>
-				<i>:</i>
-				<span>{time.MM}</span>
-				<i>:</i>
-				<span>{time.SS}</span>
-			</div>
-		</section>
-
-		<div class="btns g-action-btns">
-			<Btn
-				variant="outlined"
-				round
-				colored
-				text={is_running ? 'pause' : 'start'}
-				on:click={handle_start_stop}
-			/>
-
-			<Btn
-				accent="beta"
-				variant="outlined"
-				round
-				colored
-				text="cycle"
-				on:click={handle_cycle}
-			/>
-
-			<Btn
-				accent="danger"
-				variant="outlined"
-				round
-				colored
-				text="reset"
-				on:click={handle_reset}
-			/>
-		</div>
+<article class="container">
+	<div>
+		<MyBoxLay
+			heading="Stopwatch"
+			accent={is_running ? 'gamma' : 'alpha'}
+			HH={time.HH}
+			MM={time.MM}
+			SS={time.SS}
+		>
+			<svelte:fragment slot="btns">
+				<MyBtn
+					text={is_running ? 'pause' : 'start'}
+					on:click={handle_start_stop}
+				/>
+				<MyBtn accent="beta" text="cycle" on:click={handle_cycle} />
+				<MyBtn accent="danger" text="reset" on:click={handle_reset} />
+			</svelte:fragment>
+		</MyBoxLay>
 
 		{#if cycles.length}
 			<ul class="base">
@@ -139,22 +117,23 @@
 	</div>
 
 	<section class="bottom">
+		<h1>Online Stopwatch Timer</h1>
 		<p>{desc}</p>
 	</section>
 </article>
 
 <style>
 	article {
-		max-width: 80ch;
-		margin-inline: auto;
 		padding-inline: 1rem;
+		/* background: black; */
+		/* display: grid; */
+		/* grid-template-rows: 1fr auto; */
 	}
 
-	article > :first-child {
-		/* background: black; */
-		min-height: calc(100vh - 3rem);
-		padding-top: max(2rem, 8vh);
-	}
+	/* article > :first-child { */
+	/* 	background: black; */
+	/* 	min-height: calc(100vh - 10rem); */
+	/* } */
 
 	ul {
 		font-size: 1.15rem;
@@ -187,80 +166,8 @@
 	}
 
 	.bottom {
-		/* background: black; */
+		/* margin-top: auto; */
 		text-align: center;
-	}
-
-	h1 {
-		text-align: center;
-		text-transform: uppercase;
-		font-size: 1.75rem;
-		letter-spacing: 1px;
-
-		border: 3px dotted var(--__fl0);
-		color: var(--__fg);
-		padding: 1rem;
-		border-radius: 1rem;
-	}
-
-	h1,
-	.box {
-		background: var(--__bga);
-		backdrop-filter: blur(3px);
-	}
-
-	.box {
-		user-select: none;
-
-		border-radius: 1rem;
-		/* border-color: var(--__fl); */
-		border: 1px solid var(--__fl0);
-		border-left: 0.5rem solid var(--__fl0);
-		border-right: 0.5rem solid var(--__fl0);
-
-		/* line-height: 1; */
-		/* padding-block: 3rem 1rem; */
-		margin-inline: auto;
-	}
-
-	.nums {
-		padding-block: 0.2em 0em;
-		padding-inline: 0.2em;
-
-		text-align: center;
-		font-variant-numeric: tabular-nums;
-		font-size: clamp(4rem, 20vw, 10rem);
-		color: var(--__fg0);
-
-		display: grid;
-		grid-template-columns: 2ch 0.75ch 2ch 0.75ch 2ch;
-		justify-content: center;
-	}
-
-	i {
-		font-style: normal;
-		transform: translateY(-4%);
-		/* background: black; */
-	}
-
-	span {
-		text-align: center;
-	}
-	span:first-child {
-		text-align: right;
-	}
-	span:last-child {
-		text-align: left;
-	}
-
-	.btns {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-		gap: 1rem;
-	}
-
-	.box,
-	.btns {
-		margin-top: 2rem;
+		/* background: darkred; */
 	}
 </style>

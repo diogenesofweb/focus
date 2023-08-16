@@ -9,9 +9,13 @@
 	];
 
 	const links2 = [
-		{ href: '/stopwatch', name: 'Stopwatch' },
 		{ href: '/stats', name: 'Stats' },
 		{ href: '/snaps', name: 'Snapshots' }
+	];
+
+	const links3 = [
+		{ href: '/stopwatch', name: 'Stopwatch Timer' },
+		{ href: '/classic-timer', name: 'Classic Timer' }
 	];
 
 	/** @type {HTMLDialogElement} */
@@ -46,6 +50,14 @@
 			<div class="edit" style="margin-top: 2rem ;">Plus</div>
 
 			{#each links2 as { href, name }}
+				<a {href} class="btn text round" on:click={() => dialog.close()}>
+					{name}
+				</a>
+			{/each}
+
+			<div class="edit" style="margin-top: 2rem ;">Timers</div>
+
+			{#each links3 as { href, name }}
 				<a {href} class="btn text round" on:click={() => dialog.close()}>
 					{name}
 				</a>

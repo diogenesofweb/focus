@@ -45,7 +45,6 @@
 		min-height: 100vh;
 		display: grid;
 		grid-template-rows: auto 1fr;
-
 		/* --clr: hsl(var(--__bg-hsl) / 0.11); */
 		/* background: radial-gradient( */
 		/* 		farthest-corner at 30vw 20vh, */

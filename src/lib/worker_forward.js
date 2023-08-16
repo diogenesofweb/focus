@@ -1,4 +1,5 @@
 import { MSG_WF } from './const';
+import { ch } from './utils';
 
 const INTERVAL = import.meta.env.DEV ? 10 : 1000;
 /** @type {ReturnType<setInterval>} */
@@ -28,9 +29,9 @@ function on_tick() {
 function post() {
 	/** @type {import('./worker').WTime } */
 	const t = {
-		HH: hh < 10 ? '0' + hh : hh,
-		MM: mm < 10 ? '0' + mm : mm,
-		SS: ss < 10 ? '0' + ss : ss
+		HH: ch(hh),
+		MM: ch(mm),
+		SS: ch(ss)
 	};
 	postMessage(t);
 }

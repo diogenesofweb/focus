@@ -544,11 +544,10 @@
 	}
 
 	.boxx {
-		user-select: none;
-
 		margin-top: 1em;
 		padding: 0.5em 0;
 
+		user-select: none;
 		border-radius: var(--x1);
 		border: 1px solid var(--clr);
 		border-left: var(--x2) solid var(--clr);
