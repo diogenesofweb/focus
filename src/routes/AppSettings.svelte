@@ -35,7 +35,7 @@
 				<ThemeFormSelect />
 
 				<div class="boxes">
-					<BoxField label="Options" rows={true}>
+					<BoxField label="General Options" rows={true}>
 						<BoxFieldEntry label="Notifications">
 							<input type="checkbox" bind:checked={$notificationsAreOn} />
 						</BoxFieldEntry>
@@ -43,7 +43,9 @@
 						<BoxFieldEntry label="Sound Alarm">
 							<input type="checkbox" bind:checked={$opts.alarm} />
 						</BoxFieldEntry>
+					</BoxField>
 
+					<BoxField label="Pomodoro Options" rows={true}>
 						{#if $notificationsAreOn || $opts.alarm}
 							<BoxFieldEntry label="Overtime Reminder *">
 								<input type="checkbox" bind:checked={$opts.reminder} />

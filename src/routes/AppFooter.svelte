@@ -20,6 +20,7 @@
 			</p>
 
 			{#if dev}
+				<a href="/countdown/minutes">Popular timers</a>
 				<a href="/_draft">_draft</a>
 			{/if}
 		</div>

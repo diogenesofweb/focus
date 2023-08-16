@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-	<title>Classic Timer Online | Delhpic</title>
+	<title>Countdown Timer Online</title>
 	<meta
 		name="description"
 		content="Easy to use, mobile friendly, accurate, beautiful, minimalist online timer"
@@ -35,9 +35,14 @@
 	</div>
 
 	<section>
-		<h1>Online Classic Timer</h1>
+		<h1>Online Countdown Timer</h1>
 		<p>
-			Easy to use, mobile friendly, accurate, beautiful, minimalist online timer
+			Easy to use, mobile friendly, accurate, beautiful, minimalist online
+			timer.
+		</p>
+		<p>
+			Choose from
+			<a href="/countdown/minutes">frequent pre-set timers</a>.
 		</p>
 	</section>
 </article>

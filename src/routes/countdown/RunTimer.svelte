@@ -10,6 +10,7 @@
 
 	const dispatch = createEventDispatcher();
 
+	export let autostart = true;
 	export let t = { hh: 0, mm: 0, ss: 0 };
 
 	const h0 = ch(t.hh);
@@ -22,10 +23,11 @@
 
 	/** @type {HTMLAudioElement} */
 	let audio;
-	let title = '';
+	/** @type {string } */
+	export let title = '';
 
-	/** @type {Worker } */
-	let w;
+	/** @type {Worker | null} */
+	let w = null;
 	onMount(() => {
 		w = new Worker(new URL('../worker.js', import.meta.url), {
 			type: 'module'
@@ -52,12 +54,17 @@
 			if (e.data.mes == msg.finish) {
 				is_finished = true;
 				is_running = false;
-				if ($opts.notifications) sendNotification('Classic Timer');
+				if ($opts.notifications) sendNotification('Countdown Timer');
 				if ($opts.alarm) audio.play();
 			}
 		};
 
 		start_ticking();
+
+		if (!autostart) {
+			// pause
+			handle_play();
+		}
 	});
 
 	function start_ticking() {
@@ -67,17 +74,20 @@
 			sec: t.ss
 		};
 
-		w.postMessage(data);
-		is_running = true;
-		is_finished = false;
+		if (w) {
+			w.postMessage(data);
+			is_running = true;
+			is_finished = false;
+		}
 	}
 
 	onDestroy(() => {
 		// console.log('on destroy');
-		w.postMessage({ mes: msg.stop });
-		w.terminate();
-		// @ts-ignore
-		w = undefined;
+		if (w) {
+			w.postMessage({ mes: msg.stop });
+			w.terminate();
+			w = null;
+		}
 	});
 
 	let is_finished = false;
@@ -90,10 +100,10 @@
 		}
 		if (is_running) {
 			is_running = false;
-			w.postMessage({ mes: msg.stop });
+			w?.postMessage({ mes: msg.stop });
 		} else {
 			is_running = true;
-			w.postMessage({ mes: msg.resume });
+			w?.postMessage({ mes: msg.resume });
 		}
 	}
 </script>
@@ -107,7 +117,7 @@
 </audio>
 
 <MyBoxLay
-	heading="Classic Timer"
+	heading="Countdown Timer"
 	init_nums="{h0}:{m0}:{s0}"
 	accent={is_running ? 'alpha' : 'beta'}
 	{HH}

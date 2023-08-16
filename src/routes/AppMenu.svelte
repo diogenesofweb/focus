@@ -15,7 +15,7 @@
 
 	const links3 = [
 		{ href: '/stopwatch', name: 'Stopwatch Timer' },
-		{ href: '/classic-timer', name: 'Classic Timer' }
+		{ href: '/countdown', name: 'Countdown Timer' }
 	];
 
 	/** @type {HTMLDialogElement} */
