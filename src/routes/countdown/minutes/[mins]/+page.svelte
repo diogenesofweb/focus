@@ -11,14 +11,14 @@
 		// console.log('close');
 		goto('/countdown');
 	}
-	const title = `${data.minutes} minute timer`;
+	const title = `${data.minutes} minute timer online`;
 </script>
 
 <svelte:head>
 	<title>{title}</title>
 	<meta
 		name="description"
-		content="Run a {data.minutes} munute countdown timer in one click."
+		content="Run a pre-set {data.minutes} munute countdown timer in one click. It's free and easy to use."
 	/>
 </svelte:head>
 
