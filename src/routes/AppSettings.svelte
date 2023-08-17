@@ -43,6 +43,10 @@
 						<BoxFieldEntry label="Sound Alarm">
 							<input type="checkbox" bind:checked={$opts.alarm} />
 						</BoxFieldEntry>
+
+						<BoxFieldEntry label="Prevent Dimming or Locking the Screen">
+							<input type="checkbox" bind:checked={$opts.wakeLock} />
+						</BoxFieldEntry>
 					</BoxField>
 
 					<BoxField label="Pomodoro Options" rows={true}>
@@ -65,10 +69,6 @@
 
 						<BoxFieldEntry label="Auto Start Focus Time">
 							<input type="checkbox" bind:checked={$opts.autoStartFocus} />
-						</BoxFieldEntry>
-
-						<BoxFieldEntry label="Prevent Dimming or Locking the Screen">
-							<input type="checkbox" bind:checked={$opts.wakeLock} />
 						</BoxFieldEntry>
 					</BoxField>
 

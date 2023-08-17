@@ -1,6 +1,6 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
-	import { msg } from '../const';
+	import { msg } from '$lib/vars';
 	import { sendNotification } from '$lib/sendNotification';
 	import { opts } from '$store/settings';
 	import { createEventDispatcher } from 'svelte';
@@ -29,7 +29,7 @@
 	/** @type {Worker | null} */
 	let w = null;
 	onMount(() => {
-		w = new Worker(new URL('../worker.js', import.meta.url), {
+		w = new Worker(new URL('$lib/worker_backward.js', import.meta.url), {
 			type: 'module'
 		});
 

@@ -14,8 +14,9 @@
 	];
 
 	const links3 = [
-		{ href: '/stopwatch', name: 'Stopwatch Timer' },
-		{ href: '/countdown', name: 'Countdown Timer' }
+		{ href: '/pomodoro', name: 'Pomodoro Timer' },
+		{ href: '/countdown', name: 'Countdown Timer' },
+		{ href: '/stopwatch', name: 'Stopwatch Timer' }
 	];
 
 	/** @type {HTMLDialogElement} */
@@ -40,6 +41,13 @@
 		<CloseBtn on:click={() => dialog.close()} />
 
 		<div class="links alpha">
+			<div class="edit">Timers</div>
+			{#each links3 as { href, name }}
+				<a {href} class="btn text round" on:click={() => dialog.close()}>
+					{name}
+				</a>
+			{/each}
+
 			<div class="edit">Edit</div>
 			{#each links as { href, name }}
 				<a {href} class="btn text round" on:click={() => dialog.close()}>
@@ -47,17 +55,8 @@
 				</a>
 			{/each}
 
-			<div class="edit" style="margin-top: 2rem ;">Plus</div>
-
+			<div class="edit">Plus</div>
 			{#each links2 as { href, name }}
-				<a {href} class="btn text round" on:click={() => dialog.close()}>
-					{name}
-				</a>
-			{/each}
-
-			<div class="edit" style="margin-top: 2rem ;">Timers</div>
-
-			{#each links3 as { href, name }}
 				<a {href} class="btn text round" on:click={() => dialog.close()}>
 					{name}
 				</a>
@@ -81,5 +80,9 @@
 		font-weight: bold;
 		font-size: calc(1rem - 2px);
 		margin-bottom: 1ch;
+	}
+
+	.edit:not(:first-child) {
+		margin-top: 2rem;
 	}
 </style>

@@ -3,9 +3,9 @@
 	import { sh } from './MainView.svelte';
 	// import { timers } from './TimerNew.svelte';
 	import { my_title } from './MyTitle.svelte';
-	import { MSG_WF } from '$lib/const';
+	import { MSG_WF } from '$lib/vars';
 	import { onDestroy } from 'svelte';
-	import { hms } from './stopwatch/utils';
+	import { hms } from '$lib/utils';
 
 	/** @typedef {import('$lib/worker').WTime } WTime*/
 	/** @type {WTime} */

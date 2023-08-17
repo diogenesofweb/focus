@@ -1,5 +1,5 @@
 // no import $aliases
-import { msg } from './const.js';
+import { msg } from '$lib/vars';
 
 let INTERVAL = 1000;
 if (import.meta.env.DEV) {

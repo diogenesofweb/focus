@@ -45,11 +45,13 @@
 
 <style>
 	.tableau {
-		padding: 1.5rem var(--rsx);
+		padding-inline: 1rem;
+		padding-block: 3rem;
 		display: grid;
 		gap: 0.33rem;
-		border-bottom: var(--border);
-		border-color: var(--clr);
+		/* border-bottom: var(--border); */
+		/* border-color: var(--clr); */
+		/* background: black; */
 	}
 	.row {
 		display: flex;

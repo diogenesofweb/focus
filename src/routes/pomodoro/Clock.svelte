@@ -23,12 +23,14 @@
 		letter-spacing: var(--g);
 		font-variant-numeric: tabular-nums;
 		/* font-size: clamp(4.5rem, 22vw, 7rem); */
-		font-size: clamp(6rem, 33vw, 10rem);
+		/* font-size: clamp(6rem, 33vw, 10rem); */
 		font-size: clamp(6em, 33vw, 12em);
+		line-height: 1;
 
 		color: var(--__fg0);
 
-		margin-block: 1.5rem 0.5rem;
+		padding-bottom: 2rem;
+		/* margin-block: 3rem 1rem; */
 		/* background-color: black; */
 
 		&.is_running > span {

@@ -1,6 +1,6 @@
 <script context="module">
 	import { writable } from 'svelte/store';
-	import { INIT_TITLE } from './const';
+	import { INIT_TITLE } from '$lib/vars';
 
 	export const my_title = writable(INIT_TITLE);
 </script>

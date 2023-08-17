@@ -2,8 +2,8 @@
 	import { onDestroy, onMount } from 'svelte';
 	import MyBtn from '$lib/MyBtn.svelte';
 	import MyBoxLay from '$lib/MyBoxLay.svelte';
-	import { MSG_WF } from '$lib/const';
-	import { hms } from './utils';
+	import { MSG_WF } from '$lib/vars';
+	import { hms } from '$lib/utils';
 
 	/** @type {Worker } */
 	let w;

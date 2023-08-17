@@ -1,67 +1,76 @@
 <script>
-	import { onMount } from 'svelte';
-	import { INIT_TITLE } from './const';
-
-	// for ssr=true
-	/** @type {typeof import("./MyPage.svelte").default | null} */
-	let comp = null;
-	onMount(async () => {
-		comp = (await import('./MyPage.svelte')).default;
-	});
+	const timers = [
+		['/pomodoro', 'Pomodoro timer', 'alpha'],
+		['/countdown', 'Countdown timer', 'beta'],
+		['/stopwatch', 'Stopwatch timer', 'gamma']
+	];
 </script>
 
 <svelte:head>
-	<title>{INIT_TITLE}</title>
+	<title>Beautiful timers online</title>
 	<meta
 		name="description"
-		content="Configurable, minimalistic and aesthetic pomodoro timer online. Easy to use, helps with productivity and focus."
+		content="Online, beautiful and easy to use pomodoro, countdown, stopwatch timers. No distractions, light and dark mode. Works on all screen sizes."
 	/>
 </svelte:head>
 
 <article>
-	<div>
-		{#if comp}
-			<svelte:component this={comp} />
-		{/if}
-	</div>
+	<h1 class="f-serif">Beautiful and easy to use timers</h1>
 
-	<section>
-		<h1>Online Productivity Timer</h1>
-		<p>
-			Mobile friendly, easy to use, configurable, minimalistic and aesthetic
-			productivity timer with focus on breaks, based on
-			<a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
-				pomodoro technique
-			</a>. On a mission to boost productivity and focus time.
-		</p>
-	</section>
+	<ul>
+		{#each timers as el}
+			<li class={el[2]}>
+				<a class="btn outlined" href={el[0]}>
+					<span>
+						{el[1]}
+					</span>
+				</a>
+			</li>
+		{/each}
+	</ul>
 </article>
 
 <style>
 	article {
-		width: 100%;
-		max-width: 1400px;
-		margin-inline: auto;
-		/* padding-bottom: 10vh; */
-		/* background: black; */
-	}
-	div {
-		/* background: black; */
-		min-height: calc(100vh - 3rem);
-	}
-
-	section {
-		/* border-top: 1px solid var(--fl0); */
-		/* background: var(--bg0); */
-		padding-inline: var(--rsx);
-		padding-block: 1rem;
-		text-align: center;
-		text-wrap: balance;
+		padding-inline: 1rem;
 	}
 
 	h1 {
-		font-size: 1.1rem;
-		/* font-weight: normal; */
-		/* font-style: italic; */
+		text-align: center;
+		text-wrap: balance;
+		margin-top: max(4rem, 10vh);
+		font-size: clamp(1.5rem, 8vw, 3rem);
+		color: var(--fg);
+	}
+
+	ul {
+		max-width: 30rem;
+		margin-inline: auto;
+		margin-block: max(3rem, 6vh);
+
+		font-size: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		/* background: black; */
+	}
+	li {
+		display: grid;
+		/* background: darkred; */
+	}
+	a {
+		padding-block: 2rem;
+		padding-inline: 2rem;
+		border-radius: 22rem;
+		font-weight: 900;
+	}
+
+	a:not(:hover):not(:focus-visible) {
+		background: var(--__bga1);
+		/* background: var(--bga); */
+		backdrop-filter: blur(3px);
+		border-color: transparent;
+		color: var(--__fg);
 	}
 </style>

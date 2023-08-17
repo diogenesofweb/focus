@@ -12,7 +12,7 @@
 	import PhaseTable from './PhaseTable.svelte';
 	import Visibility, { VISIBILITY_STATE } from './Visibility.svelte';
 	import { currSequenceName } from '$store/store';
-	import { INIT_TITLE, msg } from './const.js';
+	import { INIT_TITLE, msg } from '$lib/vars';
 	import { sendNotification } from '$lib/sendNotification';
 	import { Btn, Modal } from '@kazkadien/svelte';
 	import { onDestroy } from 'svelte';
@@ -28,7 +28,7 @@
 	let audio;
 
 	// this cause build to fail if $aliases are used, but work in dev mode
-	let w = new Worker(new URL('./worker.js', import.meta.url), {
+	let w = new Worker(new URL('$lib/worker_backward.js', import.meta.url), {
 		type: 'module'
 	});
 
@@ -544,8 +544,8 @@
 	}
 
 	.boxx {
-		margin-top: 1em;
-		padding: 0.5em 0;
+		margin-top: 1rem;
+		/* padding: 0.5rem 0; */
 
 		user-select: none;
 		border-radius: var(--x1);

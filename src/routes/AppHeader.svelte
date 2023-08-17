@@ -2,10 +2,10 @@
 	import { Modal, Btn } from '@kazkadien/svelte';
 	import Name from '$lib/Name.svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
-	import TimerNew from './TimerNew.svelte';
-	import { page } from '$app/stores';
+	import TimerNew from './pomodoro/TimerNew.svelte';
 	import AppMenu from './AppMenu.svelte';
 	import AppSettings from './AppSettings.svelte';
+	import { page } from '$app/stores';
 
 	let timer_open = false;
 </script>
@@ -24,7 +24,7 @@
 
 		<!-- <div class="fce g1 alpha" style="--_bg: var(--__mg0)"> -->
 		<div class="fce alpha">
-			{#if $page.route.id === '/'}
+			{#if $page.route.id === '/pomodoro'}
 				<Btn
 					title="timer"
 					iconOnly

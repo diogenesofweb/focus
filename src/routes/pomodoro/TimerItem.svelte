@@ -1,6 +1,6 @@
 <script>
 	import { onDestroy } from 'svelte';
-	import { msg } from './const';
+	import { msg } from '$lib/vars';
 	import { Btn, Icon } from '@kazkadien/svelte';
 	import { sendNotification } from '$lib/sendNotification';
 	import { opts } from '$store/settings';
@@ -16,7 +16,7 @@
 	/** @type {import('./TimerNew.svelte').SimpleTimerItem } */
 	export let st;
 
-	let w = new Worker(new URL('./worker.js', import.meta.url), {
+	let w = new Worker(new URL('$lib/worker_backward.js', import.meta.url), {
 		type: 'module'
 	});
 

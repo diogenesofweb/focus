@@ -1,4 +1,4 @@
-import { MSG_WF } from './const';
+import { MSG_WF } from './vars';
 import { ch } from './utils';
 
 const INTERVAL = import.meta.env.DEV ? 10 : 1000;
