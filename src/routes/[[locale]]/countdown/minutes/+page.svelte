@@ -22,6 +22,9 @@
 <svelte:head>
 	<title>{th.title}</title>
 	<meta name="description" content={th.desc} />
+
+	<meta property="og:title" content={th.title} />
+	<meta property="og:description" content={th.desc} />
 </svelte:head>
 
 <div class="wrap">

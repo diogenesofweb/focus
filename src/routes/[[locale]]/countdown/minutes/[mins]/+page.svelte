@@ -30,6 +30,9 @@
 <svelte:head>
 	<title>{title}</title>
 	<meta name="description" content={th.desc(data.minutes)} />
+
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={th.desc(data.minutes)} />
 </svelte:head>
 
 <div class="wrap container">
