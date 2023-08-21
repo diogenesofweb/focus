@@ -10,6 +10,7 @@ import type {
 	IStat,
 	MyDB
 } from './types';
+import { browser } from '$app/environment';
 
 const myStations: IRadioStation[] = [
 	{
@@ -107,15 +108,12 @@ const r4x25: IRound[] = [
 ];
 const s4x25: ISequence = { name: '4x25', rounds: r4x25 };
 
-const b1 = new Set([
-	'Stretching',
-	'Plank',
-	'Plank (shoulder tap)',
-	'Plank (mountain climber)',
-	'Squat (regular)',
-	'Squat (split)',
-	'Squat (sumo)',
+const b1_en = new Set([
+	'Lunges',
+	'Squat',
 	'Wall Squat',
+	'Plank',
+
 	'Calf raise',
 	'Hamstring curl',
 	'Tibialis raise',
@@ -123,9 +121,35 @@ const b1 = new Set([
 	'External shoulder rotation'
 ]);
 
-const b2 = new Set(['Tea/Coffee', 'Meditation']);
+const b1_fr = new Set(['Fente', 'Squat', 'Wall Squat', 'Planche']);
+
+const b1_ua = new Set([
+	'Випади',
+	'Присідання',
+	'Присідання до стіни',
+	'Планка'
+]);
+
+const b2_en = new Set(['Tea', 'Coffee', 'Meditation']);
+const b2_fr = new Set(['Thé', 'Café', 'Méditation']);
+const b2_ua = new Set(['Чай', 'Кава', 'Медитація']);
 /** SEED START */
 async function seed(db: IDBPDatabase<MyDB>) {
+	let b1 = b1_en;
+	let b2 = b2_en;
+
+	if (browser) {
+		// console.log(window.location.pathname);
+		if (window.location.pathname.startsWith('/ua')) {
+			b1 = b1_ua;
+			b2 = b2_ua;
+		}
+		if (window.location.pathname.startsWith('/fr')) {
+			b1 = b1_fr;
+			b2 = b2_fr;
+		}
+	}
+
 	// console.log('seeding start');
 	await db.put('activity-list', { name: 'short break', values: b1 });
 	await db.put('activity-list', { name: 'long break', values: b2 });

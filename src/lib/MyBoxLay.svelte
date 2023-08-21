@@ -21,16 +21,18 @@
 
 		<div class="tablo">
 			{#if init_nums}
-				<div class="init-nums font-x">[ {init_nums} ]</div>
+				<time class="init-nums font-x" datetime={init_nums}
+					>[ {init_nums} ]</time
+				>
 			{/if}
 
-			<div class="font-x nums">
+			<time class="font-x nums">
 				<b>{HH}</b>
 				<i>:</i>
 				<b>{MM}</b>
 				<i>:</i>
 				<b>{SS}</b>
-			</div>
+			</time>
 		</div>
 	</div>
 
@@ -40,6 +42,9 @@
 </section>
 
 <style>
+	time {
+		display: block;
+	}
 	.init-nums {
 		padding-top: 1em;
 		margin-bottom: -0.25em;
@@ -120,8 +125,17 @@
 	}
 
 	.btns {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+		/* display: grid; */
+		/* grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); */
+		/* gap: 1rem; */
+
+		display: flex;
+		flex-wrap: wrap;
 		gap: 1rem;
+	}
+
+	.btns :global(.btn) {
+		flex-grow: 1;
+		flex-basis: 30%;
 	}
 </style>

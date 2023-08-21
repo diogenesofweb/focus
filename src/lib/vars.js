@@ -1,4 +1,4 @@
-export const INIT_TITLE = 'Pomodoro Timer Online';
+// export const INIT_TITLE = 'Pomodoro Timer Online';
 
 export const msg = {
 	finish: 'FINISH',

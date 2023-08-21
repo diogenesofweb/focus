@@ -1,15 +1,16 @@
-# Focus
+# Online Timers
 
-### Configurable, minimalistic and elegant productivity timer based on pomodoro technique.
+1. Pomodoro
+2. Stopwatch
+3. Countdown
 
-Due to the use of service workers, the time counter should be pretty accurate, regardless of whether the browser tab is focused or not.
+### Pomodoro:
 
-### Features:
-
-- Customisable sets and activities for each focus and break periods
-- Desktop notifications
-- Sound alarms
-- Overtime notifications
+- Customisable focus and break sessions
+- Predefined activities for breaks
+- Notifications
+- Alarms
+- Overtime
 - Additional timers
 - Radio player
 - Stopwatch

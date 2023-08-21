@@ -1,6 +1,7 @@
 import type { IMyIcon } from '$typings/types.js';
 import type { Accent } from '@kazkadien/svelte/types.js';
 import { openDB, DBSchema } from 'idb';
+import type { Locale } from './locales/en';
 
 interface MyDB extends DBSchema {
 	records: {
@@ -87,4 +88,13 @@ export interface IRadioStation {
 	id: number;
 	src: string;
 	name: string;
+}
+
+export interface Localize {
+	t: Locale;
+	r: {
+		lang: 'en' | 'fr' | 'uk';
+		locale: 'en' | 'fr' | 'ua';
+		prefix: '' | '/fr' | '/ua';
+	};
 }

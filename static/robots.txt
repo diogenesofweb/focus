@@ -1,7 +1,16 @@
 User-agent: *
 Disallow: /snaps
+Disallow: /fr/snaps
+Disallow: /ua/snaps
 Disallow: /stats
+Disallow: /fr/stats
+Disallow: /ua/stats
 Disallow: /sequences
+Disallow: /fr/sequences
+Disallow: /ua/sequences
 Disallow: /break-activities
+Disallow: /fr/break-activities
+Disallow: /ua/break-activities
 Disallow: /radio-stations
-Disallow: /*?*
+Disallow: /fr/radio-stations
+Disallow: /ua/radio-stations
