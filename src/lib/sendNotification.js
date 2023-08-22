@@ -1,10 +1,11 @@
 /** @param {string} phase */
 export function sendNotification(phase) {
-	const title = 'Focus App';
+	const title = 'TimerOne';
 
+	// todo: update body
 	/** @type {NotificationOptions} */
 	const opt = {
-		body: `${phase.toUpperCase()} time is over!`
+		body: `${phase.toUpperCase()} is over!`
 	};
 
 	const n = new Notification(title, opt);
@@ -15,6 +16,3 @@ export function sendNotification(phase) {
 		this.close();
 	};
 }
-
-// sendNotification('focus');
-// sendNotification('break');

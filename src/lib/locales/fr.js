@@ -1,6 +1,7 @@
 /** @type {import('./en.js').Locale } */
 const fr = {
 	btn: {
+		copy_link: 'copier le lien',
 		confirm: 'confirmer',
 		edit: 'éditer',
 		del: 'supprimer',
@@ -39,6 +40,11 @@ const fr = {
 	},
 
 	time: {
+		date: 'Date',
+		time: 'Temps',
+		until: "Temps jusqu'à",
+		expired: 'Expiré',
+		days: 'Jours',
 		hh: 'Heures',
 		mm: 'Minutes',
 		ss: 'Secondes',
@@ -95,6 +101,11 @@ const fr = {
 		countdown: {
 			n: 'minuteur',
 			h: 'Minuteur compte à rebours'
+		},
+
+		countdown_date: {
+			n: 'minuteur_date',
+			h: 'Minuteur Date'
 		},
 
 		stopwatch: {
@@ -170,6 +181,18 @@ const fr = {
 				desc_x1: 'Choisissez parmi',
 				desc_x2: 'des minuteurs fréquentes et préréglés',
 				h: 'Minuteur de compte à rebours'
+			}
+		},
+
+		countdown_to: {
+			head: {
+				title: 'Minuteur Date',
+				desc: 'Minuteur Date en ligne simple, adapté aux appareils mobiles et moderne'
+			},
+			body: {
+				h1: 'Minuteur Date',
+				desc: "Sélectionnez la date, l'heure et le fuseau horaire pour démarrer le minuteur.",
+				h: 'Minuteur Date'
 			}
 		},
 

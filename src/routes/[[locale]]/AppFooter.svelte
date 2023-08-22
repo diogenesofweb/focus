@@ -42,6 +42,7 @@
 
 				{#if dev}
 					<a href="/countdown/minutes">Popular timers</a>
+					<a href="/countdown/to">To date</a>
 					<!-- <a href="/_draft">_draft</a> -->
 				{/if}
 			</div>

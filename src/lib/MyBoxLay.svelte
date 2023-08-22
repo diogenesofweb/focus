@@ -1,4 +1,7 @@
 <script>
+	import { getContext } from 'svelte';
+	/** @type {import('$lib/types').Localize } */
+	const l = getContext('ttt');
 	/** @type {import("@kazkadien/svelte/dist/types").Accent | ''} */
 	export let accent = '';
 	/** @type {string } */
@@ -13,6 +16,10 @@
 
 	/** @type {string } */
 	export let init_nums = '';
+
+	export let with_controls = true;
+	export let days = 0;
+	export let with_label = false;
 </script>
 
 <section class={accent}>
@@ -21,24 +28,31 @@
 
 		<div class="tablo">
 			{#if init_nums}
-				<time class="init-nums font-x" datetime={init_nums}
-					>[ {init_nums} ]</time
-				>
+				<time class="init-nums font-x" datetime={init_nums}>
+					[ {init_nums} ]
+				</time>
 			{/if}
 
-			<time class="font-x nums">
-				<b>{HH}</b>
+			{#if days}
+				<!-- <div class="init-nums font-x">{l.t.time.days} : {days}</div> -->
+				<div class="init-nums font-x days">{l.t.time.days}: {days}</div>
+			{/if}
+
+			<time class="font-x nums" class:labeled={with_label}>
+				<b title={l.t.time.hh}>{HH}</b>
 				<i>:</i>
-				<b>{MM}</b>
+				<b title={l.t.time.mm}>{MM}</b>
 				<i>:</i>
-				<b>{SS}</b>
+				<b title={l.t.time.ss}>{SS}</b>
 			</time>
 		</div>
 	</div>
 
-	<div class="btns g-action-btns">
-		<slot name="btns"><!-- optional fallback --></slot>
-	</div>
+	{#if with_controls}
+		<div class="btns g-action-btns">
+			<slot name="btns"><!-- optional fallback --></slot>
+		</div>
+	{/if}
 </section>
 
 <style>
@@ -55,6 +69,29 @@
 		/* font-weight: 900; */
 		font-size: clamp(1.5rem, 10vw, 3rem);
 	}
+	.days {
+		/* text-transform: uppercase; */
+		font-weight: 700;
+	}
+	time.labeled {
+		/* background: black; */
+		padding-bottom: 2.5rem;
+
+		& > b {
+			position: relative;
+			&::after {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				content: attr(title);
+				font-size: clamp(1rem, 5vw, 2.25rem);
+				/* background: black; */
+				text-align: center;
+				color: var(--__fg0);
+			}
+		}
+	}
 
 	.box {
 		padding-top: max(4rem, 10vh);
@@ -68,6 +105,7 @@
 
 	.header {
 		text-align: center;
+		text-wrap: balance;
 		/* text-transform: uppercase; */
 		font-size: 1.75rem;
 		font-weight: 900;
@@ -117,6 +155,7 @@
 	}
 	b:last-child {
 		text-align: left;
+		/* color: var(--fg-danger); */
 	}
 	i {
 		font-style: normal;

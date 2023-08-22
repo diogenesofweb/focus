@@ -47,7 +47,7 @@ html.dark {
 .container {
 	max-width: 100ch;
 	margin-inline: auto;
-	padding-inline: var(--rsx);
+	/* padding-inline: var(--rsx); */
 }
 
 .modal-box {

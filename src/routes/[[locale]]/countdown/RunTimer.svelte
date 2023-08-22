@@ -14,12 +14,18 @@
 
 	const dispatch = createEventDispatcher();
 
+	export let with_label = false;
+	export let days = 0;
+	export let with_controls = true;
+	export let show_init_nums = true;
 	export let autostart = true;
 	export let t = { hh: 0, mm: 0, ss: 0 };
+	export let heading = l.t.timers.countdown.h;
 
 	const h0 = ch(t.hh);
 	const m0 = ch(t.mm);
 	const s0 = ch(t.ss);
+	const init_nums = show_init_nums ? `${h0}:${m0}:${s0}` : '';
 
 	let HH = h0;
 	let MM = m0;
@@ -58,7 +64,7 @@
 			if (e.data.mes == msg.finish) {
 				is_finished = true;
 				is_running = false;
-				if ($opts.notifications) sendNotification('Countdown Timer');
+				if ($opts.notifications) sendNotification('Timer');
 				if ($opts.alarm) audio.play();
 			}
 		};
@@ -121,12 +127,15 @@
 </audio>
 
 <MyBoxLay
-	heading={l.t.timers.countdown.h}
-	init_nums="{h0}:{m0}:{s0}"
+	{heading}
+	{init_nums}
 	accent={is_running ? 'alpha' : 'beta'}
 	{HH}
 	{MM}
 	{SS}
+	{with_controls}
+	{with_label}
+	{days}
 >
 	<svelte:fragment slot="btns">
 		<MyBtn

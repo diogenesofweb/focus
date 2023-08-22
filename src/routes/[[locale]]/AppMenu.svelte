@@ -13,6 +13,7 @@
 			[
 				{ href: '/pomodoro', name: l.t.timers.pomodoro.h },
 				{ href: '/countdown', name: l.t.timers.countdown.h },
+				{ href: '/countdown/to', name: l.t.timers.countdown_date.h },
 				{ href: '/stopwatch', name: l.t.timers.stopwatch.h }
 			]
 		],

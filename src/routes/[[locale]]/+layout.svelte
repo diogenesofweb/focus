@@ -4,7 +4,7 @@
 	import AppAdditionalIcons from './AppAdditionalIcons.svelte';
 	import StopWar from './AppStopWar.svelte';
 	import { AppWrapper } from '@kazkadien/svelte';
-	// import { AppSnacks } from '@kazkadien/svelte';
+	import { AppSnacks } from '@kazkadien/svelte';
 	import '../../css/app.css';
 	import '../../css/list.css';
 	import '../../css/dialog.css';
@@ -78,7 +78,7 @@
 </svelte:head>
 
 <AppWrapper>
-	<!-- <AppSnacks /> -->
+	<AppSnacks />
 	<AppAdditionalIcons />
 
 	<div id="app-container">

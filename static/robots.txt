@@ -14,3 +14,4 @@ Disallow: /ua/break-activities
 Disallow: /radio-stations
 Disallow: /fr/radio-stations
 Disallow: /ua/radio-stations
+Disallow: /*/to/

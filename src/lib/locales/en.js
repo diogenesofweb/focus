@@ -1,6 +1,7 @@
 // const en = /** @type { const } */ ({
 const en = {
 	btn: {
+		copy_link: 'copy link',
 		confirm: 'confirm',
 		edit: 'edit',
 		del: 'delete',
@@ -38,6 +39,11 @@ const en = {
 	},
 
 	time: {
+		date: 'Date',
+		time: 'Time',
+		until: 'Time until',
+		expired: 'Expired',
+		days: 'Days',
 		hh: 'Hours',
 		mm: 'Minutes',
 		ss: 'Seconds',
@@ -94,6 +100,11 @@ const en = {
 		countdown: {
 			n: 'countdown',
 			h: 'Countdown Timer'
+		},
+
+		countdown_date: {
+			n: 'countdown_date',
+			h: 'Countdown to Date'
 		},
 
 		stopwatch: {
@@ -169,6 +180,18 @@ const en = {
 				desc_x1: 'Choose from',
 				desc_x2: 'frequent pre-set timers',
 				h: 'Countdown'
+			}
+		},
+
+		countdown_to: {
+			head: {
+				title: 'Countdown to Date Online',
+				desc: 'Simple, mobile-friendly, modern countdown to date online timer'
+			},
+			body: {
+				h1: 'Countdown to Date',
+				desc: 'Select date, time and time zone to start the timer.',
+				h: 'Countdown to Date'
 			}
 		},
 

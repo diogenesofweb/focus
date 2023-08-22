@@ -9,6 +9,7 @@
 	const timers = [
 		['pomodoro', tm.pomodoro.h, 'alpha'],
 		['countdown', tm.countdown.h, 'beta'],
+		['countdown/to', tm.countdown_date.h, 'beta'],
 		['stopwatch', tm.stopwatch.h, 'gamma']
 	];
 </script>
@@ -16,7 +17,6 @@
 <svelte:head>
 	<title>{th.title}</title>
 	<meta name="description" content={th.desc} />
-
 	<meta property="og:title" content={th.og.title} />
 	<meta property="og:description" content={th.og.desc} />
 </svelte:head>
