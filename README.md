@@ -3,6 +3,7 @@
 1. Pomodoro
 2. Stopwatch
 3. Countdown
+4. Countdown to Date
 
 ### Pomodoro:
 
@@ -17,5 +18,18 @@
 - Statistics
 - Snapshots
 
-![light theme](./screenshots/light.png)
-![dark theme](./screenshots/dark.png)
+#### Pomodoro
+
+![pomodoro](./screenshots/pomo.png)
+
+#### Stopwatch
+
+![stopwatch](./screenshots/stopwatch.png)
+
+#### Countdown
+
+![countdown](./screenshots/countdown.png)
+
+#### Countdown to Date
+
+![countdown](./screenshots/count_to_date.png)
