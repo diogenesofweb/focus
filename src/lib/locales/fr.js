@@ -1,6 +1,9 @@
 /** @type {import('./en.js').Locale } */
 const fr = {
 	btn: {
+		add: 'ajouter',
+		subtrack: 'soustraire',
+		calculate: 'calculer',
 		copy_link: 'copier le lien',
 		confirm: 'confirmer',
 		edit: 'éditer',
@@ -36,7 +39,9 @@ const fr = {
 	menu: {
 		timers: 'Minuteurs',
 		edit: 'Modifier',
-		info: 'Info'
+		info: 'Info',
+		pomodoro: 'Pomodoro',
+		tools: 'Outils'
 	},
 
 	time: {
@@ -48,7 +53,14 @@ const fr = {
 		hh: 'Heures',
 		mm: 'Minutes',
 		ss: 'Secondes',
-		mins: 'min'
+		mins: 'min',
+
+		year: 'année',
+		years: 'années',
+		month: 'mois',
+		months: 'mois',
+		weeks: 'semaines',
+		day: 'your'
 	},
 
 	opts: {
@@ -299,6 +311,28 @@ const fr = {
 					add: 'Ajouter une nouvelle radio',
 					reset: 'réinitialiser par défaut'
 				}
+			}
+		},
+
+		date2date: {
+			head: {
+				title: 'Calculateur Date à Date',
+				desc: 'Calculez la différence entre deux dates'
+			},
+			body: {
+				h: 'Calculateur Date à Date',
+				p: 'Calculez la différence entre deux dates'
+			}
+		},
+
+		add_sub_date: {
+			head: {
+				title: 'Ajouter ou soustraire une Date',
+				desc: 'Ajoutez (ou soustrayez) des années, des mois, des semaines et des jours à (de) une date.'
+			},
+			body: {
+				h: 'Ajouter ou soustraire une Date',
+				p: 'Ajoutez (ou soustrayez) des années, des mois, des semaines et des jours à (de) une date.'
 			}
 		}
 	}

@@ -6,11 +6,10 @@
 
 	const tm = l.t.timers;
 
-	const timers = [
-		['pomodoro', tm.pomodoro.h, 'alpha'],
-		['countdown', tm.countdown.h, 'beta'],
-		['countdown/to', tm.countdown_date.h, 'beta'],
-		['stopwatch', tm.stopwatch.h, 'gamma']
+	const tools = [
+		// ['tools/browser-time-zones', 'browser-time-zones', 'beta'],
+		['tools/date-to-date-calculator', l.t.r.date2date.head.title, 'beta'],
+		['tools/add-or-subtract-date', l.t.r.add_sub_date.head.title, 'beta']
 	];
 </script>
 
@@ -22,10 +21,10 @@
 </svelte:head>
 
 <article>
-	<h1 class="f-serif">{l.t.r.index.body.h1}</h1>
+	<h1 class="f-serif">Tools</h1>
 
 	<ul>
-		{#each timers as el}
+		{#each tools as el}
 			<li class={el[2]}>
 				<a class="btn outlined" href="{l.r.prefix}/{el[0]}">
 					<span> {el[1]} </span>
@@ -69,10 +68,10 @@
 		padding-inline: 2rem;
 		border-radius: 22rem;
 		font-weight: 900;
-
 		white-space: inherit;
 		line-height: 1.2;
 		text-align: center;
+		/* justify-content: start; */
 	}
 
 	a:not(:hover):not(:focus-visible) {

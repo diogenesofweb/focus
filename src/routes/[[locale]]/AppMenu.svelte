@@ -18,18 +18,27 @@
 			]
 		],
 		[
-			l.t.menu.edit,
+			l.t.menu.pomodoro,
 			[
 				{ href: '/sequences', name: l.t.r.sequences.body.h },
 				{ href: '/break-activities', name: l.t.r.breaks.body.h },
-				{ href: '/radio-stations', name: l.t.r.radios.body.h }
-			]
-		],
-		[
-			l.t.menu.info,
-			[
+				{ href: '/radio-stations', name: l.t.r.radios.body.h },
 				{ href: '/stats', name: l.t.r.stats.body.h },
 				{ href: '/snaps', name: l.t.r.snaps.body.h }
+			]
+		],
+
+		[
+			l.t.menu.tools,
+			[
+				{
+					href: '/tools/date-to-date-calculator',
+					name: l.t.r.date2date.head.title
+				},
+				{
+					href: '/tools/add-or-subtract-date',
+					name: l.t.r.add_sub_date.head.title
+				}
 			]
 		]
 	];

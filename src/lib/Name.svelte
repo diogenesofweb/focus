@@ -28,6 +28,9 @@
 		font-size: 1.15rem;
 	}
 
+	span {
+		transition: transform 250ms ease-in;
+	}
 	@media (hover: hover) {
 		div:hover {
 			color: var(--fg-beta);

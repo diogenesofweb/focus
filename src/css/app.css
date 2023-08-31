@@ -68,6 +68,17 @@ html.dark {
 	line-height: 1.4;
 }
 
+.card-x {
+	/* min-width: min(80vw, 500px); */
+	background-color: var(--bg);
+	padding-block: 3rem;
+	/* padding-inline: clamp(1rem, 5vw, 2rem); */
+	padding-inline: clamp(1rem, 3vw, 2rem);
+	/* padding-inline: 1rem; */
+	border: var(--border);
+	border-radius: 1rem;
+}
+
 body {
 	--br-s: 0.33rem; /* border-radius-small */
 	--br-m: 1rem;

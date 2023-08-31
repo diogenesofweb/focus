@@ -22,7 +22,7 @@
 {/if}
 
 <div class="container1">
-	<div id="header" class="fsb base">
+	<div id="header" class="fsb g1 base">
 		<a href={l.r.prefix || '/'} class="fce link">
 			<Name />
 		</a>

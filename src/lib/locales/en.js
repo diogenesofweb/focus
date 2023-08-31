@@ -1,6 +1,9 @@
 // const en = /** @type { const } */ ({
 const en = {
 	btn: {
+		add: 'add',
+		subtrack: 'subtract',
+		calculate: 'calculate',
 		copy_link: 'copy link',
 		confirm: 'confirm',
 		edit: 'edit',
@@ -35,7 +38,9 @@ const en = {
 	menu: {
 		timers: 'Timers',
 		edit: 'Edit',
-		info: 'Info'
+		info: 'Info',
+		pomodoro: 'Pomodoro',
+		tools: 'Tools'
 	},
 
 	time: {
@@ -47,7 +52,15 @@ const en = {
 		hh: 'Hours',
 		mm: 'Minutes',
 		ss: 'Seconds',
-		mins: 'min'
+		mins: 'min',
+
+		year: 'year',
+		years: 'years',
+		month: 'month',
+		months: 'months',
+		weeks: 'weeks',
+		day: 'day'
+		// days: 'days'
 	},
 
 	opts: {
@@ -298,6 +311,28 @@ const en = {
 					add: 'Add New Station',
 					reset: 'reset to default'
 				}
+			}
+		},
+
+		date2date: {
+			head: {
+				title: 'Date to date calculator',
+				desc: 'Calculate difference between two dates.'
+			},
+			body: {
+				h: 'Date to date calculator',
+				p: 'Calculate difference between two dates'
+			}
+		},
+
+		add_sub_date: {
+			head: {
+				title: 'Add or Subtract Date',
+				desc: 'Add (or subtract) years, months, weeks, and days to(from) a date.'
+			},
+			body: {
+				h: 'Add or Subtract Date',
+				p: 'Add (or subtract) years, months, weeks, and days to (from) a date.'
 			}
 		}
 	}
