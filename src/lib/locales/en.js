@@ -22,7 +22,7 @@ const en = {
 	},
 	// icon title and labels
 	it: {
-		add_timer: 'add the timer',
+		add_timer: 'add countdown timer',
 		settings: 'settings',
 		menu: 'menu',
 
@@ -67,7 +67,7 @@ const en = {
 		group: {
 			general: 'General Options',
 			pomo: 'Pomodoro Options',
-			addons: 'Add-ons'
+			addons: 'Pomodoro Add-ons'
 		},
 
 		notif: 'Notifications',
@@ -131,14 +131,15 @@ const en = {
 		index: {
 			head: {
 				title: 'Free Online Timers',
-				desc: 'Free online easy-to-use timers : pomodoro, countdown, stopwatch. No distractions. Light and dark mode. Works on all screen sizes.',
+				desc: 'Free online easy-to-use timers : pomodoro, countdown, stopwatch. And date calculators. No distractions. Light and dark mode. Works on all screen sizes.',
 				og: {
 					title: 'Free Online Timers',
-					desc: 'Free online easy-to-use timers : pomodoro, countdown, stopwatch. No distractions. Light and dark mode. Works on all screen sizes.'
+					desc: 'Free online easy-to-use timers : pomodoro, countdown, stopwatch. And date calculators. No distractions. Light and dark mode. Works on all screen sizes.'
 				}
 			},
 			body: {
-				h1: 'Modern and easy-to-use online timers'
+				h1: 'Modern and easy-to-use online timers',
+				h2: 'Date Calculators'
 			}
 		},
 

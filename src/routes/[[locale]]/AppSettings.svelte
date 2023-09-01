@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	import CloseBtn from '$lib/CloseBtn.svelte';
 	import { opts } from '$store/settings';
 	import { notificationsAreOn } from '$store/store';
@@ -15,6 +16,8 @@
 	const to = l.t.opts;
 
 	let is_open = false;
+
+	// page.subscribe((v) => console.log(v));
 </script>
 
 <BtnIcon
@@ -50,53 +53,60 @@
 							</BoxFieldEntry>
 						</BoxField>
 
-						<BoxField label={to.group.pomo} rows={true}>
-							{#if $notificationsAreOn || $opts.alarm}
-								<BoxFieldEntry label={to.reminder}>
-									<input type="checkbox" bind:checked={$opts.reminder} />
+						{#if $page.route.id === '/[[locale]]/pomodoro'}
+							<BoxField label={to.group.pomo} rows={true}>
+								{#if $notificationsAreOn || $opts.alarm}
+									<BoxFieldEntry label={to.reminder}>
+										<input type="checkbox" bind:checked={$opts.reminder} />
+									</BoxFieldEntry>
+								{/if}
+
+								<BoxFieldEntry label={to.skip_break}>
+									<input
+										type="checkbox"
+										bind:checked={$opts.skip_break_activity_select}
+									/>
 								</BoxFieldEntry>
-							{/if}
 
-							<BoxFieldEntry label={to.skip_break}>
-								<input
-									type="checkbox"
-									bind:checked={$opts.skip_break_activity_select}
-								/>
-							</BoxFieldEntry>
+								<BoxFieldEntry label={to.autoshow_activities}>
+									<input
+										type="checkbox"
+										bind:checked={$opts.autoShowActivites}
+									/>
+								</BoxFieldEntry>
 
-							<BoxFieldEntry label={to.autoshow_activities}>
-								<input type="checkbox" bind:checked={$opts.autoShowActivites} />
-							</BoxFieldEntry>
+								<BoxFieldEntry label={to.autostart_focus}>
+									<input type="checkbox" bind:checked={$opts.autoStartFocus} />
+								</BoxFieldEntry>
+							</BoxField>
 
-							<BoxFieldEntry label={to.autostart_focus}>
-								<input type="checkbox" bind:checked={$opts.autoStartFocus} />
-							</BoxFieldEntry>
-						</BoxField>
+							<BoxField label={to.group.addons} rows={true}>
+								<BoxFieldEntry label={to.addons.radio}>
+									<input type="checkbox" bind:checked={$opts.radio} />
+								</BoxFieldEntry>
 
-						<BoxField label={to.group.addons} rows={true}>
-							<BoxFieldEntry label={to.addons.radio}>
-								<input type="checkbox" bind:checked={$opts.radio} />
-							</BoxFieldEntry>
+								<BoxFieldEntry label={to.addons.stopwatch}>
+									<input type="checkbox" bind:checked={$opts.stopwatch} />
+								</BoxFieldEntry>
 
-							<BoxFieldEntry label={to.addons.stopwatch}>
-								<input type="checkbox" bind:checked={$opts.stopwatch} />
-							</BoxFieldEntry>
+								<BoxFieldEntry label={to.addons.total_time}>
+									<input type="checkbox" bind:checked={$opts.totalTime} />
+								</BoxFieldEntry>
 
-							<BoxFieldEntry label={to.addons.total_time}>
-								<input type="checkbox" bind:checked={$opts.totalTime} />
-							</BoxFieldEntry>
-
-							<BoxFieldEntry label={to.addons.overtime}>
-								<input type="checkbox" bind:checked={$opts.overtime} />
-							</BoxFieldEntry>
-						</BoxField>
+								<BoxFieldEntry label={to.addons.overtime}>
+									<input type="checkbox" bind:checked={$opts.overtime} />
+								</BoxFieldEntry>
+							</BoxField>
+						{/if}
 					</div>
 				</form>
 			</section>
 
 			<footer>
-				{#if $notificationsAreOn || $opts.alarm}
-					<p>{to.etc.remind}</p>
+				{#if $page.route.id === '/[[locale]]/pomodoro'}
+					{#if $notificationsAreOn || $opts.alarm}
+						<p>{to.etc.remind}</p>
+					{/if}
 				{/if}
 
 				{#if $opts.wakeLock}

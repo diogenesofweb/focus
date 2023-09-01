@@ -12,6 +12,12 @@
 		['countdown/to', tm.countdown_date.h, 'beta'],
 		['stopwatch', tm.stopwatch.h, 'gamma']
 	];
+
+	const tools = [
+		// ['tools/browser-time-zones', 'browser-time-zones', 'beta'],
+		['tools/date-to-date-calculator', l.t.r.date2date.head.title, 'danger'],
+		['tools/add-or-subtract-date', l.t.r.add_sub_date.head.title, 'danger']
+	];
 </script>
 
 <svelte:head>
@@ -33,19 +39,37 @@
 			</li>
 		{/each}
 	</ul>
+
+	<h2 class="f-serif">{l.t.r.index.body.h2}</h2>
+	<ul>
+		{#each tools as el}
+			<li class={el[2]}>
+				<a class="btn outlined" href="{l.r.prefix}/{el[0]}">
+					<span> {el[1]} </span>
+				</a>
+			</li>
+		{/each}
+	</ul>
 </article>
 
 <style>
 	article {
 		padding-inline: 1rem;
+		padding-block: max(4rem, 10vh);
+	}
+
+	h1,
+	h2 {
+		text-align: center;
+		text-wrap: balance;
+		color: var(--fg);
 	}
 
 	h1 {
-		text-align: center;
-		text-wrap: balance;
-		margin-top: max(4rem, 10vh);
 		font-size: clamp(1.5rem, 8vw, 3rem);
-		color: var(--fg);
+	}
+	h2 {
+		font-size: clamp(1.25rem, 5vw, 2rem);
 	}
 
 	ul {
@@ -65,13 +89,13 @@
 		/* background: darkred; */
 	}
 	a {
-		padding-block: 2rem;
-		padding-inline: 2rem;
+		padding-block: 1.25rem;
+		padding-inline: 1.5rem;
 		border-radius: 22rem;
 		font-weight: 900;
 
 		white-space: inherit;
-		line-height: 1.2;
+		line-height: 1.4;
 		text-align: center;
 	}
 

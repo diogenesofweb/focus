@@ -4,8 +4,6 @@
 	const l = getContext('ttt');
 	const th = l.t.r.index.head;
 
-	const tm = l.t.timers;
-
 	const tools = [
 		// ['tools/browser-time-zones', 'browser-time-zones', 'beta'],
 		['tools/date-to-date-calculator', l.t.r.date2date.head.title, 'beta'],

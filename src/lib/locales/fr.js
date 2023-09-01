@@ -23,7 +23,7 @@ const fr = {
 	},
 	// icon title and labels
 	it: {
-		add_timer: 'ajouter la minuterie',
+		add_timer: 'ajouter un compte à rebours',
 		settings: 'paramètres',
 		menu: 'menu',
 
@@ -67,7 +67,7 @@ const fr = {
 		group: {
 			general: 'Options générales',
 			pomo: 'Options Pomodoro',
-			addons: 'Add-ons'
+			addons: 'Pomodoro Add-ons'
 		},
 
 		notif: 'Notifications',
@@ -131,14 +131,15 @@ const fr = {
 		index: {
 			head: {
 				title: 'Minuteurs en ligne gratuits',
-				desc: "Des minuteurs en ligne, modernes et faciles à utiliser : pomodoro, compte à rebours, chronomètres. Pas de distractions. Mode clair et sombre. Fonctionne sur toutes les tailles d'écran.",
+				desc: "Des minuteurs en ligne, modernes et faciles à utiliser : pomodoro, compte à rebours, chronomètres. Calculateurs de dates. Pas de distractions. Mode clair et sombre. Fonctionne sur toutes les tailles d'écran.",
 				og: {
 					title: 'Minuteurs en ligne',
-					desc: "Des minuteurs en ligne, modernes et faciles à utiliser : pomodoro, compte à rebours, chronomètres. Pas de distractions. Mode clair et sombre. Fonctionne sur toutes les tailles d'écran."
+					desc: "Des minuteurs en ligne, modernes et faciles à utiliser : pomodoro, compte à rebours, chronomètres. Calculateurs de dates. Pas de distractions. Mode clair et sombre. Fonctionne sur toutes les tailles d'écran."
 				}
 			},
 			body: {
-				h1: 'Des minuteurs en ligne modernes et faciles à utiliser'
+				h1: 'Des minuteurs en ligne modernes et faciles à utiliser',
+				h2: 'Calculateurs de Dates'
 			}
 		},
 
