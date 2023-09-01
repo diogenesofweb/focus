@@ -114,3 +114,9 @@ label {
 		backdrop-filter: blur(3px);
 	}
 }
+
+.g-btns {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(16ch, 1fr));
+	gap: 1rem;
+}

@@ -8,6 +8,7 @@
 
 	const timers = [
 		['pomodoro', tm.pomodoro.h, 'alpha'],
+		['alarm-clock', tm.alarm_clock.h, 'beta'],
 		['countdown', tm.countdown.h, 'beta'],
 		['countdown/to', tm.countdown_date.h, 'beta'],
 		['stopwatch', tm.stopwatch.h, 'gamma']

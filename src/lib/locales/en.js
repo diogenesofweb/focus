@@ -120,6 +120,11 @@ const en = {
 			h: 'Countdown to Date'
 		},
 
+		alarm_clock: {
+			n: 'alarm_clock',
+			h: 'Alarm Clock'
+		},
+
 		stopwatch: {
 			n: 'stopwatch',
 			h: 'Stopwatch Timer'
@@ -176,6 +181,18 @@ const en = {
 				h1: 'Online Stopwatch Timer',
 				desc: 'Easy-to-use, accurate, pleasing to the eye, online stopwatch timer.',
 				h: 'Stopwatch'
+			}
+		},
+
+		alarm_clock: {
+			head: {
+				title: 'Alarm Clock Online',
+				desc: 'Easy-to-use and setup online alarm clock'
+			},
+			body: {
+				h1: 'Online Alarm Clock',
+				h3: 'Current Date and Time:',
+				p: ''
 			}
 		},
 
@@ -317,11 +334,11 @@ const en = {
 
 		date2date: {
 			head: {
-				title: 'Date to date calculator',
+				title: 'Date to Date Calculator',
 				desc: 'Calculate difference between two dates.'
 			},
 			body: {
-				h: 'Date to date calculator',
+				h: 'Date to Date Calculator',
 				p: 'Calculate difference between two dates'
 			}
 		},

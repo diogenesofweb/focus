@@ -127,7 +127,7 @@
 				</Field>
 			</div>
 
-			<div class="btns">
+			<div class="g-btns">
 				<Btn text={l.t.btn.add} on:click={on_add} accent="gamma" />
 				<Btn text={l.t.btn.subtrack} on:click={on_subtract} accent="beta" />
 				<Btn text={l.t.btn.reset} on:click={on_reset} accent="danger" />
@@ -186,11 +186,5 @@
 		/* display: grid; */
 		/* grid-template-columns: repeat(auto-fit, minmax(6ch, 1fr)); */
 		gap: 1ch;
-	}
-
-	.btns {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(16ch, 1fr));
-		gap: 1rem;
 	}
 </style>

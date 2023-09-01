@@ -110,6 +110,11 @@ const fr = {
 			overtime: 'overtime'
 		},
 
+		alarm_clock: {
+			n: 'réveil',
+			h: 'Réveil'
+		},
+
 		countdown: {
 			n: 'minuteur',
 			h: 'Minuteur compte à rebours'

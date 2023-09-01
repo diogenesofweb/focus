@@ -42,7 +42,7 @@
 
 				{#if dev}
 					<a href="/countdown/minutes">Popular timers</a>
-					<a href="/countdown/to">To date</a>
+					<a href="/alarm-clock">Alarm</a>
 					<a href="/tools">tools</a>
 				{/if}
 			</div>

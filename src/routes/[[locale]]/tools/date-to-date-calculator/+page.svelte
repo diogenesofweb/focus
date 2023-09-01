@@ -103,7 +103,7 @@
 				<input type="date" bind:value={date2} required />
 			</Field>
 
-			<div class="btns">
+			<div class="g-btns">
 				<Btn text={l.t.btn.calculate} type="submit" />
 				<Btn text={l.t.btn.reset} on:click={on_reset} accent="danger" />
 			</div>
@@ -150,11 +150,5 @@
 
 	section {
 		text-transform: lowercase;
-	}
-
-	.btns {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(16ch, 1fr));
-		gap: 1rem;
 	}
 </style>
