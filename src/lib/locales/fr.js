@@ -1,6 +1,7 @@
 /** @type {import('./en.js').Locale } */
 const fr = {
 	btn: {
+		set_alarm: 'démarrer',
 		add: 'ajouter',
 		subtrack: 'soustraire',
 		calculate: 'calculer',
@@ -181,6 +182,18 @@ const fr = {
 				h1: 'Chronomètre en ligne',
 				desc: 'Chronomètre en ligne facile à utiliser, compatible avec les mobiles, précis, moderne et minimaliste',
 				h: 'Chronomètre'
+			}
+		},
+
+		alarm_clock: {
+			head: {
+				title: 'Réveil en ligne',
+				desc: 'Réveil en ligne facile à utiliser et à configurer'
+			},
+			body: {
+				h1: 'Réveil en ligne',
+				h3: 'Date et heure actuelles:',
+				p: ''
 			}
 		},
 

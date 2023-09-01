@@ -1,4 +1,5 @@
 <script>
+	import SetupLay from '$lib/SetupLay.svelte';
 	import { Btn, Field } from '@kazkadien/svelte';
 	import { getContext } from 'svelte';
 	/** @type {import('$lib/types').Localize } */
@@ -101,61 +102,54 @@
 	<meta property="og:description" content={th.desc} />
 </svelte:head>
 
-<article class="container">
-	<div class="card-x alpha">
-		<!-- <h1>Add to or Subtract From a Date</h1> -->
-		<h1>{tb.h}</h1>
-		<p>{tb.p}</p>
+<SetupLay>
+	<!-- <h1>Add to or Subtract From a Date</h1> -->
+	<h1>{tb.h}</h1>
+	<p>{tb.p}</p>
 
-		<form class="form v2 alpha" on:submit|preventDefault>
-			<Field label={l.t.time.date}>
-				<input type="date" bind:value={date} required />
+	<form class="form v2 alpha" on:submit|preventDefault>
+		<Field label={l.t.time.date}>
+			<input type="date" bind:value={date} required />
+		</Field>
+
+		<div class="vals">
+			<Field label={l.t.time.years}>
+				<input type="number" min="0" bind:value={years} required />
 			</Field>
+			<Field label={l.t.time.months}>
+				<input type="number" min="0" bind:value={months} required />
+			</Field>
+			<Field label={l.t.time.weeks}>
+				<input type="number" min="0" bind:value={weeks} required />
+			</Field>
+			<Field label={l.t.time.days}>
+				<input type="number" min="0" bind:value={days} required />
+			</Field>
+		</div>
 
-			<div class="vals">
-				<Field label={l.t.time.years}>
-					<input type="number" min="0" bind:value={years} required />
-				</Field>
-				<Field label={l.t.time.months}>
-					<input type="number" min="0" bind:value={months} required />
-				</Field>
-				<Field label={l.t.time.weeks}>
-					<input type="number" min="0" bind:value={weeks} required />
-				</Field>
-				<Field label={l.t.time.days}>
-					<input type="number" min="0" bind:value={days} required />
-				</Field>
-			</div>
+		<div class="g-btns">
+			<Btn text={l.t.btn.add} on:click={on_add} accent="gamma" />
+			<Btn text={l.t.btn.subtrack} on:click={on_subtract} accent="beta" />
+			<Btn text={l.t.btn.reset} on:click={on_reset} accent="danger" />
+		</div>
+	</form>
 
-			<div class="g-btns">
-				<Btn text={l.t.btn.add} on:click={on_add} accent="gamma" />
-				<Btn text={l.t.btn.subtrack} on:click={on_subtract} accent="beta" />
-				<Btn text={l.t.btn.reset} on:click={on_reset} accent="danger" />
-			</div>
-		</form>
-
-		{#if v}
-			<section>
-				<p>= {v.short}</p>
-				<p>= {v.long}</p>
-				<p>
-					<span> = {v.epoch_s} </span>
-					<a href="https://en.wikipedia.org/wiki/Unix_time" lang="en">
-						(Unix time)
-					</a>
-				</p>
-				<!-- <p>= {v.epoch_ms}</p> -->
-			</section>
-		{/if}
-	</div>
-</article>
+	{#if v}
+		<section>
+			<p>= {v.short}</p>
+			<p>= {v.long}</p>
+			<p>
+				<span> = {v.epoch_s} </span>
+				<a href="https://en.wikipedia.org/wiki/Unix_time" lang="en">
+					(Unix time)
+				</a>
+			</p>
+			<!-- <p>= {v.epoch_ms}</p> -->
+		</section>
+	{/if}
+</SetupLay>
 
 <style>
-	article {
-		max-width: 80ch;
-		padding-block: 3rem;
-		/* background: black; */
-	}
 	h1 {
 		margin-block: 0;
 	}

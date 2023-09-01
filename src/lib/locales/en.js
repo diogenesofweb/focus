@@ -1,6 +1,7 @@
 // const en = /** @type { const } */ ({
 const en = {
 	btn: {
+		set_alarm: 'set alarm',
 		add: 'add',
 		subtrack: 'subtract',
 		calculate: 'calculate',

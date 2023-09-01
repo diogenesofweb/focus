@@ -58,8 +58,8 @@
 	{/if}
 
 	<div class="g-btns">
-		<!-- <Btn text={l.t.btn.start} type="submit" /> -->
-		<Btn text="set alarm" type="submit" />
+		<Btn text={l.t.btn.set_alarm} type="submit" />
+		<!-- <Btn text="set alarm" type="submit" /> -->
 		<Btn
 			text={l.t.btn.reset}
 			accent="danger"

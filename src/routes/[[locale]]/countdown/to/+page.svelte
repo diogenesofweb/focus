@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import SetupLay from '$lib/SetupLay.svelte';
 	import { Btn, Field, snack_new } from '@kazkadien/svelte';
 	import { getContext } from 'svelte';
 	/** @type {import('$lib/types').Localize } */
@@ -68,81 +69,65 @@
 	<meta property="og:description" content={th.desc} />
 </svelte:head>
 
-<article class="container">
-	<h1>{l.t.r.countdown_to.body.h1}</h1>
-	<p>{l.t.r.countdown_to.body.desc}</p>
-
-	<div class="lay">
-		<div class="card alpha">
-			<form
-				class="form v2 alpha"
-				on:submit|preventDefault={on_submit}
-				on:change={on_change}
-			>
-				<div>
-					<Field label={l.t.time.date}>
-						<input type="date" min={today} bind:value={date} />
-					</Field>
-
-					<Field label={l.t.time.time}>
-						<input type="time" bind:value={time} />
-					</Field>
-
-					<label class="field" lang="en">
-						<b>Time Zone</b>
-						<select bind:value={tz}>
-							{#each time_zones as val}
-								<option value={val}>{val}</option>
-							{/each}
-						</select>
-					</label>
-				</div>
-
-				<div class="btns">
-					<Btn text={l.t.btn.start} type="submit" disabled={!path} />
-
-					<Btn
-						text={l.t.btn.copy_link}
-						accent="gamma"
-						on:click={on_copy}
-						disabled={!path}
-					/>
-				</div>
-			</form>
-		</div>
+<SetupLay>
+	<div class="heading">
+		<h1>{l.t.r.countdown_to.body.h1}</h1>
+		<p>{l.t.r.countdown_to.body.desc}</p>
 	</div>
-</article>
+
+	<form
+		class="form v2 alpha"
+		on:submit|preventDefault={on_submit}
+		on:change={on_change}
+	>
+		<div>
+			<Field label={l.t.time.date}>
+				<input type="date" min={today} bind:value={date} />
+			</Field>
+
+			<Field label={l.t.time.time}>
+				<input type="time" bind:value={time} />
+			</Field>
+
+			<label class="field" lang="en">
+				<b>Time Zone</b>
+				<select bind:value={tz}>
+					{#each time_zones as val}
+						<option value={val}>{val}</option>
+					{/each}
+				</select>
+			</label>
+		</div>
+
+		<div class="btns">
+			<Btn text={l.t.btn.start} type="submit" disabled={!path} />
+
+			<Btn
+				text={l.t.btn.copy_link}
+				accent="gamma"
+				on:click={on_copy}
+				disabled={!path}
+			/>
+		</div>
+	</form>
+</SetupLay>
 
 <style>
-	/* article { */
-	/* 	padding-inline: 0; */
-	/* } */
-	.lay {
-		padding-top: 6rem;
+	h1 {
+		margin-top: 0;
 	}
-	h1,
-	p {
-		text-align: center;
-		text-wrap: balance;
-	}
+
 	form {
+		margin-top: 4rem;
 		display: grid;
-		gap: 3em;
+		gap: 3rem;
 	}
 	form div {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 2em;
+		gap: 1rem;
 	}
 	form :global(:is(label, button)) {
 		flex-grow: 1;
 	}
-	/* .btns { */
-	/* 	display: flex; */
-	/* } */
-	/* @media only screen and (min-width: 600px) { */
-	/* 	section { */
-	/* 		grid-template-columns: 1fr 1fr; */
-	/* 	} */
-	/* } */
 </style>

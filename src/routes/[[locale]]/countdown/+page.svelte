@@ -30,33 +30,38 @@
 </svelte:head>
 
 <article class="container">
-	<div>
-		{#if is_set}
-			<RunTimer {t} on:close={handle_close} />
-		{:else}
-			<SetupTimer on:start={handle_start} />
-		{/if}
-	</div>
+	{#if is_set}
+		<RunTimer {t} on:close={handle_close} />
+	{:else}
+		<div class="card-x alpha">
+			<h1>{tb.h1}</h1>
 
-	<section>
-		<h1>{tb.h1}</h1>
-		<p>{tb.desc}</p>
-		<p>
-			{tb.desc_x1} <a href="{l.r.prefix}/countdown/minutes">{tb.desc_x2}</a>.
-		</p>
-	</section>
+			<SetupTimer on:start={handle_start} />
+
+			<section>
+				<p>{tb.desc}</p>
+				<p>
+					{tb.desc_x1}
+					<a href="{l.r.prefix}/countdown/minutes">{tb.desc_x2}</a>.
+				</p>
+			</section>
+		</div>
+	{/if}
 </article>
 
 <style>
-	div {
-		min-height: calc(100vh - 10rem);
+	article {
+		padding-block: 4rem;
+		min-width: min(100%, 60ch);
 		/* background: black; */
 	}
-	article {
-		padding-inline: 1rem;
+
+	h1 {
+		margin-block: 0 4rem;
 	}
+
 	section {
-		text-align: center;
-		margin-bottom: 2rem;
+		/* text-align: center; */
+		margin-top: 4rem;
 	}
 </style>

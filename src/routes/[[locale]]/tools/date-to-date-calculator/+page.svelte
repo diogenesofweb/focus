@@ -1,4 +1,5 @@
 <script>
+	import SetupLay from '$lib/SetupLay.svelte';
 	import { Btn, Field } from '@kazkadien/svelte';
 	import { getContext } from 'svelte';
 	/** @type {import('$lib/types').Localize } */
@@ -88,54 +89,45 @@
 	<meta property="og:description" content={th.desc} />
 </svelte:head>
 
-<article class="container">
-	<div class="card-x alpha">
-		<!-- <h1>Difference between two dates</h1> -->
-		<h1>{tb.h}</h1>
-		<p>{tb.p}</p>
+<SetupLay>
+	<!-- <h1>Difference between two dates</h1> -->
+	<h1>{tb.h}</h1>
+	<p>{tb.p}</p>
 
-		<form class="form v2 alpha" on:submit|preventDefault={on_submit}>
-			<Field label="{l.t.time.date} 1">
-				<input type="date" bind:value={date1} required />
-			</Field>
+	<form class="form v2 alpha" on:submit|preventDefault={on_submit}>
+		<Field label="{l.t.time.date} 1">
+			<input type="date" bind:value={date1} required />
+		</Field>
 
-			<Field label="{l.t.time.date} 2">
-				<input type="date" bind:value={date2} required />
-			</Field>
+		<Field label="{l.t.time.date} 2">
+			<input type="date" bind:value={date2} required />
+		</Field>
 
-			<div class="g-btns">
-				<Btn text={l.t.btn.calculate} type="submit" />
-				<Btn text={l.t.btn.reset} on:click={on_reset} accent="danger" />
-			</div>
-		</form>
+		<div class="g-btns">
+			<Btn text={l.t.btn.calculate} type="submit" />
+			<Btn text={l.t.btn.reset} on:click={on_reset} accent="danger" />
+		</div>
+	</form>
 
-		{#if r}
-			<section>
-				<p>= {r.text}</p>
+	{#if r}
+		<section>
+			<p>= {r.text}</p>
 
-				{#if r.in_days !== r.text}
-					<p>= {r.in_days}</p>
-				{/if}
+			{#if r.in_days !== r.text}
+				<p>= {r.in_days}</p>
+			{/if}
 
-				<!-- <p>= {r.in_seconds}</p> -->
-			</section>
-		{/if}
-	</div>
-</article>
+			<!-- <p>= {r.in_seconds}</p> -->
+		</section>
+	{/if}
+</SetupLay>
 
 <style>
-	article {
-		width: 100%;
-		max-width: 80ch;
-		padding-block: 3rem;
-		/* background: black; */
-	}
 	h1 {
 		margin-block: 0;
 		/* text-align: center; */
 		/* text-wrap: balance; */
 	}
-
 	form {
 		padding: 0;
 		display: grid;

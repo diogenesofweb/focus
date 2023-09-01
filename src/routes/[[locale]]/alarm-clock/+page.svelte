@@ -1,4 +1,5 @@
 <script>
+	import SetupLay from '$lib/SetupLay.svelte';
 	import SetupTimer from './SetupTimer.svelte';
 	import { getContext, onDestroy } from 'svelte';
 	/** @type {import('$lib/types').Localize } */
@@ -22,38 +23,26 @@
 	<meta property="og:description" content={th.desc} />
 </svelte:head>
 
-<article class="container">
+<SetupLay>
 	<div class="wrap">
-		<div class="lay">
-			<div class="card-x alpha">
-				<div class="heading">
-					<!-- <h1>Online Alarm Clock</h1> -->
-					<h1>{tb.h1}</h1>
-					<h4>
-						{tb.h3}
-						<b>{current}</b>
-					</h4>
-				</div>
-
-				<!-- <SetupTimer on:start={handle_start} /> -->
-				<SetupTimer />
-
-				<!-- <p>{tb.p}</p> -->
-			</div>
+		<div class="heading">
+			<!-- <h1>Online Alarm Clock</h1> -->
+			<h1>{tb.h1}</h1>
+			<h4>
+				{tb.h3}
+				<b>{current}</b>
+			</h4>
 		</div>
+
+		<!-- <SetupTimer on:start={handle_start} /> -->
+		<SetupTimer />
+
+		<!-- <p>{tb.p}</p> -->
 	</div>
-</article>
+</SetupLay>
 
 <style>
-	article {
-		padding-top: 4rem;
-		padding-inline: 1rem;
-	}
-	div.wrap {
-		min-height: calc(100vh - 10rem);
-		/* background: black; */
-	}
-	.card-x {
+	.wrap {
 		display: grid;
 		gap: 3rem;
 	}
