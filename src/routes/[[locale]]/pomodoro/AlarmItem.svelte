@@ -4,66 +4,46 @@
 	import { BtnIcon } from '@kazkadien/svelte';
 	import { sendNotification } from '$lib/sendNotification';
 	import { opts } from '$store/settings';
-	import { sh } from './MainView.svelte';
-	import { my_title } from './MyTitle.svelte';
 	import { timers } from './TimerNew.svelte';
 	import { ch } from '$lib/utils';
 	import MyIcon from '$lib/MyIcon.svelte';
 	/** @type {HTMLAudioElement} */
 	export let audio;
-	/** @type {number } */
-	export let idx;
-	/** @type {import('./TimerNew.svelte').SimpleTimerItem } */
-	export let st;
+	/** @type {import('./AddAlarm.svelte').AlarmClockItem } */
+	export let ac;
+	// console.log(ac);
 
 	let w = new Worker(new URL('$lib/worker_backward.js', import.meta.url), {
 		type: 'module'
 	});
-
 	w.onmessage = function (e) {
 		// console.log(e.data);
 		if (e.data.mes == msg.tick) {
-			st.min = e.data.min;
-			st.sec = e.data.sec;
-
-			if (idx === 0 && !sh.pomo_is_active) {
-				sh.timers_is_active = true;
-				const title = `${MM}:${SS} / ${m0}:${s0}`;
-				// console.log({ ...sh, idx, title });
-				$my_title = title;
-			}
+			ac.min = e.data.min;
+			ac.sec = e.data.sec;
 		}
 
 		if (e.data.mes == msg.finish) {
-			sh.timers_is_active = false;
 			// console.log('finish');
-			if ($opts.notifications) sendNotification('Timer');
+			if ($opts.notifications) sendNotification('Alarm');
 			if ($opts.alarm) audio.play();
 
-			if (st.auto_close) {
+			if (ac.auto_close) {
 				setTimeout(() => {
-					$timers = $timers.filter((el) => st.id !== el.id);
-
-					if (!$timers.length) {
-						$my_title = 'Focus';
-					}
+					$timers = $timers.filter((el) => ac.id !== el.id);
 				}, 1000);
 			}
 		}
 	};
 
-	const m0 = ch(st.min);
-	const s0 = ch(st.sec);
+	$: MM = ch(ac.min);
+	$: SS = ch(ac.sec);
 
-	$: MM = ch(st.min);
-	$: SS = ch(st.sec);
-
-	const data = { mes: msg.start, min: st.min, sec: st.sec };
+	const data = { mes: msg.start, min: ac.min, sec: ac.sec };
 	w.postMessage(data);
 
 	// console.log('created');
 	onDestroy(() => {
-		sh.timers_is_active = false;
 		// console.log('on destroy');
 		w.postMessage({ mes: msg.stop });
 		w.terminate();
@@ -72,13 +52,13 @@
 	});
 </script>
 
-<li class="danger">
-	<MyIcon name="timer" accent="danger" />
+<li class="gamma">
+	<MyIcon name="alarm" accent="gamma" />
 
-	<div class="nums" title="timer">
-		<b>{MM}:{SS}</b>
-		<span>/</span>
-		<span>{m0}:{s0}</span>
+	<div class="nums" title="alarm clock">
+		<b>{ac.time}</b>
+		<span>~</span>
+		<span title="MM:SS">{MM}:{SS}</span>
 	</div>
 
 	<BtnIcon
@@ -115,6 +95,7 @@
 
 	.nums {
 		display: flex;
+		align-items: center;
 		gap: 0.5rem;
 		font-size: 2rem;
 		/* font-variant-numeric: tabular-nums; */

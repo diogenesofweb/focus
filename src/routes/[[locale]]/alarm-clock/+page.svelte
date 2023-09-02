@@ -13,7 +13,6 @@
 		current = new Date().toLocaleString();
 	}, 1000);
 	onDestroy(() => clearInterval(id));
-	//todo: translation, card-x
 </script>
 
 <svelte:head>

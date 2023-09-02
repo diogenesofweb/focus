@@ -24,6 +24,7 @@ const ua = {
 	},
 	// icon title and labels
 	it: {
+		add_alarm: 'add alarm',
 		add_timer: 'додати таймер зворотного відліку',
 		settings: 'налаштування',
 		menu: 'меню',

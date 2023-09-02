@@ -85,7 +85,7 @@
 	<div class="gamma fsb">
 		<section title={l.t.timers.stopwatch.n}>
 			<Icon name="timelapse" />
-			<div>{value}</div>
+			<b>{value}</b>
 		</section>
 
 		<div class="fce">
@@ -145,13 +145,13 @@
 	}
 
 	section {
-		color: var(--__fg0);
+		color: var(--__fg);
 		display: flex;
-		gap: 0.25rem;
-		font-size: 1.25rem;
 		align-items: center;
+		gap: 0.5rem;
+		/* font-size: 1.25rem; */
 
-		& div {
+		& b {
 			font-variant-numeric: tabular-nums;
 			font-size: 2rem;
 			font-weight: 900;

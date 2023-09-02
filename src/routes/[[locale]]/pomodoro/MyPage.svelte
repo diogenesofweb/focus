@@ -10,6 +10,7 @@
 	import TimersPanel from './TimersPanel.svelte';
 	import { timers } from './TimerNew.svelte';
 	import StopWatch from './StopWatch.svelte';
+	import { alarms } from './AddAlarm.svelte';
 	// import { page } from '$app/stores';
 
 	/** @type {import('$lib/types').IRound[]} */
@@ -31,7 +32,7 @@
 			</div>
 		{/if}
 
-		{#if $timers.length}
+		{#if $timers.length || $alarms.length}
 			<TimersPanel />
 		{/if}
 	</div>

@@ -1,6 +1,8 @@
 <script>
 	import { timers } from './TimerNew.svelte';
 	import TimerItem from './TimerItem.svelte';
+	import { alarms } from './AddAlarm.svelte';
+	import AlarmItem from './AlarmItem.svelte';
 
 	/** @type {HTMLAudioElement} */
 	let audio;
@@ -10,7 +12,20 @@
 	<source src="/flute.wav" type="audio/wav" />
 </audio>
 
-<section>
+<ul>
+	{#each $alarms as t (t.id)}
+		<AlarmItem
+			{audio}
+			ac={t}
+			on:click={() => {
+				// console.log(t.id);
+				alarms.update((v) => {
+					return v.filter((el) => el.id !== t.id);
+				});
+			}}
+		/>
+	{/each}
+
 	{#each $timers as t, i (t.id)}
 		<TimerItem
 			{audio}
@@ -24,10 +39,10 @@
 			}}
 		/>
 	{/each}
-</section>
+</ul>
 
 <style>
-	section {
+	ul {
 		gap: 1em;
 		display: grid;
 		/* grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); */

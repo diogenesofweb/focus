@@ -8,6 +8,7 @@
 	import { page } from '$app/stores';
 	import AppLangSwitch from './AppLangSwitch.svelte';
 	import { getContext } from 'svelte';
+	import AddAlarm from './pomodoro/AddAlarm.svelte';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 
@@ -30,6 +31,8 @@
 		<!-- <div class="fce g1 alpha" style="--_bg: var(--__mg0)"> -->
 		<div class="fce alpha">
 			{#if $page.route.id === '/[[locale]]/pomodoro'}
+				<AddAlarm />
+
 				<Btn
 					title={l.t.it.add_timer}
 					iconOnly

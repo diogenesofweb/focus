@@ -23,6 +23,7 @@ const en = {
 	},
 	// icon title and labels
 	it: {
+		add_alarm: 'add alarm',
 		add_timer: 'add countdown timer',
 		settings: 'settings',
 		menu: 'menu',
