@@ -1,4 +1,5 @@
 <script context="module">
+	import { writable } from 'svelte/store';
 	/** @typedef {{min: number, sec: number, id: number, auto_close: boolean}} SimpleTimerItem */
 	/** @type {SimpleTimerItem[] } */
 	const arr = [];
@@ -8,14 +9,17 @@
 <script>
 	import { browser } from '$app/environment';
 	import CloseBtn from '$lib/CloseBtn.svelte';
-	import { BoxField, BoxFieldEntry, Btn, Field } from '@kazkadien/svelte';
-	import { createEventDispatcher } from 'svelte';
-	import { writable } from 'svelte/store';
+	import {
+		BoxField,
+		BoxFieldEntry,
+		Btn,
+		Field,
+		Modal
+	} from '@kazkadien/svelte';
 	import { getContext } from 'svelte';
+	import MyIcon from '$lib/MyIcon.svelte';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
-
-	const dispatch = createEventDispatcher();
 
 	let hh = 0;
 	let mm = 0;
@@ -47,10 +51,12 @@
 		// const data = { min, sec: ss };
 		timers.update((v) => {
 			v.push({ min, sec: ss, id: performance.now(), auto_close: is_autoclose });
+			// console.log(v);
 			return v;
 		});
 
-		dispatch('close');
+		// dispatch('close');
+		is_open = false;
 	}
 
 	const ls_autoclose = 'auto_close_timers';
@@ -93,74 +99,90 @@
 			localStorage.removeItem(ls_remember);
 		}
 	}
+
+	let is_open = false;
 </script>
 
-<div class="card alpha modal-box">
-	<CloseBtn on:click={() => dispatch('close')} />
+{#if is_open}
+	<Modal on:close={() => (is_open = false)}>
+		<div class="card alpha modal-box">
+			<CloseBtn on:click={() => (is_open = false)} />
 
-	<form class="form v2 alpha" on:submit|preventDefault={on_submit}>
-		<section>
-			<Field label={l.t.time.hh}>
-				<input type="number" bind:value={hh} min="0" max="10" required />
-			</Field>
+			<form class="form v2 alpha" on:submit|preventDefault={on_submit}>
+				<section>
+					<Field label={l.t.time.hh}>
+						<input type="number" bind:value={hh} min="0" max="10" required />
+					</Field>
 
-			<Field label={l.t.time.mm}>
-				<input type="number" bind:value={mm} min="0" max="60" required />
-			</Field>
+					<Field label={l.t.time.mm}>
+						<input type="number" bind:value={mm} min="0" max="60" required />
+					</Field>
 
-			<Field label={l.t.time.ss}>
-				<input
-					type="number"
-					bind:value={ss}
-					min="0"
-					max="60"
-					step="5"
-					required
-				/>
-			</Field>
-		</section>
+					<Field label={l.t.time.ss}>
+						<input
+							type="number"
+							bind:value={ss}
+							min="0"
+							max="60"
+							step="5"
+							required
+						/>
+					</Field>
+				</section>
 
-		<div class="btns base">
-			<Btn on:click={() => on_add(5)}>+5 {l.t.time.mins}</Btn>
-			<Btn on:click={() => on_add(10)}>+10 {l.t.time.mins}</Btn>
-			<Btn on:click={() => on_add(30)}>+30 {l.t.time.mins}</Btn>
+				<div class="btns base">
+					<Btn on:click={() => on_add(5)}>+5 {l.t.time.mins}</Btn>
+					<Btn on:click={() => on_add(10)}>+10 {l.t.time.mins}</Btn>
+					<Btn on:click={() => on_add(30)}>+30 {l.t.time.mins}</Btn>
+				</div>
+
+				<div class="bbb">
+					<Btn text={l.t.btn.start} type="submit" />
+
+					<Btn
+						text={l.t.btn.reset}
+						accent="danger"
+						on:click={() => {
+							hh = 0;
+							ss = 0;
+							mm = 0;
+						}}
+					/>
+				</div>
+
+				<BoxField rows>
+					<BoxFieldEntry label={l.t.opts.etc.autoclose}>
+						<input
+							name="auto_close"
+							type="checkbox"
+							checked={is_autoclose}
+							on:change={on_change_autoclose}
+						/>
+					</BoxFieldEntry>
+
+					<BoxFieldEntry label={l.t.opts.etc.preserve_HMS}>
+						<input
+							name="remember_timer"
+							type="checkbox"
+							checked={is_remember}
+							on:change={on_change_remember}
+						/>
+					</BoxFieldEntry>
+				</BoxField>
+			</form>
 		</div>
+	</Modal>
+{/if}
 
-		<div class="bbb">
-			<Btn text={l.t.btn.start} type="submit" />
-
-			<Btn
-				text={l.t.btn.reset}
-				accent="danger"
-				on:click={() => {
-					hh = 0;
-					ss = 0;
-					mm = 0;
-				}}
-			/>
-		</div>
-
-		<BoxField rows>
-			<BoxFieldEntry label={l.t.opts.etc.autoclose}>
-				<input
-					name="auto_close"
-					type="checkbox"
-					checked={is_autoclose}
-					on:change={on_change_autoclose}
-				/>
-			</BoxFieldEntry>
-
-			<BoxFieldEntry label={l.t.opts.etc.preserve_HMS}>
-				<input
-					name="remember_timer"
-					type="checkbox"
-					checked={is_remember}
-					on:change={on_change_remember}
-				/>
-			</BoxFieldEntry>
-		</BoxField>
-	</form>
-</div>
+<Btn
+	title={l.t.it.add_timer}
+	iconOnly
+	round
+	variant="outlined"
+	on:click={() => (is_open = true)}
+>
+	<MyIcon name="timer" />
+</Btn>
 
 <style>
 	form {

@@ -16,12 +16,27 @@
 	const l = getContext('ttt');
 
 	let is_open = false;
+	$: watch(is_open);
+
+	const hhmm = (/** @type {Date} */ d) =>
+		ch(d.getHours()) + ':' + ch(d.getMinutes());
+
+	let time = '';
+
+	/** @param {boolean} val */
+	function watch(val) {
+		// console.log(val);
+		if (!val) return;
+
+		const d = new Date();
+		// add few minutes
+		d.setMinutes(d.getMinutes() + 5);
+
+		time = hhmm(d);
+	}
 
 	const now = new Date();
 	const today = now.toLocaleDateString('fr-CA');
-	const hhmm = (/** @type {Date} */ d) =>
-		ch(d.getHours()) + ':' + ch(d.getMinutes());
-	let time = hhmm(now);
 
 	function on_submit() {
 		const d = new Date();

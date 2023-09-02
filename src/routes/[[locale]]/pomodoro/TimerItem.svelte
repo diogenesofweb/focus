@@ -6,14 +6,18 @@
 	import { opts } from '$store/settings';
 	import { sh } from './MainView.svelte';
 	import { my_title } from './MyTitle.svelte';
-	import { timers } from './TimerNew.svelte';
+	import { timers } from './AddTimer.svelte';
 	import { ch } from '$lib/utils';
 	import MyIcon from '$lib/MyIcon.svelte';
+	import { getContext } from 'svelte';
+	/** @type {import('$lib/types').Localize } */
+	const l = getContext('ttt');
+
 	/** @type {HTMLAudioElement} */
 	export let audio;
 	/** @type {number } */
 	export let idx;
-	/** @type {import('./TimerNew.svelte').SimpleTimerItem } */
+	/** @type {import('./AddTimer.svelte').SimpleTimerItem } */
 	export let st;
 
 	let w = new Worker(new URL('$lib/worker_backward.js', import.meta.url), {
@@ -82,7 +86,7 @@
 	</div>
 
 	<BtnIcon
-		title="close"
+		title={l.t.btn.del}
 		iconName="close"
 		accent="danger"
 		round

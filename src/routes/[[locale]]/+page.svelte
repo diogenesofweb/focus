@@ -56,7 +56,7 @@
 <style>
 	article {
 		padding-inline: 1rem;
-		padding-block: max(4rem, 10vh);
+		padding-block: max(2rem, 5vh);
 	}
 
 	h1,
@@ -81,7 +81,7 @@
 		font-size: 2rem;
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 1rem;
 
 		/* background: black; */
 	}

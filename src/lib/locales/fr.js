@@ -24,7 +24,7 @@ const fr = {
 	},
 	// icon title and labels
 	it: {
-		add_alarm: 'add alarm',
+		add_alarm: 'ajouter un réveil',
 		add_timer: 'ajouter un compte à rebours',
 		settings: 'paramètres',
 		menu: 'menu',

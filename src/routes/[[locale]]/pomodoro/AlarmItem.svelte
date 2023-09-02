@@ -4,9 +4,13 @@
 	import { BtnIcon } from '@kazkadien/svelte';
 	import { sendNotification } from '$lib/sendNotification';
 	import { opts } from '$store/settings';
-	import { timers } from './TimerNew.svelte';
+	import { timers } from './AddTimer.svelte';
 	import { ch } from '$lib/utils';
 	import MyIcon from '$lib/MyIcon.svelte';
+	import { getContext } from 'svelte';
+	/** @type {import('$lib/types').Localize } */
+	const l = getContext('ttt');
+
 	/** @type {HTMLAudioElement} */
 	export let audio;
 	/** @type {import('./AddAlarm.svelte').AlarmClockItem } */
@@ -62,7 +66,7 @@
 	</div>
 
 	<BtnIcon
-		title="close"
+		title={l.t.btn.del}
 		iconName="close"
 		accent="danger"
 		round

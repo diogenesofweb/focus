@@ -8,7 +8,7 @@
 	import SwitchSequence from './SwitchSequence.svelte';
 
 	import TimersPanel from './TimersPanel.svelte';
-	import { timers } from './TimerNew.svelte';
+	import { timers } from './AddTimer.svelte';
 	import StopWatch from './StopWatch.svelte';
 	import { alarms } from './AddAlarm.svelte';
 	// import { page } from '$app/stores';

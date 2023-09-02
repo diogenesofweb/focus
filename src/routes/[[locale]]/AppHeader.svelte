@@ -1,26 +1,17 @@
 <script>
-	import { Modal, Btn } from '@kazkadien/svelte';
 	import Name from '$lib/Name.svelte';
-	import MyIcon from '$lib/MyIcon.svelte';
-	import TimerNew from './pomodoro/TimerNew.svelte';
 	import AppMenu from './AppMenu.svelte';
 	import AppSettings from './AppSettings.svelte';
 	import { page } from '$app/stores';
 	import AppLangSwitch from './AppLangSwitch.svelte';
 	import { getContext } from 'svelte';
 	import AddAlarm from './pomodoro/AddAlarm.svelte';
+	import AddTimer from './pomodoro/AddTimer.svelte';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 
-	let timer_open = false;
 	// page.subscribe((p) => console.log(p));
 </script>
-
-{#if timer_open}
-	<Modal on:close={() => (timer_open = false)}>
-		<TimerNew on:close={() => (timer_open = false)} />
-	</Modal>
-{/if}
 
 <div class="container1">
 	<div id="header" class="fsb g1 base">
@@ -32,16 +23,7 @@
 		<div class="fce alpha">
 			{#if $page.route.id === '/[[locale]]/pomodoro'}
 				<AddAlarm />
-
-				<Btn
-					title={l.t.it.add_timer}
-					iconOnly
-					round
-					variant="outlined"
-					on:click={() => (timer_open = true)}
-				>
-					<MyIcon name="timer" />
-				</Btn>
+				<AddTimer />
 			{/if}
 
 			<AppSettings />

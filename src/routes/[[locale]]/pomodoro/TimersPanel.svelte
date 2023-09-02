@@ -1,5 +1,5 @@
 <script>
-	import { timers } from './TimerNew.svelte';
+	import { timers } from './AddTimer.svelte';
 	import TimerItem from './TimerItem.svelte';
 	import { alarms } from './AddAlarm.svelte';
 	import AlarmItem from './AlarmItem.svelte';
