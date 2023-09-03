@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Allow: /pomodoro/$
-Disallow: /pomodoro/
-Disallow: /fr/pomodoro/
-Disallow: /ua/pomodoro/
+Allow: */pomodoro/$
+Disallow: */pomodoro/*
 Disallow: /*/to/
