@@ -51,7 +51,7 @@
 
 <style>
 	article {
-		padding-block: 4rem;
+		padding-block: max(3rem, 8vh);
 		min-width: min(100%, 60ch);
 		/* background: black; */
 	}

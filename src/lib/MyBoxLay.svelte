@@ -94,7 +94,7 @@
 	}
 
 	.box {
-		padding-top: max(4rem, 10vh);
+		padding-top: max(3rem, 8vh);
 	}
 
 	.header,
