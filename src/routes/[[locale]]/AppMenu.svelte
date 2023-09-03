@@ -21,11 +21,11 @@
 		[
 			l.t.menu.pomodoro,
 			[
-				{ href: '/sequences', name: l.t.r.sequences.body.h },
-				{ href: '/break-activities', name: l.t.r.breaks.body.h },
-				{ href: '/radio-stations', name: l.t.r.radios.body.h },
-				{ href: '/stats', name: l.t.r.stats.body.h },
-				{ href: '/snaps', name: l.t.r.snaps.body.h }
+				{ href: '/pomodoro/sequences', name: l.t.r.sequences.body.h },
+				{ href: '/pomodoro/break-activities', name: l.t.r.breaks.body.h },
+				{ href: '/pomodoro/radio-stations', name: l.t.r.radios.body.h },
+				{ href: '/pomodoro/stats', name: l.t.r.stats.body.h },
+				{ href: '/pomodoro/snaps', name: l.t.r.snaps.body.h }
 			]
 		],
 

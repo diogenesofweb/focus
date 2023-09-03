@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-export const ssr = false;
+export const ssr = true;
 export const prerender = true;
 
 /** @type {import('./$types').LayoutLoad} */
