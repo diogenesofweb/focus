@@ -10,7 +10,6 @@
 	import '../../css/dialog.css';
 	import { page } from '$app/stores';
 	import { onDestroy, onMount, setContext } from 'svelte';
-	import JsPerf from './JSPerf.svelte';
 	// import { browser } from '$app/environment';
 	// page.subscribe((v) => console.log(v));
 
@@ -105,6 +104,7 @@
 	<AppAdditionalIcons />
 
 	<div id="app-container">
+		<StopWar />
 		<div id="view" class="alpha">
 			<AppHeader />
 
@@ -114,8 +114,6 @@
 		</div>
 
 		<AppFooter />
-
-		<StopWar />
 	</div>
 
 	{#if comp}
