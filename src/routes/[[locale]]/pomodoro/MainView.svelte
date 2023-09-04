@@ -124,6 +124,7 @@
 		sh.pomo_is_active = true;
 	}
 	function stopTimer() {
+		// is_running && w.postMessage({ mes: msg.stop });
 		is_running = false;
 		w.postMessage({ mes: msg.stop });
 	}
@@ -299,6 +300,7 @@
 	}
 
 	function handleReset() {
+		if (isPaused) isPaused = false;
 		// console.log('reset');
 		stopTimer();
 
