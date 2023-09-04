@@ -14,7 +14,7 @@ let _opts = {
 
 	wakeLock: false,
 	notifications: false,
-	alarm: false
+	alarm: true
 };
 
 const one = browser && localStorage.getItem('options');
