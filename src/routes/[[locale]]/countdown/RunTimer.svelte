@@ -7,8 +7,8 @@
 	import { ch } from '$lib/utils';
 	import MyBtn from '$lib/MyBtn.svelte';
 	import MyBoxLay from '$lib/MyBoxLay.svelte';
-	import { getContext } from 'svelte';
 	import { audio } from '$lib/audio';
+	import { getContext } from 'svelte';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 	const bb = l.t.btn;

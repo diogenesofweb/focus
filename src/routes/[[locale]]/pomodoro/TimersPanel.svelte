@@ -3,19 +3,11 @@
 	import TimerItem from './TimerItem.svelte';
 	import { alarms } from './AddAlarm.svelte';
 	import AlarmItem from './AlarmItem.svelte';
-
-	/** @type {HTMLAudioElement} */
-	let audio;
 </script>
-
-<audio id="myAudio2" bind:this={audio}>
-	<source src="/flute.wav" type="audio/wav" />
-</audio>
 
 <ul>
 	{#each $alarms as t (t.id)}
 		<AlarmItem
-			{audio}
 			ac={t}
 			on:click={() => {
 				// console.log(t.id);
@@ -28,7 +20,6 @@
 
 	{#each $timers as t, i (t.id)}
 		<TimerItem
-			{audio}
 			idx={i}
 			st={t}
 			on:click={() => {

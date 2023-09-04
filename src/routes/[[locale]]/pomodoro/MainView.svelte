@@ -21,6 +21,7 @@
 	import { opts } from '$store/settings';
 	import MyTitle, { my_title } from './MyTitle.svelte';
 	import MyBtn from '$lib/MyBtn.svelte';
+	import { audio } from '$lib/audio';
 	import { getContext } from 'svelte';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
@@ -41,9 +42,6 @@
 
 	const _5min = 5;
 	const unnamed_break_acrivity = '_';
-
-	/** @type {HTMLAudioElement} */
-	let audio;
 
 	// this cause build to fail if $aliases are used, but work in dev mode
 	let w = new Worker(new URL('$lib/worker_backward.js', import.meta.url), {
@@ -391,10 +389,6 @@
 </script>
 
 <MyTitle />
-
-<audio id="myAudio" bind:this={audio}>
-	<source src="/flute.wav" type="audio/wav" />
-</audio>
 
 <Visibility on:state={onWindowVisibilityChange} />
 
