@@ -7,6 +7,7 @@
 	import { ch } from '$lib/utils';
 	import MyBtn from '$lib/MyBtn.svelte';
 	import MyBoxLay from '$lib/MyBoxLay.svelte';
+	import { Howl, Howler } from 'howler';
 	import { getContext } from 'svelte';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
@@ -31,8 +32,7 @@
 	let MM = m0;
 	let SS = s0;
 
-	/** @type {HTMLAudioElement} */
-	let audio;
+	const audio = new Howl({ src: ['/flute.wav'] });
 	/** @type {string } */
 	export let title = '';
 
@@ -121,10 +121,6 @@
 <svelte:head>
 	<title>{title}</title>
 </svelte:head>
-
-<audio bind:this={audio}>
-	<source src="/flute.wav" type="audio/wav" />
-</audio>
 
 <MyBoxLay
 	{heading}
