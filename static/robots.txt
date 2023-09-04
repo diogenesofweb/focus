@@ -3,3 +3,4 @@ Allow: /
 Allow: */pomodoro/$
 Disallow: */pomodoro/*
 Disallow: /*/to/
+Disallow: /cdn-cgi/
