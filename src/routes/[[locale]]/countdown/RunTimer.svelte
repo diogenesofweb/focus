@@ -7,8 +7,8 @@
 	import { ch } from '$lib/utils';
 	import MyBtn from '$lib/MyBtn.svelte';
 	import MyBoxLay from '$lib/MyBoxLay.svelte';
-	import { Howl, Howler } from 'howler';
 	import { getContext } from 'svelte';
+	import { audio } from '$lib/audio';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 	const bb = l.t.btn;
@@ -32,7 +32,6 @@
 	let MM = m0;
 	let SS = s0;
 
-	const audio = new Howl({ src: ['/flute.wav'] });
 	/** @type {string } */
 	export let title = '';
 
