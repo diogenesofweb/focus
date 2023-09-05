@@ -14,7 +14,7 @@
 </script>
 
 <div class="container1">
-	<div id="header" class="fsb g1 base">
+	<div id="header" class="fsb base">
 		<a href={l.r.prefix || '/'} class="fce link">
 			<Name />
 		</a>
@@ -44,6 +44,7 @@
 		/* backdrop-filter: blur(4px); */
 		background-color: var(--bg2);
 
+		gap: 2rem;
 		padding: 0.75em 1em;
 		border-radius: 1em;
 		border: var(--border);

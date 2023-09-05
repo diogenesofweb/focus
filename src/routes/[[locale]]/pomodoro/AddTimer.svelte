@@ -9,48 +9,40 @@
 <script>
 	import { browser } from '$app/environment';
 	import CloseBtn from '$lib/CloseBtn.svelte';
-	import {
-		BoxField,
-		BoxFieldEntry,
-		Btn,
-		Field,
-		Modal
-	} from '@kazkadien/svelte';
+	import { BoxField, BoxFieldEntry, Btn, Modal } from '@kazkadien/svelte';
+	import TimerForm from '../countdown/TimerForm.svelte';
 	import { getContext } from 'svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 
-	let hh = 0;
-	let mm = 0;
-	let ss = 0;
+	let vv = {
+		hh: 0,
+		mm: 0,
+		ss: 0
+	};
 
 	const ls_timer_vals = 'timer_values';
-
-	/** @param {number} mins */
-	function on_add(mins) {
-		const n = mm + mins;
-		mm = n > 60 ? 60 : n;
-	}
 
 	function on_submit() {
 		// console.log({ hh, mm, ss });
 
-		let min = mm;
-		if (hh) min += hh * 60;
-
-		if (!min && !ss) {
+		if (!vv.hh && !vv.mm && !vv.ss) {
 			// console.log('zero');
 			return;
 		}
 
 		if (is_remember) {
-			localStorage.setItem(ls_timer_vals, JSON.stringify({ hh, mm, ss }));
+			localStorage.setItem(ls_timer_vals, JSON.stringify(vv));
 		}
+
+		let min = vv.mm;
+		if (vv.hh) min += vv.hh * 60;
+		let sec = vv.ss;
 
 		// const data = { min, sec: ss };
 		timers.update((v) => {
-			v.push({ min, sec: ss, id: performance.now(), auto_close: is_autoclose });
+			v.push({ min, sec, id: performance.now(), auto_close: is_autoclose });
 			// console.log(v);
 			return v;
 		});
@@ -80,9 +72,7 @@
 		if (v) {
 			try {
 				const j = JSON.parse(v);
-				hh = j.hh;
-				mm = j.mm;
-				ss = j.ss;
+				vv = j;
 			} catch (error) {
 				console.log(error);
 			}
@@ -109,46 +99,7 @@
 			<CloseBtn on:click={() => (is_open = false)} />
 
 			<form class="form v2 alpha" on:submit|preventDefault={on_submit}>
-				<section>
-					<Field label={l.t.time.hh}>
-						<input type="number" bind:value={hh} min="0" max="10" required />
-					</Field>
-
-					<Field label={l.t.time.mm}>
-						<input type="number" bind:value={mm} min="0" max="60" required />
-					</Field>
-
-					<Field label={l.t.time.ss}>
-						<input
-							type="number"
-							bind:value={ss}
-							min="0"
-							max="60"
-							step="5"
-							required
-						/>
-					</Field>
-				</section>
-
-				<div class="btns base">
-					<Btn on:click={() => on_add(5)}>+5 {l.t.time.mins}</Btn>
-					<Btn on:click={() => on_add(10)}>+10 {l.t.time.mins}</Btn>
-					<Btn on:click={() => on_add(30)}>+30 {l.t.time.mins}</Btn>
-				</div>
-
-				<div class="bbb">
-					<Btn text={l.t.btn.start} type="submit" />
-
-					<Btn
-						text={l.t.btn.reset}
-						accent="danger"
-						on:click={() => {
-							hh = 0;
-							ss = 0;
-							mm = 0;
-						}}
-					/>
-				</div>
+				<TimerForm {vv} />
 
 				<BoxField rows>
 					<BoxFieldEntry label={l.t.opts.etc.autoclose}>
@@ -190,22 +141,4 @@
 		display: grid;
 		gap: 3em;
 	}
-	section,
-	.btns,
-	.bbb {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1em;
-	}
-	.bbb {
-		grid-template-columns: repeat(2, 1fr);
-	}
-	input[type='number'] {
-		min-width: min(14ch, 25vw);
-	}
-	/* @media only screen and (min-width: 600px) { */
-	/* 	section { */
-	/* 		grid-template-columns: 1fr 1fr; */
-	/* 	} */
-	/* } */
 </style>
