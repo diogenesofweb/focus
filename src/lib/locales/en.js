@@ -337,11 +337,11 @@ const en = {
 		date2date: {
 			head: {
 				title: 'Date to Date Calculator',
-				desc: 'Calculate difference between two dates.'
+				desc: 'Date Calculator / Age Calculator: calculate difference between two dates'
 			},
 			body: {
 				h: 'Date to Date Calculator',
-				p: 'Calculate difference between two dates'
+				p: 'Date Calculator / Age Calculator: calculate difference between two dates'
 			}
 		},
 

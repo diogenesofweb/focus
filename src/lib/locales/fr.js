@@ -138,15 +138,15 @@ const fr = {
 		index: {
 			head: {
 				title: 'Minuteurs en ligne gratuits',
-				desc: "Des minuteurs en ligne, modernes et faciles à utiliser : pomodoro, compte à rebours, chronomètres. Calculateurs de dates. Pas de distractions. Mode clair et sombre. Fonctionne sur toutes les tailles d'écran.",
+				desc: "Des minuteurs en ligne, modernes et faciles à utiliser : pomodoro, compte à rebours, chronomètres. Calculatrice de dates. Pas de distractions. Mode clair et sombre. Fonctionne sur toutes les tailles d'écran.",
 				og: {
 					title: 'Minuteurs en ligne',
-					desc: "Des minuteurs en ligne, modernes et faciles à utiliser : pomodoro, compte à rebours, chronomètres. Calculateurs de dates. Pas de distractions. Mode clair et sombre. Fonctionne sur toutes les tailles d'écran."
+					desc: "Des minuteurs en ligne, modernes et faciles à utiliser : pomodoro, compte à rebours, chronomètres. Calculatrice de dates. Pas de distractions. Mode clair et sombre. Fonctionne sur toutes les tailles d'écran."
 				}
 			},
 			body: {
 				h1: 'Des minuteurs en ligne modernes et faciles à utiliser',
-				h2: 'Calculateurs de Dates'
+				h2: 'Calculatrice de Dates'
 			}
 		},
 
@@ -336,12 +336,12 @@ const fr = {
 
 		date2date: {
 			head: {
-				title: 'Calculateur Date à Date',
-				desc: 'Calculez la différence entre deux dates'
+				title: 'Calculatrice Date à Date',
+				desc: "Calculatrice de dates / Calculatrice d'âge: calculez la différence entre deux dates"
 			},
 			body: {
-				h: 'Calculateur Date à Date',
-				p: 'Calculez la différence entre deux dates'
+				h: 'Calculatrice Date à Date',
+				p: "Calculatrice de dates / Calculatrice d'âge: calculez la différence entre deux dates"
 			}
 		},
 
