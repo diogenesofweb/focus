@@ -160,7 +160,7 @@ const fr = {
 				}
 			},
 			body: {
-				h1: 'Minuteur de productivité en ligne',
+				h1: 'Minuteur Pomodoro en ligne',
 				d1: 'Minuteur de productivité facile à utiliser, personnalisable, minimaliste et esthétique, basé sur',
 				l: {
 					url: 'https://fr.wikipedia.org/wiki/Technique_Pomodoro',
