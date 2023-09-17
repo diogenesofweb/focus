@@ -160,7 +160,7 @@ const en = {
 				}
 			},
 			body: {
-				h1: 'Online Productivity Timer',
+				h1: 'Pomodoro Timer Online',
 				d1: 'Mobile-friendly, easy-to-use, customizable, minimalistic and aesthetic productivity timer based on ',
 				l: {
 					url: 'https://en.wikipedia.org/wiki/Pomodoro_Technique',
@@ -175,12 +175,12 @@ const en = {
 				title: 'Stopwatch Timer Online',
 				desc: 'Easy-to-use, accurate, pleasing to the eye, online stopwatch timer.',
 				og: {
-					title: 'Online Stopwatch',
+					title: 'Stopwatch Timer Online',
 					desc: 'Easy-to-use, accurate, pleasing to the eye, online stopwatch.'
 				}
 			},
 			body: {
-				h1: 'Online Stopwatch Timer',
+				h1: 'Stopwatch Timer',
 				desc: 'Easy-to-use, accurate, pleasing to the eye, online stopwatch timer.',
 				h: 'Stopwatch'
 			}
@@ -192,7 +192,7 @@ const en = {
 				desc: 'Easy-to-use and setup online alarm clock'
 			},
 			body: {
-				h1: 'Online Alarm Clock',
+				h1: 'Alarm Clock',
 				h3: 'Current Date and Time:',
 				p: ''
 			}
@@ -201,15 +201,15 @@ const en = {
 		countdown: {
 			head: {
 				title: 'Countdown Timer Online',
-				desc: 'Easy-to-use, mobile-friendly, accurate, modern, minimalist online timer',
+				desc: 'Easy-to-use, mobile-friendly, accurate, modern, minimalist online countdown timer',
 				og: {
-					title: 'Online Countdown Timer',
-					desc: 'Easy-to-use, mobile-friendly, accurate, modern, minimalist online timer'
+					title: 'Countdown Timer Online',
+					desc: 'Easy-to-use, mobile-friendly, accurate, modern, minimalist online countdown timer'
 				}
 			},
 			body: {
-				h1: 'Online Countdown Timer',
-				desc: 'Easy-to-use, mobile-friendly, accurate, modern, minimalist online timer.',
+				h1: 'Countdown Timer',
+				desc: 'Easy-to-use, mobile-friendly, accurate, modern, minimalist online countdown timer.',
 				desc_x1: 'Choose from',
 				desc_x2: 'frequent pre-set timers',
 				h: 'Countdown'

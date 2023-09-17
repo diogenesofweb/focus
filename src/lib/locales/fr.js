@@ -100,7 +100,7 @@ const fr = {
 	timers: {
 		pomodoro: {
 			n: 'pomodoro',
-			h: 'Minuteur Pomodoro',
+			h: 'Pomodoro Minuteur',
 			phase: {
 				focus: 'focus',
 				break: 'pause'
@@ -160,8 +160,8 @@ const fr = {
 				}
 			},
 			body: {
-				h1: 'Minuteur Pomodoro en ligne',
-				d1: 'Minuteur de productivité facile à utiliser, personnalisable, minimaliste et esthétique, basé sur',
+				h1: 'Pomodoro minuteur',
+				d1: 'Pomodoro minuteur en ligne facile à utiliser, personnalisable, minimaliste et esthétique, basé sur',
 				l: {
 					url: 'https://fr.wikipedia.org/wiki/Technique_Pomodoro',
 					n: 'la technique Pomodoro'
@@ -180,7 +180,7 @@ const fr = {
 				}
 			},
 			body: {
-				h1: 'Chronomètre en ligne',
+				h1: 'Chronomètre',
 				desc: 'Chronomètre en ligne facile à utiliser, compatible avec les mobiles, précis, moderne et minimaliste',
 				h: 'Chronomètre'
 			}
@@ -208,7 +208,7 @@ const fr = {
 				}
 			},
 			body: {
-				h1: 'Minuteur de compte à rebours en ligne',
+				h1: 'Minuteur de compte à rebours',
 				desc: 'Minuteur en ligne facile à utiliser, compatible avec les mobiles, précis, moderne et minimaliste.',
 				desc_x1: 'Choisissez parmi',
 				desc_x2: 'des minuteurs fréquentes et préréglés',
@@ -336,12 +336,12 @@ const fr = {
 
 		date2date: {
 			head: {
-				title: 'Calculatrice Date à Date',
-				desc: "Calculatrice de dates / Calculatrice d'âge: calculez la différence entre deux dates"
+				title: 'Calcul entre deux Dates',
+				desc: "Calculatrice de dates / Calculatrice d'âge: calculez le temps et le nombre de jours entre deux dates."
 			},
 			body: {
-				h: 'Calculatrice Date à Date',
-				p: "Calculatrice de dates / Calculatrice d'âge: calculez la différence entre deux dates"
+				h: 'Calcul entre deux Dates',
+				p: "Calculatrice de dates / Calculatrice d'âge: calculez le temps et le nombre de jours entre deux dates."
 			}
 		},
 
