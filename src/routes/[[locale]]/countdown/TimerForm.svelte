@@ -51,11 +51,11 @@
 		</Field>
 
 		<div class="i2">
-			<Btn on:click={() => on_add_hours(1)} variant="outlined" title="+1">
-				<Icon name="keyboard_arrow_up" />
-			</Btn>
 			<Btn on:click={() => on_subtract_hours(1)} variant="outlined" title="-1">
-				<Icon name="keyboard_arrow_down" />
+				<Icon name="remove" />
+			</Btn>
+			<Btn on:click={() => on_add_hours(1)} variant="outlined" title="+1">
+				<Icon name="add" />
 			</Btn>
 		</div>
 	</div>
@@ -66,15 +66,16 @@
 		</Field>
 
 		<div class="i2">
-			<Btn title="+1" on:click={() => on_add_minutes(1)} variant="outlined">
-				<Icon name="keyboard_arrow_up" />
-			</Btn>
 			<Btn
 				title="-1"
 				on:click={() => on_subtract_minutes(1)}
 				variant="outlined"
 			>
-				<Icon name="keyboard_arrow_down" />
+				<Icon name="remove" />
+			</Btn>
+
+			<Btn title="+1" on:click={() => on_add_minutes(1)} variant="outlined">
+				<Icon name="add" />
 			</Btn>
 		</div>
 	</div>
@@ -85,15 +86,16 @@
 		</Field>
 
 		<div class="i2">
-			<Btn title="+5" on:click={() => on_add_seconds(5)} variant="outlined">
-				<Icon name="keyboard_arrow_up" />
-			</Btn>
 			<Btn
 				title="-5"
 				on:click={() => on_subtract_seconds(5)}
 				variant="outlined"
 			>
-				<Icon name="keyboard_arrow_down" />
+				<Icon name="remove" />
+			</Btn>
+
+			<Btn title="+5" on:click={() => on_add_seconds(5)} variant="outlined">
+				<Icon name="add" />
 			</Btn>
 		</div>
 	</div>
