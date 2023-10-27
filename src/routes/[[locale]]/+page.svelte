@@ -33,7 +33,8 @@
 
 	<ul>
 		{#each timers as el}
-			<li class={el[2]}>
+			<!-- <li class={el[2]}> -->
+			<li class="alpha">
 				<a class="btn outlined" href="{l.r.prefix}/{el[0]}">
 					<span> {el[1]} </span>
 				</a>
@@ -44,7 +45,8 @@
 	<h2 class="f-serif">{l.t.r.index.body.h2}</h2>
 	<ul>
 		{#each tools as el}
-			<li class={el[2]}>
+			<!-- <li class={el[2]}> -->
+			<li class="beta">
 				<a class="btn outlined" href="{l.r.prefix}/{el[0]}">
 					<span> {el[1]} </span>
 				</a>
@@ -74,16 +76,25 @@
 	}
 
 	ul {
-		max-width: 40rem;
+		/* max-width: 40rem; */
 		margin-inline: auto;
 		margin-block: max(3rem, 6vh);
 
 		font-size: 2rem;
+
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 
 		/* background: black; */
+	}
+
+	@media only screen and (min-width: 740px) {
+		ul {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+			/* gap: 2rem 1rem; */
+		}
 	}
 	li {
 		display: grid;
@@ -106,5 +117,12 @@
 		backdrop-filter: blur(3px);
 		border-color: transparent;
 		color: var(--__fg);
+	}
+
+	li a {
+		align-items: start;
+		justify-content: start;
+		border-radius: 1rem;
+		text-align: left;
 	}
 </style>

@@ -74,20 +74,26 @@
 	<div class="card alpha modal-box">
 		<CloseBtn on:click={() => dialog.close()} />
 
-		<nav class="links alpha">
+		<div class="links alpha">
 			{#each links as el}
-				<div class="edit">{el[0]}</div>
-				<ul>
-					{#each el[1] as { href, name }}
-						<li>
-							<a {href} class="btn text round" on:click={() => dialog.close()}>
-								{name}
-							</a>
-						</li>
-					{/each}
-				</ul>
+				<section>
+					<div class="edit">{el[0]}</div>
+					<nav>
+						{#each el[1] as { href, name }}
+							<li>
+								<a
+									{href}
+									class="btn text round"
+									on:click={() => dialog.close()}
+								>
+									{name}
+								</a>
+							</li>
+						{/each}
+					</nav>
+				</section>
 			{/each}
-		</nav>
+		</div>
 	</div>
 </dialog>
 
@@ -98,6 +104,18 @@
 	/* ul { */
 	/* 	background: black; */
 	/* } */
+	.links {
+		display: grid;
+		gap: 1rem;
+		/* outline: 1px solid red; */
+	}
+	@media only screen and (min-width: 1100px) {
+		.links {
+			gap: 0;
+			grid-template-columns: repeat(3, 300px);
+			/* outline: 1px solid red; */
+		}
+	}
 	li {
 		display: grid;
 		font-size: 1.1rem;
@@ -112,7 +130,7 @@
 		margin-bottom: 1ch;
 	}
 
-	.edit:not(:first-child) {
-		margin-top: 2rem;
-	}
+	/* .edit:not(:first-child) { */
+	/* 	margin-top: 2rem; */
+	/* } */
 </style>
