@@ -1,19 +1,7 @@
+import type { MyIconName } from '$lib/vars';
 import type { Accent, IconName } from '@kazkadien/svelte/types';
 
-export type IIconName =
-	| 'flag'
-	| 'code'
-	| 'workspaces'
-	| 'volume_up'
-	| 'play_arrow'
-	| 'pause'
-	| 'edit'
-	| 'settings'
-	| 'local_cafe'
-	| 'self_improvement'
-	| 'sports_gymnastics';
-
-export type IMyIcon = IconName | IIconName;
+export type IMyIcon = IconName | MyIconName;
 
 export type Phase = 'focus' | 'break';
 
@@ -23,3 +11,4 @@ type BreakItemIconName = Extract<
 	IMyIcon,
 	'local_cafe' | 'sports_gymnastics' | 'self_improvement'
 >;
+

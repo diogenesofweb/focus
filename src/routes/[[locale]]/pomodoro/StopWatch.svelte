@@ -1,12 +1,13 @@
 <script>
-	import { BtnIcon, Icon } from '@kazkadien/svelte';
+	import { BtnIcon } from '@kazkadien/svelte';
 	import { sh } from './MainView.svelte';
 	// import { timers } from './TimerNew.svelte';
 	import { my_title } from './MyTitle.svelte';
-	import { MSG_WF } from '$lib/vars';
+	import { MSG_WF, ii } from '$lib/vars';
 	import { onDestroy } from 'svelte';
 	import { hms } from '$lib/utils';
 	import { getContext } from 'svelte';
+	import MyIcon from '$lib/MyIcon.svelte';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 	const bb = l.t.btn;
@@ -84,13 +85,13 @@
 <div id="swa">
 	<div class="gamma fsb">
 		<section title={l.t.timers.stopwatch.n}>
-			<Icon name="timelapse" />
+			<MyIcon name="timelapse" />
 			<b>{value}</b>
 		</section>
 
 		<div class="fce">
 			<BtnIcon
-				iconName={is_running ? 'pause' : 'play_arrow'}
+				iconName={is_running ? ii.pause : ii.play_arrow}
 				variant="outlined"
 				round
 				title={is_running ? bb.pause : bb.start}
@@ -102,7 +103,7 @@
 				variant="outlined"
 				round
 				title={bb.cycle}
-				iconName="restore"
+				iconName={ii.cycle}
 				on:click={handle_cycle}
 			/>
 
@@ -111,7 +112,7 @@
 				variant="outlined"
 				round
 				title={bb.reset}
-				iconName="stop"
+				iconName={ii.stop}
 				on:click={handle_reset}
 			/>
 		</div>

@@ -3,7 +3,7 @@
 	import AppHeader from './AppHeader.svelte';
 	import AppAdditionalIcons from './AppAdditionalIcons.svelte';
 	import StopWar from './AppStopWar.svelte';
-	import { AppWrapper } from '@kazkadien/svelte';
+	import { AppWrapper, AppIcons } from '@kazkadien/svelte';
 	import { AppSnacks } from '@kazkadien/svelte';
 	import '../../css/app.css';
 	import '../../css/list.css';
@@ -100,6 +100,7 @@
 </svelte:head>
 
 <AppWrapper>
+	<AppIcons />
 	<AppSnacks />
 	<AppAdditionalIcons />
 
