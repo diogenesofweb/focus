@@ -114,7 +114,7 @@
 			title={paused ? bb.play : bb.pause}
 			iconOnly
 			round
-			variant="outlined"
+			variant="text"
 			accent="alpha"
 			on:click={switchState}
 			disabled={!audioCanPlay}
@@ -139,7 +139,7 @@
 			on:click={onSwitchMuted}
 			iconOnly
 			round
-			variant="outlined"
+			variant="text"
 			accent="alpha"
 		>
 			<MyIcon name="volume_up" />

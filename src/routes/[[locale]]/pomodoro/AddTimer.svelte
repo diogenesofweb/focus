@@ -13,6 +13,8 @@
 	import TimerForm from '../countdown/TimerForm.svelte';
 	import { getContext } from 'svelte';
 	import MyIcon from '$lib/MyIcon.svelte';
+	import { LS } from '$lib/vars';
+	import { add_recent_timers } from '$lib/utils';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 
@@ -23,10 +25,9 @@
 	};
 
 	const ls_timer_vals = 'timer_values';
+	// const ls_recent_timers = 'p_recent_timers';
 
 	function on_submit() {
-		// console.log({ hh, mm, ss });
-
 		if (!vv.hh && !vv.mm && !vv.ss) {
 			// console.log('zero');
 			return;
@@ -49,7 +50,23 @@
 
 		// dispatch('close');
 		is_open = false;
+
+		add_recent_timers(LS.recent_timers, vv);
+		// console.log(recent_timers);
 	}
+	//
+	// const ls_show_recent = 'p_show_recent_timers';
+	// let is_show_recent = browser && !!localStorage.getItem(ls_show_recent);
+	// /** @param {any} ev */
+	// function on_change_recent(ev) {
+	// 	// console.log(ev);
+	// 	is_show_recent = ev.target.checked;
+	// 	if (is_show_recent) {
+	// 		localStorage.setItem(ls_recent_timers, '1');
+	// 	} else {
+	// 		localStorage.removeItem(ls_recent_timers);
+	// 	}
+	// }
 
 	const ls_autoclose = 'auto_close_timers';
 	let is_autoclose = browser && !!localStorage.getItem(ls_autoclose);
@@ -119,6 +136,14 @@
 							on:change={on_change_remember}
 						/>
 					</BoxFieldEntry>
+
+					<!-- <BoxFieldEntry label={l.t.opts.etc.recent_timers}> -->
+					<!-- 	<input -->
+					<!-- 		type="checkbox" -->
+					<!-- 		checked={is_show_recent} -->
+					<!-- 		on:change={on_change_recent} -->
+					<!-- 	/> -->
+					<!-- </BoxFieldEntry> -->
 				</BoxField>
 			</form>
 		</div>
@@ -129,7 +154,7 @@
 	title={l.t.it.add_timer}
 	iconOnly
 	round
-	variant="outlined"
+	variant="text"
 	on:click={() => (is_open = true)}
 >
 	<MyIcon name="timer" />
@@ -137,7 +162,7 @@
 
 <style>
 	form {
-		padding-top: 2em;
+		/* padding-top: 2em; */
 		display: grid;
 		gap: 3em;
 	}

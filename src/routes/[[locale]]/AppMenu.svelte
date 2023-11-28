@@ -61,7 +61,7 @@
 	iconName="menu"
 	title={l.t.it.menu}
 	round
-	variant="outlined"
+	variant="text"
 	on:click={() => dialog.showModal()}
 />
 

@@ -20,7 +20,7 @@
 		</a>
 
 		<!-- <div class="fce g1 alpha" style="--_bg: var(--__mg0)"> -->
-		<div class="fce alpha">
+		<div class="fce alpha btns">
 			{#if $page.route.id === '/[[locale]]/pomodoro'}
 				<AddAlarm />
 				<AddTimer />
@@ -55,7 +55,9 @@
 		text-decoration: none;
 	}
 
-	.fce {
-		gap: 1em;
-	}
+	/* .btns { */
+	/* 	& .btn { */
+	/* 		border-color: transparent; */
+	/* 	} */
+	/* } */
 </style>

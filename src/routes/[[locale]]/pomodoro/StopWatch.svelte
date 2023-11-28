@@ -92,7 +92,7 @@
 		<div class="fce">
 			<BtnIcon
 				iconName={is_running ? ii.pause : ii.play_arrow}
-				variant="outlined"
+				variant="text"
 				round
 				title={is_running ? bb.pause : bb.start}
 				on:click={handle_start_stop}
@@ -100,7 +100,7 @@
 
 			<BtnIcon
 				accent="beta"
-				variant="outlined"
+				variant="text"
 				round
 				title={bb.cycle}
 				iconName={ii.cycle}
@@ -109,7 +109,7 @@
 
 			<BtnIcon
 				accent="danger"
-				variant="outlined"
+				variant="text"
 				round
 				title={bb.reset}
 				iconName={ii.stop}
@@ -141,9 +141,9 @@
 		line-height: 1;
 	}
 
-	.fce {
-		gap: 1rem;
-	}
+	/* .fce { */
+	/* 	gap: 0.5rem; */
+	/* } */
 
 	section {
 		color: var(--__fg);

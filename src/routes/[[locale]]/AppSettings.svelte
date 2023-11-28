@@ -24,7 +24,7 @@
 	iconName="settings"
 	title={l.t.it.settings}
 	round
-	variant="outlined"
+	variant="text"
 	on:click={() => (is_open = true)}
 />
 

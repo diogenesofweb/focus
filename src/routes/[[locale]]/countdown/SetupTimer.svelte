@@ -3,6 +3,8 @@
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { getContext } from 'svelte';
 	import TimerForm from './TimerForm.svelte';
+	import { add_recent_timers } from '$lib/utils';
+	import { LS } from '$lib/vars';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 
@@ -29,6 +31,7 @@
 		}
 
 		const data = vv;
+		add_recent_timers(LS.recent_timers, vv);
 		dispatch('start', data);
 	}
 

@@ -6,7 +6,7 @@
 	<span>
 		<Logo />
 	</span>
-	<b>TimerOne</b>
+	<b class="f-mono">TimerOne</b>
 </div>
 
 <style>
@@ -21,7 +21,7 @@
 		border-radius: 0.5em;
 
 		color: var(--__fg2);
-		background: var(--bga1);
+		/* background: var(--bga1); */
 	}
 
 	b {

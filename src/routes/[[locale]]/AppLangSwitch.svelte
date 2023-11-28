@@ -36,7 +36,7 @@
 
 <Dropdown
 	text={$page.data.r.locale}
-	variant="outlined"
+	variant="text"
 	round
 	accent="alpha"
 	iconOnly

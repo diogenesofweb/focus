@@ -69,7 +69,7 @@
 		iconName="close"
 		accent="danger"
 		round
-		variant="outlined"
+		variant="text"
 		on:click
 	/>
 </li>

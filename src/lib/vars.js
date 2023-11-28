@@ -21,6 +21,10 @@ export const MSG_WF = /** @type {const} */ ({
 	start: 'start'
 });
 
+export const LS = {
+	recent_timers: 'recent_timers'
+};
+
 /** @typedef {keyof ii } MyIconName */
 export const ii = {
 	sports_gymnastics: 'sports_gymnastics',

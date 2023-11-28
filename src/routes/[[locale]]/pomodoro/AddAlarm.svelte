@@ -93,7 +93,7 @@
 	title={l.t.it.add_alarm}
 	iconOnly
 	round
-	variant="outlined"
+	variant="text"
 	on:click={() => (is_open = true)}
 >
 	<MyIcon name="alarm_add" />
