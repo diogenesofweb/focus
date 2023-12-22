@@ -5,16 +5,17 @@
 	export let SS;
 
 	export let is_running = false;
+	export let is_overtime = false;
 </script>
 
-<time class="timer font-x" class:is_running>
+<time class="font-x" class:is_running class:is_overtime>
 	<span>{MM}</span>
 	<span class="x">:</span>
 	<span>{SS}</span>
 </time>
 
 <style>
-	.timer {
+	time {
 		display: grid;
 		grid-template-columns: 1fr auto 1fr;
 		--g: 3px;
@@ -32,13 +33,21 @@
 		padding-bottom: 2rem;
 		/* margin-block: 3rem 1rem; */
 		/* background-color: black; */
-
-		&.is_running > span {
-			text-shadow: 0.02em 0.04em 0.02em var(--__bg);
-		}
 	}
 
-	.timer > :first-child {
+	time.is_overtime {
+		color: var(--fg-danger);
+	}
+
+	time:not(.is_running) {
+		opacity: 0.7;
+	}
+
+	/* time.is_running > span { */
+	/* 	text-shadow: 0.02em 0.04em 0.02em var(--__bg); */
+	/* } */
+
+	time > :first-child {
 		text-align: right;
 	}
 

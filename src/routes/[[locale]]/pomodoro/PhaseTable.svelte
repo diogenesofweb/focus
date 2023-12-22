@@ -1,5 +1,7 @@
 <script>
 	import MyIcon from '$lib/MyIcon.svelte';
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
 
 	/** @typedef {import('$typings/types').Phase} Phase*/
 	/** @type {Phase} */
@@ -7,28 +9,39 @@
 	export let index = 0;
 	/** @type {import('$lib/types').IRound[]}*/
 	export let list = [];
+
+	/**
+	 * @param {number} i
+	 * @param {Phase} phase
+	 */
+	function on_select_block(i, phase) {
+		const one = { index: i, phase };
+		dispatch('select-block', one);
+	}
 </script>
 
 <div class="fce">
 	<div class="tableau">
 		<div class="row alpha">
 			{#each list as e, i}
-				<span
+				<button
+					on:click={() => on_select_block(i, 'focus')}
 					title={e.focus.task}
-					class={e.focus.icon.accent}
+					class="{e.focus.icon.accent} btn text icon-only"
 					class:active={i === index && phase === 'focus'}
 					class:done={i < index || (i === index && phase !== 'focus')}
 				>
 					<MyIcon name="flag" />
-				</span>
+				</button>
 			{/each}
 		</div>
 
 		<div class="row beta">
 			{#each list as e, i}
-				<span
+				<button
+					on:click={() => on_select_block(i, 'break')}
 					title={e.break.activity}
-					class={e.break.icon.accent}
+					class="{e.break.icon.accent} btn text icon-only"
 					class:active={i === index && phase !== 'focus'}
 					class:done={i < index}
 				>
@@ -37,7 +50,7 @@
 					{:else}
 						<MyIcon name="local_cafe" />
 					{/if}
-				</span>
+				</button>
 			{/each}
 		</div>
 	</div>
@@ -55,26 +68,26 @@
 	}
 	.row {
 		display: flex;
-		gap: 1ch;
+		/* gap: 1ch; */
 	}
-	.tableau span {
+	.tableau button {
 		text-align: center;
 		/* background-color: darkgreen; */
 		flex: 1 1 3ch;
 		color: var(--__fg0);
 	}
 
-	.tableau span.done {
+	.tableau button.done {
 		opacity: 0.5;
 	}
 
-	.tableau span.active {
+	.tableau button.active {
 		color: var(--__fg);
 		background: var(--__bga);
 
 		/* outline: 1px dashed var(--__fg-1, var(--fg1)); */
 		outline: 1px dashed var(--__fg0);
-		outline-offset: 3px;
-		border-radius: 3px;
+		/* outline-offset: 3px; */
+		/* border-radius: 3px; */
 	}
 </style>

@@ -329,6 +329,27 @@
 		sh.pomo_is_active = false;
 	}
 
+	/** @param {{ detail: {index: number, phase: 'focus' | 'break' }; }} ev */
+	async function handle_select_block(ev) {
+		// const one = ev.detail;
+		// console.log(one);
+
+		upStats();
+		// console.log('on next');
+		if (isPaused) isPaused = false;
+		stopTimer();
+
+		overtime = null;
+		index = ev.detail.index;
+		phase = ev.detail.phase;
+		phaseLabel = rounds[0].focus.task;
+
+		clearClock();
+
+		$my_title = tr[phase];
+		sh.pomo_is_active = false;
+	}
+
 	function upStats() {
 		const full = rounds[index][phase].duration;
 		const elapsed = full - min;
@@ -433,8 +454,18 @@
 	</div>
 
 	<div class="boxx">
-		<PhaseTable {phase} {index} list={rounds} />
-		<Clock {is_running} {MM} {SS} />
+		<PhaseTable
+			{phase}
+			{index}
+			list={rounds}
+			on:select-block={handle_select_block}
+		/>
+		<Clock
+			{is_running}
+			{MM}
+			{SS}
+			is_overtime={$opts.overtime && overtime !== null}
+		/>
 	</div>
 
 	{#if $opts.overtime && overtime !== null}
