@@ -14,7 +14,7 @@ import { browser } from '$app/environment';
 
 const myStations: IRadioStation[] = [
 	{
-		src: 'https://coderadio-relay-nyc.freecodecamp.org/radio/8010/radio.mp3',
+		src: 'https://coderadio-admin-v2.freecodecamp.org/listen/coderadio/radio.mp3',
 		name: 'FreeCodeCamp Radio',
 		id: 1
 	},
