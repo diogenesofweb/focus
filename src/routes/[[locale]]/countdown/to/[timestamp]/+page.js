@@ -11,13 +11,13 @@ export function load(ev) {
 	const is_num = reg.test(tsp);
 
 	if (!is_num) {
-		throw error(404, { message: 'Not found' });
+		error(404, { message: 'Not found' });
 	}
 
 	const ms = parseInt(tsp);
 
 	if (!ms) {
-		throw error(404, { message: 'Not found' });
+		error(404, { message: 'Not found' });
 	}
 
 	return { ms };
