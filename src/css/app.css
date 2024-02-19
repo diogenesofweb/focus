@@ -25,7 +25,8 @@ html.dark {
 	font-family: 'Teko';
 	font-style: normal;
 	font-weight: 700;
-	src: url('/_fonts/teko-v15-latin-700.woff2') format('woff2'),
+	src:
+		url('/_fonts/teko-v15-latin-700.woff2') format('woff2'),
 		url('/_fonts/teko-v15-latin-700.woff') format('woff');
 }
 .font-x {
@@ -119,4 +120,7 @@ label {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(16ch, 1fr));
 	gap: 1rem;
+}
+input {
+	min-width: 0;
 }

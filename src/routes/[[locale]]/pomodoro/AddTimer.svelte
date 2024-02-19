@@ -166,4 +166,7 @@
 		display: grid;
 		gap: 3em;
 	}
+	.card {
+		max-width: 70ch;
+	}
 </style>
