@@ -210,15 +210,7 @@
 			phaseLabel = rounds[index].break.activity;
 
 			if (!phaseLabel) {
-				const ln = rounds[index].break.listName;
-
-				if (!activitiesMap.has(ln)) {
-					const l = await ldb.activities.getOneByName(ln);
-					// console.log(l);
-					if (l) activitiesMap.set(ln, [...l.values]);
-				}
-
-				myActivites = activitiesMap.get(ln) || [];
+				await update_my_activites();
 			}
 		}
 	}
@@ -342,12 +334,32 @@
 		overtime = null;
 		index = ev.detail.index;
 		phase = ev.detail.phase;
-		phaseLabel = rounds[0].focus.task;
+		// phaseLabel = rounds[0].focus.task;
+		if (phase === 'focus') {
+			phaseLabel = rounds[index].focus.task;
+		} else {
+			phaseLabel = rounds[index].break.activity;
+			if (!phaseLabel) {
+				await update_my_activites();
+			}
+		}
 
 		clearClock();
 
 		$my_title = tr[phase];
 		sh.pomo_is_active = false;
+	}
+
+	async function update_my_activites() {
+		const ln = rounds[index].break.listName;
+
+		if (!activitiesMap.has(ln)) {
+			const l = await ldb.activities.getOneByName(ln);
+			// console.log(l);
+			if (l) activitiesMap.set(ln, [...l.values]);
+		}
+
+		myActivites = activitiesMap.get(ln) || [];
 	}
 
 	function upStats() {
