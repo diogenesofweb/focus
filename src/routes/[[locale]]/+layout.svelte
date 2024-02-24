@@ -109,9 +109,9 @@
 		<div id="view" class="alpha">
 			<AppHeader />
 
-			<!-- <div> -->
-			<slot />
-			<!-- </div> -->
+			<main>
+				<slot />
+			</main>
 		</div>
 
 		<AppFooter />

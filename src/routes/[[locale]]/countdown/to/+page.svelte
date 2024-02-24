@@ -70,10 +70,10 @@
 </svelte:head>
 
 <SetupLay>
-	<div class="heading">
+	<header class="heading">
 		<h1>{l.t.r.countdown_to.body.h1}</h1>
 		<p>{l.t.r.countdown_to.body.desc}</p>
-	</div>
+	</header>
 
 	<form
 		class="form v2 alpha"

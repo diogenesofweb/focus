@@ -91,8 +91,10 @@
 
 <SetupLay>
 	<!-- <h1>Difference between two dates</h1> -->
-	<h1>{tb.h}</h1>
-	<p>{tb.p}</p>
+	<header>
+		<h1>{tb.h}</h1>
+		<p>{tb.p}</p>
+	</header>
 
 	<form class="form v2 alpha" on:submit|preventDefault={on_submit}>
 		<Field label="{l.t.time.date} 1">
@@ -110,7 +112,7 @@
 	</form>
 
 	{#if r}
-		<section>
+		<div class="sec">
 			<p>= {r.text}</p>
 
 			{#if r.in_days !== r.text}
@@ -118,7 +120,7 @@
 			{/if}
 
 			<!-- <p>= {r.in_seconds}</p> -->
-		</section>
+		</div>
 	{/if}
 </SetupLay>
 
@@ -140,7 +142,7 @@
 	/* 	flex-grow: 1; */
 	/* } */
 
-	section {
+	.sec {
 		text-transform: lowercase;
 	}
 </style>

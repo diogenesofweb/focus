@@ -24,7 +24,7 @@
 	});
 </script>
 
-<main>
+<div class="main">
 	<div id="tp" class="pane">
 		{#if $opts.stopwatch}
 			<div id="sw" class="box">
@@ -58,7 +58,7 @@
 			<MainView {rounds} />
 		{/if}
 	</div>
-</main>
+</div>
 
 <style>
 	.fsb {
@@ -145,7 +145,7 @@
 			padding-inline: 0;
 		}
 
-		main {
+		.main {
 			margin-top: 1em;
 			/* outline: 1px solid red; */
 

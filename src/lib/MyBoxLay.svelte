@@ -22,7 +22,7 @@
 	export let with_label = false;
 </script>
 
-<section class={accent}>
+<div class={accent}>
 	<div class="box">
 		<div class="header f-mono">{heading}</div>
 
@@ -53,7 +53,7 @@
 			<slot name="btns"><!-- optional fallback --></slot>
 		</div>
 	{/if}
-</section>
+</div>
 
 <style>
 	time {

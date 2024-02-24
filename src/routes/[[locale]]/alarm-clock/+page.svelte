@@ -24,14 +24,14 @@
 
 <SetupLay>
 	<div class="wrap">
-		<div class="heading">
+		<header class="heading">
 			<!-- <h1>Online Alarm Clock</h1> -->
 			<h1>{tb.h1}</h1>
-			<h4>
+			<p>
 				{tb.h3}
 				<b>{current}</b>
-			</h4>
-		</div>
+			</p>
+		</header>
 
 		<!-- <SetupTimer on:start={handle_start} /> -->
 		<SetupTimer />
@@ -51,7 +51,7 @@
 	h1 {
 		margin-top: 0;
 	}
-	h4 {
+	p {
 		margin-bottom: 0;
 	}
 	b {

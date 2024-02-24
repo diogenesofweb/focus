@@ -14,11 +14,11 @@
 		<!-- <div> <Name /> </div> -->
 
 		<div>
-			<p>
+			<div>
 				Free and open source web app. Built with
 				<a href="https://kit.svelte.dev">SvelteKit</a>, on
 				<a href="https://github.com/diogenesofweb/focus">GitHub</a>.
-			</p>
+			</div>
 
 			<!-- <p> -->
 			<!-- 	Check out -->
@@ -66,9 +66,6 @@
 	}
 	a:not(.btn):hover {
 		color: var(--fg-alpha);
-	}
-	p {
-		margin: 0;
 	}
 	footer {
 		padding-block: 3rem 6rem;

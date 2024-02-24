@@ -43,7 +43,7 @@
 </script>
 
 <form class="form v2 alpha" on:submit|preventDefault={on_submit}>
-	<section>
+	<div class="sec">
 		<Field label={l.t.time.date}>
 			<input type="date" min={today} bind:value={date} required />
 		</Field>
@@ -51,7 +51,7 @@
 		<Field label={l.t.time.time}>
 			<input type="time" bind:value={time} required />
 		</Field>
-	</section>
+	</div>
 
 	{#if warn}
 		<div>{warn}</div>
@@ -76,14 +76,14 @@
 		display: grid;
 		gap: 3em;
 	}
-	section {
+	.sec {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 1rem;
 	}
 
 	/* @media only screen and (min-width: 600px) { */
-	/* 	section { */
+	/* .sec { */
 	/* 		grid-template-columns: 1fr 1fr; */
 	/* 	} */
 	/* } */

@@ -30,10 +30,10 @@
 		{/if}
 	</div>
 
-	<section>
+	<header>
 		<h1>{tb.h1}</h1>
 		<p>{tb.d1} <a href={tb.l.url}>{tb.l.n}</a>{tb.d2}</p>
-	</section>
+	</header>
 </article>
 
 <style>
@@ -49,7 +49,7 @@
 		min-height: calc(100vh - 3rem);
 	}
 
-	section {
+	header {
 		/* border-top: 1px solid var(--fl0); */
 		/* background: var(--bg0); */
 		padding-inline: var(--rsx);

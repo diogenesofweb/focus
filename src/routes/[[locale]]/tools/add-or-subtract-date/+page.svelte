@@ -104,8 +104,10 @@
 
 <SetupLay>
 	<!-- <h1>Add to or Subtract From a Date</h1> -->
-	<h1>{tb.h}</h1>
-	<p>{tb.p}</p>
+	<header>
+		<h1>{tb.h}</h1>
+		<p>{tb.p}</p>
+	</header>
 
 	<form class="form v2 alpha" on:submit|preventDefault>
 		<Field label={l.t.time.date}>
@@ -135,7 +137,7 @@
 	</form>
 
 	{#if v}
-		<section>
+		<div>
 			<p>= {v.short}</p>
 			<p>= {v.long}</p>
 			<p>
@@ -145,7 +147,7 @@
 				</a>
 			</p>
 			<!-- <p>= {v.epoch_ms}</p> -->
-		</section>
+		</div>
 	{/if}
 </SetupLay>
 

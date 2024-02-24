@@ -14,7 +14,7 @@
 </script>
 
 <div class="container1">
-	<div id="header" class="fsb base">
+	<header id="header" class="fsb base">
 		<a href={l.r.prefix || '/'} class="fce link">
 			<Name />
 		</a>
@@ -30,7 +30,7 @@
 			<AppMenu />
 			<AppLangSwitch />
 		</div>
-	</div>
+	</header>
 </div>
 
 <style>

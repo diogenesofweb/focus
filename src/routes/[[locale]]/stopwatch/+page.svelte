@@ -122,10 +122,10 @@
 		{/if}
 	</div>
 
-	<section class="bottom">
+	<header>
 		<h1>{tb.h1}</h1>
 		<p>{tb.desc}</p>
-	</section>
+	</header>
 </article>
 
 <style>
@@ -170,7 +170,7 @@
 		}
 	}
 
-	.bottom {
+	header {
 		padding-block: 2rem;
 		/* margin-top: 4rem; */
 		text-align: center;
