@@ -3,9 +3,9 @@
 </script>
 
 <div class="alpha">
-	<span>
-		<Logo />
-	</span>
+	<!-- <span> -->
+	<!-- 	<Logo /> -->
+	<!-- </span> -->
 	<b class="f-mono">TimerOne</b>
 </div>
 

@@ -46,7 +46,7 @@
 		padding-block: 1rem 4rem;
 	}
 	article {
-		border: var(--border);
+		/* border: var(--border); */
 		border-radius: 1rem;
 		padding-inline: 1rem;
 		padding-block: 1rem 3rem;

@@ -2,13 +2,13 @@ import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 
 let _opts = {
-	autoShowActivites: true,
-	totalTime: true,
+	autoShowActivites: false,
+	totalTime: false,
 	overtime: true,
-	stopwatch: true,
+	stopwatch: false,
 	reminder: true,
 
-	skip_break_activity_select: false,
+	skip_break_activity_select: true,
 	autoStartFocus: false,
 	radio: false,
 

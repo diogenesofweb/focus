@@ -145,7 +145,7 @@
 		gap: 4em;
 
 		background: var(--bg);
-		border: var(--border);
+		/* border: var(--border); */
 		border-radius: 1em;
 		/* --bg: var(--bg1); */
 	}

@@ -19,16 +19,16 @@
 			]
 		],
 
-		[
-			l.t.menu.pomodoro,
-			[
-				{ href: pre + '/pomodoro/sequences', name: l.t.r.sequences.body.h },
-				{ href: pre + '/pomodoro/break-activities', name: l.t.r.breaks.body.h },
-				{ href: pre + '/pomodoro/radio-stations', name: l.t.r.radios.body.h },
-				{ href: pre + '/pomodoro/stats', name: l.t.r.stats.body.h },
-				{ href: pre + '/pomodoro/snaps', name: l.t.r.snaps.body.h }
-			]
-		],
+		// [
+		// 	l.t.menu.pomodoro,
+		// 	[
+		// 		{ href: pre + '/pomodoro/sequences', name: l.t.r.sequences.body.h },
+		// 		{ href: pre + '/pomodoro/break-activities', name: l.t.r.breaks.body.h },
+		// 		{ href: pre + '/pomodoro/radio-stations', name: l.t.r.radios.body.h },
+		// 		{ href: pre + '/pomodoro/stats', name: l.t.r.stats.body.h },
+		// 		{ href: pre + '/pomodoro/snaps', name: l.t.r.snaps.body.h }
+		// 	]
+		// ],
 
 		[
 			l.t.menu.tools,
@@ -45,13 +45,12 @@
 		]
 	];
 
-	if (l.r.locale === 'ua') {
-		// console.log('ua');
-		links[2][1].push({
-			href: 'https://www.kursvalyut.top/tools/currency-converter',
-			name: 'Конвертер Валют'
-		});
-	}
+	// if (l.r.locale === 'ua') {
+	// 	links[2][1].push({
+	// 		href: 'https://www.kursvalyut.top/tools/currency-converter',
+	// 		name: 'Конвертер Валют'
+	// 	});
+	// }
 
 	/** @type {HTMLDialogElement} */
 	let dialog;

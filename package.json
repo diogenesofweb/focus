@@ -11,24 +11,24 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.1.1",
-		"@sveltejs/kit": "^2.5.1",
-		"@sveltejs/vite-plugin-svelte": "^3.0.2",
-		"prettier-plugin-svelte": "^3.2.1",
-		"svelte": "^4.2.12",
-		"svelte-check": "^3.6.4",
-		"tslib": "^2.6.2",
-		"typescript": "^5.3.3",
-		"vite": "^5.1.4"
+		"@sveltejs/adapter-auto": "^3.2.2",
+		"@sveltejs/kit": "^2.5.18",
+		"@sveltejs/vite-plugin-svelte": "^3.1.1",
+		"prettier-plugin-svelte": "^3.2.6",
+		"svelte": "^4.2.18",
+		"svelte-check": "^3.8.4",
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.4",
+		"vite": "^5.3.5"
 	},
 	"type": "module",
 	"dependencies": {
 		"@kazkadien/svelte": "^0.32.0",
-		"@sveltejs/adapter-static": "^3.0.1",
-		"autoprefixer": "^10.4.17",
+		"@sveltejs/adapter-static": "^3.0.2",
+		"autoprefixer": "^10.4.19",
 		"howler": "^2.2.4",
 		"idb": "^8.0.0",
-		"postcss-nesting": "^12.0.3",
-		"prettier": "3.2.5"
+		"postcss-nesting": "^12.1.5",
+		"prettier": "3.3.3"
 	}
 }

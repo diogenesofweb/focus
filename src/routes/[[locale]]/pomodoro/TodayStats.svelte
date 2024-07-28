@@ -98,7 +98,7 @@
 		height: 100%;
 
 		/* border: 1px solid var(--clr); */
-		border: var(--border);
+		/* border: var(--border); */
 	}
 	div {
 		display: flex;

@@ -14,8 +14,17 @@
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 	const to = l.t.opts;
+	const pre = l.r.prefix;
 
 	let is_open = false;
+
+	const links = [
+		{ href: pre + '/pomodoro/sequences', name: l.t.r.sequences.body.h },
+		{ href: pre + '/pomodoro/break-activities', name: l.t.r.breaks.body.h },
+		{ href: pre + '/pomodoro/radio-stations', name: l.t.r.radios.body.h },
+		{ href: pre + '/pomodoro/stats', name: l.t.r.stats.body.h },
+		{ href: pre + '/pomodoro/snaps', name: l.t.r.snaps.body.h }
+	];
 
 	// page.subscribe((v) => console.log(v));
 </script>
@@ -53,7 +62,7 @@
 							</BoxFieldEntry>
 						</BoxField>
 
-						{#if $page.route.id === '/[[locale]]/pomodoro'}
+						{#if $page.route.id?.startsWith('/[[locale]]/pomodoro')}
 							<BoxField label={to.group.pomo} rows={true}>
 								{#if $notificationsAreOn || $opts.alarm}
 									<BoxFieldEntry label={to.reminder}>
@@ -118,6 +127,14 @@
 						is not supported in Firefox
 					</p>
 				{/if}
+
+				<nav>
+					{#each links as { href, name }}
+						<a {href} class="btn text round filled" on:click={() => (is_open = false)}>
+							{name}
+						</a>
+					{/each}
+				</nav>
 			</footer>
 		</div>
 	</Modal>
@@ -128,7 +145,17 @@
 		display: grid;
 		gap: 2rem;
 	}
+	nav {
+		/* outline: 1px solid hsl(0 100% 50% / 50%); */
+		display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    border-top: 1px solid var(--fl1);
+		margin-top: 2em;
+		padding-top: 2em;
+    
+	}
 	footer {
-		margin-top: 4em;
+		margin-top: 2em;
 	}
 </style>

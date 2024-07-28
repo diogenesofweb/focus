@@ -88,7 +88,7 @@
 		padding-block: 0.5rem;
 		/* border-radius: var(--btn-br); */
 		border-radius: 1rem;
-		border: var(--border);
+		/* border: var(--border); */
 
 		&:hover {
 			/* background: var(--__mg); */

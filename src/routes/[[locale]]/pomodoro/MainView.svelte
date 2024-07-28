@@ -12,9 +12,9 @@
 	import PhaseTable from './PhaseTable.svelte';
 	import Visibility, { VISIBILITY_STATE } from './Visibility.svelte';
 	import { currSequenceName } from '$store/store';
-	import { msg } from '$lib/vars';
+	import { ii, msg } from '$lib/vars';
 	import { sendNotification } from '$lib/sendNotification';
-	import { Btn, Modal } from '@kazkadien/svelte';
+	import { Btn, Modal, BtnIcon } from '@kazkadien/svelte';
 	import { onDestroy } from 'svelte';
 	import Overtime from './Overtime.svelte';
 	import { ldb } from '$lib/db';
@@ -23,6 +23,7 @@
 	import MyBtn from '$lib/MyBtn.svelte';
 	import { audio } from '$lib/audio';
 	import { getContext } from 'svelte';
+	import MyIcon from '$lib/MyIcon.svelte';
 	/** @type {import('$lib/types').Localize } */
 	const l = getContext('ttt');
 	const bb = l.t.btn;
@@ -485,9 +486,24 @@
 	{/if}
 
 	<div class="btns g-action-btns" id="action-btns">
+		<!-- <MyBtn -->
+		<!-- 	accent="alpha" -->
+		<!-- 	text={isPaused ? bb.resume : is_running ? bb.pause : bb.start} -->
+		<!-- 	on:click={() => { -->
+		<!-- 		if (isPaused) { -->
+		<!-- 			handleResume(); -->
+		<!-- 		} else if (is_running) { -->
+		<!-- 			handlePause(); -->
+		<!-- 		} else { -->
+		<!-- 			handleStart(true); -->
+		<!-- 		} -->
+		<!-- 	}} -->
+		<!-- /> -->
+		<!-- <MyBtn accent="beta" text={bb.next} on:click={handleNext} /> -->
+		<!-- <MyBtn accent="danger" text={bb.reset} on:click={handleReset} /> -->
 		<MyBtn
 			accent="alpha"
-			text={isPaused ? bb.resume : is_running ? bb.pause : bb.start}
+			title={isPaused ? bb.resume : is_running ? bb.pause : bb.start}
 			on:click={() => {
 				if (isPaused) {
 					handleResume();
@@ -497,9 +513,17 @@
 					handleStart(true);
 				}
 			}}
-		/>
-		<MyBtn accent="beta" text={bb.next} on:click={handleNext} />
-		<MyBtn accent="danger" text={bb.reset} on:click={handleReset} />
+		>
+			<MyIcon
+				name={isPaused ? ii.play_arrow : is_running ? ii.pause : ii.play_arrow}
+			/>
+		</MyBtn>
+		<MyBtn accent="beta" title={bb.next} on:click={handleNext}>
+			<MyIcon name={ii.fast_forward} />
+		</MyBtn>
+		<MyBtn accent="danger" title={bb.reset} on:click={handleReset}>
+			<MyIcon name={ii.cycle} />
+		</MyBtn>
 	</div>
 </section>
 
@@ -551,7 +575,7 @@
 
 		/* background: darkblue; */
 		background: var(--bg);
-		border: 1px solid var(--clr);
+		/* border: 1px solid var(--clr); */
 		border-radius: var(--x1);
 	}
 
@@ -609,14 +633,30 @@
 		gap: 1rem;
 		/* background: violet; */
 		margin-top: 2rem;
+
+		grid-template-columns: 1fr 1fr;
+	}
+	.btns > :global(.btn:nth-child(1)) {
+		grid-column: 1 / -1;
 	}
 
-	@media only screen and (min-width: 500px) {
-		.btns {
-			grid-template-columns: 1fr 1fr 1fr;
-			/* background: black; */
-		}
-	}
+	/* @media only screen and (min-width: 500px) { */
+	/* .btns { */
+	/* grid-template-columns: 1fr 2fr 1fr; */
+	/* grid-template-areas: 'next play reset'; */
+	/* } */
+	/* .btns > :global(.btn:nth-child(1)) { */
+	/* grid-area: play; */
+	/* outline: 1px solid hsl(0 100% 50% / 50%); */
+	/* grid-column: 1 / -1; */
+	/* } */
+	/* .btns > :global(.btn:nth-child(2)) { */
+	/* 	grid-area: next; */
+	/* } */
+	/* .btns > :global(.btn:nth-child(3)) { */
+	/* 	grid-area: reset; */
+	/* } */
+	/* } */
 	/* #action-btns :global(.btn.outlined:not(:hover):not(:focus-visible)) { */
 	/* 	background: var(--__bga1); */
 	/* 	backdrop-filter: blur(3px); */

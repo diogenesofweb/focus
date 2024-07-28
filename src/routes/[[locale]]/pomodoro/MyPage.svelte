@@ -76,7 +76,7 @@
 
 	.box {
 		overflow: hidden;
-		border: var(--border);
+		/* border: var(--border); */
 		border-radius: 1rem;
 		background-color: var(--bg);
 
@@ -90,7 +90,7 @@
 		padding-inline: 1em;
 		padding-block: 1.25em;
 
-		border: var(--border);
+		/* border: var(--border); */
 		border-radius: 1em;
 		background-color: var(--bg);
 		/* background: darkolivegreen; */

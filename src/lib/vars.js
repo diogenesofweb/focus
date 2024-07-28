@@ -27,6 +27,9 @@ export const LS = {
 
 /** @typedef {keyof ii } MyIconName */
 export const ii = {
+	fast_forward: 'fast_forward',
+	skip_next: 'skip_next',
+
 	sports_gymnastics: 'sports_gymnastics',
 	local_cafe: 'local_cafe',
 	play_arrow: 'play_arrow',

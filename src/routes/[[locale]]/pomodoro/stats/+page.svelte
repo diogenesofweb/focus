@@ -94,7 +94,7 @@
 		--g: 4px;
 		background: var(--bg2);
 
-		border: var(--border);
+		/* border: var(--border); */
 		border-radius: 1rem;
 		margin-block: 1rem 4rem;
 	}

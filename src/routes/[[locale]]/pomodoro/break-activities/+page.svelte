@@ -199,7 +199,7 @@
 	.notes {
 		padding: 1rem;
 		border-radius: 1rem;
-		border: var(--border);
+		/* border: var(--border); */
 		background: var(--bg);
 		margin-block: 4rem;
 	}

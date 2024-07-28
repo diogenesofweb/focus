@@ -34,7 +34,7 @@
 
 		background: var(--bg);
 		border-radius: 1em;
-		border: var(--border);
+		/* border: var(--border); */
 	}
 
 	.container {
