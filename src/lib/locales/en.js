@@ -152,7 +152,7 @@ const en = {
 
 		pomodoro: {
 			head: {
-				title: 'Pomodoro Timer Online',
+				title: 'Online Pomodoro Timer',
 				desc: 'Easy-to-use, customizable, minimalistic and aesthetic free online pomodoro timer. Helps with productivity and concentration.',
 				og: {
 					title: 'Online Pomodoro Timer',
@@ -160,7 +160,7 @@ const en = {
 				}
 			},
 			body: {
-				h1: 'Pomodoro Timer Online',
+				h1: 'Online Pomodoro Timer',
 				d1: 'Mobile-friendly, easy-to-use, customizable, minimalistic and aesthetic productivity timer based on ',
 				l: {
 					url: 'https://en.wikipedia.org/wiki/Pomodoro_Technique',

@@ -63,49 +63,54 @@
 						</BoxField>
 
 						{#if $page.route.id?.startsWith('/[[locale]]/pomodoro')}
-							<BoxField label={to.group.pomo} rows={true}>
-								{#if $notificationsAreOn || $opts.alarm}
-									<BoxFieldEntry label={to.reminder}>
-										<input type="checkbox" bind:checked={$opts.reminder} />
+							<div class="pomo fsb">
+								<BoxField label={to.group.pomo} rows={true}>
+									{#if $notificationsAreOn || $opts.alarm}
+										<BoxFieldEntry label={to.reminder}>
+											<input type="checkbox" bind:checked={$opts.reminder} />
+										</BoxFieldEntry>
+									{/if}
+
+									<BoxFieldEntry label={to.skip_break}>
+										<input
+											type="checkbox"
+											bind:checked={$opts.skip_break_activity_select}
+										/>
 									</BoxFieldEntry>
-								{/if}
 
-								<BoxFieldEntry label={to.skip_break}>
-									<input
-										type="checkbox"
-										bind:checked={$opts.skip_break_activity_select}
-									/>
-								</BoxFieldEntry>
+									<BoxFieldEntry label={to.autoshow_activities}>
+										<input
+											type="checkbox"
+											bind:checked={$opts.autoShowActivites}
+										/>
+									</BoxFieldEntry>
 
-								<BoxFieldEntry label={to.autoshow_activities}>
-									<input
-										type="checkbox"
-										bind:checked={$opts.autoShowActivites}
-									/>
-								</BoxFieldEntry>
+									<BoxFieldEntry label={to.autostart_focus}>
+										<input
+											type="checkbox"
+											bind:checked={$opts.autoStartFocus}
+										/>
+									</BoxFieldEntry>
+								</BoxField>
 
-								<BoxFieldEntry label={to.autostart_focus}>
-									<input type="checkbox" bind:checked={$opts.autoStartFocus} />
-								</BoxFieldEntry>
-							</BoxField>
+								<BoxField label={to.group.addons} rows={true}>
+									<BoxFieldEntry label={to.addons.radio}>
+										<input type="checkbox" bind:checked={$opts.radio} />
+									</BoxFieldEntry>
 
-							<BoxField label={to.group.addons} rows={true}>
-								<BoxFieldEntry label={to.addons.radio}>
-									<input type="checkbox" bind:checked={$opts.radio} />
-								</BoxFieldEntry>
+									<BoxFieldEntry label={to.addons.stopwatch}>
+										<input type="checkbox" bind:checked={$opts.stopwatch} />
+									</BoxFieldEntry>
 
-								<BoxFieldEntry label={to.addons.stopwatch}>
-									<input type="checkbox" bind:checked={$opts.stopwatch} />
-								</BoxFieldEntry>
+									<BoxFieldEntry label={to.addons.total_time}>
+										<input type="checkbox" bind:checked={$opts.totalTime} />
+									</BoxFieldEntry>
 
-								<BoxFieldEntry label={to.addons.total_time}>
-									<input type="checkbox" bind:checked={$opts.totalTime} />
-								</BoxFieldEntry>
-
-								<BoxFieldEntry label={to.addons.overtime}>
-									<input type="checkbox" bind:checked={$opts.overtime} />
-								</BoxFieldEntry>
-							</BoxField>
+									<BoxFieldEntry label={to.addons.overtime}>
+										<input type="checkbox" bind:checked={$opts.overtime} />
+									</BoxFieldEntry>
+								</BoxField>
+							</div>
 						{/if}
 					</div>
 				</form>
@@ -130,7 +135,11 @@
 
 				<nav>
 					{#each links as { href, name }}
-						<a {href} class="btn text round filled" on:click={() => (is_open = false)}>
+						<a
+							{href}
+							class="btn text round filled"
+							on:click={() => (is_open = false)}
+						>
 							{name}
 						</a>
 					{/each}
@@ -148,14 +157,21 @@
 	nav {
 		/* outline: 1px solid hsl(0 100% 50% / 50%); */
 		display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    border-top: 1px solid var(--fl1);
+		flex-wrap: wrap;
+		gap: 1em;
+		border-top: 1px solid var(--fl1);
 		margin-top: 2em;
 		padding-top: 2em;
-    
 	}
 	footer {
 		margin-top: 2em;
+	}
+	.pomo.fsb {
+		/* outline: 1px solid hsl(0 100% 50% / 50%); */
+		gap: 1rem;
+
+		& > * {
+			flex-grow: 1;
+		}
 	}
 </style>
