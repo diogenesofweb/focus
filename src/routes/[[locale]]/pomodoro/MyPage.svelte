@@ -63,6 +63,7 @@
 <style>
 	.fsb {
 		gap: 2em;
+		/* gap: 1em; */
 	}
 
 	.pane {
@@ -107,7 +108,8 @@
 	#sw {
 		margin-bottom: 1rem;
 	}
-	@media only screen and (min-width: 1400px) {
+	/* @media only screen and (min-width: 1400px) { */
+	@media only screen and (min-width: 1200px) {
 		#sw {
 			margin-bottom: 2rem;
 			padding-block: 1.32em;
@@ -129,6 +131,9 @@
 			grid-area: mp;
 			/* background: darkcyan; */
 			margin-inline: 0;
+
+			padding-top: 0;
+			padding-inline: 1rem;
 		}
 		.box {
 			width: 100%;
@@ -138,9 +143,6 @@
 			border: none;
 			margin: 0;
 			/* background: darkmagenta; */
-		}
-
-		:is(#mp, .pane) {
 			padding-top: 0;
 			padding-inline: 0;
 		}
@@ -150,7 +152,8 @@
 			/* outline: 1px solid red; */
 
 			display: grid;
-			grid-template-columns: 1fr 600px 1fr;
+			/* grid-template-columns: 1fr 550px 1fr; */
+			grid-template-columns: 2fr 3fr 2fr;
 			grid-template-areas: 'rp mp tp';
 			/* padding-inline: 1em; */
 		}

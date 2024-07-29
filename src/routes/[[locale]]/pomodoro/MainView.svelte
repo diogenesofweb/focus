@@ -547,7 +547,7 @@
 	/* MODAL */
 
 	section {
-		max-width: 550px;
+		/* max-width: 550px; */
 		margin-inline: auto;
 		/* padding-inline: var(--g) 1em; */
 
