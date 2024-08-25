@@ -17,8 +17,8 @@
 	export let data;
 	// console.log({ ...data });
 	setContext('ttt', { ...data });
-	// const origin = 'https://focus.delphic.top';
-	const origin = 'https://www.timerone.com';
+	const origin = 'https://focus.delphic.top';
+	// const origin = 'https://www.timerone.com';
 	const route_without_locale_prefix = (/** @type {string} */ r) =>
 		r.replace(/^\/(fr|ua)/, '');
 

@@ -50,7 +50,8 @@
 		path && goto(path);
 	}
 
-	const origin = 'https://www.timerone.com';
+	const origin = 'https://focus.delphic.top';
+	// const origin = 'https://www.timerone.com';
 	function on_copy() {
 		if (!path) return;
 
